@@ -2,18 +2,18 @@
 using Owin;
 using System.Web.Http;
 using Microsoft.Owin.Cors;
-using Lean.Test.CloudWebApi.App_Start;
+using ControleVeiculosWebApi.App_Start;
 using Autofac.Integration.WebApi;
-using Lean.Test.Cloud.CrossCutting;
+using ControleVeiculos.CrossCutting;
 using System.Reflection;
 using Autofac;
 using Swashbuckle.Application;
 using System;
 using FluentValidation.WebApi;
 
-[assembly: OwinStartup(typeof(Lean.Test.CloudWebApi.Startup))]
+[assembly: OwinStartup(typeof(ControleVeiculosWebApi.Startup))]
 
-namespace Lean.Test.CloudWebApi
+namespace ControleVeiculosWebApi
 {
     public class Startup
     {

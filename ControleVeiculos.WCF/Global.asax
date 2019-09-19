@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Lean.Test.Cloud.WCF.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="ControleVeiculos.WCF.Global" Language="C#" %>

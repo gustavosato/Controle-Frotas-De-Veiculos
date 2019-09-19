@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.WebApi.Infrastrucure.Formatter;
+﻿using ControleVeiculos.WebApi.Infrastrucure.Formatter;
 using System.Web.Http;
 
-namespace Lean.Test.CloudWebApi.App_Start
+namespace ControleVeiculosWebApi.App_Start
 {
     public class WebApiConfig
     {

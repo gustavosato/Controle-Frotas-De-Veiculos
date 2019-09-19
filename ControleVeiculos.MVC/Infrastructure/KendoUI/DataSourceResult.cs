@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace Lean.Test.Cloud.MVC.Infrastructure.KendoUI
+namespace ControleVeiculos.MVC.Infrastructure.KendoUI
 {
     public class DataSourceResult
     {

@@ -6,7 +6,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Lean.Test.Cloud.WebApi.Auth
+namespace ControleVeiculos.WebApi.Auth
 {
     public static class JwtAuthManager
     {

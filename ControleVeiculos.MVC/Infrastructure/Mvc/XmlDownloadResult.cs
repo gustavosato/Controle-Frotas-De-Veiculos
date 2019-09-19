@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using System.Xml;
 
-namespace Lean.Test.Cloud.MVC.Infrastructure.Mvc
+namespace ControleVeiculos.Infrastructure.Mvc
 {
     public class XmlDownloadResult : ActionResult
     {

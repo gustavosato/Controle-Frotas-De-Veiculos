@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Lean.Test.Cloud.WebApi.Common
+namespace ControleVeiculos.WebApi.Common
 {
     public class MediaTypeConst
     {

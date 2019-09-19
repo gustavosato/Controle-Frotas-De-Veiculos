@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Optimization;
 
-namespace Lean.Test.Cloud.MVC
+namespace ControleVeiculos.MVC
 {
     public class BundleConfig
     {

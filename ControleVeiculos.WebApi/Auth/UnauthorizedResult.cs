@@ -9,7 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace Lean.Test.Cloud.WebApi.Auth
+namespace ControleVeiculos.WebApi.Auth
 {
     public class UnauthorizedResult : IHttpActionResult
     {

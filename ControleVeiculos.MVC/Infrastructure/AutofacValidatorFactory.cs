@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Lean.Test.Cloud.MVC.Infrastructure
+namespace ControleVeiculos.Infrastructure
 {
     public class AutofacValidatorFactory : ValidatorFactoryBase
     {

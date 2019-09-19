@@ -7,11 +7,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Lean.Test.Cloud.MVC.Infrastructure;
-using Lean.Test.Cloud.CrossCutting;
+using ControleVeiculos.MVC.Infrastructure;
+using ControleVeiculos.CrossCutting;
 using System.Web.Optimization;
 
-namespace Lean.Test.Cloud.MVC
+namespace ControleVeiculos.MVC
 {
     public class MvcApplication : System.Web.HttpApplication
     {

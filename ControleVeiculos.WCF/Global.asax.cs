@@ -1,9 +1,9 @@
 ﻿using Autofac;
 using System;
 using Autofac.Integration.Wcf;
-using Lean.Test.Cloud.CrossCutting;
+using ControleVeiculos.CrossCutting;
 
-namespace Lean.Test.Cloud.WCF
+namespace ControleVeiculos.WCF
 {
     public class Global : System.Web.HttpApplication
     {

@@ -82,7 +82,7 @@ using Lean.Test.Cloud.MVC.Validations.TestScenarioFeatures;
 
 
 
-namespace Lean.Test.Cloud.MVC.Infrastructure
+namespace ControleVeiculos.Infrastructure
 {
     public static class DependencyRegisterValidator
     {

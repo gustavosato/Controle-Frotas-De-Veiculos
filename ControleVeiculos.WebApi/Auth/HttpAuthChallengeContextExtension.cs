@@ -5,7 +5,7 @@ using System.Web;
 using System.Net.Http.Headers;
 using System.Web.Http.Filters;
 
-namespace Lean.Test.Cloud.WebApi.Auth
+namespace ControleVeiculos.WebApi.Auth
 {
     public static class HttpAuthChallengeContextExtension
     {
