@@ -1,0 +1,35 @@
+﻿@model Lean.Test.Cloud.MVC.Models.Customers.CustomerModel
+
+@Html.HiddenFor(model => model.CustomerID)
+@Html.HiddenFor(model => model.CustomerName)
+
+@Html.HiddenFor(model => model.Description)
+@Html.HiddenFor(model => model.IsActive)
+@Html.HiddenFor(model => model.CreationDate)
+@Html.HiddenFor(model => model.CreatedByID)
+
+@if (Model.IsActive == "True")
+{
+    <div>
+        Deseja realmente desativar a Empresa?
+        <br />
+        <br />
+        <ul>
+            <li>Nome da Empresa: <strong>@Model.CustomerName</strong></li>
+        </ul>
+    </div>
+
+}
+else
+{
+    <div>
+        Deseja realmente ativar a Empresa?
+        <br />
+        <br />
+        <ul>
+            <li>Nome do Empresa: <strong>@Model.CustomerName</strong></li>
+        </ul>
+    </div>
+
+}
+

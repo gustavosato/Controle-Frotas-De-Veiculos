@@ -1,0 +1,11 @@
+﻿@model Lean.Test.Cloud.MVC.Models.Tasks.TaskModel
+
+@Html.HiddenFor(model => model.TaskID)
+<div>
+    Deseja realmente excluir a seguinte tarefa?
+    <br />
+    <br />
+    <ul>
+        <li>Tarefa: <strong>@Model.Summary</strong></li>
+    </ul>
+</div>

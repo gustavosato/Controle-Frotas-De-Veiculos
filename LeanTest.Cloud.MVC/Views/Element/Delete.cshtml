@@ -1,0 +1,11 @@
+﻿@model Lean.Test.Cloud.MVC.Models.Contacts.ContactModel
+
+@Html.HiddenFor(model => model.ContactID)
+<div>
+    Deseja realmente excluir o seguinte registro?
+    <br />
+    <br />
+    <ul>
+        <li>Elemento: <strong>@Model.ContactName</strong></li>
+    </ul>
+</div>

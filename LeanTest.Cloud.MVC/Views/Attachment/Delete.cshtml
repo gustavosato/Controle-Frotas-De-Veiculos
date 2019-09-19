@@ -1,0 +1,11 @@
+﻿@model Lean.Test.Cloud.MVC.Models.Attachments.AttachmentModel
+
+@Html.HiddenFor(model => model.AttachmentID)
+<div>
+    Deseja realmente excluir o seguinte registro?
+    <br />
+    <br />
+    <ul>
+        <li>Nome do Arquivo: <strong>@Model.FileName</strong></li>
+    </ul>
+</div>

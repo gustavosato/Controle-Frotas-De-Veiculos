@@ -1,0 +1,11 @@
+﻿@model Lean.Test.Cloud.MVC.Models.SystemFeatures.SystemFeatureModel
+
+@Html.HiddenFor(model => model.SystemFeatureID)
+<div>
+    Deseja realmente excluir o seguinte registro?
+    <br />
+    <br />
+    <ul>
+        <li>Funcionalidade: <strong>@Model.SystemFeatureName</strong></li>
+    </ul>
+</div>

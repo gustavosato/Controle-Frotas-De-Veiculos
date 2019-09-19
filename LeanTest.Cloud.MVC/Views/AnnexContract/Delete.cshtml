@@ -1,0 +1,11 @@
+﻿@model Lean.Test.Cloud.MVC.Models.AnnexContracts.AnnexContractModel
+
+@Html.HiddenFor(model => model.AnnexID)
+<div>
+    Deseja realmente excluir o seguinte anexo?
+    <br />
+    <br />
+    <ul>
+        <li>Anexo: <strong>@Model.AnnexObject</strong></li>
+    </ul>
+</div>

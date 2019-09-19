@@ -1,0 +1,11 @@
+﻿@model Lean.Test.Cloud.MVC.Models.TestScenarios.TestScenarioModel
+
+@Html.HiddenFor(model => model.TestScenarioID)
+<div>
+    Deseja realmente excluir o seguinte cenário?
+    <br />
+    <br />
+    <ul>
+        <li>Pacote de Teste: <strong>@Model.TestScenario</strong></li>
+    </ul>
+</div>

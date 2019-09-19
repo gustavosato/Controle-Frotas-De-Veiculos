@@ -1,0 +1,94 @@
+﻿@model Lean.Test.Cloud.MVC.Models.SystemMenus.SystemMenuModel
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@Html.HiddenFor(model => model.MenuID)
+@Html.HiddenFor(model => model.CreatedByID)
+
+
+<div class="form-group row">
+
+    <div class="col-md-3 mb-auto">
+        <strong>@Html.LabelFor(model => model.TextMenu, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+        <strong><span style="color:black;">*</span></strong>
+        @Html.TextBoxFor(model => model.TextMenu, new { @class = "form-control", autocomplete = "off" })<span class="input-group-addon"></span>
+        @Html.ValidationMessageFor(model => model.TextMenu, "", new { @class = "form-text text-danger" })
+    </div>
+
+    <div class="col-md-3 mb-auto">
+        <strong>@Html.LabelFor(model => model.SystemFeatureID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+        <strong><span style="color:black;">*</span></strong>
+        @Html.DropDownList("SystemFeatureID", Model.LoadSystemFeatures, "Selecione...", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.SystemFeatureID, "", new { @class = "form-text text-danger" })
+    </div>
+
+    <div class="col-md-1 mb-auto">
+        @Html.LabelFor(model => model.Ordem, new { @class = "col-sm-0 col-form-label text-left" })
+        @Html.TextBoxFor(model => model.Ordem, new { @class = "form-control", autocomplete = "off" })<span class="input-group-addon"></span>
+        @Html.ValidationMessageFor(model => model.Ordem, "", new { @class = "form-text text-danger" })
+    </div>
+
+    <div class="col-md-2 mb-auto">
+        @Html.LabelFor(model => model.ItsAdmin, new { @class = "col-sm-0 col-form-label text-left" })
+        @Html.CheckBoxFor(model => model.ItsAdmin, new { @class = "checkbox" })
+        @Html.ValidationMessageFor(model => model.ItsAdmin, "", new { @class = "form-text text-danger" })
+    </div>
+
+    <div class="col-md-3 mb-auto">
+        @Html.LabelFor(model => model.CreationDate, new { @class = "col-sm-0 col-form-label text-left" })
+        @Html.TextBoxFor(model => model.CreationDate, new { @class = "form-control text-left", @readonly = "readonly" })
+        @Html.ValidationMessageFor(model => model.CreationDate, "", new { @class = "form-text text-danger" })
+    </div>
+
+    <div class="col-md-6 mb-auto">
+        @Html.LabelFor(model => model.UrlAction, new { @class = "col-sm-0 col-form-label text-left" })
+        @Html.TextBoxFor(model => model.UrlAction, new { @class = "form-control", autocomplete = "off" })<span class="input-group-addon"></span>
+        @Html.ValidationMessageFor(model => model.UrlAction, "", new { @class = "form-text text-danger" })
+    </div>
+
+    <div class="col-md-3 mb-auto">
+        @Html.LabelFor(model => model.Icon, new { @class = "col-sm-0 col-form-label text-left" })
+        @Html.TextBoxFor(model => model.Icon, new { @class = "form-control", autocomplete = "off" })<span class="input-group-addon"></span>
+        @Html.ValidationMessageFor(model => model.Icon, "", new { @class = "form-text text-danger" })
+    </div>
+
+    <div class="col-md-3 mb-auto">
+        @Html.LabelFor(model => model.Controller, new { @class = "col-sm-0 col-form-label text-left" })
+        @Html.TextBoxFor(model => model.Controller, new { @class = "form-control", autocomplete = "off" })<span class="input-group-addon"></span>
+        @Html.ValidationMessageFor(model => model.Controller, "", new { @class = "form-text text-danger" })
+    </div>
+
+    <div class="col-md-12 mb-auto">
+        @Html.LabelFor(model => model.Description, new { @class = "col-sm-0 col-form-label text-left" })
+        @Html.TextAreaFor(model => model.Description, new { @class = "form-control", autocomplete = "off", rows = "2" })<span class="input-group-addon"></span>
+        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "form-text text-danger" })
+        <script>
+            $(document).ready(function () {
+                $("#Description").kendoEditor({
+                    tools: [
+                        "formatting",
+                        "bold", "italic", "underline", "strikethrough",
+                        "justifyLeft", "justifyCenter", "justifyRight", "justifyFull",
+                        "insertUnorderedList", "insertOrderedList", "indent", "outdent",
+                        "createLink", "unlink", "insertImage", "insertFile",
+                        "subscript", "superscript",
+                        "tableWizard", "createTable",
+                        "addRowAbove", "addRowBelow",
+                        "addColumnLeft", "addColumnRight",
+                        "deleteRow", "deleteColumn",
+                        "viewHtml", "cleanFormatting",
+                        "fontName", "fontSize",
+                        "foreColor", "backColor"
+                    ],
+                    messages: {
+                        fontNameInherit: "Arial",
+                        fontSizeInherit: "3 (12pt)"
+                    },
+                    resizable: true
+                });
+            });
+        </script>
+    </div>
+</div>
+   

@@ -1,0 +1,218 @@
+﻿@model Lean.Test.Cloud.MVC.Models.TestPackages.TestPackageModel
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@Html.HiddenFor(model => model.TestPackageID)
+@Html.HiddenFor(model => model.CreatedByID)
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="maintenance-tab" data-toggle="tab" href="#maintenance" role="tab" aria-controls="maintenance" aria-selected="true">Manutenção de Pacotes</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Configuração de Execução</a>
+    </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="maintenance" role="tabpanel" aria-labelledby="maintenance-tab">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-8 mb-auto">
+                        <strong>@Html.LabelFor(model => model.PackageName, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.TextBoxFor(model => model.PackageName, new { @class = "form-control", placeholder = "Digite o nome do pacote", @autofocus = "autofocus" })
+                        @Html.ValidationMessageFor(model => model.PackageName, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.Release, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.Release, new { @class = "form-control", placeholder = "Digite a release" })
+                        @Html.ValidationMessageFor(model => model.Release, "", new { @class = "form-text text-danger" })
+
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.Cycle, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.Cycle, new { @class = "form-control", placeholder = "Digite o ciclo" })
+                        @Html.ValidationMessageFor(model => model.Cycle, "", new { @class = "form-text text-danger" })
+
+                    </div>
+
+                    <div class="col-md-10 mb-auto">
+                        <strong>@Html.LabelFor(model => model.DemandID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("DemandID", Model.LoadDemand, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.DemandID, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                        <strong>@Html.LabelFor(model => model.StatusID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("StatusID", Model.LoadStatus, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.StatusID, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                </div>
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="home" aria-selected="true">Descrição</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="email_report-tab" data-toggle="tab" href="#resolution" role="tab" aria-controls="profile" aria-selected="false">Envio de E-mails</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="col-md-12 mb-auto">
+                                    @Html.LabelFor(model => model.Description, new { @class = "col-sm-0 col-form-label text-left" })
+                                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control", placeholder = "Digite uma descrição", rows = "6" })
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "form-text text-danger" })
+                                    <script>
+                                        $(document).ready(function () {
+                                            $("#Description").kendoEditor({
+                                                tools: [
+                                                    "formatting",
+                                                    "bold", "italic", "underline", "strikethrough",
+                                                    "justifyLeft", "justifyCenter", "justifyRight", "justifyFull",
+                                                    "insertUnorderedList", "insertOrderedList", "indent", "outdent",
+                                                    "createLink", "unlink", "insertImage", "insertFile",
+                                                    "subscript", "superscript",
+                                                    "tableWizard", "createTable",
+                                                    "addRowAbove", "addRowBelow",
+                                                    "addColumnLeft", "addColumnRight",
+                                                    "deleteRow", "deleteColumn",
+                                                    "viewHtml", "cleanFormatting",
+                                                    "fontName", "fontSize",
+                                                    "foreColor", "backColor"
+                                                ],
+                                                messages: {
+                                                    fontNameInherit: "Arial",
+                                                    fontSizeInherit: "3 (12pt)"
+                                                },
+                                                resizable: true
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                           </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="email_report" role="tabpanel" aria-labelledby="email_report-tab">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="col-md-12 mb-auto">
+                                    @Html.TextAreaFor(model => model.EmailsToSendReport, new { @class = "form-control", placeholder = "Digite o e-mail", rows = "4" })
+                                    @Html.ValidationMessageFor(model => model.EmailsToSendReport, "", new { @class = "form-text text-danger" })
+                                    @Html.ValidationMessageFor(model => model.EmailsToSendReport, "", new { @class = "form-text text-danger" })
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-2 mb-auto">
+                        <strong>@Html.LabelFor(model => model.TecnologyID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <span style="color:black;">*</span>
+                        @Html.DropDownList("TecnologyID", Model.LoadTecnology, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TecnologyID, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                        <strong>@Html.LabelFor(model => model.BrowserID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <span style="color:black;">*</span>
+                        @Html.DropDownList("BrowserID", Model.LoadBrowser, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.BrowserID, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                        <strong>@Html.LabelFor(model => model.ExecutionSpeedy, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <span style="color:black;">*</span>
+                        @Html.TextBoxFor(model => model.ExecutionSpeedy, new { @class = "form-control", placeholder = "Digite uma velocidade de execução" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.ResetApp, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.CheckBoxFor(model => model.ResetApp, new { @class = "checkbox" })
+                        @Html.ValidationMessageFor(model => model.ResetApp, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.HighLight, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.CheckBoxFor(model => model.HighLight, new { @class = "checkbox" })
+                        @Html.ValidationMessageFor(model => model.HighLight, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.HighLightOut, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.CheckBoxFor(model => model.HighLightOut, new { @class = "checkbox" })
+                        @Html.ValidationMessageFor(model => model.HighLightOut, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.DeviceID, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.DropDownList("DeviceID", Model.LoadDevice, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.DeviceID, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.PlatformNameID, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.DropDownList("PlatformNameID", Model.LoadPlatformName, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.PlatformNameID, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                       @Html.LabelFor(model => model.SendEmail, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.CheckBoxFor(model => model.SendEmail, new { @class = "checkbox" })
+                        @Html.ValidationMessageFor(model => model.SendEmail, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.GenerateLog, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.CheckBoxFor(model => model.GenerateLog, new { @class = "checkbox" })
+                        @Html.ValidationMessageFor(model => model.GenerateLog, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-3 mb-auto">
+                        @Html.LabelFor(model => model.LogHtml, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.CheckBoxFor(model => model.LogHtml, new { @class = "checkbox" })
+                        @Html.ValidationMessageFor(model => model.LogHtml, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                        <strong>@Html.LabelFor(model => model.MethodologyID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <span style="color:black;">*</span>
+                        @Html.DropDownList("MethodologyID", Model.LoadMethodology, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MethodologyID, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-10 mb-auto">
+                        @Html.LabelFor(model => model.SolutionPath, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.SolutionPath, new { @class = "form-control", placeholder = "Digite o caminho de diretório da solução" })
+                        @Html.ValidationMessageFor(model => model.SolutionPath, "", new { @class = "form-text text-danger" })
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,274 @@
+﻿@model Lean.Test.Cloud.MVC.Models.Users.UserModel
+
+@Html.HiddenFor(model => model.CustomerID)
+
+@using (Html.BeginForm())
+{
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 mx-auto">
+            <div class="form-group row">
+                <div class="col-sm-12">
+                    Pesquisa pela @Html.LabelFor(model => model.SearchUserName, new { @class = "col-sm-0 col-form-label text-right" })
+                    @Html.TextBoxFor(model => model.SearchUserName, null, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="form-group row">
+        <div class="col-md-6 mb-auto">
+            <div class="container-fluid">
+                <div class="card">
+                    <div class="card-body">
+                        <div id="userAssociated-grid"></div>
+                        <script>
+                            $(document).ready(function () {
+                            $("#userAssociated-grid").kendoGrid({
+                            dataSource: {
+                                type: "json",
+                            transport: {
+                            read: {
+                                url: "@Html.Raw(Url.Action("GetAllAssociateUserByDemandID", "Demand"))",
+                                type: "POST",
+                                dataType: "json",
+                                data: additionalData
+                                }
+                            },
+                            schema: {
+                                data: "Data",
+                                total: "Total",
+                                errors: "Errors"
+                            },
+                                error: function (e) {
+                                display_kendoui_grid_error(e);
+                                this.cancelChanges();
+                            },
+                                pageSize: 10,
+                                serverPaging: true,
+                                serverFiltering: true,
+                                serverSorting: false
+                            },
+                                resizable: true,
+                                groupable: false,
+                                sortable: true,
+                            pageable: {
+                                refresh: true,
+                                pageSizes: true,
+                                buttonCount: 5,
+                            messages: {
+                                display: '{0} - {1} de {2} itens',
+                                allPages: 'Todos',
+                                itemsPerPage: 'Itens por página'
+                            }
+                            },
+                                columns: [{
+                                    field: "IsActive",
+                                    title: "Ativo",
+                                    width: 30,
+                                    headerAttributes: { style: "text-align:center" },
+                                    attributes: { class: "text-center" },
+                                    template: '# if(IsActive == "False")  {# <i class="fa fa-close text-danger false-icon"></i> #} else {# <i class="fa fa-check text-success true-icon"></i> #} #'
+                                }, {
+
+                                    field: "UserName",
+                                    title: "Nome do usuário",
+                                    width: 100,
+                                    headerAttributes: { style: "text-align:left" }
+                                }, {
+                                    field: "",
+                                    title: "Excluir",
+                                    width: 30,
+                                    headerAttributes: { style: "text-align:center" },
+                                    attributes: { style: "text-align:center" },
+                                    template: '<div title="Desassociar usuário" class="btn btn-danger btn-sm text-center" onclick="DisassociateUser(#=UserID#)" > <i class="fa fa-close"></i> </div> '
+
+                                }]
+                            });
+                        });
+
+                        </script>
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+
+                                $('#btn-aplicar-filtros').click(function () {
+                                    var grid = $('#userAssociated-grid').data('kendoGrid');
+                                    if (grid.dataSource.page() == 1) {
+                                        grid.dataSource.page(1);
+                                    }
+                                    else {
+                                        grid.dataSource.read({ parameter: "value" });
+                                    }
+                                    return false;
+                                });
+
+                                $("#@Html.FieldIdFor(model => model.SearchUserName)").keydown(function (event) {
+                                    if (event.keyCode == 13) {
+                                        $("#btn-aplicar-filtros").click();
+                                        return false;
+                                    }
+                                });
+
+                            });
+
+                            function additionalData() {
+                                var data = {
+                                    SearchUserName: $('#@Html.FieldIdFor(model => model.SearchUserName)').val()
+                                };
+
+                                addAntiForgeryToken(data);
+
+                                return data;
+
+                                };
+
+                                var DisassociateUser = function (userID) {
+
+                                    var url = '/Demand/DisassociateUser?userID=' + userID;
+
+                                    $('#DeleteModalDiv').load(url, function () {
+
+                                    })
+
+                                    $("#btn-aplicar-filtros").click();
+
+                                    return false;
+                                };
+
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-auto">
+
+            <div class="container-fluid">
+                <div class="card">
+
+                    <div class="card-body">
+                        <div id="userNoAssociated-grid"></div>
+                        <script>
+
+                            $(document).ready(function () {
+                            $("#userNoAssociated-grid").kendoGrid({
+
+                            dataSource: {
+                                type: "json",
+                            transport: {
+                            read: {
+                                url: "@Html.Raw(Url.Action("GetAllNoAssociateUserByDemandID", "Demand"))",
+                                type: "POST",
+                                dataType: "json",
+                                data: additionalData
+                                }
+                            },
+                            schema: {
+                                data: "Data",
+                                total: "Total",
+                                errors: "Errors"
+                            },
+                                error: function (e) {
+                                display_kendoui_grid_error(e);
+                                this.cancelChanges();
+                            },
+                                pageSize: 10,
+                                serverPaging: true,
+                                serverFiltering: true,
+                                serverSorting: false
+                            },
+                                resizable: true,
+                                groupable: false,
+                                sortable: true,
+                            pageable: {
+                                refresh: true,
+                                pageSizes: true,
+                                buttonCount: 5,
+                            messages: {
+                                display: '{0} - {1} de {2} itens',
+                                allPages: 'Todos',
+                                itemsPerPage: 'Itens por página'
+                            }
+                            },
+                                columns: [{
+                                    field: "IsActive",
+                                    title: "Ativo",
+                                    width: 30,
+                                    headerAttributes: { style: "text-align:center" },
+                                    attributes: { class: "text-center" },
+                                    template: '# if(IsActive == "False")  {# <i class="fa fa-close text-danger false-icon"></i> #} else {# <i class="fa fa-check text-success true-icon"></i> #} #'
+                                }, {
+
+                                    field: "UserName",
+                                    title: "Nome do usuário",
+                                    width: 100,
+                                    headerAttributes: { style: "text-align:left" }
+                                }, {
+                                    field: "",
+                                    title: "Adicionar",
+                                    width: 30,
+                                    headerAttributes: { style: "text-align:center" },
+                                    attributes: { style: "text-align:center" },
+                                    template: '<div title="Associar usuário" class="btn btn-success btn-sm text-center" onclick="AssociateUser(#=UserID#)" > <i class="fa fa-plus"></i> </div> '
+
+                                }]
+                            });
+                        });
+
+                        </script>
+                 <script type="text/javascript">
+                     $(document).ready(function () {
+
+                         $('#btn-aplicar-filtros').click(function () {
+                             var grid = $('#userNoAssociated-grid').data('kendoGrid');
+                             if (grid.dataSource.page() == 1) {
+                                 grid.dataSource.page(1);
+                             }
+                             else {
+                                 grid.dataSource.read({ parameter: "value" });
+                             }
+                             return false;
+                         });
+
+                        $("#@Html.FieldIdFor(model => model.SearchUserName)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btn-aplicar-filtros").click();
+                                return false;
+                            }
+                        });
+
+                    });
+
+                    function additionalData() {
+                    var data = {
+                        SearchUserName: $('#@Html.FieldIdFor(model => model.SearchUserName)').val()
+                    };
+
+                    addAntiForgeryToken(data);
+
+                    return data;
+
+                     };
+
+                     var AssociateUser = function (userID) {
+
+                         var url = '/Demand/AssociateUser?userID=' + userID;
+
+                         $('#UserAssociateModalDiv').load(url, function () {
+
+                         })
+
+                         $("#btn-aplicar-filtros").click();
+
+                         return false;
+                     };
+
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+}
+

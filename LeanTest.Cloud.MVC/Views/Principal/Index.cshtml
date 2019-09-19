@@ -1,0 +1,107 @@
+﻿@model Lean.Test.Cloud.MVC.Models.Elements.ElementModel
+@{
+    ViewBag.Title = " - Elementos";
+    Layout = "~/Views/Shared/_ContentPage.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="container-fluid">
+        <br />
+        <div class="card">
+            <div class="card-body">
+                @if (Convert.ToString(Session["isAdmin"]) == "True")
+                {
+                <div class="form-group row">
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title"><i class="fa fa-connectdevelop"></i>  Pipeline de Vendas</h4>
+                                <p class="card-text">Cadastro de Oportunidades.</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="@Url.Action("Index", "Pipeline")" class="btn btn-info btn-sm">Acessar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title"><i class="fa fa-gavel"></i>  Gestão de Contratos</h4>
+                                <p class="card-text">Cadastro de Contratos.</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="@Url.Action("Index", "Contract")" class="btn btn-info btn-sm">Acessar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title"><i class="fa fa-credit-card"></i>  Faturas de Projetos</h4>
+                                <p class="card-text">Cadastro de Faturas.</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="@Url.Action("Index", "AccountingEntrie")" class="btn btn-info btn-sm">Acessar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+                <div class="form-group row">
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title"><i class="fa fa-list"></i>  Gestão de Demandas</h4>
+                                <p class="card-text">Controle das demandas.</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="@Url.Action("Index", "Demand")" class="btn btn-info btn-sm">Acessar </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="card">
+                            @* <img class="card-img-top" src="~/Content/images/.gif" alt="" height="150">*@
+                            <div class="card-body">
+                                <h4 class="card-title"><i class="fa fa-clock-o"></i>  Apropriação de Horas</h4>
+                                <p class="card-text">Apropriação de horas.</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="@Url.Action("Index", "TimeRelease")" class="btn btn-info btn-sm">Acessar </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="card">
+
+                            <div class="card-body">
+                                <h4 class="card-title"><i class="fa fa-money"></i>  Lançamento de Despesas</h4>
+                                <p class="card-text">Lançamentos das despesas.</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="@Url.Action("Index", "Expense")" class="btn btn-info btn-sm">Acessar </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="card">
+
+                            <div class="card-body">
+                                <h4 class="card-title"><i class="fa fa-calendar-minus-o"></i>  Registro de Eventos</h4>
+                                <p class="card-text">Diário de bordo.</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="@Url.Action("Index", "DailyLog")" class="btn btn-info btn-sm">Acessar </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

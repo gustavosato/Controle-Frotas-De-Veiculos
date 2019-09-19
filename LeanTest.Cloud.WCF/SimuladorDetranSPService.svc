@@ -1,0 +1,5 @@
+﻿<%@ ServiceHost Language="C#" 
+                Debug="true" 
+                Service="Lean.Test.Cloud.WCF.SimuladorDetranSPService, Lean.Test.Cloud.WCF" 
+                CodeBehind="SimuladorDetranSPService.svc.cs" 
+                Factory="Autofac.Integration.Wcf.AutofacServiceHostFactory, Autofac.Integration.Wcf"%>

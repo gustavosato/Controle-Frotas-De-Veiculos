@@ -1,0 +1,487 @@
+﻿@model Lean.Test.Cloud.MVC.Models.Contracts.ContractModel
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@*<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>*@
+
+
+@Html.HiddenFor(model => model.ContractID)
+@Html.HiddenFor(model => model.CreatedByID)
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="contract-tab" data-toggle="tab" href="#contract" role="tab" aria-controls="contract" aria-selected="true">Detalhes do Contrato</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="annex-tab" data-toggle="tab" href="#annex" role="tab" aria-controls="annex" aria-selected="false">Anexos do Contrato</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="additive-tab" data-toggle="tab" href="#additive" role="tab" aria-controls="additive" aria-selected="false">Aditivos do Contrato</a>
+    </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="contract" role="tabpanel" aria-labelledby="contract-tab">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-4 mb-auto">
+                        <strong>@Html.LabelFor(model => model.ContractorCustomerID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("ContractorCustomerID", Model.LoadContractorCustomer, "Selecione...", new { @class = "form-control", @autofocus = "autofocus" })
+                        @Html.ValidationMessageFor(model => model.ContractorCustomerID, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-4 mb-auto">
+                        <strong>@Html.LabelFor(model => model.ContractingCustomerID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("ContractingCustomerID", Model.LoadContractingCustomer, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ContractingCustomerID, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-4 mb-auto">
+                        <strong>@Html.LabelFor(model => model.OportunityID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("OportunityID", Model.LoadOportunity, "Selecione...", new { @class = "form-control", id = "contractOportunityID" })
+                        @Html.ValidationMessageFor(model => model.OportunityID, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-4 mb-auto">
+                        <strong>@Html.LabelFor(model => model.ContractTypeID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("ContractTypeID", Model.LoadContractType, "Selecione...", new { @class = "form-control", id = "contractContractTypeID" })
+                        @Html.ValidationMessageFor(model => model.ContractTypeID, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        <strong>@Html.LabelFor(model => model.PeriodValidityID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("PeriodValidityID", Model.LoadPeriodValidity, "Selecione...", new { @class = "form-control", id = "contractPeriodValidityID" })
+                        @Html.ValidationMessageFor(model => model.PeriodValidityID, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        <strong>@Html.LabelFor(model => model.ExtencionID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("ExtencionID", Model.LoadExtencion, "Selecione...", new { @class = "form-control", id = "ContractExtencionID" })
+                        @Html.ValidationMessageFor(model => model.ExtencionID, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        <strong>@Html.LabelFor(model => model.ExtencionPeriodID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("ExtencionPeriodID", Model.LoadExtencionPeriod, "Selecione...", new { @class = "form-control", id = "contractExtenctionID" })
+                        @Html.ValidationMessageFor(model => model.ExtencionPeriodID, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        <strong>@Html.LabelFor(model => model.ResetModalityID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("ResetModalityID", Model.LoadResetModality, "Selecione...", new { @class = "form-control", id = "contractResetModalityID" })
+                        @Html.ValidationMessageFor(model => model.ResetModalityID, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-8 mb-auto">
+                        @Html.LabelFor(model => model.BillingCondition, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.BillingCondition, new { @class = "form-control", placeholder = "Informe as condições para pagamento", id = "contractBillingCondition" })
+                        @Html.ValidationMessageFor(model => model.BillingCondition, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        <strong>@Html.LabelFor(model => model.StartDate, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        <div class="input-group date" id="calender-container">
+                            @Html.TextBoxFor(model => model.StartDate, new { @class = "form-control", autocomplete = "off", id = "contractStartDate", placeholder = "Selecione..." })<span class="input-group-addon"></span>
+                            @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "form-text text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        <strong>@Html.LabelFor(model => model.EndDate, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        <div class="input-group date" id="calender-container">
+                            @Html.TextBoxFor(model => model.EndDate, new { @class = "form-control", autocomplete = "off", id = "contractEndDate", placeholder = "Selecione..." })<span class="input-group-addon"></span>
+                            @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "form-text text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-auto">
+                        @Html.LabelFor(model => model.ObjectContract, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextAreaFor(model => model.ObjectContract, new { @class = "form-control", placeholder = "Digite as características do objeto do contrato", rows = "5" })
+                        @Html.ValidationMessageFor(model => model.ObjectContract, "", new { @class = "form-text text-danger" })
+                        <script>
+                            $(document).ready(function () {
+                                $("#ObjectContract").kendoEditor({
+                                    tools: [
+                                        "formatting",
+                                        "bold", "italic", "underline", "strikethrough",
+                                        "justifyLeft", "justifyCenter", "justifyRight", "justifyFull",
+                                        "insertUnorderedList", "insertOrderedList", "indent", "outdent",
+                                        "createLink", "unlink", "insertImage", "insertFile",
+                                        "subscript", "superscript",
+                                        "tableWizard", "createTable",
+                                        "addRowAbove", "addRowBelow",
+                                        "addColumnLeft", "addColumnRight",
+                                        "deleteRow", "deleteColumn",
+                                        "viewHtml", "cleanFormatting",
+                                        "fontName", "fontSize",
+                                        "foreColor", "backColor"
+                                    ],
+                                    messages: {
+                                        fontNameInherit: "Arial",
+                                        fontSizeInherit: "3 (12pt)"
+                                    },
+                                    resizable: true
+                                });
+                            });
+
+
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="annex" role="tabpanel" aria-labelledby="annex-tab">
+        <div class="container-fluid">
+            <div class="row">
+                <br />
+                <div class="content-header clearfix">
+                    <div class="pull-left">
+                        <br />
+                        <button type="button" onclick="AddAnnex(@Model.ContractID)" id="btnNewAnnex" class="btn btn-dark btn-sm" data-toggle="modal" data-target='#AddAnnexModal' title="Novo Registro">
+                            <i class="fa fa-plus-circle"></i> Novo
+                        </button>
+
+                        <button type="button" id="btnExportExcelAnnex" class="btn btn-info btn-sm" title="Exportar para Excel">
+                            <i class="fa fa-file-excel-o"></i> Exportar para Excel
+                        </button>
+                    </div>
+                </div>
+                <br />
+            </div>
+        </div>
+        <br/>
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-12 mb-auto">
+                        <div id="annex-grid"></div>
+                        <script>
+                                $(document).ready(function () {
+                                    $("#annex-grid").kendoGrid({
+
+                                dataSource: {
+                                    type: "json",
+                                transport: {
+                                read: {
+                                    url: "@Html.Raw(Url.Action("GetAllByContractID", "AnnexContract"))",
+                                    type: "POST",
+                                    dataType: "json",
+                                    data: additionalData
+                                    }
+                                },
+                                schema: {
+                                    data: "Data",
+                                    total: "Total",
+                                    errors: "Errors"
+                                },
+                                    error: function (e) {
+                                    display_kendoui_grid_error(e);
+                                    this.cancelChanges();
+                                },
+                                    pageSize: 10,
+                                    serverPaging: true,
+                                    serverFiltering: true,
+                                    serverSorting: false
+                                },
+                                    resizable: true,
+                                    groupable: true,
+                                    sortable: true,
+                                pageable: {
+                                    refresh: true,
+                                    pageSizes: true,
+                                    buttonCount: 5,
+                                messages: {
+                                    display: '{0} - {1} de {2} items',
+                                    allPages: 'Todos',
+                                    itemsPerPage: 'Items por página'
+                                }
+                                },
+                                columns: [{
+                                    field: "",
+                                    title: "Comandos",
+                                    width: 90,
+                                    headerAttributes: { style: "text-align:center" },
+                                    attributes: { style: "text-align:center" },
+                                    template: '<div title="Editar Anexo do Contrato" class="btn btn-primary btn-sm text-center" onclick="EditAnnex(#=AnnexID#)" data-toggle="modal" data-target="\\#MaintenanceAnnexModal"> <i class="fa fa-edit"></i> </div> ' +
+                                    '<div title="Excluir Anexo do Contrato" class="btn btn-danger btn-sm text-center" onclick="DeleteAnnex(#=AnnexID#)" data-toggle="modal" data-target="\\#DeleteAnnexModal"> <i class="fa fa-trash"></i> </div> '
+                                }, {
+                                    field: "AnnexID",
+                                    title: "Anexo ID",
+                                    width: 70,
+                                    headerAttributes: { style: "text-align:left" }
+                                }, {
+                                    field: "Summary",
+                                    title: "Sumário",
+                                    width: 200,
+                                    headerAttributes: { style: "text-align:left" }
+                                },{
+                                    field: "StartDate",
+                                    title: "Início",
+                                    width: 100,
+                                    headerAttributes: { style: "text-align:left" }
+                                },{
+                                    field: "EndDate",
+                                    title: "Término",
+                                    width: 100,
+                                    headerAttributes: { style: "text-align:left" }
+                                },{
+                                    field: "ExtencionPeriodID",
+                                    title: "Periodo de Extensão",
+                                    width: 150,
+                                    headerAttributes: { style: "text-align:left" }
+                                }],
+                                excelExport: function (e) {
+                                    e.workbook.fileName = "LeanTest Cloud - Anexos.xlsx";
+                                }
+                                   });
+                                });
+
+                        </script>
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('#btnExportExcelAnnex').click(function () {
+                                    var grid = $('#annex-grid').data('kendoGrid');
+                                    grid.saveAsExcel();
+                                    return false;
+                                });
+
+                                $('#btn-aplicar-filtros').click(function () {
+                                    var grid = $('#annex-grid').data('kendoGrid');
+                                    if (grid.dataSource.page() == 1) {
+                                        grid.dataSource.page(1);
+                                    }
+                                    else {
+                                        grid.dataSource.read({ parameter: "value" });
+                                    }
+                                    return false;
+                                });
+                            });
+                            function additionalData() {
+                                var data = {
+
+                                    ContractID: $('#@Html.FieldIdFor(model => model.ContractID)').val()
+
+                                };
+
+                                addAntiForgeryToken(data);
+
+                                return data;
+                            };
+
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="additive" role="tabpanel" aria-labelledby="additive-tab">
+        <div class="container-fluid">
+            <div class="row">
+                <br />
+                <div class="content-header clearfix">
+                    <div class="pull-left">
+                        <br />
+                        <button type="button" onclick="AddAdditive(@Model.ContractID)" id="btnNewAdditive" class="btn btn-dark btn-sm" data-toggle="modal" data-target='#AddAdditiveModal' title="Novo Aditivo">
+                            <i class="fa fa-plus-circle"></i> Novo
+                        </button>
+                        <button type="button" id="btnExportExcelAdditive" class="btn btn-info btn-sm" title="Exportar para Excel">
+                            <i class="fa fa-file-excel-o"></i> Exportar para Excel
+                        </button>
+                    </div>
+                </div>
+                <br />
+            </div>
+        </div>
+        <br />
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-12 mb-auto">
+                        <div id="additive-grid"></div>
+                        <script>
+                                $(document).ready(function () {
+                                    $("#additive-grid").kendoGrid({
+
+                                dataSource: {
+                                    type: "json",
+                                transport: {
+                                read: {
+                                    url: "@Html.Raw(Url.Action("GetAllByContractID", "ContractAdditive"))",
+                                    type: "POST",
+                                    dataType: "json",
+                                    data: additionalData
+                                    }
+                                },
+                                schema: {
+                                    data: "Data",
+                                    total: "Total",
+                                    errors: "Errors"
+                                },
+                                    error: function (e) {
+                                    display_kendoui_grid_error(e);
+                                    this.cancelChanges();
+                                },
+                                    pageSize: 10,
+                                    serverPaging: true,
+                                    serverFiltering: true,
+                                    serverSorting: false
+                                },
+                                    resizable: true,
+                                    groupable: true,
+                                    sortable: true,
+                                pageable: {
+                                    refresh: true,
+                                    pageSizes: true,
+                                    buttonCount: 5,
+                                messages: {
+                                    display: '{0} - {1} de {2} items',
+                                    allPages: 'Todos',
+                                    itemsPerPage: 'Items por página'
+                                }
+                                },
+                                columns: [{
+                                    field: "",
+                                    title: "Comandos",
+                                    width: 90,
+                                    headerAttributes: { style: "text-align:center" },
+                                    attributes: { style: "text-align:center" },
+                                    template: '<div title="Editar Aditivo do Contrato" class="btn btn-primary btn-sm text-center" onclick="EditAdditive(#=AdditiveID#)" data-toggle="modal" data-target="\\#MaintenanceAdditiveModal"> <i class="fa fa-edit"></i> </div> ' +
+                                    '<div title="Excluir Aditivo do Contrato" class="btn btn-danger btn-sm text-center" onclick="DeleteAdditive(#=AdditiveID#)" data-toggle="modal" data-target="\\#DeleteAdditiveModal"> <i class="fa fa-trash"></i> </div> '
+                                }, {
+                                    field: "AdditiveID",
+                                    title: "Aditivo ID",
+                                    width: 70,
+                                    headerAttributes: { style: "text-align:left" }
+                                }, {
+                                    field: "AdditiveObject",
+                                    title: "Aditivo",
+                                    width: 200,
+                                    headerAttributes: { style: "text-align:left" }
+                                },{
+                                    field: "StartDate",
+                                    title: "Início",
+                                    width: 100,
+                                    headerAttributes: { style: "text-align:left" }
+                                },{
+                                    field: "EndDate",
+                                    title: "Término",
+                                    width: 100,
+                                    headerAttributes: { style: "text-align:left" }
+                                },{
+                                    field: "ExtencionPeriodID",
+                                    title: "Periodo de Extensão",
+                                    width: 150,
+                                    headerAttributes: { style: "text-align:left" }
+                                }],
+                                excelExport: function (e) {
+                                    e.workbook.fileName = "LeanTest Cloud - Aditivos.xlsx";
+                                }
+                            });
+                        });
+
+                        </script>
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('#btnExportExcelAdditive').click(function () {
+                                    var grid = $('#additive-grid').data('kendoGrid');
+                                    grid.saveAsExcel();
+                                    return false;
+                                });
+
+                                $('#btn-aplicar-filtros').click(function () {
+                                    var grid = $('#additive-grid').data('kendoGrid');
+                                    if (grid.dataSource.page() == 1) {
+                                        grid.dataSource.page(1);
+                                    }
+                                    else {
+                                        grid.dataSource.read({ parameter: "value" });
+                                    }
+                                    return false;
+                                });
+                            });
+                            function additionalData() {
+                                var data = {
+
+                                    ContractID: $('#@Html.FieldIdFor(model => model.ContractID)').val()
+                                };
+
+                                addAntiForgeryToken(data);
+
+                                return data;
+                            };
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+    $("#ContractingCustomerID").change(function () {
+        $("#contractOportunityID").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetOportunitys")',
+
+                dataType: 'json',
+                data: { contractingCustomerID: $("#ContractingCustomerID").val() },
+                success: function (itens) {
+                    $("#contractOportunityID").append('<option value="">Selecione...</option>');
+                    $.each(itens, function (i, item) {
+                        $("#contractOportunityID").append('<option value="' + item.Value + '">' + item.Text + '</option>');
+                    });
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve states.' + ex);
+                }
+            });
+            return false;
+        })
+    });
+
+      //function ComparaDatas() {
+      //    var StartingDate = document.getElementById("contractStartDate").value;
+      //    var ClosingDate = document.getElementById("contractEndDate").value;
+      //    var ObjectContract = document.getElementById("ObjectContract").value;
+
+
+      //  var nova_StartingDate = parseInt(StartingDate.split("/")[2].toString() + StartingDate.split("/")[1].toString() + StartingDate.split("/")[0].toString());
+      //  var nova_ClosingDate = parseInt(ClosingDate.split("/")[2].toString() + ClosingDate.split("/")[1].toString() + ClosingDate.split("/")[0].toString());
+
+      //    if (nova_ClosingDate > nova_StartingDate && ObjectContract !== "") { 
+      //      return true
+      //  }
+      //  else if (nova_StartingDate > nova_ClosingDate && ObjectContract === "" ) {
+      //      Swal.fire({
+      //          position: 'top-center',
+      //          type: 'error',
+      //          text: 'O campo Objeto de Contrato é de preenchimento obrigatório! E a Data de início da vigência não pode ser superior a data de término!!!',
+      //          showConfirmButton: false,
+      //          confirmButtonColor: "#9ACD32",
+      //          timer: 3000
+      //      })
+      //      return false
+      //  }
+
+      //  else if (nova_StartingDate > nova_ClosingDate) {
+      //      Swal.fire({
+      //          position: 'top-center',
+      //          type: 'error',
+      //          text: 'Data de início da vigência superior a data de término da vigência!!!',
+      //          showConfirmButton: false,
+      //          confirmButtonColor: "#9ACD32",
+      //          timer: 2500
+      //      })
+      //      return false
+      //  }
+      //  else {
+      //      return true
+      //       }
+      //}
+
+   
+</script>

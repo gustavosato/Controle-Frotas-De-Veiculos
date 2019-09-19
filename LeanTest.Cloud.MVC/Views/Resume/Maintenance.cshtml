@@ -1,0 +1,726 @@
+﻿@model Lean.Test.Cloud.MVC.Models.Resumes.ResumeModel
+
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+
+@Html.HiddenFor(model => model.ResumeID)
+@Html.HiddenFor(model => model.CreatedByID)
+
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="detail-tab" data-toggle="tab" href="#detail" role="tab" aria-controls="detail" aria-selected="true">Detalhes</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="attachment-tab" data-toggle="tab" href="#attachment" role="tab" aria-controls="attachment" aria-selected="false">Anexos</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="vacancie-tab" data-toggle="tab" href="#vacancie" role="tab" aria-controls="vacancie" aria-selected="false">Vagas Concorridas</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="detail" role="tabpanel" aria-labelledby="detail-tab">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-6 mb-auto">
+                        <strong>@Html.LabelFor(model => model.Summary, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.TextBoxFor(model => model.Summary, new { @class = "form-control text-left", placeholder = "Digite o nome do candidato", @autofocus = "autofocus" })
+                        @Html.ValidationMessageFor(model => model.Summary, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-3 mb-auto">
+                        @Html.LabelFor(model => model.GenderID, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.DropDownList("GenderID", Model.LoadGender, "Selecione...", new { @class = "form-control" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.Age, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.Age, new { @class = "form-control", autocomplete = "off", placeholder = "Digite a idade" })
+                    </div>
+
+                    <div class="col-md-1 mb-auto">
+                        @Html.LabelFor(model => model.IsEmployee, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.CheckBoxFor(model => model.IsEmployee, new { @class = "checkbox" })
+                    </div>
+
+                    <div class="col-md-3 mb-auto">
+                        <strong>@Html.LabelFor(model => model.FunctionID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("FunctionID", Model.LoadFunction, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.FunctionID, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-3 mb-auto">
+                        @Html.LabelFor(model => model.TimeExperience, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.TimeExperience, new { @class = "form-control", autocomplete = "off", placeholder = "Digite o valor" })
+                    </div>
+
+                    <div class="col-md-3 mb-auto">
+                        @Html.LabelFor(model => model.StatusRhID, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.DropDownList("StatusRhID", Model.LoadStatusRh, "Selecione...", new { @class = "form-control" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.ApprovedDateRh, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.ApprovedDateRh, new { @class = "form-control text-left", @readonly = "readonly" })
+                    </div>
+
+                    <div class="col-md-1 mb-auto">
+                        @Html.LabelFor(model => model.IsSmoker, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.CheckBoxFor(model => model.IsSmoker, new { @class = "checkbox" })
+                    </div>
+
+                    <div class="col-md-3 mb-auto">
+                        <strong>@Html.LabelFor(model => model.FunctionLevelID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("FunctionLevelID", Model.LoadFunctionLevel, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.FunctionLevelID, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-3 mb-auto" onkeypress="return NumberOnly(event);">
+                        <Strong>@Html.LabelFor(model => model.ExpectedSalary, new { @class = "col-sm-0 col-form-label text-left" })</Strong>
+                        <Strong><span style="color:black;">*</span></Strong>
+                        @Html.TextBoxFor(model => model.ExpectedSalary, new { @class = "form-control text-left", placeholder = "Digite o valor" })
+                        @Html.ValidationMessageFor(model => model.ExpectedSalary, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-3 mb-auto">
+                        @Html.LabelFor(model => model.StatusManagerID, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.DropDownList("StatusManagerID", Model.LoadStatusManager, "Selecione...", new { @class = "form-control" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.ApprovedDateManager, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.ApprovedDateManager, new { @class = "form-control text-left", @readonly = "readonly" })
+                    </div>
+
+                    <div class="col-md-1 mb-auto">
+                        @Html.LabelFor(model => model.HaveChildren, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.CheckBoxFor(model => model.HaveChildren, new { @class = "checkbox" })
+                    </div>
+
+                    <div class="col-md-3 mb-auto">
+                        <strong>@Html.LabelFor(model => model.ContractTypeID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("ContractTypeID", Model.LoadContractType, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ContractTypeID, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-3 mb-auto">
+                        <strong>@Html.LabelFor(model => model.MaritalStatusID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("MaritalStatusID", Model.LoadMaritalStatus, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MaritalStatusID, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-3 mb-auto">
+                        @Html.LabelFor(model => model.StatusClientID, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.DropDownList("StatusClientID", Model.LoadStatusClient, "Selecione...", new { @class = "form-control" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.ApprovedDateClient, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.ApprovedDateClient, new { @class = "form-control text-left", @readonly = "readonly" })
+                    </div>
+
+                    <div class="col-md-1 mb-auto">
+                        @Html.LabelFor(model => model.WillingToTravel, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.CheckBoxFor(model => model.WillingToTravel, new { @class = "checkbox" })
+                    </div>
+
+                    <div class="col-md-3 mb-auto">
+                        <strong>@Html.LabelFor(model => model.AvailabilityToStart, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.TextBoxFor(model => model.AvailabilityToStart, new { @class = "form-control text-left" })
+                        @Html.ValidationMessageFor(model => model.AvailabilityToStart, "", new { @class = "form-text text-danger" })
+                    </div>
+                </div>
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="home" aria-selected="true"><strong>Descrição</strong> <strong><span style="color:black;">*</span></strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="observation-tab" data-toggle="tab" href="#observation" role="tab" aria-controls="profile" aria-selected="false">Observação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="resultRH-tab" data-toggle="tab" href="#resultRH" role="tab" aria-controls="profile" aria-selected="false">Análise do RH</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="resultManager-tab" data-toggle="tab" href="#resultManager" role="tab" aria-controls="profile" aria-selected="false">Análise do Gestor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="resultClient-tab" data-toggle="tab" href="#resultClient" role="tab" aria-controls="profile" aria-selected="false">Análise do Cliente</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="col-md-12 mb-auto">
+                                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control", placeholder = "Resumo de currículo", rows = "10" })
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "form-text text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="observation" role="tabpanel" aria-labelledby="observation-tab">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="col-md-12 mb-auto">
+                                    @Html.TextAreaFor(model => model.Observation, new { @class = "form-control", placeholder = "Digite uma observação", rows = "10" })
+                                    @Html.ValidationMessageFor(model => model.Observation, "", new { @class = "form-text text-danger" })
+                                    <script>
+                                        $(document).ready(function () {
+                                            $("#Observation").kendoEditor({
+                                                tools: [
+                                                    "formatting",
+                                                    "bold", "italic", "underline", "strikethrough",
+                                                    "justifyLeft", "justifyCenter", "justifyRight", "justifyFull",
+                                                    "insertUnorderedList", "insertOrderedList", "indent", "outdent",
+                                                    "createLink", "unlink", "insertImage", "insertFile",
+                                                    "subscript", "superscript",
+                                                    "tableWizard", "createTable",
+                                                    "addRowAbove", "addRowBelow",
+                                                    "addColumnLeft", "addColumnRight",
+                                                    "deleteRow", "deleteColumn",
+                                                    "viewHtml", "cleanFormatting",
+                                                    "fontName", "fontSize",
+                                                    "foreColor", "backColor"
+                                                ],
+                                                messages: {
+                                                    fontNameInherit: "Arial",
+                                                    fontSizeInherit: "3 (12pt)"
+                                                },
+                                                resizable: true
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="resultRH" role="tabpanel" aria-labelledby="resultRH-tab">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="col-md-12 mb-auto">
+                                    @Html.TextAreaFor(model => model.ResultRh, new { @class = "form-control", placeholder = "Resultado da análise", rows = "10" })
+                                    @Html.ValidationMessageFor(model => model.ResultRh, "", new { @class = "form-text text-danger" })
+                                    <script>
+                                        $(document).ready(function () {
+                                            $("#ResultRh").kendoEditor({
+                                                tools: [
+                                                    "formatting",
+                                                    "bold", "italic", "underline", "strikethrough",
+                                                    "justifyLeft", "justifyCenter", "justifyRight", "justifyFull",
+                                                    "insertUnorderedList", "insertOrderedList", "indent", "outdent",
+                                                    "createLink", "unlink", "insertImage", "insertFile",
+                                                    "subscript", "superscript",
+                                                    "tableWizard", "createTable",
+                                                    "addRowAbove", "addRowBelow",
+                                                    "addColumnLeft", "addColumnRight",
+                                                    "deleteRow", "deleteColumn",
+                                                    "viewHtml", "cleanFormatting",
+                                                    "fontName", "fontSize",
+                                                    "foreColor", "backColor"
+                                                ],
+                                                messages: {
+                                                    fontNameInherit: "Arial",
+                                                    fontSizeInherit: "3 (12pt)"
+                                                },
+                                                resizable: true
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="resultManager" role="tabpanel" aria-labelledby="resultManager-tab">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="col-md-12 mb-auto">
+                                    @Html.TextAreaFor(model => model.ResultManager, new { @class = "form-control", placeholder = "Resultado da análise", rows = "10" })
+                                    @Html.ValidationMessageFor(model => model.ResultManager, "", new { @class = "form-text text-danger" })
+                                    <script>
+                                        $(document).ready(function () {
+                                            $("#ResultManager").kendoEditor({
+                                                tools: [
+                                                    "formatting",
+                                                    "bold", "italic", "underline", "strikethrough",
+                                                    "justifyLeft", "justifyCenter", "justifyRight", "justifyFull",
+                                                    "insertUnorderedList", "insertOrderedList", "indent", "outdent",
+                                                    "createLink", "unlink", "insertImage", "insertFile",
+                                                    "subscript", "superscript",
+                                                    "tableWizard", "createTable",
+                                                    "addRowAbove", "addRowBelow",
+                                                    "addColumnLeft", "addColumnRight",
+                                                    "deleteRow", "deleteColumn",
+                                                    "viewHtml", "cleanFormatting",
+                                                    "fontName", "fontSize",
+                                                    "foreColor", "backColor"
+                                                ],
+                                                messages: {
+                                                    fontNameInherit: "Arial",
+                                                    fontSizeInherit: "3 (12pt)"
+                                                },
+                                                resizable: true
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="resultClient" role="tabpanel" aria-labelledby="resultClient-tab">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="col-md-12 mb-auto">
+                                    @Html.TextAreaFor(model => model.ResultClient, new { @class = "form-control", placeholder = "Resultado da análise", rows = "10" })
+                                    @Html.ValidationMessageFor(model => model.ResultClient, "", new { @class = "form-text text-danger" })
+                                    <script>
+                                        $(document).ready(function () {
+                                            $("#ResultClient").kendoEditor({
+                                                tools: [
+                                                    "formatting",
+                                                    "bold", "italic", "underline", "strikethrough",
+                                                    "justifyLeft", "justifyCenter", "justifyRight", "justifyFull",
+                                                    "insertUnorderedList", "insertOrderedList", "indent", "outdent",
+                                                    "createLink", "unlink", "insertImage", "insertFile",
+                                                    "subscript", "superscript",
+                                                    "tableWizard", "createTable",
+                                                    "addRowAbove", "addRowBelow",
+                                                    "addColumnLeft", "addColumnRight",
+                                                    "deleteRow", "deleteColumn",
+                                                    "viewHtml", "cleanFormatting",
+                                                    "fontName", "fontSize",
+                                                    "foreColor", "backColor"
+                                                ],
+                                                messages: {
+                                                    fontNameInherit: "Arial",
+                                                    fontSizeInherit: "3 (12pt)"
+                                                },
+                                                resizable: true
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="attachment" role="tabpanel" aria-labelledby="attachment-tab">
+        <div class="container-fluid">
+            <div class="row">
+                <div></div>
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-12 mb-auto">
+
+                        <div class="col-md-12 mx-auto">
+                            <div class="form-group row">
+                                <input type="file" name="file" />
+                            </div>
+                        </div>
+                        <div id="data-grid"></div>
+                        <script>
+
+                            $(document).ready(function () {
+                                $("#data-grid").kendoGrid({
+
+                            dataSource: {
+                                type: "json",
+                            transport: {
+                            read: {
+                                url: "@Html.Raw(Url.Action("GetAllByRecordID", "Attachment"))",
+                                type: "POST",
+                                dataType: "json",
+                                data: additionalData
+                                }
+                            },
+                            schema: {
+                                data: "Data",
+                                total: "Total",
+                                errors: "Errors"
+                            },
+                                error: function (e) {
+                                display_kendoui_grid_error(e);
+                                this.cancelChanges();
+                            },
+                                pageSize: 10,
+                                serverPaging: true,
+                                serverFiltering: true,
+                                serverSorting: false
+                            },
+                                resizable: true,
+                                groupable: true,
+                                sortable: true,
+                            pageable: {
+                                refresh: true,
+                                pageSizes: true,
+                                buttonCount: 5,
+                            messages: {
+                                display: '{0} - {1} de {2} itens',
+                                allPages: 'Todos',
+                                itemsPerPage: 'Itens por página'
+                            }
+                            },
+                                columns: [{
+                                        field: "AttachmentID",
+                                        title: "ID",
+                                        width: 50,
+                                        headerAttributes: { style: "text-align:left" }
+                                }, {
+                                        field: "FileName",
+                                        title: "Nome do arquivo",
+                                        width: 250,
+                                        headerAttributes: { style: "text-align:left" }
+                                },{
+                                        field: "",
+                                        title: "Comandos",
+                                        width: 50,
+                                        headerAttributes: { style: "text-align:center" },
+                                        attributes: { style: "text-align:center" },
+                                        template: '<div title="Excluir Registro" class="btn btn-danger btn-sm text-center" onclick="AttachmentDelete(#=AttachmentID#)" data-toggle="modal" data-target="\\#AttachmentDeleteModal"> <i class="fa fa-trash"></i> </div> ' +
+                                        '<a href="Attachment/Download?attachmentID=#=AttachmentID#" class="btn btn-info btn-sm text-center"> <i class="fa fa-download" text-danger false-icon"></i></a>'
+
+                                }],
+                                    excelExport: function (e) {
+                                    e.workbook.fileName = "LeanTest Cloud - Currículos.xlsx";
+                                }
+                            });
+                        });
+
+                        </script>
+
+                        <script>
+                    $(document).ready(function () {
+                        $('#btnExportExcel').click(function () {
+                            var grid = $('#data-grid').data('kendoGrid');
+                            grid.saveAsExcel();
+                            return false;
+                        });
+
+                        $('#btn-aplicar-filtros').click(function () {
+                            var grid = $('#data-grid').data('kendoGrid');
+                            if (grid.dataSource.page() == 1) {
+                                grid.dataSource.page(1);
+                            }
+                            else {
+                                grid.dataSource.read({ parameter: "value" });
+                            }
+                            return false;
+                        });
+
+                    });
+
+                        function additionalData() {
+                            var data = {
+                                RecordID: $('#@Html.FieldIdFor(model => model.ResumeID)').val(),
+                                SystemFeatureID: "317"
+                            };
+
+                            addAntiForgeryToken(data);
+
+                            return data;
+
+                            };
+
+                            var AttachmentDelete = function (attachmentID) {
+                                var url = '/Attachment/GetByID?attachmentID=' + attachmentID + '&ActionName=Delete';
+
+                                $('#AttachmentDeleteModalDiv').load(url, function () {
+
+                                })
+                            };
+
+                            var Download = function (attachmentID) {
+                                var url = '/Attachment/Download?attachmentID=' + attachmentID;
+
+                                $('#DeleteModalDiv').load(url, function () {
+
+                                })
+                            };
+
+                            $(document).ready(function () {
+                                $("#Summary").keypress(function (event) {
+                                    var inputValue = event.which;
+                                    // allow letters and whitespaces only.
+                                    if (!(inputValue >= 65 && inputValue <= 123) && (inputValue != 32 && inputValue != 0)) {
+                                        event.preventDefault();
+                                    }
+                                    console.log(inputValue);
+                                });
+                            });
+
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="vacancie" role="tabpanel" aria-labelledby="vacancie-tab">
+        <div class="container-fluid">
+            <div class="row">
+                <div></div>
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-6 mb-auto">
+                <div class="container-fluid">
+                    <div class="card">
+                        <div class="card-body">
+                            <div id="vacancieAssociated-grid"></div>
+                            <script>
+                            $(document).ready(function () {
+                            $("#vacancieAssociated-grid").kendoGrid({
+
+                            dataSource: {
+                                type: "json",
+                            transport: {
+                            read: {
+                                url: "@Html.Raw(Url.Action("GetAllAssociateResumeByVacancieID", "Resume"))",
+                                type: "POST",
+                                dataType: "json",
+                                data: additionalData
+                                }
+                            },
+                            schema: {
+                                data: "Data",
+                                total: "Total",
+                                errors: "Errors"
+                            },
+                                error: function (e) {
+                                display_kendoui_grid_error(e);
+                                this.cancelChanges();
+                            },
+                                pageSize: 10,
+                                serverPaging: true,
+                                serverFiltering: true,
+                                serverSorting: false
+                            },
+                                resizable: true,
+                                vacancieable: false,
+                                sortable: true,
+                            pageable: {
+                                refresh: true,
+                                pageSizes: true,
+                                buttonCount: 5,
+                            messages: {
+                                display: '{0} - {1} de {2} itens',
+                                allPages: 'Todos',
+                                itemsPerPage: 'Itens por página'
+                            }
+                            },
+                                columns: [{
+                                    field: "Summary",
+                                    title: "Vaga Selecionada",
+                                    width: 100,
+                                    headerAttributes: { style: "text-align:left" }
+                                }]
+                            });
+                        });
+
+                            </script>
+                            <script type="text/javascript">
+                            $(document).ready(function () {
+
+                                $('#btn-aplicar-filtros').click(function () {
+                                    var grid = $('#vacancieAssociated-grid').data('kendoGrid');
+                                    if (grid.dataSource.page() == 1) {
+                                        grid.dataSource.page(1);
+                                    }
+                                    else {
+                                        grid.dataSource.read({ parameter: "value" });
+                                    }
+                                    return false;
+                                });
+
+                                $("#@Html.FieldIdFor(model => model.SearchSummary)").keydown(function (event) {
+                                    if (event.keyCode == 13) {
+                                        $("#btn-aplicar-filtros").click();
+                                        return false;
+                                    }
+                                });
+
+                            });
+
+                            function additionalData() {
+                                var data = {
+                                    SearchSummary: $('#@Html.FieldIdFor(model => model.SearchSummary)').val()
+                                };
+
+                                addAntiForgeryToken(data);
+
+                                return data;
+
+                                };
+                                
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-auto">
+
+                <div class="container-fluid">
+                    <div class="card">
+
+                        <div class="card-body">
+                            <div id="vacancieNoAssociated-grid"></div>
+                            <script>
+
+                            $(document).ready(function () {
+                            $("#vacancieNoAssociated-grid").kendoGrid({
+
+                            dataSource: {
+                                type: "json",
+                            transport: {
+                            read: {
+                                url: "@Html.Raw(Url.Action("GetAllNoAssociateResumeByVacancieID", "Resume"))",
+                                type: "POST",
+                                dataType: "json",
+                                data: additionalData
+                                }
+                            },
+                            schema: {
+                                data: "Data",
+                                total: "Total",
+                                errors: "Errors"
+                            },
+                                error: function (e) {
+                                display_kendoui_grid_error(e);
+                                this.cancelChanges();
+                            },
+                                pageSize: 10,
+                                serverPaging: true,
+                                serverFiltering: true,
+                                serverSorting: false
+                            },
+                                resizable: true,
+                                vacancieable: false,
+                                sortable: true,
+                            pageable: {
+                                refresh: true,
+                                pageSizes: true,
+                                buttonCount: 5,
+                            messages: {
+                                display: '{0} - {1} de {2} itens',
+                                allPages: 'Todos',
+                                itemsPerPage: 'Itens por página'
+                            }
+                            },
+                                columns: [{
+                                    field: "Summary",
+                                    title: "Vagas Concorridas",
+                                    width: 100,
+                                    headerAttributes: { style: "text-align:left" }
+                                }]
+                            });
+                        });
+
+                            </script>
+                            <script type="text/javascript">
+                            $(document).ready(function () {
+
+                                $('#btn-aplicar-filtros').click(function () {
+                                    var grid = $('#vacancieNoAssociated-grid').data('kendoGrid');
+                                    if (grid.dataSource.page() == 1) {
+                                        grid.dataSource.page(1);
+                                    }
+                                    else {
+                                        grid.dataSource.read({ parameter: "value" });
+                                    }
+                                    return false;
+                                });
+
+                            $("#@Html.FieldIdFor(model => model.SearchSummary)").keydown(function (event) {
+                                if (event.keyCode == 13) {
+                                    $("#btn-aplicar-filtros").click();
+                                    return false;
+                                }
+                            });
+
+                        });
+
+                        function additionalData() {
+                        var data = {
+                            SearchSummary: $('#@Html.FieldIdFor(model => model.SearchSummary)').val()
+                        };
+
+                        addAntiForgeryToken(data);
+
+                        return data;
+
+                        };
+                           
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    $('#ExpectedSalary').change(function () {
+        var SubTotal
+        if (document.getElementById("ExpectedSalary").value == "") {
+            ExpectedSalary = "0.00"
+        }
+        else {
+            ExpectedSalary = document.getElementById("ExpectedSalary").value.replace(",", ".").replace("R$ ", "");
+        }
+
+        document.getElementById('MaximumValue').value = "R$ " + parseFloat(ExpectedSalary.replace("R$", "")).toFixed(2).replace(".", ",");
+    });
+
+    //$('#ClosedValue').change(function () {
+    //    var SubTotal
+    //    if (document.getElementById("ClosedValue").value == "") {
+    //        ValueToBeRealized = "0.00"
+    //    }
+    //    else {
+    //        ClosedValue = document.getElementById("ClosedValue").value.replace(",", ".").replace("R$ ", "");
+    //    }
+    //    document.getElementById('ClosedValue').value = "R$ " + parseFloat(ClosedValue.replace("R$", "")).toFixed(2).replace(".", ",");
+    //});
+</script>
+
+<script language='JavaScript'>
+    function NumberOnly(e) {
+        var tecla = (window.event) ? e.keyCode : e.which;
+        if (tecla == 8 || tecla == 0)
+            return true;
+        if (tecla != 44 && tecla < 48 || tecla > 57)
+            return false;
+    }
+
+    $('#ExpectedSalary').bind('cut copy paste', function (e) {
+        e.preventDefault();
+    });
+    //$('#ClosedValue').bind('cut copy paste', function (e) {
+    //    e.preventDefault();
+    //});
+</script>﻿﻿
+
+
+

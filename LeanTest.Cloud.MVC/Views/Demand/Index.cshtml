@@ -1,0 +1,916 @@
+﻿@model DemandModel
+@{
+    ViewBag.Title = " - Demandas";
+    Layout = "~/Views/Shared/_ContentPage.cshtml";
+}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+@using (Html.BeginForm())
+{
+    <div class="container-fluid">
+        <br />
+        <div class="content-header clearfix">
+            <div class="pull-left">
+                <button type="button" onclick="Add()" id="btnNew" class="btn btn-dark btn-sm" data-toggle="modal" data-target='#AddModal' title="Novo">
+                    <i class="fa fa-plus-circle"></i> Novo
+                </button>
+
+                <button class="btn btn-primary btn-sm" type="button" id="btnFilter" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" title="Filtrar">
+                    <i class="fa fa-filter"></i> Filtrar
+                </button>
+                <button type="button" id="btnExportExcel" class="btn btn-info btn-sm" title="Exportar para Excel">
+                    <i class="fa fa-file-excel-o"></i> Exportar para Excel
+                </button>
+                <button type="button" onclick="GetReport()" id="btnGetReport" class="btn btn-success btn-sm" data-toggle="modal" data-target='#ReportModal' title="Relatórios Horas Apropriadas">
+                    <i class="fa fa-file-excel-o"></i> Relatórios Horas Apropriadas
+                </button>
+                <a href="@Url.Action("Gantt")" class="btn btn-success btn-sm" , title="Visualizar Gantt">
+                    <i class="fa fa-cube"></i> Gantt
+                </a>
+            </div>
+        </div>
+        <br />
+
+        <div class="card">
+
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <div class="row">
+                        <div class="col-md-12 mx-auto">
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.SearchDemandName, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.TextBoxFor(model => model.SearchDemandName, null, new { @class = "form-control" })
+                                </div>
+                                @Html.LabelFor(model => model.SearchStatusID, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.DropDownList("SearchStatusID", Model.SearchLoadStatus, "Selecione...", new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.SearchExternalCode, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.TextBoxFor(model => model.SearchExternalCode, null, new { @class = "form-control" })
+                                </div>
+                                @Html.LabelFor(model => model.SearchTypeID, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.DropDownList("SearchTypeID", Model.SearchLoadTypes, "Selecione...", new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.SearchDemandCode, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.TextBoxFor(model => model.SearchDemandCode, null, new { @class = "form-control" })
+                                </div>
+                                @Html.LabelFor(model => model.SearchServiceID, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.DropDownList("SearchServiceID", Model.SearchLoadServices, "Selecione...", new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group row" id="calender-container">
+                                @Html.LabelFor(model => model.SearchPlanningStartDate, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    <div class="input-group date">
+                                        @Html.TextBoxFor(model => model.SearchPlanningStartDate, new { @class = "form-control", autocomplete = "off" })<span class="input-group-addon"></span>
+                                    </div>
+                                </div>
+                                @Html.LabelFor(model => model.SearchPlanningEndDate, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    <div class="input-group date">
+                                        @Html.TextBoxFor(model => model.SearchPlanningEndDate, new { @class = "form-control", autocomplete = "off" })<span class="input-group-addon"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.SearchAssignToTargetID, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.DropDownList("SearchAssignToTargetID", Model.SearchLoadAssingToTarget, "Selecione...", new { @class = "form-control" })
+                                </div>
+                                @Html.LabelFor(model => model.SearchResponsibleID, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.DropDownList("SearchResponsibleID", Model.SearchLoadResponsible, "Selecione...", new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+
+                            </div>
+                            <div class="form-group row">
+                            </div>
+                            <br />
+                            <div class="col">
+                                <div class="text-center">
+                                    <button type="button" class="btn btn-success btn-sm" id="btn-aplicar-filtros" title="Aplicar filtros">
+                                        <i class="fa fa-check-circle"></i> Filtrar
+                                    </button>
+                                    <button class="btn btn-primary btn-sm" type="reset" id="btnFiltrar" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" title="Fechar filtros">
+                                        <i class="fa fa-filter"></i> Fechar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div><h5>DEMANDAS</h5></div>
+                <div id="demands-grid"></div>
+                <script>
+
+                $(document).ready(function () {
+                $("#demands-grid").kendoGrid({
+                    @*toolbar: ["excel"],
+                    excel: {
+                        fileName: "LeanTest Cloud - Demandas.xlsx",
+                         proxyURL: "@Html.Raw(Url.Action("GetAll", "Demand"))",
+                        filterable: true
+                    },*@
+                dataSource: {
+                    type: "json",
+                transport: {
+                read: {
+                    url: "@Html.Raw(Url.Action("GetAll", "Demand"))",
+                    type: "POST",
+                    dataType: "json",
+                    data: additionalData
+                    }
+                },
+                schema: {
+                    data: "Data",
+                    total: "Total",
+                    errors: "Errors"
+                },
+                    error: function (e) {
+                    display_kendoui_grid_error(e);
+                    this.cancelChanges();
+                },
+                    pageSize: 10,
+                    serverPaging: true,
+                    serverFiltering: true,
+                    serverSorting: false
+                },
+                    resizable: true,
+                    groupable: true,
+                    sortable: true,
+                pageable: {
+                    refresh: true,
+                    pageSizes: true,
+                    buttonCount: 5,
+                messages: {
+                    display: '{0} - {1} de {2} itens',
+                    allPages: 'Todos',
+                    itemsPerPage: 'Itens por página'
+                }
+                },
+                    columns: [{
+
+                        field: "",
+                        title: "Comandos",
+                        width: 250,
+                        headerAttributes: { style: "text-align:left" },
+                        attributes: { style: "text-align:center" },
+                        template: '<div title="Editar" class="btn btn-primary btn-sm text-center" onclick="Edit(#=DemandID#)" data-toggle="modal" data-target="\\#MaintenanceModal"> <i class="fa fa-edit"></i> </div> ' +
+                            '<div title="Excluír" class="btn btn-danger btn-sm text-center" onclick="Delete(#=DemandID#)" data-toggle="modal" data-target="\\#DeleteModal"> <i class="fa fa-trash"></i> </div> ' +
+                        '<div title="Associar usuários" class="btn btn-info btn-sm text-center" onclick="UserAssociate(#=DemandID#)" data-toggle="modal" data-target="\\#UserAssociateModal"> <i class="fa fa-group"></i> </div> ' +
+                        '<div title="Criar novo evento" class="btn btn-success btn-sm text-center" onclick="AddEvent(#=DemandID#)" data-toggle="modal" data-target="\\#AddEventModal"> <i class="fa fa-random"></i> </div> ' +
+                        '<div title="Apropriar horas" class="btn btn-info btn-sm text-center" onclick="AddTimeRelease(#=DemandID#)" data-toggle="modal" data-target="\\#AddTimeReleaseModal"> <i class="fa fa-clock-o"></i> </div> ' +
+                        '<div title="Lançamento financeiro" class="btn btn-dark btn-sm text-center" onclick="AddAccountingEntrie(#=DemandID#)" data-toggle="modal" data-target="\\#AddAccountingEntrieModal"> <i class="fa fa-dollar"></i> </div> ' +
+                        '# if(IsActive == false)  {# <div title="Aprovar" class="btn btn-warning btn-sm text-center" onclick="StatusChange(#=DemandID#)" > <i class="fa fa-bell-slash" text-danger false-icon"></i></div> #} else ' +
+                        '{# <div title="Rejeitar" class="btn btn-success btn-sm" text-center" onclick="StatusChange(#=DemandID#)"> <i class="fa fa-bell" text-danger false-icon"></i></div> #}  # '
+                },{
+                        field: "DemandCode",
+                        title: "Código",
+                        width: 140,
+                        headerAttributes: { style: "text-align:left" }
+                },{
+                        field: "DemandName",
+                        title: "Nome da Demanda",
+                        width: 300,
+                        headerAttributes: { style: "text-align:left" }
+                },{
+                        field: "TypeID",
+                        title: "Tipo de Solicitação",
+                        width: 140,
+                        headerAttributes: { style: "text-align:left" }
+                },{
+                        field: "PlanningStartDate",
+                        title: "Data de Início",
+                        width: 100,
+                        headerAttributes: { style: "text-align:left" }
+                },{
+                        field: "PlanningEndDate",
+                        title: "Data de Término",
+                        width: 100,
+                        headerAttributes: { style: "text-align:left" }
+                },{
+                        field: "StatusID",
+                        title: "Status",
+                        width: 150,
+                        headerAttributes: { style: "text-align:left" }
+                },{
+                        field: "AssignToTargetID",
+                        title: "Responsável Interno",
+                        width: 200,
+                        headerAttributes: { style: "text-align:left" }
+                },{
+                        field: "ResponsibleID",
+                        title: "Responsável Externo",
+                        width: 200,
+                        headerAttributes: { style: "text-align:left" }
+
+                    }, {
+                        field: "PlanningEffort",
+                        title: "Esforço Total Hr",
+                        width: 150,
+                        headerAttributes: { style: "text-align:left" }
+
+                    },{
+                        field: "TotalTime",
+                        title: "Total Apropriado Hr",
+                        width: 150,
+                        headerAttributes: { style: "text-align:left" }
+
+                    }],
+                    excelExport: function (e) {
+                        e.workbook.fileName = "LeanTest Cloud - Demandas.xlsx";
+                }
+                });
+            });
+
+                </script>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#btnExportExcel').click(function () {
+                            var grid = $('#demands-grid').data('kendoGrid');
+                            grid.saveAsExcel();
+                            return false;
+                        });
+
+                        $('#btn-aplicar-filtros').click(function () {
+                            var grid = $('#demands-grid').data('kendoGrid');
+                            if (grid.dataSource.page() == 1) {
+                                grid.dataSource.page(1);
+                            }
+                            else {
+                                grid.dataSource.read({ parameter: "value" });
+                            }
+                            return false;
+                        });
+
+                       $("#@Html.FieldIdFor(model => model.SearchDemandName)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btn-aplicar-filtros").click();
+                                return false;
+                            }
+                        });
+
+                        $("#@Html.FieldIdFor(model => model.SearchDemandCode)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btn-aplicar-filtros").click();
+                                return false;
+                            }
+                        });
+
+                        $("#@Html.FieldIdFor(model => model.SearchExternalCode)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btn-aplicar-filtros").click();
+                                return false;
+                            }
+                        });
+
+                        $("#@Html.FieldIdFor(model => model.SearchStatusID)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btn-aplicar-filtros").click();
+                                return false;
+                            }
+                        });
+
+                        $("#@Html.FieldIdFor(model => model.SearchPlanningStartDate)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btn-aplicar-filtros").click();
+                                return false;
+                            }
+                        });
+
+                        $("#@Html.FieldIdFor(model => model.SearchPlanningEndDate)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btn-aplicar-filtros").click();
+                                return false;
+                            }
+                        });
+
+                        $("#@Html.FieldIdFor(model => model.SearchResponsibleID)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btn-aplicar-filtros").click();
+                                return false;
+                            }
+                        });
+
+
+                        $("#@Html.FieldIdFor(model => model.SearchAssignToTargetID)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btn-aplicar-filtros").click();
+                                return false;
+                            }
+                        });
+
+                        $("#@Html.FieldIdFor(model => model.SearchServiceID)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btn-aplicar-filtros").click();
+                                return false;
+                            }
+                        });
+
+                        $("#@Html.FieldIdFor(model => model.SearchTypeID)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btn-aplicar-filtros").click();
+                                return false;
+                            }
+                        });
+                    });
+
+                function additionalData() {
+                    var data = {
+                        SearchDemandName: $('#@Html.FieldIdFor(model => model.SearchDemandName)').val(),
+                        SearchDemandCode: $('#@Html.FieldIdFor(model => model.SearchDemandCode)').val(),
+                        SearchPlanningStartDate: $('#@Html.FieldIdFor(model => model.SearchPlanningStartDate)').val(),
+                        SearchPlanningEndDate: $('#@Html.FieldIdFor(model => model.SearchPlanningEndDate)').val(),
+                        SearchExternalCode: $('#@Html.FieldIdFor(model => model.SearchExternalCode)').val(),
+                        SearchStatusID: $('#@Html.FieldIdFor(model => model.SearchStatusID)').val(),
+                        SearchServiceID: $('#@Html.FieldIdFor(model => model.SearchServiceID)').val(),
+                        SearchTypeID: $('#@Html.FieldIdFor(model => model.SearchTypeID)').val(),
+                        SearchResponsibleID: $('#@Html.FieldIdFor(model => model.SearchResponsibleID)').val(),
+                        SearchAssignToTargetID: $('#@Html.FieldIdFor(model => model.SearchAssignToTargetID)').val()
+
+                    };
+
+                    addAntiForgeryToken(data);
+
+                    return data;
+
+                    };
+
+                    var Delete = function (demandID) {
+                        var url = '/Demand/GetByID?demandID=' + demandID + '&ActionName=Delete';
+
+                        $('#DeleteModalDiv').load(url, function () {
+
+                        })
+                    };
+
+                    var Edit = function (demandID) {
+                        var url = '/Demand/GetByID?demandID=' + demandID + '&ActionName=Maintenance';
+
+                        $('#MaintenanceModalDiv').load(url, function () {
+
+                        })
+
+                        $('#MaintenanceModal').on('shown.bs.modal', function () {
+
+                            $('#calender-container .input-group.date').datepicker({
+                                multidate: false,
+                                multidateSeparator: ";",
+                                autoclose: true,
+                                daysOfWeekHighlighted: "0,6",
+                                todayBtn: true,
+                                todayHighlight: true,
+                                format: 'dd/mm/yyyy',
+                                language: 'pt-BR'
+                            });
+
+                        });
+                    };
+
+                    var Add = function () {
+                        var url = '/Demand/New';
+
+                        $('#AddModalDiv').load(url, function () {
+
+                        })
+
+                        $('#AddModal').on('shown.bs.modal', function () {
+
+                            $('#calender-container .input-group.date').datepicker({
+                                multidate: false,
+                                multidateSeparator: ";",
+                                autoclose: true,
+                                daysOfWeekHighlighted: "0,6",
+                                todayBtn: true,
+                                todayHighlight: true,
+                                format: 'dd/mm/yyyy',
+                                language: 'pt-BR'
+                            });
+
+                        });
+                    };
+
+                    var UserAssociate = function (demandID) {
+                        var url = '/Demand/UserAssociate?demandID=' + demandID;
+
+                        $('#UserAssociateModalDiv').load(url, function () {
+
+                        })
+                    };
+
+                    var GetReport = function () {
+                        var url = '/Demand/Report';
+
+                        $('#ReportModalDiv').load(url, function () {
+
+                        })
+
+                        $('#ReportModal').on('shown.bs.modal', function () {
+
+                            $('#calender-container .input-group.date').datepicker({
+                                multidate: false,
+                                multidateSeparator: ";",
+                                autoclose: true,
+                                daysOfWeekHighlighted: "0,6",
+                                todayBtn: true,
+                                todayHighlight: true,
+                                format: 'dd/mm/yyyy',
+                                language: 'pt-BR'
+                            });
+
+                        });
+                    };
+                    
+                    var AddAccountingEntrie = function (demandID) {
+                        var url = '/AccountingEntrie/New?demandID=' + demandID;
+
+                        $('#AddAccountingEntrieModalDiv').load(url, function () {
+
+                        })
+
+                        $('#AddAccountingEntrieModal').on('shown.bs.modal', function () {
+
+                            $('#calender-container .input-group.date').datepicker({
+                                multidate: false,
+                                multidateSeparator: ";",
+                                autoclose: true,
+                                daysOfWeekHighlighted: "0,6",
+                                todayBtn: true,
+                                todayHighlight: true,
+                                format: 'dd/mm/yyyy',
+                                language: 'pt-BR'
+                            });
+                        });
+                    };
+
+                    var AddEvent = function (demandID) {
+                        var url = '/DailyLog/New?demandID=' + demandID;
+
+                        $('#AddEventModalDiv').load(url, function () {
+
+                        })
+
+                        $('#AddEventModal').on('shown.bs.modal', function () {
+
+                            $('#calender-container .input-group.date').datepicker({
+                                multidate: false,
+                                multidateSeparator: ";",
+                                autoclose: true,
+                                daysOfWeekHighlighted: "0,6",
+                                todayBtn: true,
+                                todayHighlight: true,
+                                format: 'dd/mm/yyyy',
+                                language: 'pt-BR'
+                            });
+                        });
+                    };
+
+                    var EditEvent = function (dailyLogID) {
+                        var url = '/DailyLog/GetByID?dailyLogID=' + dailyLogID + '&ActionName=Maintenance';
+
+                        $('#MaintenanceEventModalDiv').load(url, function () {
+
+                        })
+
+                        $('#MaintenanceEventModal').on('shown.bs.modal', function () {
+
+                            $('#calender-container .input-group.date').datepicker({
+                                multidate: false,
+                                multidateSeparator: ";",
+                                autoclose: true,
+                                daysOfWeekHighlighted: "0,6",
+                                todayBtn: true,
+                                todayHighlight: true,
+                                format: 'dd/mm/yyyy',
+                                language: 'pt-BR'
+                            });
+
+                        });
+                    };
+
+                    var DeleteEvent = function (dailyLogID) {
+                        var url = '/DailyLog/GetByID?dailyLogID=' + dailyLogID + '&ActionName=Delete';
+
+                        $('#DeleteEventModalDiv').load(url, function () {
+
+                        })
+                    };
+
+                    var DeleteTimeRelease = function (timeReleaseID) {
+                        var url = '/TimeRelease/GetByID?timeReleaseID=' + timeReleaseID + '&ActionName=Delete';
+
+                        $('#DeleteTimeReleaseModalDiv').load(url, function () {
+
+                        })
+                    };
+
+                    var EditTimeRelease = function (timeReleaseID) {
+                        var url = '/TimeRelease/GetByID?timeReleaseID=' + timeReleaseID + '&ActionName=Maintenance';
+
+                        $('#MaintenanceTimeReleaseModalDiv').load(url, function () {
+
+                        })
+
+                        $('#MaintenanceTimeReleaseModal').on('shown.bs.modal', function () {
+
+                            $('#calender-container .input-group.date').datepicker({
+                                multidate: false,
+                                multidateSeparator: ";",
+                                autoclose: true,
+                                daysOfWeekHighlighted: "0,6",
+                                todayBtn: true,
+                                todayHighlight: true,
+                                format: 'dd/mm/yyyy',
+                                language: 'pt-BR'
+                            });
+
+                        });
+                    };
+
+                    var AddTimeRelease = function (demandID) {
+                        var url = '/TimeRelease/New?demandID=' + demandID;
+
+                        $('#AddTimeReleaseModalDiv').load(url, function () {
+
+                        })
+
+                        $('#AddTimeReleaseModal').on('shown.bs.modal', function () {
+
+                            $('#calender-container .input-group.date').datepicker({
+                                multidate: false,
+                                multidateSeparator: ";",
+                                autoclose: true,
+                                daysOfWeekHighlighted: "0,6",
+                                todayBtn: true,
+                                todayHighlight: true,
+                                format: 'dd/mm/yyyy',
+                                language: 'pt-BR'
+                            });
+
+                        });
+                    };
+
+                    var StatusChange = function (demandID) {
+
+                        var url = '/Demand/StatusChange?demandID=' + demandID;
+
+                        $('#DeleteModalDiv').load(url, function () {
+
+                        })
+
+                        $("#btn-aplicar-filtros").click();
+
+                        return false;
+                    };
+
+                    var StatusChangeTimeRelease = function (timeReleaseID) {
+
+                        var url = '/TimeRelease/StatusChange?timeReleaseID=' + timeReleaseID;
+
+                        $('#DeleteModalDiv').load(url, function () {
+
+                        })
+
+                        $("#btn-aplicar-filtros").click();
+
+                        return false;
+                    };
+
+                </script>
+            </div>
+        </div>
+    </div>
+
+}
+
+@using (Html.BeginForm("Add", "Demand", FormMethod.Post, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="modal fade" id="AddModal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Nova Demanda</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <div class="modal-body" id="AddModalDiv">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success btn-sm" onclick="return ComparaDatas(event);">
+                        <i class="fa fa-save"></i>  Salvar
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                        <i class="fa fa-close"></i>  Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Update", "Demand", FormMethod.Post, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="modal fade" id="MaintenanceModal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Detalhes</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <div class="modal-body" id="MaintenanceModalDiv">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success btn-sm" onclick="return ComparaDatas(event);">
+                        <i class="fa fa-save"></i>  Salvar
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                        <i class="fa fa-close"></i>  Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Delete", "Demand", FormMethod.Post, new { novalidate = "novalidate" }))
+
+{
+    <div class="modal fade" id="DeleteModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Excluir</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <div class="modal-body" id="DeleteModalDiv">
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success btn-sm">
+                        <i class="fa fa-check-circle"></i> Sim
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                        <i class="fa fa-close"></i> Não
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Update", "Customer", FormMethod.Post, new { novalidate = "novalidate" }))
+{
+    <div class="modal fade" id="UserAssociateModal" role="dialog" overflow: auto>
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Associar Usuários</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <div class="modal-body" id="UserAssociateModalDiv" overflow: auto>
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                        <i class="fa fa-close"></i> Fechar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Delete", "Attachment", new { sourceController = "Demand" }, FormMethod.Post, new { novalidate = "novalidate" }))
+{
+    <div class="modal fade" id="AttachmentDeleteModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Excluir </h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <div class="modal-body" id="AttachmentDeleteModalDiv">
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-check-circle"></i> Sim
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        <i class="fa fa-close"></i> Não
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Report", "Demand", FormMethod.Post))
+
+{
+    <div class="modal fade" id="ReportModal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Relatório de Demandas por Apropriação de Horas</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <div class="modal-body" id="ReportModalDiv">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                        <i class="fa fa-close"></i> Fechar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Add", "AccountingEntrie", new { sourceController = "Demand" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="modal fade" id="AddAccountingEntrieModal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Novo lançamento financeiro</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <div class="modal-body" id="AddAccountingEntrieModalDiv">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success btn-sm">
+                        <i class="fa fa-save"></i>  Salvar
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                        <i class="fa fa-close"></i>  Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Add", "DailyLog", new { sourceController = "Demand" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="modal fade" id="AddEventModal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Novo Evento</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <div class="modal-body" id="AddEventModalDiv">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success btn-sm">
+                        <i class="fa fa-save"></i>  Salvar
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                        <i class="fa fa-close"></i>  Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Update", "DailyLog", new { sourceController = "Demand" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="modal fade" id="MaintenanceEventModal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Editar Evento</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <div class="modal-body" id="MaintenanceEventModalDiv">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success btn-sm">
+                        <i class="fa fa-save"></i>  Salvar
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                        <i class="fa fa-close"></i>  Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Delete", "DailyLog", new { sourceController = "Demand" }, FormMethod.Post, new { novalidate = "novalidate" }))
+{
+    <div class="modal fade" id="DeleteEventModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Excluir Evento</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <div class="modal-body" id="DeleteEventModalDiv">
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-check-circle"></i> Sim
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        <i class="fa fa-close"></i> Não
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Add", "TimeRelease", FormMethod.Post, new { sourceController = "Demand" }))
+{
+    <div class="modal fade" id="AddTimeReleaseModal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Nova Apropriação de Horas</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <div class="modal-body" id="AddTimeReleaseModalDiv">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success btn-sm" onclick="return ValidarCampo(event)">
+                        <i class="fa fa-save"></i>  Salvar
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                        <i class="fa fa-close"></i>  Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Update", "TimeRelease", FormMethod.Post, new { sourceController = "Demand" }))
+{
+    <div class="modal fade" id="MaintenanceTimeReleaseModal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Detalhes</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <div class="modal-body" id="MaintenanceModalDiv">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success btn-sm" onclick="return ValidarCampo(event)">
+                        <i class="fa fa-save"></i>  Salvar
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                        <i class="fa fa-close"></i>  Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Delete", "TimeRelease", new { sourceController = "Demand" }, FormMethod.Post, new { novalidate = "novalidate" }))
+{
+    <div class="modal fade" id="DeleteTimeReleaseModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Excluir</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <div class="modal-body" id="DeleteModalDiv">
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success btn-sm">
+                        <i class="fa fa-check-circle"></i> Sim
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                        <i class="fa fa-close"></i> Não
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

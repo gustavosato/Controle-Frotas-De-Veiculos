@@ -1,0 +1,11 @@
+﻿@model Lean.Test.Cloud.MVC.Models.ContractAdditives.ContractAdditiveModel
+
+@Html.HiddenFor(model => model.AdditiveID)
+<div>
+    Deseja realmente excluir o seguinte registro?
+    <br />
+    <br />
+    <ul>
+        <li>Aditivo: <strong>@Model.AdditiveObject</strong></li>
+    </ul>
+</div>

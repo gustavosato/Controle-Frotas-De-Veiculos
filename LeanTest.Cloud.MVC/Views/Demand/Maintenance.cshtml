@@ -1,0 +1,1026 @@
+﻿@model DemandModel
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+
+@Html.HiddenFor(model => model.CustomerID)
+@Html.HiddenFor(model => model.DemandID)
+@Html.HiddenFor(model => model.CreatedByID)
+@Html.HiddenFor(model => model.IsActive)
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="detail-tab" data-toggle="tab" href="#detail" role="tab" aria-controls="detail" aria-selected="true">Detalhes</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="scope-tab" data-toggle="tab" href="#scope" role="tab" aria-controls="scope" aria-selected="false">Escopo <strong><span style="color:black;">*</span></strong></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="apropriateHour-tab" data-toggle="tab" href="#apropriateHour" role="tab" aria-controls="apropriateHour" aria-selected="false">Horas Apropriadas</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="dailyLog-tab" data-toggle="tab" href="#dailyLog" role="tab" aria-controls="dailyLog" aria-selected="false">Diário de Bordo</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="expenses-tab" data-toggle="tab" href="#expenses" role="tab" aria-controls="expenses" aria-selected="false">Despesas</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="attachment-tab" data-toggle="tab" href="#attachment" role="tab" aria-controls="attachment" aria-selected="false">Anexos</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="historical-tab" data-toggle="tab" href="#historical" role="tab" aria-controls="historical" aria-selected="false">Histórico de Alterações</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="detail" role="tabpanel" aria-labelledby="detail-tab">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.DemandCode, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.DemandCode, new { @class = "form-control text-left", placeholder = "Código Automático", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.DemandCode, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-8 mb-auto">
+                        <strong>@Html.LabelFor(model => model.DemandName, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.TextBoxFor(model => model.DemandName, new { @class = "form-control", placeholder = "Digite o nome da demanda", @autofocus = "autofocus" })
+                        @Html.ValidationMessageFor(model => model.DemandName, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.CreationDate, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.CreationDate, new { @class = "form-control text-left", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.CreationDate, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.ExternalCode, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.ExternalCode, new { @class = "form-control", placeholder = "Digite o código externo" })
+                        @Html.ValidationMessageFor(model => model.ExternalCode, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-4 mb-auto">
+                        @Html.LabelFor(model => model.StatusID, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.DropDownList("StatusID", Model.LoadStatus, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.StatusID, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        <strong>@Html.LabelFor(model => model.TypeID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("TypeID", Model.LoadTypes, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TypeID, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        <strong>@Html.LabelFor(model => model.ServiceID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("ServiceID", Model.LoadServices, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ServiceID, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.TotalTime, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.TotalTime, new { @class = "form-control text-left", @readonly = "readonly", id = "TotalTime" })
+                        @Html.ValidationMessageFor(model => model.TotalTime, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-4 mb-auto">
+                        <strong>@Html.LabelFor(model => model.OportunityID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("OportunityID", Model.LoadOportunity, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.OportunityID, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-4 mb-auto">
+                        <strong>@Html.LabelFor(model => model.ResponsibleID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("ResponsibleID", Model.LoadResponsible, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ResponsibleID, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-4 mb-auto">
+                        <strong>@Html.LabelFor(model => model.AssignToTargetID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("AssignToTargetID", Model.LoadAssingToTarget, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.AssignToTargetID, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto" id="calender-container">
+                        <strong>@Html.LabelFor(model => model.PlanningStartDate, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        <div class="input-group date">
+                            @Html.TextBoxFor(model => model.PlanningStartDate, new { @class = "form-control", autocomplete = "off", placeholder = "Selecione..." })<span class="input-group-addon"></span>
+                            @Html.ValidationMessageFor(model => model.PlanningStartDate, "", new { @class = "form-text text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-2 mb-auto" id="calender-container">
+                        <strong>@Html.LabelFor(model => model.PlanningEndDate, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        <div class="input-group date">
+                            @Html.TextBoxFor(model => model.PlanningEndDate, new { @class = "form-control", autocomplete = "off", placeholder = "Selecione..." })<span class="input-group-addon"></span>
+                            @Html.ValidationMessageFor(model => model.PlanningEndDate, "", new { @class = "form-text text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-2 mb-auto" onkeypress="return NumberOnly(event);">
+                        <strong>@Html.LabelFor(model => model.ManagementEffort, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.TextBoxFor(model => model.ManagementEffort, new { @class = "form-control", placeholder = "Digite o esforço", id = "ManagementEffort" })
+                        @Html.ValidationMessageFor(model => model.ManagementEffort, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto" onkeypress="return NumberOnly(event);">
+                        <strong>@Html.LabelFor(model => model.PlanningEffort, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.TextBoxFor(model => model.PlanningEffort, new { @class = "form-control", placeholder = "Digite o esforço", id = "PlanningEffort" })
+                        @Html.ValidationMessageFor(model => model.PlanningEffort, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto" onkeypress="return NumberOnly(event);">
+                        <strong>@Html.LabelFor(model => model.ExecutionEffort, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.TextBoxFor(model => model.ExecutionEffort, new { @class = "form-control", placeholder = "Digite o esforço", id = "ExecutionEffort" })
+                        @Html.ValidationMessageFor(model => model.ExecutionEffort, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.TotalEffort, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.TotalEffort, new { @class = "form-control text-left", @readonly = "readonly", id = "TotalEffort" })
+                        @Html.ValidationMessageFor(model => model.TotalEffort, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-12 mb-auto">
+                        @Html.LabelFor(model => model.Descriptions, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextAreaFor(model => model.Descriptions, new { @class = "form-control", placeholder = "Digite uma descrição", rows = "3" })
+                        <script>
+                            $(document).ready(function () {
+                                $("#Descriptions").kendoEditor({
+                                    tools: [
+                                        "formatting",
+                                        "bold", "italic", "underline", "strikethrough",
+                                        "justifyLeft", "justifyCenter", "justifyRight", "justifyFull",
+                                        "insertUnorderedList", "insertOrderedList", "indent", "outdent",
+                                        "createLink", "unlink", "insertImage", "insertFile",
+                                        "subscript", "superscript",
+                                        "tableWizard", "createTable",
+                                        "addRowAbove", "addRowBelow",
+                                        "addColumnLeft", "addColumnRight",
+                                        "deleteRow", "deleteColumn",
+                                        "viewHtml", "cleanFormatting",
+                                        "fontName", "fontSize",
+                                        "foreColor", "backColor"
+                                    ],
+                                    messages: {
+                                        fontNameInherit: "Arial",
+                                        fontSizeInherit: "3 (12pt)"
+                                    },
+                                    resizable: true
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="apropriateHour" role="tabpanel" aria-labelledby="apropriateHour-tab">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div id="timereleases-grid"></div>
+                    <script>
+
+                    $(document).ready(function () {
+                    $("#timereleases-grid").kendoGrid({
+
+                    dataSource: {
+                        type: "json",
+                    transport: {
+                    read: {
+                        url: "@Html.Raw(Url.Action("GetAllByDemandID", "TimeRelease"))",
+                        type: "POST",
+                        dataType: "json",
+                        data: additionalData
+                        }
+                    },
+                    schema: {
+                        data: "Data",
+                        total: "Total",
+                        errors: "Errors"
+                    },
+                        error: function (e) {
+                        display_kendoui_grid_error(e);
+                        this.cancelChanges();
+                    },
+                        pageSize: 10,
+                        serverPaging: true,
+                        serverFiltering: true,
+                        serverSorting: false
+                    },
+                        resizable: true,
+                        groupable: true,
+                        sortable: true,
+                    pageable: {
+                        refresh: true,
+                        pageSizes: true,
+                        buttonCount: 5,
+                    messages: {
+                        display: '{0} - {1} de {2} itens',
+                        allPages: 'Todos',
+                        itemsPerPage: 'Itens por página'
+                    }
+                    },
+                        columns: [{
+                                field: "IsApproved",
+                                title: "Status",
+                                width: 35,
+                                headerAttributes: { style: "text-align:center" },
+                                attributes: { class: "text-center" },
+                                template: '# if(IsApproved == false)  {# <div title="Aprovar" class="btn btn-warning btn-sm text-center" onclick="StatusChangeTimeRelease(#=TimeReleaseID#)" > <i class="fa fa-bell-slash" text-danger false-icon"></i></div> #} else ' +
+                                '{# <div title="Rejeitar" class="btn btn-success btn-sm" text-center" onclick="StatusChangeTimeRelease(#=TimeReleaseID#)"> <i class="fa fa-bell" text-danger false-icon"></i></div> #}  # '
+
+                            }, {
+
+                                field: "CreatedByID",
+                                title: "Nome",
+                                width: 150,
+                                headerAttributes: { style: "text-align:left" }
+                            }, {
+                                field: "ActivityID",
+                                title: "Tipo de Atividade",
+                                width: 140,
+                                headerAttributes: { style: "text-align:left" }
+                            },{
+                                field: "ActivityID",
+                                title: "Atividade",
+                                width: 70,
+                                headerAttributes: { style: "text-align:left" }
+                            },{
+                                field: "RegisterDate",
+                                title: "Data",
+                                width: 70,
+                                headerAttributes: { style: "text-align:left" },
+                            },{
+                                field: "StartWork",
+                                title: "Início",
+                                width: 70,
+                                headerAttributes: { style: "text-align:left" }
+                            },{
+                                field: "EndWork",
+                                title: "Término",
+                                width: 70,
+                                headerAttributes: { style: "text-align:left" }
+                            },{
+                                field: "TotalTime",
+                                title: "Total",
+                                width: 70,
+                                headerAttributes: { style: "text-align:left" },
+                            }],
+                        excelExport: function (e) {
+                            e.workbook.fileName = "LeanTest Cloud - Apropriação de horas.xlsx";
+                        }
+                        });
+                    });
+
+                    </script>
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+
+                        $('#btnExportExcel').click(function () {
+                            var grid = $('#timereleases-grid').data('kendoGrid');
+                            grid.saveAsExcel();
+                            return false;
+                        });
+
+                        $('#btn-aplicar-filtros').click(function () {
+                            var grid = $('#timereleases-grid').data('kendoGrid');
+                            if (grid.dataSource.page() == 1) {
+                                grid.dataSource.page(1);
+                            }
+                            else {
+                                grid.dataSource.read({ parameter: "value" });
+                            }
+                            return false;
+                        });
+
+                        function additionalData() {
+                            var data = {
+                                RecordID: $('#@Html.FieldIdFor(model => model.DemandID)').val()
+                            };
+
+                            addAntiForgeryToken(data);
+
+                            return data;
+
+                        };
+                        
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="dailyLog" role="tabpanel" aria-labelledby="dailyLog-tab">
+        <div class="container-fluid">
+            <div class="row">
+                <br />
+                <div class="content-header clearfix">
+                    <div class="pull-left">
+                        <br />
+                        <button type="button" onclick="AddEvent(@Model.DemandID)" id="btnNewEvent" class="btn btn-dark btn-sm" data-toggle="modal" data-target='#AddEventModal' title="Novo Registro">
+                            <i class="fa fa-plus-circle"></i> Novo
+                        </button>
+
+                        <button type="button" id="btnExportExcelEvent" class="btn btn-info btn-sm" title="Exportar para Excel">
+                            <i class="fa fa-file-excel-o"></i> Exportar para Excel
+                        </button>
+                    </div>
+                </div>
+                <br />
+            </div>
+        </div>
+        <br />
+        <div class="card">
+            <div class="card-body">
+                <div id="dailylogs-grid"></div>
+                <script>
+
+                $(document).ready(function () {
+                    $("#dailylogs-grid").kendoGrid({
+
+                        dataSource: {
+                            type: "json",
+                            transport: {
+                                read: {
+                                    url: "@Html.Raw(Url.Action("GetAllByDemandID", "DailyLog"))",
+                                    type: "POST",
+                                    dataType: "json",
+                                    data: additionalData
+                                }
+                            },
+                            schema: {
+                                data: "Data",
+                                total: "Total",
+                                errors: "Errors"
+                            },
+                            error: function (e) {
+                                display_kendoui_grid_error(e);
+                                this.cancelChanges();
+                            },
+                            pageSize: 10,
+                            serverPaging: true,
+                            serverFiltering: true,
+                            serverSorting: false
+                        },
+                        resizable: true,
+                        groupable: true,
+                        sortable: true,
+                        pageable: {
+                            refresh: true,
+                            pageSizes: true,
+                            buttonCount: 5,
+                            messages: {
+                                display: '{0} - {1} de {2} itens',
+                                allPages: 'Todos',
+                                itemsPerPage: 'Itens por página'
+                            }
+                        },
+                            columns: [{
+                            field: "",
+                            title: "Comandos",
+                            width: 80,
+                            headerAttributes: { style: "text-align:center" },
+                            attributes: { style: "text-align:center" },
+                            template: '<div title="Editar Evento" class="btn btn-primary btn-sm text-center" onclick="EditEvent(#=DailyLogID#)" data-toggle="modal" data-target="\\#MaintenanceEventModal"> <i class="fa fa-edit"></i> </div> ' +
+                            '<div title="Excluir Evento" class="btn btn-danger btn-sm text-center" onclick="DeleteEvent(#=DailyLogID#)" data-toggle="modal" data-target="\\#DeleteEventModal"> <i class="fa fa-trash"></i> </div> '
+
+                        },{
+                            field: "Description",
+                            title: "Descrição do Evento",
+                            width: 350,
+                            headerAttributes: { style: "text-align:left" }
+                        }, {
+                            field: "CreatedByID",
+                            title: "Criado por",
+                            width: 100,
+                            headerAttributes: { style: "text-align:left" }
+                        }, {
+                            field: "CreationDate",
+                            title: "Data de criação",
+                            width: 100,
+                            headerAttributes: { style: "text-align:left" }
+                        }],
+                        excelExport: function (e) {
+                            e.workbook.fileName = "LeanTest Cloud - Eventos.xlsx";
+                        }
+                    });
+                });
+
+                        </script>
+                        <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#btnExportExcelEvent').click(function () {
+                        var grid = $('#dailylogs-grid').data('kendoGrid');
+                        grid.saveAsExcel();
+                        return false;
+                    });
+
+                    $('#btn-aplicar-filtros').click(function () {
+                        var grid = $('#dailylogs-grid').data('kendoGrid');
+                        if (grid.dataSource.page() == 1) {
+                            grid.dataSource.page(1);
+                        }
+                        else {
+                            grid.dataSource.read({ parameter: "value" });
+                        }
+                        return false;
+                    });
+                });
+
+                function additionalData() {
+                    var data = {
+                        RecordID: $('#@Html.FieldIdFor(model => model.DemandID)').val()
+                    };
+
+                    addAntiForgeryToken(data);
+
+                    return data;
+
+                };
+
+                </script>
+            </div>
+
+        </div>
+    </div>
+    <div class="tab-pane fade" id="scope" role="tabpanel" aria-labelledby="scope-tab">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-12 mb-auto">
+                        @Html.TextAreaFor(model => model.Scope, new { @class = "form-control", placeholder = "Digite o escopo", rows = "15" })
+                        <script>
+                            $(document).ready(function () {
+                                $("#Scope").kendoEditor({
+                                    tools: [
+                                        "formatting",
+                                        "bold", "italic", "underline", "strikethrough",
+                                        "justifyLeft", "justifyCenter", "justifyRight", "justifyFull",
+                                        "insertUnorderedList", "insertOrderedList", "indent", "outdent",
+                                        "createLink", "unlink", "insertImage", "insertFile",
+                                        "subscript", "superscript",
+                                        "tableWizard", "createTable",
+                                        "addRowAbove", "addRowBelow",
+                                        "addColumnLeft", "addColumnRight",
+                                        "deleteRow", "deleteColumn",
+                                        "viewHtml", "cleanFormatting",
+                                        "fontName", "fontSize",
+                                        "foreColor", "backColor"
+                                    ],
+                                    messages: {
+                                        fontNameInherit: "Arial",
+                                        fontSizeInherit: "3 (12pt)"
+                                    },
+                                    resizable: true
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane fade" id="expenses" role="tabpanel" aria-labelledby="expenses-tab">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div id="expenses-grid"></div>
+                    <script>
+                        $(document).ready(function () {
+
+                        $("#expenses-grid").kendoGrid({
+
+                        dataSource: {
+                            type: "json",
+                        transport: {
+                        read: {
+                            url: "@Html.Raw(Url.Action("GetAllByDemandID", "Expense"))",
+                            type: "POST",
+                            dataType: "json",
+                            data: additionalData
+                        }
+                        },
+                        schema: {
+                            data: "Data",
+                            total: "Total",
+                            errors: "Errors"
+                        },
+                            error: function (e) {
+                            display_kendoui_grid_error(e);
+                            this.cancelChanges();
+                        },
+                            pageSize: 10,
+                            serverPaging: true,
+                            serverFiltering: true,
+                            serverSorting: false
+                        },
+                            resizable: true,
+                            groupable: true,
+                            sortable: true,
+                        pageable: {
+                            refresh: true,
+                            pageSizes: true,
+                            buttonCount: 5,
+                        messages: {
+                            display: '{0} - {1} de {2} itens',
+                            allPages: 'Todos',
+                            itemsPerPage: 'Itens por página'
+                        }
+                        },
+                            columns: [{
+
+                                field: "CustomerID",
+                                title: "Cliente",
+                                width: 150,
+                                headerAttributes: { style: "text-align:left" }
+                            }, {
+                                field: "RegisterDate",
+                                title: "Data da Despesa",
+                                width: 150,
+                                headerAttributes: { style: "text-align:left" }
+                            }, {
+                                field: "TypeExpenseID",
+                                title: "Tipo da Despesa",
+                                width: 150,
+                                headerAttributes: { style: "text-align:left" }
+                            }, {
+                                field: "StatusID",
+                                title: "Status",
+                                width: 150,
+                                headerAttributes: { style: "text-align:left" }
+                            }, {
+                                field: "AmountExpense",
+                                title: "Valor R$",
+                                width: 100,
+                                headerAttributes: { style: "text-align:left" }
+                            }, {
+                                field: "CreatedByID",
+                                title: "Criado por",
+                                width: 200,
+                                headerAttributes: { style: "text-align:left" }
+                            }],
+                            excelExport: function (e) {
+                                e.workbook.fileName = "LeanTest Cloud - Despesas de reembolso.xlsx";
+                            }
+                        });
+                    });
+                    
+                    </script>
+                   <script type="text/javascript">
+                   $(document).ready(function () {
+
+                   $('#btnExportExcel').click(function () {
+                        var grid = $('#expenses-grid').data('kendoGrid');
+                        grid.saveAsExcel();
+                        return false;
+                    });
+
+                   $('#btn-aplicar-filtros').click(function () {
+                        var grid = $('#expenses-grid').data('kendoGrid');
+                        if (grid.dataSource.page() == 1) {
+                            grid.dataSource.page(1);
+                        }
+                        else {
+                            grid.dataSource.read({ parameter: "value" });
+                        }
+                        return false;
+                    });
+
+                   function additionalData() {
+                        var data = {
+                            RecordID: $('#@Html.FieldIdFor(model => model.DemandID)').val()
+                        };
+
+                        addAntiForgeryToken(data);
+
+                        return data;
+
+                    };
+                   </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="attachment" role="tabpanel" aria-labelledby="attachment-tab">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-12 mb-auto">
+
+                        <div class="col-md-12 mx-auto">
+                            <div class="form-group row">
+                                <input type="file" name="file" />
+                            </div>
+                        </div>
+                        <div id="attachment-grid"></div>
+                        <script>
+
+        $(document).ready(function () {
+            $("#attachment-grid").kendoGrid({
+
+                dataSource: {
+                    type: "json",
+                    transport: {
+                        read: {
+                            url: "@Html.Raw(Url.Action("GetAllByRecordID", "Attachment"))",
+                            type: "POST",
+                            dataType: "json",
+                            data: additionalData
+                        }
+                    },
+                    schema: {
+                        data: "Data",
+                        total: "Total",
+                        errors: "Errors"
+                    },
+                    error: function (e) {
+                        display_kendoui_grid_error(e);
+                        this.cancelChanges();
+                    },
+                    pageSize: 10,
+                    serverPaging: true,
+                    serverFiltering: true,
+                    serverSorting: false
+                },
+                resizable: true,
+                groupable: true,
+                sortable: true,
+                pageable: {
+                    refresh: true,
+                    pageSizes: true,
+                    buttonCount: 5,
+                    messages: {
+                        display: '{0} - {1} de {2} itens',
+                        allPages: 'Todos',
+                        itemsPerPage: 'Itens por página'
+                    }
+                },
+                columns: [{
+                    field: "AttachmentID",
+                    title: "ID",
+                    width: 50,
+                    headerAttributes: { style: "text-align:left" }
+                }, {
+                    field: "FileName",
+                    title: "Nome do arquivo",
+                    width: 250,
+                    headerAttributes: { style: "text-align:left" }
+                }, {
+                    field: "",
+                    title: "Comandos",
+                    width: 50,
+                    headerAttributes: { style: "text-align:center" },
+                    attributes: { style: "text-align:center" },
+                    template: '<div title="Excluir" class="btn btn-danger btn-sm text-center" onclick="AttachmentDelete(#=AttachmentID#)" data-toggle="modal" data-target="\\#AttachmentDeleteModal"> <i class="fa fa-trash"></i> </div> ' +
+                              '<a href="Attachment/Download?attachmentID=#=AttachmentID#" class="btn btn-info btn-sm text-center"> <i class="fa fa-download" text-danger false-icon"></i></a>'
+
+                }],
+                excelExport: function (e) {
+                    e.workbook.fileName = "LeanTest Cloud - Anexos.xlsx";
+                }
+            });
+        });
+
+                    </script>
+                    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btnExportExcel').click(function () {
+                var grid = $('#attachment-grid').data('kendoGrid');
+                grid.saveAsExcel();
+                return false;
+            });
+
+            $('#btn-aplicar-filtros').click(function () {
+                var grid = $('#attachment-grid').data('kendoGrid');
+                if (grid.dataSource.page() == 1) {
+                    grid.dataSource.page(1);
+                }
+                else {
+                    grid.dataSource.read({ parameter: "value" });
+                }
+                return false;
+            });
+
+        });
+
+        function additionalData() {
+            var data = {
+                RecordID: $('#@Html.FieldIdFor(model => model.DemandID)').val(),
+                SystemFeatureID: "200"
+            };
+
+            addAntiForgeryToken(data);
+
+            return data;
+
+        };
+
+        var AttachmentDelete = function (attachmentID) {
+            var url = '/Attachment/GetByID?attachmentID=' + attachmentID + '&ActionName=Delete';
+
+            $('#AttachmentDeleteModalDiv').load(url, function () {
+
+            })
+        };
+
+        var Download = function (attachmentID) {
+            var url = '/Attachment/Download?attachmentID=' + attachmentID;
+
+            $('#DeleteModalDiv').load(url, function () {
+
+            })
+        };
+
+                    </script>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="tab-pane fade" id="historical" role="tabpanel" aria-labelledby="historical-tab">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-12 mb-auto">
+                        <div id="historical-grid"></div>
+                        <script>
+
+        $(document).ready(function () {
+            $("#historical-grid").kendoGrid({
+
+                dataSource: {
+                    type: "json",
+                    transport: {
+                        read: {
+                            url: "@Html.Raw(Url.Action("GetAll", "Historical"))",
+                            type: "POST",
+                            dataType: "json",
+                            data: additionalData
+                        }
+                    },
+                    schema: {
+                        data: "Data",
+                        total: "Total",
+                        errors: "Errors"
+                    },
+                    error: function (e) {
+                        display_kendoui_grid_error(e);
+                        this.cancelChanges();
+                    },
+                    pageSize: 10,
+                    serverPaging: true,
+                    serverFiltering: true,
+                    serverSorting: false
+                },
+                resizable: true,
+                groupable: true,
+                sortable: true,
+                pageable: {
+                    refresh: true,
+                    pageSizes: true,
+                    buttonCount: 5,
+                    messages: {
+                        display: '{0} - {1} de {2} itens',
+                        allPages: 'Todos',
+                        itemsPerPage: 'Itens por página'
+                    }
+                },
+                columns: [{
+                    field: "FieldName",
+                    title: "Campo",
+                    width: 70,
+                    headerAttributes: { style: "text-align:left" }
+                }, {
+                    field: "OldValue",
+                    title: "Valor Anterior",
+                    width: 100,
+                    headerAttributes: { style: "text-align:left" }
+                }, {
+                    field: "NewValue",
+                    title: "Valor Atual",
+                    width: 100,
+                    headerAttributes: { style: "text-align:left" }
+                }, {
+                    field: "CreatedByID",
+                    title: "Alterado por",
+                    width: 70,
+                    headerAttributes: { style: "text-align:left" }
+                }, {
+                    field: "CreationDate",
+                    title: "Data da Alteração",
+                    width: 50,
+                    headerAttributes: { style: "text-align:left" }
+                }],
+                excelExport: function (e) {
+                    e.workbook.fileName = "LeanTest Cloud - Anexos.xlsx";
+                }
+            });
+        });
+
+                        </script>
+                        <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btnExportExcel').click(function () {
+                var grid = $('#historical-grid').data('kendoGrid');
+                grid.saveAsExcel();
+                return false;
+            });
+
+            $('#btn-aplicar-filtros').click(function () {
+                var grid = $('#historical-grid').data('kendoGrid');
+                if (grid.dataSource.page() == 1) {
+                    grid.dataSource.page(1);
+                }
+                else {
+                    grid.dataSource.read({ parameter: "value" });
+                }
+                return false;
+            });
+
+
+        });
+
+        function additionalData() {
+            var data = {
+                RecordID: $('#@Html.FieldIdFor(model => model.DemandID)').val(),
+                SystemFeatureID: "200"
+            };
+
+            addAntiForgeryToken(data);
+
+            return data;
+
+        };
+
+                        </script>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $('#ManagementEffort').change(function () {
+        var ManagementEffort
+        if (document.getElementById("ManagementEffort").value == "") {
+            ManagementEffort = "0"
+        }
+        else {
+            ManagementEffort = document.getElementById("ManagementEffort").value;
+        }
+        if (document.getElementById("PlanningEffort").value == "") {
+            PlanningEffort = "0"
+        }
+        else {
+            PlanningEffort = document.getElementById("PlanningEffort").value;
+        }
+        if (document.getElementById("ExecutionEffort").value == "") {
+            ExecutionEffort = "0"
+        }
+        else {
+            ExecutionEffort = document.getElementById("ExecutionEffort").value;
+        }
+
+        var TotalEffort = parseFloat(ManagementEffort) + parseFloat(PlanningEffort) + parseFloat(ExecutionEffort);
+        document.getElementById('TotalEffort').value = parseFloat(TotalEffort).toFixed(2).replace(".", ",");
+    });
+
+    function ComparaDatas() {
+        var StartingDate = document.getElementById("PlanningStartDate").value;
+        var ClosingDate = document.getElementById("PlanningEndDate").value;
+        var Scope = document.getElementById("Scope").value;
+
+        var nova_StartingDate = parseInt(StartingDate.split("/")[2].toString() + StartingDate.split("/")[1].toString() + StartingDate.split("/")[0].toString());
+        var nova_ClosingDate = parseInt(ClosingDate.split("/")[2].toString() + ClosingDate.split("/")[1].toString() + ClosingDate.split("/")[0].toString());
+
+        if (nova_StartingDate > nova_ClosingDate && Scope === "") {
+            Swal.fire({
+                position: 'top-center',
+                type: 'error',
+                text: 'Data de início da demanda não pode ser maior que a de término / Campo Escopo deve ser preenchido!!!',
+                showConfirmButton: false,
+                confirmButtonColor: "#9ACD32",
+                timer: 3500
+            })
+            return false
+        }
+
+        else if (nova_StartingDate > nova_ClosingDate) {
+            Swal.fire({
+                position: 'top-center',
+                type: 'error',
+                text: 'Data de início da demanda não pode ser maior que a de término!!!',
+                showConfirmButton: false,
+                confirmButtonColor: "#9ACD32",
+                timer: 2500
+            })
+            return false
+        }
+        else if (Scope === "") {
+            Swal.fire({
+                position: 'top-center',
+                type: 'error',
+                text: 'Campo Escopo deve ser preenchido!!! ',
+                showConfirmButton: false,
+                confirmButtonColor: "#9ACD32",
+                timer: 2500
+            })
+            return false
+        }
+        else {
+            return true
+        }
+    }
+
+
+    //Data de início da demanda não pode ser anterior a data de criação da demanda
+    ////$('#PlanningStartDate').change(function () {
+    ////    var CreationDate = document.getElementById("CreationDate").value;
+    ////    var new_CreationDate = CreationDate.toString("dd/MM/yyyy HH:mm:ss");
+    ////    result = new_CreationDate.substring(10, 0);
+
+    ////    if (document.getElementById("PlanningStartDate").value < document.getElementById("CreationDate").value)
+    ////        document.getElementById("PlanningStartDate").value = result;
+
+    ////});
+
+
+    $('#PlanningEffort').change(function () {
+        var ManagementEffort
+        if (document.getElementById("ManagementEffort").value == "") {
+            ManagementEffort = "0"
+        }
+        else {
+            ManagementEffort = document.getElementById("ManagementEffort").value;
+        }
+        if (document.getElementById("PlanningEffort").value == "") {
+            PlanningEffort = "0"
+        }
+        else {
+            PlanningEffort = document.getElementById("PlanningEffort").value;
+        }
+        if (document.getElementById("ExecutionEffort").value == "") {
+            ExecutionEffort = "0"
+        }
+        else {
+            ExecutionEffort = document.getElementById("ExecutionEffort").value;
+        }
+
+        var TotalEffort = parseFloat(ManagementEffort) + parseFloat(PlanningEffort) + parseFloat(ExecutionEffort);
+        document.getElementById('TotalEffort').value = parseFloat(TotalEffort).toFixed(2).replace(".", ",");
+    });
+
+
+    $('#ExecutionEffort').change(function () {
+        var ManagementEffort
+        if (document.getElementById("ManagementEffort").value == "") {
+            ManagementEffort = "0"
+        }
+        else {
+            ManagementEffort = document.getElementById("ManagementEffort").value.replace(",", ".");
+        }
+        if (document.getElementById("PlanningEffort").value == "") {
+            PlanningEffort = "0"
+        }
+        else {
+            PlanningEffort = document.getElementById("PlanningEffort").value.replace(",", ".");
+        }
+        if (document.getElementById("ExecutionEffort").value == "") {
+            ExecutionEffort = "0"
+        }
+        else {
+            ExecutionEffort = document.getElementById("ExecutionEffort").value.replace(",", ".");
+        }
+
+        var TotalEffort = parseFloat(ManagementEffort) + parseFloat(PlanningEffort) + parseFloat(ExecutionEffort);
+        document.getElementById('TotalEffort').value = parseFloat(TotalEffort).toFixed(2).replace(".", ",");
+    });
+</script>
+
+<script language='JavaScript'>
+    function NumberOnly(e) {
+        var tecla = (window.event) ? e.keyCode : e.which;
+        if (tecla == 8 || tecla == 0)
+            return true;
+        if (tecla != 44 && tecla < 48 || tecla > 57)
+            return false;
+    }
+
+    $('#ManagementEffort').bind('cut copy paste', function (e) {
+        e.preventDefault();
+    });
+
+    $('#PlanningEffort').bind('cut copy paste', function (e) {
+        e.preventDefault();
+    });
+
+    $('#ExecutionEffort').bind('cut copy paste', function (e) {
+        e.preventDefault();
+    });
+</script>
+
+﻿

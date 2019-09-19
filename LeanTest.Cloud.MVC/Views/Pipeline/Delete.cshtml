@@ -1,0 +1,11 @@
+﻿@model Lean.Test.Cloud.MVC.Models.Pipelines.PipelineModel
+
+@Html.HiddenFor(model => model.OportunityID)
+<div>
+    Deseja realmente excluir o seguinte registro?
+    <br />
+    <br />
+    <ul>
+        <li>Oportunidade: <strong>@Model.OportunityCode + ' - ' + @Model.Summary</strong></li>
+    </ul>
+</div>

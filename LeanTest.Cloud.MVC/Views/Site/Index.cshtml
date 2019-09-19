@@ -1,0 +1,221 @@
+﻿@model Lean.Test.Cloud.MVC.Models.Users.UserModel
+@{
+    ViewBag.Title = " - Site";
+    Layout = "~/Views/Shared/_ContentPage.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Jumbotron Header -->
+        <header class="jumbotron-fluid my-4">
+            <h2 class="display-5">Bem vindo ao LeanTest Cloud!</h2>
+            <p class="lead">
+                <strong>O que é o leantest cloud?</strong>
+            <p class="lead">
+                O LeanTest Cloud é parte de uma suite de ferramentas, onde o principal objetivo é redução de custos e eficiência na produtividade padronizada e automatizada, através de aceleradores de testes automatizados, gerando assim mais valor agregado a nossos clientes.
+            </p>
+            <button type="button" id="BtnSignin" class="btn btn-dark btn-sm" onclick="Signin()" data-toggle="modal" data-target='#LoginModal'>
+                <i class="fa fa-user-circle"></i>  Acessar
+            </button>
+            <button type="button" id="btnSigiup" class="btn btn-success btn-sm" onclick="Signup()" data-toggle="modal" data-target='#NewUserModal'>
+                <i class="fa fa-user-plus"></i>  Cadastre-se
+            </button>
+        </header>
+
+        <!-- Page Features -->
+        <div class="row text-center">
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="~/Content/images/gestao.gif" alt="" height="200">
+                    <div class="card-body">
+                        <h4 class="card-title">Gestão de Testes</h4>
+                        <p class="card-text">Modelo de gerenciamento e controle integrada e centralizada.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn btn-primary btn-sm">Leia mais...</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="~/Content/images/acelerador.gif" alt="" height="175">
+                    <div class="card-body">
+                        <h4 class="card-title">Aceleradores de Automação</h4>
+                        <p class="card-text">Alta produtividade com geração automatica.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn btn-primary btn-sm">Leia mais...</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="~/Content/images/test.gif" alt="" height="200">
+                    <div class="card-body">
+                        <h4 class="card-title">Automação de Serviços</h4>
+                        <p class="card-text">Execução de Testes automatizados para micro serviços rest e soap.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn btn-primary btn-sm">Leia mais...</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="~/Content/images/performance.gif" alt="" height="200">
+                    <div class="card-body">
+                        <h4 class="card-title">Teste de Performance</h4>
+                        <p class="card-text">Avaliação da performance dos serviços contínua.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn btn-primary btn-sm">Leia Mais...</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+
+        </div>
+        <!-- /.container -->
+    </footer>
+}
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+   
+
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { novalidate = "novalidate" }))
+    {
+        <div class="modal fade" id="ExitApplication" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Sair da aplicação?</h3>
+                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    </div>
+                    <div class="modal-body" id="ExitApplicationDiv">
+                        Deseja realmente sair da aplicação?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success btn-sm" onclick="Exit()">
+                            <i class="fa fa-check-circle"></i> Sim
+                        </button>
+                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                            <i class="fa fa-close"></i> Não
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+
+    <script type="text/javascript">
+
+        $("#BtnSignin").focus();
+
+        var Signin = function () {
+            var url = '/User/LoadSignin';
+
+            $('#LoginModalDiv').load(url, function () {
+
+            })
+        };
+        var Signup = function () {
+            var url = '/User/LoadSignup';
+
+            $('#NewUserModalDiv').load(url, function () {
+
+            })
+        };
+
+        var Exit = function () {
+            var url = '/User/Exit';
+
+            $('#ExitApplication').load(url, function () {
+
+            })
+        };
+
+        (function (window) {
+            'use strict';
+
+            var noback = {
+
+                //globals 
+                version: '0.0.1',
+                history_api: typeof history.pushState !== 'undefined',
+
+                init: function () {
+                    window.location.hash = '#no-back';
+                    noback.configure();
+                },
+
+                hasChanged: function () {
+                    if (window.location.hash == '#no-back') {
+                        window.location.hash = '#site';
+                        //mostra mensagem que não pode usar o btn volta do browser
+                        if ($("#msgAviso").css('display') == 'none') {
+                            $("#msgAviso").slideToggle("slow");
+                        }
+                    }
+                },
+
+                checkCompat: function () {
+                    if (window.addEventListener) {
+                        window.addEventListener("hashchange", noback.hasChanged, false);
+                    } else if (window.attachEvent) {
+                        window.attachEvent("onhashchange", noback.hasChanged);
+                    } else {
+                        window.onhashchange = noback.hasChanged;
+                    }
+                },
+
+                configure: function () {
+                    if (window.location.hash == '#no-back') {
+                        if (this.history_api) {
+                            history.pushState(null, '', '#site');
+                        } else {
+                            window.location.hash = '#site';
+                            //mostra mensagem que não pode usar o btn volta do browser
+                            if ($("#msgAviso").css('display') == 'none') {
+                                $("#msgAviso").slideToggle("slow");
+                            }
+                        }
+                    }
+                    noback.checkCompat();
+                    noback.hasChanged();
+                }
+
+            };
+
+            // AMD support 
+            if (typeof define === 'function' && define.amd) {
+                define(function () { return noback; });
+            }
+            // For CommonJS and CommonJS-like 
+            else if (typeof module === 'object' && module.exports) {
+                module.exports = noback;
+            }
+            else {
+                window.noback = noback;
+            }
+            noback.init();
+        }(window)); 
+    </script>
+

@@ -1,0 +1,404 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5792190A-BCE6-4913-A42E-86FDD7076F87}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Lean.Test.Cloud.Domain</RootNamespace>
+    <AssemblyName>Lean.Test.Cloud.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Command\AnnexContracts\FilterAnnexContractCommand.cs" />
+    <Compile Include="Command\AnnexContracts\MaintenanceAnnexContractCommand.cs" />
+    <Compile Include="Command\ResumeVacancies\MaintenanceResumeVacancieCommand.cs" />
+    <Compile Include="Command\VacanciesResumes\MaintenanceVacancieResumeCommand.cs" />
+    <Compile Include="Command\Supports\FilterSupportCommand.cs" />
+    <Compile Include="Command\Supports\MaintenanceSupportCommand.cs" />
+    <Compile Include="Command\ContractAdditives\FilterContractAdditiveCommand.cs" />
+    <Compile Include="Command\ContractAdditives\MaintenanceContractAdditiveCommand.cs" />
+    <Compile Include="Command\CustomersUsers\MaintenanceCustomerUserCommand.cs" />
+    <Compile Include="Command\Contacts\FilterContactCommand.cs" />
+    <Compile Include="Command\Contacts\MaintenanceContactCommand.cs" />
+    <Compile Include="Command\Contracts\FilterContractCommand.cs" />
+    <Compile Include="Command\Contracts\MaintenanceContractCommand.cs" />
+    <Compile Include="Command\Dashboard\FilterDashboardCommand.cs" />
+    <Compile Include="Command\Dashboard\MaintenanceDashboardCommand.cs" />
+    <Compile Include="Command\GroupsUsers\MaintenanceGroupUserCommand.cs" />
+    <Compile Include="Command\PipelineEvents\FilterPipelineEventCommand.cs" />
+    <Compile Include="Command\PipelineEvents\MaintenancePipelineEventCommand.cs" />
+    <Compile Include="Command\PositionsSalaries\FilterPositionsSalarieCommand.cs" />
+    <Compile Include="Command\PositionsSalaries\MaintenancePositionsSalarieCommand.cs" />
+    <Compile Include="Command\Resumes\FilterResumeCommand.cs" />
+    <Compile Include="Command\Resumes\MaintenanceResumeCommand.cs" />
+    <Compile Include="Command\MovimentEmployees\FilterMovimentEmployeeCommand.cs" />
+    <Compile Include="Command\MovimentEmployees\MaintenanceMovimentEmployeeCommand.cs" />
+    <Compile Include="Command\Defects\FilterDefectCommand.cs" />
+    <Compile Include="Command\Defects\MaintenanceDefectCommand.cs" />
+    <Compile Include="Command\EquipmentAccessories\FilterEquipmentAccessorieCommand.cs" />
+    <Compile Include="Command\EquipmentAccessories\MaintenanceEquipmentAccessorieCommand.cs" />
+    <Compile Include="Command\ApplicationSystems\FilterApplicationSystemCommand.cs" />
+    <Compile Include="Command\ApplicationSystems\MaintenanceApplicationSystemCommand.cs" />
+    <Compile Include="Command\Attachments\FilterAttachmentCommand.cs" />
+    <Compile Include="Command\Attachments\MaintenanceAttachmentCommand.cs" />
+    <Compile Include="Command\AccountingEntries\FilterAccountingEntrieCommand.cs" />
+    <Compile Include="Command\AccountingEntries\MaintenanceAccountingEntrieCommand.cs" />
+    <Compile Include="Command\ChangeRequests\FilterChangeRequestCommand.cs" />
+    <Compile Include="Command\ChangeRequests\MaintenanceChangeRequestCommand.cs" />
+    <Compile Include="Command\DailyLogsComments\FilterDailyLogCommentCommand.cs" />
+    <Compile Include="Command\DailyLogsComments\MaintenanceDailyLogCommentCommand.cs" />
+    <Compile Include="Command\DailyLogs\FilterDailyLogCommand.cs" />
+    <Compile Include="Command\DailyLogs\MaintenanceDailyLogCommand.cs" />
+    <Compile Include="Command\DemandsUsers\MaintenanceDemandUserCommand.cs" />
+    <Compile Include="Command\Demands\FilterDemandCommand.cs" />
+    <Compile Include="Command\Demands\MaintenanceDemandCommand.cs" />
+    <Compile Include="Command\Customers\FilterCustomerCommand.cs" />
+    <Compile Include="Command\Customers\MaintenanceCustomerCommand.cs" />
+    <Compile Include="Command\Elements\FilterElementCommand.cs" />
+    <Compile Include="Command\Elements\MaintenanceElementCommand.cs" />
+    <Compile Include="Command\Pipelines\FilterPipelineCommand.cs" />
+    <Compile Include="Command\Pipelines\MaintenancePipelineCommand.cs" />
+    <Compile Include="Command\Skills\FilterSkillCommand.cs" />
+    <Compile Include="Command\Skills\MaintenanceSkillCommand.cs" />
+    <Compile Include="Command\SystemFeatures\FilterSystemFeatureCommand.cs" />
+    <Compile Include="Command\SystemFeatures\MaintenanceSystemFeatureCommand.cs" />
+    <Compile Include="Command\Expenses\FilterExpenseCommand.cs" />
+    <Compile Include="Command\Expenses\MaintenanceExpenseCommand.cs" />
+    <Compile Include="Command\Features\FilterFeatureCommand.cs" />
+    <Compile Include="Command\Features\MaintenanceFeatureCommand.cs" />
+    <Compile Include="Command\Groups\FilterGroupCommand.cs" />
+    <Compile Include="Command\Groups\MaintenanceGroupCommand.cs" />
+    <Compile Include="Command\Historicals\FilterHistoricalCommand.cs" />
+    <Compile Include="Command\Historicals\MaintenanceHistoricalCommand.cs" />
+    <Compile Include="Command\Licenses\FilterLicenseCommand.cs" />
+    <Compile Include="Command\Licenses\MaintenanceLicenseCommand.cs" />
+    <Compile Include="Command\Parameters\FilterParameterCommand.cs" />
+    <Compile Include="Command\Parameters\MaintenanceParameterCommand.cs" />
+    <Compile Include="Command\ParameterValues\FilterParameterValueCommand.cs" />
+    <Compile Include="Command\ParameterValues\MaintenanceParameterValueCommand.cs" />
+    <Compile Include="Command\Profiles\FilterProfileCommand.cs" />
+    <Compile Include="Command\Profiles\MaintenanceProfilesCommand.cs" />
+    <Compile Include="Command\SystemMenus\FilterSystemMenuCommand.cs" />
+    <Compile Include="Command\SystemMenus\MaintenanceSystemMenuCommand.cs" />
+    <Compile Include="Command\SystemParameters\FilterSystemParameterCommand.cs" />
+    <Compile Include="Command\SystemParameters\MaintenanceSystemParameterCommand.cs" />
+    <Compile Include="Command\Tasks\FilterTaskCommand.cs" />
+    <Compile Include="Command\Tasks\MaintenanceTaskCommand.cs" />
+    <Compile Include="Command\Templates\FilterTemplateCommand.cs" />
+    <Compile Include="Command\Templates\MaintenanceTemplateCommand.cs" />
+    <Compile Include="Command\TestLogs\FilterTestLogCommand.cs" />
+    <Compile Include="Command\TestLogs\MaintenanceTestLogCommand.cs" />
+    <Compile Include="Command\TestPackages\FilterTestPackageCommand.cs" />
+    <Compile Include="Command\TestPackages\MaintenanceTestPackagesCommand.cs" />
+    <Compile Include="Command\TestScenarioFeatures\FilterTestScenarioFeatureCommand.cs" />
+    <Compile Include="Command\TestScenarioFeatures\MaintenanceTestScenarioFeatureCommand.cs" />
+    <Compile Include="Command\TestScenarios\FilterTestScenarioCommand.cs" />
+    <Compile Include="Command\TestScenarios\MaintenanceTestScenarioCommand.cs" />
+    <Compile Include="Command\TestCases\FilterTestCaseCommand.cs" />
+    <Compile Include="Command\TestCases\MaintenanceTestCaseCommand.cs" />
+    <Compile Include="Command\TimeReleases\FilterTimeReleaseCommand.cs" />
+    <Compile Include="Command\TimeReleases\MaintenanceTimeReleaseCommand.cs" />
+    <Compile Include="Command\Users\MaintenanceUserCommand.cs" />
+    <Compile Include="Command\Users\FilterUserCommand.cs" />
+    <Compile Include="Command\Issues\FilterIssueCommand.cs" />
+    <Compile Include="Command\Issues\MaintenanceIssueCommand.cs" />
+    <Compile Include="Command\Vacancies\FilterVacancieCommand.cs" />
+    <Compile Include="Command\Vacancies\MaintenanceVacancieCommand.cs" />
+    <Compile Include="Command\Workflows\FilterWorkflowCommand.cs" />
+    <Compile Include="Command\Workflows\MaintenanceWorkflowCommand.cs" />
+    <Compile Include="Entities\AccountingEntries\AccountingEntrieExtensions.cs" />
+    <Compile Include="Entities\AnnexContracts\AnnexContract.cs" />
+    <Compile Include="Entities\AnnexContracts\AnnexContractExtensions.cs" />
+    <Compile Include="Entities\ResumeVacancies\ResumeVacancie.cs" />
+    <Compile Include="Entities\ResumeVacancies\ResumeVacancieExtensions.cs" />
+    <Compile Include="Entities\VacancieResumes\VacancieResumeExtensions.cs" />
+    <Compile Include="Entities\VacancieResumes\VacancieResume.cs" />
+    <Compile Include="Entities\Supports\Support.cs" />
+    <Compile Include="Entities\Supports\SupportExtensions.cs" />
+    <Compile Include="Entities\ContractAdditives\ContractAdditive.cs" />
+    <Compile Include="Entities\ContractAdditives\ContractAdditiveExtensions.cs" />
+    <Compile Include="Entities\CustomersUsers\CustomerUser.cs" />
+    <Compile Include="Entities\CustomersUsers\CustomerUserExtensions.cs" />
+    <Compile Include="Entities\Contracts\Contract.cs" />
+    <Compile Include="Entities\Contracts\ContractExtensions.cs" />
+    <Compile Include="Entities\Contacts\Contact.cs" />
+    <Compile Include="Entities\Contacts\ContactExtensions.cs" />
+    <Compile Include="Entities\Dashboards\Dashboard.cs" />
+    <Compile Include="Entities\Dashboards\DashboardExtensions.cs" />
+    <Compile Include="Entities\GroupsUsers\GroupsUserExtensions.cs" />
+    <Compile Include="Entities\GroupsUsers\GroupUser.cs" />
+    <Compile Include="Entities\PipelineEvents\PipelineEvent.cs" />
+    <Compile Include="Entities\PipelineEvents\PipelineEventExtensions.cs" />
+    <Compile Include="Entities\PositionsSalaries\PositionsSalarie.cs" />
+    <Compile Include="Entities\PositionsSalaries\PositionsSalarieExtensions.cs" />
+    <Compile Include="Entities\Resumes\Resume.cs" />
+    <Compile Include="Entities\Resumes\ResumeExtensions.cs" />
+    <Compile Include="Entities\Defects\Defect.cs" />
+    <Compile Include="Entities\Defects\DefectExtensions.cs" />
+    <Compile Include="Entities\EquipmentAccessories\EquipmentAccessorieExtensions.cs" />
+    <Compile Include="Entities\Issues\Issue.cs" />
+    <Compile Include="Entities\Issues\SearchType.cs" />
+    <Compile Include="Entities\Issues\IssueExtensions.cs" />
+    <Compile Include="Entities\MovimentEmployees\MovimentEmployee.cs" />
+    <Compile Include="Entities\MovimentEmployees\MovimentEmployeeExtensions.cs" />
+    <Compile Include="Entities\EquipmentAccessories\EquipmentAccessorie.cs" />
+    <Compile Include="Entities\ApplicationSystems\ApplicationSystemExtensions.cs" />
+    <Compile Include="Entities\ApplicationSystems\ApplicationSystem.cs" />
+    <Compile Include="Entities\Attachments\AttachmentExtensions.cs" />
+    <Compile Include="Entities\ChangeRequests\ChangeRequestExtensions.cs" />
+    <Compile Include="Entities\Customers\CustomerExtensions.cs" />
+    <Compile Include="Entities\DailyLogsComments\DaiyLogExtensions.cs" />
+    <Compile Include="Entities\DailyLogs\DailylogExtensions.cs" />
+    <Compile Include="Entities\DemandsUsers\DemandsUserExtensions.cs" />
+    <Compile Include="Entities\Elements\ElementExtensions.cs" />
+    <Compile Include="Entities\Pipelines\Pipeline.cs" />
+    <Compile Include="Entities\Pipelines\PipelineExtensions.cs" />
+    <Compile Include="Entities\Skills\Skill.cs" />
+    <Compile Include="Entities\Skills\SkillExtensions.cs" />
+    <Compile Include="Entities\SystemFeatures\SystemFeatureExtensions.cs" />
+    <Compile Include="Entities\Expenses\ExpenseExtensions.cs" />
+    <Compile Include="Entities\Features\FeatureExtensions.cs" />
+    <Compile Include="Entities\Groups\GroupExtensions.cs" />
+    <Compile Include="Entities\Historicals\GroupExtensions.cs" />
+    <Compile Include="Entities\Licenses\LicenseExtensions.cs" />
+    <Compile Include="Entities\Licenses\License.cs" />
+    <Compile Include="Entities\Attachments\Attachment.cs" />
+    <Compile Include="Entities\Attachments\SearchType.cs" />
+    <Compile Include="Entities\AccountingEntries\AccountingEntrie.cs" />
+    <Compile Include="Entities\ChangeRequests\ChangeRequest.cs" />
+    <Compile Include="Entities\DailyLogsComments\DailyLogComment.cs" />
+    <Compile Include="Entities\DailyLogsComments\SearchType.cs" />
+    <Compile Include="Entities\DailyLogs\DailyLog.cs" />
+    <Compile Include="Entities\DemandsUsers\DemandUser.cs" />
+    <Compile Include="Entities\Demands\Demand.cs" />
+    <Compile Include="Entities\Demands\DemandExtensions.cs" />
+    <Compile Include="Entities\Demands\SearchType.cs" />
+    <Compile Include="Entities\Customers\Customer.cs" />
+    <Compile Include="Entities\Elements\Element.cs" />
+    <Compile Include="Entities\Elements\SearchType.cs" />
+    <Compile Include="Entities\SystemFeatures\SystemFeature.cs" />
+    <Compile Include="Entities\Expenses\Expense.cs" />
+    <Compile Include="Entities\Features\Feature.cs" />
+    <Compile Include="Entities\Groups\Group.cs" />
+    <Compile Include="Entities\Historicals\Historical.cs" />
+    <Compile Include="Entities\Historicals\SearchType.cs" />
+    <Compile Include="Entities\Parameters\ParameterExtensions.cs" />
+    <Compile Include="Entities\Parameters\Parameters.cs" />
+    <Compile Include="Entities\ParameterValues\ParameterValue.cs" />
+    <Compile Include="Entities\ParameterValues\ParameterValueExtensions.cs" />
+    <Compile Include="Entities\Profiles\ProfileExtensions.cs" />
+    <Compile Include="Entities\Profiles\Profile.cs" />
+    <Compile Include="Entities\Profiles\SearchType.cs" />
+    <Compile Include="Entities\SystemMenus\SystemMenuExtensions.cs" />
+    <Compile Include="Entities\SystemMenus\SystemMenu.cs" />
+    <Compile Include="Entities\SystemParameters\SystemParameterExtensions.cs" />
+    <Compile Include="Entities\SystemParameters\SystemParameter.cs" />
+    <Compile Include="Entities\Tasks\TaskExtensions.cs" />
+    <Compile Include="Entities\Tasks\Task.cs" />
+    <Compile Include="Entities\Templates\TemplateExtensions.cs" />
+    <Compile Include="Entities\Templates\SearchType.cs" />
+    <Compile Include="Entities\Templates\Template.cs" />
+    <Compile Include="Entities\TestCases\TestCaseExtensions.cs" />
+    <Compile Include="Entities\TestLogs\TestLogExtensions.cs" />
+    <Compile Include="Entities\TestLogs\SearchType.cs" />
+    <Compile Include="Entities\TestPackages\TestPackageExtensions.cs" />
+    <Compile Include="Entities\TestPackages\TestPackage.cs" />
+    <Compile Include="Entities\TestScenarioFeatures\TestScenarioFeatureExtensions.cs" />
+    <Compile Include="Entities\TestScenarios\TestScenarioExtensions.cs" />
+    <Compile Include="Entities\TestScenarios\TestScenario.cs" />
+    <Compile Include="Entities\TestCases\TestCase.cs" />
+    <Compile Include="Entities\TestLogs\TestLog.cs" />
+    <Compile Include="Entities\TestScenarioFeatures\TestScenarioFeature.cs" />
+    <Compile Include="Entities\TimeReleases\SearchType.cs" />
+    <Compile Include="Entities\TimeReleases\TimeReleaseExtensions.cs" />
+    <Compile Include="Entities\TimeReleases\TimeRelease.cs" />
+    <Compile Include="Entities\Users\UserExtensions.cs" />
+    <Compile Include="Entities\Users\User.cs" />
+    <Compile Include="Entities\Vacancies\Vacancies.cs" />
+    <Compile Include="Entities\Vacancies\VacanciesExtensions.cs" />
+    <Compile Include="Entities\Workflows\SearchType.cs" />
+    <Compile Include="Entities\Workflows\WorkfowExtensions.cs" />
+    <Compile Include="Entities\Workflows\Workflow.cs" />
+    <Compile Include="IPagedList.cs" />
+    <Compile Include="PagedList.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IAnnexContractRepository.cs" />
+    <Compile Include="Repositories\IResumeVacancieRepository.cs" />
+    <Compile Include="Repositories\IVacancieResumeRepository.cs" />
+    <Compile Include="Repositories\ISupportRepository.cs" />
+    <Compile Include="Repositories\IDashboardRepository.cs" />
+    <Compile Include="Repositories\IGroupUserRepository.cs" />
+    <Compile Include="Repositories\IPositionsSalarieRepository.cs" />
+    <Compile Include="Repositories\IContractAdditiveRepository.cs" />
+    <Compile Include="Repositories\ICustomerUserRepository.cs" />
+    <Compile Include="Repositories\IContractRepository.cs" />
+    <Compile Include="Repositories\IContactRepository.cs" />
+    <Compile Include="Repositories\IPipelineEventRepository.cs" />
+    <Compile Include="Repositories\IResumeRepository.cs" />
+    <Compile Include="Repositories\IDefectRepository.cs" />
+    <Compile Include="Repositories\IMovimentEmployeeRepository.cs" />
+    <Compile Include="Repositories\IIssueRepository.cs" />
+    <Compile Include="Repositories\IEquipmentAccessorieRepository.cs" />
+    <Compile Include="Repositories\IApplicationSystemRepository.cs" />
+    <Compile Include="Repositories\IPipelineRepository.cs" />
+    <Compile Include="Repositories\ISkillRepository.cs" />
+    <Compile Include="Repositories\IVacancieRepository.cs" />
+    <Compile Include="Repositories\IWorkflowRepository.cs" />
+    <Compile Include="Repositories\ITimeReleaseRepository.cs" />
+    <Compile Include="Repositories\ITestScenarioFeatureRepository.cs" />
+    <Compile Include="Repositories\ITestScenarioRepository.cs" />
+    <Compile Include="Repositories\ITestPackageRepository.cs" />
+    <Compile Include="Repositories\ITestLogRepository.cs" />
+    <Compile Include="Repositories\ITestCaseRepository.cs" />
+    <Compile Include="Repositories\ITemplateRepository.cs" />
+    <Compile Include="Repositories\ITaskRepository.cs" />
+    <Compile Include="Repositories\ISystemParameterRepository.cs" />
+    <Compile Include="Repositories\ISystemMenuRepository.cs" />
+    <Compile Include="Repositories\IProfileRepository.cs" />
+    <Compile Include="Repositories\IParameterRepository.cs" />
+    <Compile Include="Repositories\ILicenseRepository.cs" />
+    <Compile Include="Repositories\IHistoricalRepository.cs" />
+    <Compile Include="Repositories\IGroupRepository.cs" />
+    <Compile Include="Repositories\IFeatureRepository.cs" />
+    <Compile Include="Repositories\IExpenseRepository.cs" />
+    <Compile Include="Repositories\ISystemFeatureRepository.cs" />
+    <Compile Include="Repositories\IElementRepository.cs" />
+    <Compile Include="Repositories\IDemandUserRepository.cs" />
+    <Compile Include="Repositories\IDailyLogRepository.cs" />
+    <Compile Include="Repositories\IDailyLogCommentRepository.cs" />
+    <Compile Include="Repositories\IChangeRequestRepository.cs" />
+    <Compile Include="Repositories\IAccountingEntrieRepository.cs" />
+    <Compile Include="Repositories\IAttachmentRepository.cs" />
+    <Compile Include="Repositories\IDemandRepository.cs" />
+    <Compile Include="Repositories\IParameterValueRepository.cs" />
+    <Compile Include="Repositories\ICustomerRepository.cs" />
+    <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Result.cs" />
+    <Compile Include="Services\IAnnexContractService.cs" />
+    <Compile Include="Services\IResumeVacancieService.cs" />
+    <Compile Include="Services\IVacancieResumeService.cs" />
+    <Compile Include="Services\ISupportService.cs" />
+    <Compile Include="Services\IDashboardService.cs" />
+    <Compile Include="Services\IGroupUserService.cs" />
+    <Compile Include="Services\IPositionsSalarieService.cs" />
+    <Compile Include="Services\IContractAdditiveService.cs" />
+    <Compile Include="Services\IContractService.cs" />
+    <Compile Include="Services\ICustomerUserService.cs" />
+    <Compile Include="Services\IContactService.cs" />
+    <Compile Include="Services\IPipelineEventService.cs" />
+    <Compile Include="Services\IResumeService.cs" />
+    <Compile Include="Services\ILicenseGeneratorService.cs" />
+    <Compile Include="Services\IPipelineService.cs" />
+    <Compile Include="Services\ISkillService.cs" />
+    <Compile Include="Services\IStringUtilityService.cs" />
+    <Compile Include="Services\IMailService.cs" />
+    <Compile Include="Services\IIssueService.cs" />
+    <Compile Include="Services\IEquipmentAccessorieService.cs" />
+    <Compile Include="Services\IDefectService.cs" />
+    <Compile Include="Services\IMovimentEmployeeService.cs" />
+    <Compile Include="Services\IApplicationSystemService.cs" />
+    <Compile Include="Services\IEncryptService.cs" />
+    <Compile Include="Services\ITimeReleaseService.cs" />
+    <Compile Include="Services\ITestScenarioFeatureService.cs" />
+    <Compile Include="Services\ITestScenarioService.cs" />
+    <Compile Include="Services\ITestPackageService.cs" />
+    <Compile Include="Services\ITestLogService.cs" />
+    <Compile Include="Services\ITestCaseService.cs" />
+    <Compile Include="Services\ITemplateService.cs" />
+    <Compile Include="Services\ITaskService.cs" />
+    <Compile Include="Services\ISystemParameterService.cs" />
+    <Compile Include="Services\ISystemMenuService.cs" />
+    <Compile Include="Services\IProfileService.cs" />
+    <Compile Include="Services\IParameterService.cs" />
+    <Compile Include="Services\ILicenseService.cs" />
+    <Compile Include="Services\IHistoricalService.cs" />
+    <Compile Include="Services\IGroupService.cs" />
+    <Compile Include="Services\IFeatureService.cs" />
+    <Compile Include="Services\IExpenseService.cs" />
+    <Compile Include="Services\IElementService.cs" />
+    <Compile Include="Services\ISystemFeatureService.cs" />
+    <Compile Include="Services\IDemandUserService.cs" />
+    <Compile Include="Services\IDailyLogService.cs" />
+    <Compile Include="Services\IDailyLogCommentService.cs" />
+    <Compile Include="Services\IChangeRequestService.cs" />
+    <Compile Include="Services\IAccountingEntrieService.cs" />
+    <Compile Include="Services\IAttachmentService.cs" />
+    <Compile Include="Services\ICustomerService.cs" />
+    <Compile Include="Services\IExportManagerService.cs" />
+    <Compile Include="Services\IDemandService.cs" />
+    <Compile Include="Services\IParameterValueService.cs" />
+    <Compile Include="Services\IVacancieService.cs" />
+    <Compile Include="Services\IWorkflowService.cs" />
+    <Compile Include="Services\IUserService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LeanTest.Cloud.SharedKernel\Lean.Test.Cloud.SharedKernel.csproj">
+      <Project>{100f3a9d-209a-4210-ac31-cdebb5cabfdb}</Project>
+      <Name>Lean.Test.Cloud.SharedKernel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Validations\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,11 @@
+﻿@model Lean.Test.Cloud.MVC.Models.Resumes.ResumeModel
+
+@Html.HiddenFor(model => model.ResumeID)
+<div>
+    Deseja realmente excluir o seguinte registro?
+    <br />
+    <br />
+    <ul>
+        <li>Sumário: <strong>@Model.Summary</strong></li>
+    </ul>
+</div>

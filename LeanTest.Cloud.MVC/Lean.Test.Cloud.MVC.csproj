@@ -1,0 +1,708 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.3.1.1\build\Microsoft.TypeScript.MSBuild.props" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.3.1.1\build\Microsoft.TypeScript.MSBuild.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0F829173-4A4C-4BC0-A936-FEB85B058294}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Lean.Test.Cloud.MVC</RootNamespace>
+    <AssemblyName>Lean.Test.Cloud.MVC</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>2.7</TypeScriptToolsVersion>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentValidation, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.7.5.2\lib\net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentValidation.Mvc, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.Mvc5.7.5.2\lib\net45\FluentValidation.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Primitives, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Primitives.4.3.0\lib\net45\System.ComponentModel.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.4\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\images\acelerador.gif" />
+    <Content Include="Content\images\gestao.gif" />
+    <Content Include="Content\images\performance.gif" />
+    <Content Include="Content\images\sales.gif" />
+    <Content Include="Content\images\test.gif" />
+    <Content Include="Content\iziToast\iziToast.css" />
+    <Content Include="Content\kendo.common.min.css" />
+    <Content Include="Content\kendo.default.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\smartWizard\smart_wizard.css" />
+    <Content Include="Content\smartWizard\smart_wizard.min.css" />
+    <Content Include="Content\smartWizard\smart_wizard_theme_arrows.css" />
+    <Content Include="Content\smartWizard\smart_wizard_theme_arrows.min.css" />
+    <Content Include="Content\smartWizard\smart_wizard_theme_circles.css" />
+    <Content Include="Content\smartWizard\smart_wizard_theme_circles.min.css" />
+    <Content Include="Content\smartWizard\smart_wizard_theme_dots.css" />
+    <Content Include="Content\smartWizard\smart_wizard_theme_dots.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Properties\PublishProfiles\Certificação.pubxml" />
+    <None Include="Properties\PublishProfiles\Desenvolvimento.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jkanban.css" />
+    <Content Include="Scripts\jkanban.js" />
+    <Content Include="Scripts\jkanban.min.css" />
+    <Content Include="Scripts\jkanban.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\iziToast\iziToast.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\kendo.all.min.js" />
+    <Content Include="Scripts\kendo.web.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\simuladorDetran\admin.common.js" />
+    <Content Include="Scripts\simuladorDetran\geradorDeDados.js" />
+    <Content Include="Scripts\simuladorDetran\simuladorDetran.common.js" />
+    <Content Include="Scripts\simuladorDetran\smartWizard.initialize.js" />
+    <Content Include="Scripts\smartWizard\jquery.smartWizard.js" />
+    <Content Include="Scripts\smartWizard\jquery.smartWizard.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Views\Feature\Delete.cshtml" />
+    <Content Include="Views\Feature\Index.cshtml" />
+    <Content Include="Views\Feature\Maintenance.cshtml" />
+    <Content Include="Views\Feature\UserAssociate.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\SupportController.cs" />
+    <Compile Include="Controllers\ElementController.cs" />
+    <Compile Include="Controllers\GroupController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ContractController.cs" />
+    <Compile Include="Controllers\AnnexContractController.cs" />
+    <Compile Include="Controllers\ContractAdditiveController.cs" />
+    <Compile Include="Controllers\HistoricalController.cs" />
+    <Compile Include="Controllers\PipelineEventController.cs" />
+    <Compile Include="Controllers\DefectController.cs" />
+    <Compile Include="Controllers\EquipmentAccessorieController.cs" />
+    <Compile Include="Controllers\ParameterController.cs" />
+    <Compile Include="Controllers\ParameterValueController.cs" />
+    <Compile Include="Controllers\PipelineController.cs" />
+    <Compile Include="Controllers\PositionsSalarieController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\ResumeController.cs" />
+    <Compile Include="Controllers\PrincipalController.cs" />
+    <Compile Include="Controllers\SiteController.cs" />
+    <Compile Include="Controllers\LicenseController .cs" />
+    <Compile Include="Controllers\FeatureController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ApplicationSystemController.cs" />
+    <Compile Include="Controllers\ExpenseController.cs" />
+    <Compile Include="Controllers\AccountingEntrieController.cs" />
+    <Compile Include="Controllers\Dashboard.cs" />
+    <Compile Include="Controllers\AttachmentController.cs" />
+    <Compile Include="Controllers\SkillController.cs" />
+    <Compile Include="Controllers\SystemFeatureController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Controllers\TestCaseController.cs" />
+    <Compile Include="Controllers\TestLogController.cs" />
+    <Compile Include="Controllers\TestPackageController.cs" />
+    <Compile Include="Controllers\TestScenarioController.cs" />
+    <Compile Include="Controllers\TimeReleaseController.cs" />
+    <Compile Include="Controllers\DailyLogController.cs" />
+    <Compile Include="Controllers\DemandController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MovimentEmployeeController.cs" />
+    <Compile Include="Controllers\SystemParameterController.cs" />
+    <Compile Include="Controllers\SystemMenuController.cs" />
+    <Compile Include="Controllers\VacancieController.cs" />
+    <Compile Include="Extensions\AttachmentMappingExtensions.cs" />
+    <Compile Include="Extensions\ApplicationSystemMappingExtensions.cs" />
+    <Compile Include="Extensions\SupportMappingExtensions.cs" />
+    <Compile Include="Extensions\DashboardMappingExtensions.cs" />
+    <Compile Include="Extensions\ElementMappingExtensions.cs" />
+    <Compile Include="Extensions\GroupMappingExtensions.cs" />
+    <Compile Include="Extensions\ContractMappingExtensions.cs" />
+    <Compile Include="Extensions\AnnexContractMappingExtensions.cs" />
+    <Compile Include="Extensions\ContractAdditiveMappingExtensions.cs" />
+    <Compile Include="Extensions\ContactMappingExtensions.cs" />
+    <Compile Include="Extensions\LicenseMappingExtensions.cs" />
+    <Compile Include="Extensions\PipelineEventMappingExtensions.cs" />
+    <Compile Include="Extensions\DefectMappingExtensions.cs" />
+    <Compile Include="Extensions\HistoricalMappingExtensions.cs" />
+    <Compile Include="Extensions\FeatureMappingExtensions.cs" />
+    <Compile Include="Extensions\ExpenseMappingExtensions.cs" />
+    <Compile Include="Extensions\EquipmentAccessorieMappingExtensions.cs" />
+    <Compile Include="Extensions\MovimentEmployeeMappingExtensions.cs" />
+    <Compile Include="Extensions\ParameterMappingExtensions.cs" />
+    <Compile Include="Extensions\ParameterValueMappingExtensions.cs" />
+    <Compile Include="Extensions\PipelineMappingExtensions.cs" />
+    <Compile Include="Extensions\PositionsSalarieMappingExtensions.cs" />
+    <Compile Include="Extensions\ProfileMappingExtensions.cs" />
+    <Compile Include="Extensions\ResumeMappingExtensions.cs" />
+    <Compile Include="Extensions\SkillMappingExtensions.cs" />
+    <Compile Include="Extensions\SystemMenuMappingExtensions.cs" />
+    <Compile Include="Extensions\SystemFeatureMappingExtensions.cs" />
+    <Compile Include="Extensions\SystemParameterMappingExtensions.cs" />
+    <Compile Include="Extensions\TaskMappingExtensions.cs" />
+    <Compile Include="Extensions\TestCaseMappingExtensions.cs" />
+    <Compile Include="Extensions\TestLogMappingExtensions.cs" />
+    <Compile Include="Extensions\TestPackageMappingExtensions.cs" />
+    <Compile Include="Extensions\TestScenarioFeatureMappingExtensions.cs" />
+    <Compile Include="Extensions\TestScenarioMappingExtensions.cs" />
+    <Compile Include="Extensions\TimeReleaseMappingExtensions.cs" />
+    <Compile Include="Extensions\DailyLogMappingExtensions.cs" />
+    <Compile Include="Extensions\Recaptcha.cs" />
+    <Compile Include="Extensions\AccountingEntrieMappingExtensions.cs" />
+    <Compile Include="Extensions\CustomerMappingExtensions.cs" />
+    <Compile Include="Extensions\UserMappingExtensions.cs" />
+    <Compile Include="Extensions\DemandMappingExtensions.cs" />
+    <Compile Include="Extensions\HtmlExtensions.cs" />
+    <Compile Include="Extensions\VacancieMappingExtensions.cs" />
+    <Compile Include="Filters\FormValueRequiredAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\AutofacValidatorFactory.cs" />
+    <Compile Include="Infrastructure\DependencyRegisterValidator.cs" />
+    <Compile Include="Infrastructure\KendoUI\DataSourceRequest.cs" />
+    <Compile Include="Infrastructure\KendoUI\DataSourceResult.cs" />
+    <Compile Include="Infrastructure\Mvc\XmlDownloadResult.cs" />
+    <Compile Include="Infrastructure\Notification\NotifyType.cs" />
+    <Compile Include="Models\AccountingEntries\AccountingEntrieModel.cs" />
+    <Compile Include="Models\ApplicationSystems\ApplicationSystemModel.cs" />
+    <Compile Include="Models\Attachment\AttachmentModel.cs" />
+    <Compile Include="Models\Supports\SupportModel.cs" />
+    <Compile Include="Models\Dashboards\DashboardModel.cs" />
+    <Compile Include="Models\reCaptchaResponse\CaptchaReponse.cs" />
+    <Compile Include="Models\Elements\ElementModel.cs" />
+    <Compile Include="Models\Groups\GroupModel.cs" />
+    <Compile Include="Models\Customers\CustomerModel.cs" />
+    <Compile Include="Models\DailyLogs\DailyLogModel.cs" />
+    <Compile Include="Models\Contracts\ContractModel.cs" />
+    <Compile Include="Models\ContractAdditives\ContractAdditiveModel.cs" />
+    <Compile Include="Models\AnnexContracts\AnnexContractModel.cs" />
+    <Compile Include="Models\Contacts\ContactModel.cs" />
+    <Compile Include="Models\Historicals\HistoricalModel.cs" />
+    <Compile Include="Models\Home\MenusModel.cs" />
+    <Compile Include="Models\ParameterValue\ParameterValue.cs" />
+    <Compile Include="Models\PipelineEvents\PipelineEventModel.cs" />
+    <Compile Include="Models\Defects\DefectModel.cs" />
+    <Compile Include="Models\Demands\DemandModel.cs" />
+    <Compile Include="Models\Expenses\ExpenseModel.cs" />
+    <Compile Include="Models\Features\FeatureModel.cs" />
+    <Compile Include="Models\Gravames\GravameListModel.cs" />
+    <Compile Include="Models\Gravames\GravameModel.cs" />
+    <Compile Include="Models\Licenses\LicenseModel.cs" />
+    <Compile Include="Models\MovimentEmployees\MovimentEmployeeModel.cs" />
+    <Compile Include="Models\Parameters\ParameterModel.cs" />
+    <Compile Include="Models\Pipelines\PipelineModel.cs" />
+    <Compile Include="Models\PositionsSalaries\PositionSalarieModel.cs" />
+    <Compile Include="Models\Profiles\ProfileModel.cs" />
+    <Compile Include="Models\Resumes\ResumeModel.cs" />
+    <Compile Include="Models\Skills\SkillModel.cs" />
+    <Compile Include="Models\SystemMenus\SystemMenuModel.cs" />
+    <Compile Include="Models\SystemFeature\SystemFeatureModel.cs" />
+    <Compile Include="Models\SystemParameters\SystemParameterModel.cs" />
+    <Compile Include="Models\EquipmentAccessories\EquipmentAccessorieModel.cs" />
+    <Compile Include="Models\Tasks\TaskModel.cs" />
+    <Compile Include="Models\TestCases\TestCaseModel.cs" />
+    <Compile Include="Models\TestLogs\TestLogModel.cs" />
+    <Compile Include="Models\TestPackages\TestPackageModel.cs" />
+    <Compile Include="Models\TestScenarioFeatures\TestScenarioFeatureModel.cs" />
+    <Compile Include="Models\TestScenarios\TestScenarioModel.cs" />
+    <Compile Include="Models\TimeReleases\TimeReleaseModel.cs" />
+    <Compile Include="Models\Users\UserModel.cs" />
+    <Compile Include="Models\Vacancie\VacancieModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validations\AnnexContract\AnnexContractValidator.cs" />
+    <Compile Include="Validations\ApplicationSystem\ApplicationSystemValidator.cs" />
+    <Compile Include="Validations\Attachment\AttachmentValidator.cs" />
+    <Compile Include="Validations\Billing\BillingValidator.cs" />
+    <Compile Include="Validations\Support\SupportValidator.cs" />
+    <Compile Include="Validations\Contact\ContactValidator.cs" />
+    <Compile Include="Validations\ContractAdditive\ContractAdditiveValidator.cs" />
+    <Compile Include="Validations\Contract\ContractValidator.cs" />
+    <Compile Include="Validations\Customer\CustomerValidator.cs" />
+    <Compile Include="Validations\DailyLog\DailyLog.cs" />
+    <Compile Include="Validations\Defect\DefectValidator.cs" />
+    <Compile Include="Validations\Demands\DemandValidator.cs" />
+    <Compile Include="Validations\Element\ElementValidator.cs" />
+    <Compile Include="Validations\EquipmentAccessorie\EquipmentAccessorieValidator.cs" />
+    <Compile Include="Validations\Expenses\ExpenseValidator.cs" />
+    <Compile Include="Validations\Feature\FeatureValidator.cs" />
+    <Compile Include="Validations\Group\GroupValidator.cs" />
+    <Compile Include="Validations\Historical\HistoricalValidator.cs" />
+    <Compile Include="Validations\License\LicenseValidator.cs" />
+    <Compile Include="Validations\MovimentEmployee\MovimentEmployeeValidator.cs" />
+    <Compile Include="Validations\ParameterValue\ParameterValueValidator.cs" />
+    <Compile Include="Validations\Parameter\ParameterValidator.cs" />
+    <Compile Include="Validations\PipelineEvent\PipelineEventValidator.cs" />
+    <Compile Include="Validations\Pipeline\PipelineValidator.cs" />
+    <Compile Include="Validations\PositionsSalaries\PositionsSalarieValidator.cs" />
+    <Compile Include="Validations\Profile\ProfilesValidator.cs" />
+    <Compile Include="Validations\Resume\ResumeValidator.cs" />
+    <Compile Include="Validations\Skill\SkillValidator.cs" />
+    <Compile Include="Validations\SystemMenu\SystemMenuValidator.cs" />
+    <Compile Include="Validations\SystemFeatures\SytemFeatureValidator.cs" />
+    <Compile Include="Validations\SystemParameter\SystemParameterValidator.cs" />
+    <Compile Include="Validations\Task\TaskValidator.cs" />
+    <Compile Include="Validations\TestCase\TestCaseValidator.cs" />
+    <Compile Include="Validations\TestLog\TestLogValidator.cs" />
+    <Compile Include="Validations\TestPackage\TestPackageValidator.cs" />
+    <Compile Include="Validations\TestScenarioFeature\TestScenarioFeatureValidator.cs" />
+    <Compile Include="Validations\TestScenario\TestScenarioValidator.cs" />
+    <Compile Include="Validations\TimeRelease\TimeReleaseValidator.cs" />
+    <Compile Include="Validations\User\UserValidator.cs" />
+    <Compile Include="Validations\Vacancie\VacancieValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="packages.config" />
+    <Content Include="Views\Shared\_Root.Head.cshtml" />
+    <Content Include="Views\Shared\_Root.cshtml" />
+    <Content Include="Views\Shared\_ContentPage.cshtml" />
+    <Content Include="Views\Shared\_Notificacoes.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Demand\Maintenance.cshtml" />
+    <Content Include="Views\Demand\Help.cshtml" />
+    <Content Include="Views\Demand\Index.cshtml" />
+    <Content Include="Views\Demand\Delete.cshtml" />
+    <Content Include="Views\Demand\_expenseReport.cshtml" />
+    <Content Include="Views\Shared\Signin.cshtml" />
+    <Content Include="Views\Shared\Signup.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Maintenance.cshtml" />
+    <Content Include="Views\User\AllowApropriate.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Customer\Delete.cshtml" />
+    <Content Include="Views\Customer\Maintenance.cshtml" />
+    <Content Include="Views\Customer\ActiveDesactiveCustomer.cshtml" />
+    <Content Include="Views\Customer\UserAssociate.cshtml" />
+    <Content Include="Views\DailyLog\Delete.cshtml" />
+    <Content Include="Views\DailyLog\Index.cshtml" />
+    <Content Include="Views\DailyLog\Maintenance.cshtml" />
+    <Content Include="Views\TimeRelease\Delete.cshtml" />
+    <Content Include="Views\TimeRelease\Index.cshtml" />
+    <Content Include="Views\TimeRelease\Maintenance.cshtml" />
+    <Content Include="Views\TimeRelease\AbsenceRecord.cshtml" />
+    <Content Include="Views\Shared\Menu.cshtml" />
+    <Content Include="Views\Demand\UserAssociate.cshtml" />
+    <Content Include="Views\AccountingEntrie\Delete.cshtml" />
+    <Content Include="Views\AccountingEntrie\Index.cshtml" />
+    <Content Include="Views\AccountingEntrie\Maintenance.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Dashboard\test.cshtml" />
+    <Content Include="Views\Dashboard\application.cshtml" />
+    <Content Include="Views\Dashboard\demand.cshtml" />
+    <Content Include="Views\Expense\Delete.cshtml" />
+    <Content Include="Views\Expense\Index.cshtml" />
+    <Content Include="Views\Expense\Maintenance.cshtml" />
+    <Content Include="Views\Expense\StatusChange.cshtml" />
+    <Content Include="Views\Shared\Principal.cshtml" />
+    <Content Include="Views\User\CustomerAssociate.cshtml" />
+    <Content Include="Views\User\ChangeStatus.cshtml" />
+    <Content Include="Views\ApplicationSystem\Index.cshtml" />
+    <Content Include="Views\ApplicationSystem\Delete.cshtml" />
+    <Content Include="Views\ApplicationSystem\Maintenance.cshtml" />
+    <Content Include="Views\License\ActiveDesactive.cshtml" />
+    <Content Include="Views\License\Delete.cshtml" />
+    <Content Include="Views\License\Index.cshtml" />
+    <Content Include="Views\License\Maintenance.cshtml" />
+    <Content Include="Views\AccountingEntrie\AccountsPayableAndReceivable.cshtml" />
+    <Content Include="Views\MovimentEmployee\Delete.cshtml" />
+    <Content Include="Views\MovimentEmployee\Index.cshtml" />
+    <Content Include="Views\MovimentEmployee\Maintenance.cshtml" />
+    <Content Include="Views\MovimentEmployee\StatusChange.cshtml" />
+    <Content Include="Views\SystemParameter\Delete.cshtml" />
+    <Content Include="Views\SystemParameter\Index.cshtml" />
+    <Content Include="Views\SystemParameter\Maintenance.cshtml" />
+    <Content Include="Views\Defect\Delete.cshtml" />
+    <Content Include="Views\Defect\Index.cshtml" />
+    <Content Include="Views\Defect\Maintenance.cshtml" />
+    <Content Include="Views\Site\Index.cshtml" />
+    <Content Include="Views\SystemFeature\Delete.cshtml" />
+    <Content Include="Views\SystemFeature\Index.cshtml" />
+    <Content Include="Views\SystemFeature\Maintenance.cshtml" />
+    <Content Include="Views\Parameter\Delete.cshtml" />
+    <Content Include="Views\Parameter\Index.cshtml" />
+    <Content Include="Views\Parameter\Maintenance.cshtml" />
+    <Content Include="Views\TestPackage\Delete.cshtml" />
+    <Content Include="Views\TestPackage\Index.cshtml" />
+    <Content Include="Views\TestPackage\Maintenance.cshtml" />
+    <Content Include="Views\ParameterValue\Delete.cshtml" />
+    <Content Include="Views\ParameterValue\Index.cshtml" />
+    <Content Include="Views\ParameterValue\Maintenance.cshtml" />
+    <Content Include="Views\Customer\SalesEvent.cshtml" />
+    <Content Include="Views\EquipmentAccessorie\Index.cshtml" />
+    <Content Include="Views\EquipmentAccessorie\Maintenance.cshtml" />
+    <Content Include="Views\EquipmentAccessorie\Delete.cshtml" />
+    <Content Include="Views\Attachment\Delete.cshtml" />
+    <Content Include="Views\Attachment\Index.cshtml" />
+    <Content Include="Views\Attachment\Maintenance.cshtml" />
+    <Content Include="Views\License\ChangeStatus.cshtml" />
+    <Content Include="Views\Pipeline\Delete.cshtml" />
+    <Content Include="Views\Pipeline\Index.cshtml" />
+    <Content Include="Views\Pipeline\Maintenance.cshtml" />
+    <Content Include="Views\PipelineEvent\Delete.cshtml" />
+    <Content Include="Views\PipelineEvent\Index.cshtml" />
+    <Content Include="Views\PipelineEvent\Maintenance.cshtml" />
+    <Content Include="Views\Resume\Delete.cshtml" />
+    <Content Include="Views\Resume\Index.cshtml" />
+    <Content Include="Views\Resume\Maintenance.cshtml" />
+    <Content Include="Views\Vacancie\Delete.cshtml" />
+    <Content Include="Views\Vacancie\Index.cshtml" />
+    <Content Include="Views\Vacancie\Maintenance.cshtml" />
+    <Content Include="Views\Contact\Delete.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Contact\Maintenance.cshtml" />
+    <Content Include="Views\Contract\Delete.cshtml" />
+    <Content Include="Views\Contract\Index.cshtml" />
+    <Content Include="Views\Contract\Maintenance.cshtml" />
+    <Content Include="Views\AnnexContract\Delete.cshtml" />
+    <Content Include="Views\AnnexContract\Index.cshtml" />
+    <Content Include="Views\AnnexContract\Maintenance.cshtml" />
+    <Content Include="Views\ContractAdditive\Delete.cshtml" />
+    <Content Include="Views\ContractAdditive\Index.cshtml" />
+    <Content Include="Views\ContractAdditive\Maintenance.cshtml" />
+    <Content Include="Views\Demand\AttachmentDelete.cshtml" />
+    <Content Include="Views\Defect\AttachmentDelete.cshtml" />
+    <Content Include="Views\Expense\AttachmentDelete.cshtml" />
+    <Content Include="Views\Pipeline\AttachmentDelete.cshtml" />
+    <Content Include="Views\Resume\AttachmentDelete.cshtml" />
+    <Content Include="Views\DailyLog\AttachmentDelete.cshtml" />
+    <Content Include="Views\Group\Delete.cshtml" />
+    <Content Include="Views\Group\Index.cshtml" />
+    <Content Include="Views\Group\Maintenance.cshtml" />
+    <Content Include="Views\PositionsSalarie\Delete.cshtml" />
+    <Content Include="Views\PositionsSalarie\Index.cshtml" />
+    <Content Include="Views\PositionsSalarie\Maintenance.cshtml" />
+    <Content Include="Views\Skill\Delete.cshtml" />
+    <Content Include="Views\Skill\Index.cshtml" />
+    <Content Include="Views\Skill\Maintenance.cshtml" />
+    <Content Include="Views\Group\UserAssociate.cshtml" />
+    <Content Include="Views\Task\AttachmentDelete.cshtml" />
+    <Content Include="Views\Task\Delete.cshtml" />
+    <Content Include="Views\Task\Index.cshtml" />
+    <Content Include="Views\Task\Maintenance.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Profile\Maintenance.cshtml" />
+    <Content Include="Views\Profile\Delete.cshtml" />
+    <Content Include="Views\TimeRelease\AttachmentDelete.cshtml" />
+    <Content Include="Views\Element\Delete.cshtml" />
+    <Content Include="Views\Element\Index.cshtml" />
+    <Content Include="Views\Element\Maintenance.cshtml" />
+    <Content Include="Views\TimeRelease\Report.cshtml" />
+    <Content Include="Views\Expense\Report.cshtml" />
+    <Content Include="Views\Demand\Report.cshtml" />
+    <Content Include="Views\Principal\Index.cshtml" />
+    <Content Include="Views\User\GroupAssociate.cshtml" />
+    <Content Include="Views\SystemMenu\Delete.cshtml" />
+    <Content Include="Views\SystemMenu\Index.cshtml" />
+    <Content Include="Views\SystemMenu\Maintenance.cshtml" />
+    <Content Include="Views\Support\Delete.cshtml" />
+    <Content Include="Views\Support\Index.cshtml" />
+    <Content Include="Views\Support\Maintenance.cshtml" />
+    <Content Include="Views\Support\AttachmentDelete.cshtml" />
+    <Content Include="Views\TestLog\Delete.cshtml" />
+    <Content Include="Views\TestLog\Index.cshtml" />
+    <Content Include="Views\TestLog\Maintenance.cshtml" />
+    <Content Include="Views\Demand\Gantt.cshtml" />
+    <Content Include="Views\TestCase\Delete.cshtml" />
+    <Content Include="Views\TestCase\Index.cshtml" />
+    <Content Include="Views\TestCase\Maintenance.cshtml" />
+    <Content Include="Views\TestScenario\Delete.cshtml" />
+    <Content Include="Views\TestScenario\Index.cshtml" />
+    <Content Include="Views\TestScenario\Maintenance.cshtml" />
+    <Content Include="Views\Task\Kanban.cshtml" />
+    <Content Include="Views\TestScenario\FeatureAssociate.cshtml" />
+    <Content Include="Views\Vacancie\ResumeAssociate.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\uploads\" />
+    <Folder Include="App_Template\Email\" />
+    <Folder Include="App_Template\old\" />
+    <Folder Include="App_Template\Queries\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LeanTest.Cloud.CrossCutting\Lean.Test.Cloud.CrossCutting.csproj">
+      <Project>{7fd5d06d-b901-45f1-b515-7072ad6ea3d6}</Project>
+      <Name>Lean.Test.Cloud.CrossCutting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LeanTest.Cloud.Domain\Lean.Test.Cloud.Domain.csproj">
+      <Project>{5792190a-bce6-4913-a42e-86fdd7076f87}</Project>
+      <Name>Lean.Test.Cloud.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>55664</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:55664/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.3.1.1\build\Microsoft.TypeScript.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.3.1.1\build\Microsoft.TypeScript.MSBuild.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.3.1.1\build\Microsoft.TypeScript.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.3.1.1\build\Microsoft.TypeScript.MSBuild.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.3.1.1\build\Microsoft.TypeScript.MSBuild.targets" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.3.1.1\build\Microsoft.TypeScript.MSBuild.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

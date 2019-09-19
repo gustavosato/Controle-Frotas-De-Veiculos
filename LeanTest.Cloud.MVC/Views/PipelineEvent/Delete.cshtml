@@ -1,0 +1,11 @@
+﻿@model Lean.Test.Cloud.MVC.Models.PipelineEvents.PipelineEventModel
+
+@Html.HiddenFor(model => model.SaleEventID)
+<div>
+    Deseja realmente excluir o registro?
+    <br />
+    <br />
+    <ul>
+        <li>Evento: <strong>@Model.Description</strong></li>
+    </ul>
+</div>

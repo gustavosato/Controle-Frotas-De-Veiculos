@@ -1,0 +1,202 @@
+﻿@model Lean.Test.Cloud.MVC.Models.Users.UserModel
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<div class="form-group">
+    <div class="col-md-12">
+        <strong>@Html.LabelFor(model => model.Email, new { @class = "col-sm-0 col-form-label text-left", id = "lblEmail" })</strong>
+        @Html.TextBoxFor(model => model.Email, new { @class = "form-control text-left", placeholder = "Digite seu e-mail", @autofocus = "autofocus" })
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "form-text text-danger" })
+    </div>
+    <div class="col-md-12">
+        <strong>@Html.LabelFor(model => model.Password, new { @class = "col-sm-0 col-form-label text-left", id = "lblPassword" })</strong>
+        @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Digite a senha" })
+        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "form-text text-danger" })
+    </div>
+    <div class="col-md-12 mb-auto">
+        <strong>@Html.LabelFor(model => model.CustomerID, new { @class = "col-sm-0 col-form-label text-left", id = "lblCustomerID" })</strong>
+        @Html.DropDownList("CustomerID", Model.LoadCustomers, "Selecione...", new { @class = "form-control", id = "cmbCustomerID" })
+        @Html.ValidationMessageFor(model => model.CustomerID, "", new { @class = "form-text text-danger" })
+    </div>
+
+    <div class="col-md-12">
+        <strong>@Html.LabelFor(model => model.PasswordNew, new { @class = "col-sm-0 col-form-label text-left", id = "lblPasswordNew" })</strong>
+        @Html.PasswordFor(model => model.PasswordNew, new { @class = "form-control", placeholder = "Digite a nova senha" })
+        @Html.ValidationMessageFor(model => model.PasswordNew, "", new { @class = "form-text text-danger" })
+    </div>
+
+    <div class="col-md-12">
+        <strong>@Html.LabelFor(model => model.PasswordNewConfirm, new { @class = "col-sm-0 col-form-label text-left", id = "lblPasswordNewConfirm" })</strong>
+        @Html.PasswordFor(model => model.PasswordNewConfirm, new { @class = "form-control", placeholder = "Digite a confirmação da nova senha" })
+        @Html.ValidationMessageFor(model => model.PasswordNewConfirm, "", new { @class = "form-text text-danger" })
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    $("#@Html.FieldIdFor(model => model.Email)").keydown(function (event) {
+        if (event.keyCode == 13) {
+            $("#Password").focus();
+            return false;
+        }
+    });
+
+    $("#@Html.FieldIdFor(model => model.Password)").keydown(function (event) {
+        if (event.keyCode == 13) {
+            $("#btnAuthenticate").focus();
+            return false;
+        }
+    });
+
+     $("#@Html.FieldIdFor(model => model.PasswordNew)").keydown(function (event) {
+        if (event.keyCode == 13) {
+            $("#PasswordNewConfirm").focus();
+            return false;
+        }
+    });
+
+     $("#@Html.FieldIdFor(model => model.PasswordNewConfirm)").keydown(function (event) {
+        if (event.keyCode == 13) {
+            $("#btnUpdatePassword").focus();
+            return false;
+        }
+    });
+
+    $(document).ready(function () {
+
+        $("#btnRememberPassword").click(function (){
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("RememberPassword")',
+                dataType: 'json',
+                data: { email: $("#Email").val() },
+                success: function (response) {
+                    var message = response.responseText;
+                    $("#lblCustomerID").show();
+                    $("#lblCustomerID").text(message);
+                    return false
+                },
+                error: function (response) {
+                    $("#lblCustomerID").show();
+                    $("#lblCustomerID").text("Erro ao tentar recuperar a senha. Procure o administrador.");
+                }
+            });
+            return false;
+        });
+
+        $("#btnUpdatePassword").click(function (){
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("UpdatePassword")',
+                dataType: 'json',
+                data: { email: $("#Email").val(), password: $("#PasswordNew").val() },
+                success: function (response) {
+                    $("#lblPasswordNew").hide();
+                    $("#PasswordNew").hide();
+                    $("#lblPasswordNewConfirm").hide();
+                    $("#PasswordNewConfirm").hide();
+                    $("#btnEnter").hide();
+                    $("#btnAuthenticate").show();
+                    $("#btnRememberPassword").show();
+                    $("#btnUpdatePassword").hide();
+                    document.getElementById("Email").readOnly = false;
+                    document.getElementById("Password").readOnly = false;
+                    document.getElementById("Password").Value = $("#PasswordNew").val();
+
+                    return false;
+                },
+                error: function (response) {
+                    $("#lblCustomerID").show();
+                    $("#lblCustomerID").text("Erro ao tentar atualizar a senha. Procure o administrador.");
+                }
+            });
+            return false;
+        });
+
+
+        $("#lblCustomerID").hide();
+        $("#cmbCustomerID").hide();
+        $("#btnEnter").hide();
+        $("#btnUpdatePassword").hide();
+        $("#btnCancel").hide();
+        $("#btnAuthenticate").show();
+        $("#btnRememberPassword").show();
+        $("#lblPasswordNew").hide();
+        $("#PasswordNew").hide();
+        $("#lblPasswordNewConfirm").hide();
+        $("#PasswordNewConfirm").hide();
+
+
+        $("#btnAuthenticate").click(function () {
+            $("#cmbCustomerID").empty();
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetCustomers")',
+                dataType: 'json',
+                data: { mail: $("#Email").val(), password: $("#Password").val() },
+                success: function (response) {
+                    $("#cmbCustomerID").empty();
+
+                    $.each(response, function (i, item) {
+
+                        if (item.Value == null) {
+                            var message = response.responseText;
+                            if (response.responseText == "changePassword") {
+                                document.getElementById("Email").readOnly = true;
+                                document.getElementById("Password").readOnly = true;
+                                $("#lblCustomerID").hide();
+                                $("#lblPasswordNew").text("Nova senha");
+
+                                $("#lblPasswordNew").show();
+                                $("#PasswordNew").show();
+                                $("#lblPasswordNewConfirm").show();
+                                $("#PasswordNewConfirm").show();
+                                $("#btnEnter").hide();
+                                $("#btnAuthenticate").hide();
+                                $("#btnRememberPassword").hide();
+                                $("#btnUpdatePassword").show();
+
+                                return true;
+                            }
+                            else {
+                                $("#lblCustomerID").show();
+                                $("#lblCustomerID").text(message);
+                                return false;
+                            }
+                        }
+                        else {
+                            $("#lblCustomerID").text("Empresa");
+
+                            $("#lblCustomerID").show();
+                            $("#cmbCustomerID").show();
+
+                            $("#cmbCustomerID").append('<option value="' + item.Value + '">' + item.Text + '</option>');
+
+                            $("#btnAuthenticate").hide();
+                            $("#btnRememberPassword").hide();
+                            document.getElementById("Email").readOnly = true;
+                            document.getElementById("Password").readOnly = true;
+                            $("#btnEnter").show();
+                            $("#btnCancel").show();
+                            $("#cmbCustomerID").focus();
+
+                            return true;
+                        };
+
+                    });
+
+
+                },
+                error: function (response) {
+                    $("#lblCustomerID").show();
+                    $("#lblCustomerID").text("Erro ao tentar realizar login. Procure o administrador.");
+                }
+            });
+            return false;
+        })
+    });
+
+</script>

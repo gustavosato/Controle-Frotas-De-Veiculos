@@ -1,0 +1,12 @@
+﻿@model Lean.Test.Cloud.MVC.Models.Expenses.ExpenseModel
+
+@Html.HiddenFor(model => model.ExpenseID)
+<div>
+    Deseja realmente excluir o seguinte registro?
+    <br />
+    <br />
+    <ul>
+        <li>Data da Despesa: <strong>@Model.RegisterDate</strong></li>
+        <li>Valor R$: <strong>@Model.AmountExpense</strong></li>
+    </ul>
+</div>

@@ -1,0 +1,11 @@
+﻿@model Lean.Test.Cloud.MVC.Models.TestCases.TestCaseModel
+
+@Html.HiddenFor(model => model.TestCaseID)
+<div>
+    Deseja realmente excluir o seguinte teste?
+    <br />
+    <br />
+    <ul>
+        <li>Pacote de Teste: <strong>@Model.TestCase</strong></li>
+    </ul>
+</div>

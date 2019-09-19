@@ -1,0 +1,355 @@
+﻿@model Lean.Test.Cloud.MVC.Models.TimeReleases.TimeReleaseModel
+
+@using (Html.BeginForm())
+{
+    <div class="container-fluid">
+        <br />
+        <div class="content-header clearfix">
+            <div class="pull-left">
+                <button class="btn btn-primary btn-sm" type="button" id="btnOpenFilterReport" data-toggle="collapse" data-target="#collapseReport" aria-expanded="false" aria-controls="collapseReport" title="Filtrar">
+                    <i class="fa fa-filter"></i> Filtrar
+                </button>
+                <button type="button" id="btnExportExcelReport" class="btn btn-info btn-sm" title="Exportar para Excel">
+                    <i class="fa fa-file-excel-o"></i> Exportar para Excel
+                </button>
+            </div>
+        </div><br />
+
+        <div class="card">
+            <div class="collapse" id="collapseReport">
+                <div class="card card-body">
+                    <div class="row">
+                        <div class="col-md-12 mx-auto">
+                            <div class="form-group row" id="calender-container">
+                                @Html.LabelFor(model => model.SearchStartDateReport, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    <div class="input-group date">
+                                        @Html.TextBoxFor(model => model.SearchStartDateReport, new { @class = "form-control", autocomplete = "off" })<span class="input-group-addon"></span>
+                                    </div>
+                                </div>
+                                @Html.LabelFor(model => model.SearchEndDateReport, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    <div class="input-group date">
+                                        @Html.TextBoxFor(model => model.SearchEndDateReport, new { @class = "form-control", autocomplete = "off" })<span class="input-group-addon"></span>
+                                    </div>
+                                </div>
+                            </div><br />
+
+                            <div class="col">
+                                <div class="text-center">
+                                    <button type="button" class="btn btn-success btn-sm" id="btnFilterReport" title="Aplicar filtros">
+                                        <i class="fa fa-check-circle"></i> Filtrar
+                                    </button>
+                                    <button class="btn btn-primary btn-sm" type="button" id="btnOpenFilterReport" data-toggle="collapse" data-target="#collapseReport" aria-expanded="false" aria-controls="collapseReport" title="Fechar filtros">
+                                        <i class="fa fa-filter"></i> Fechar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="chart"></div>
+            <script type="text/javascript">
+                        google.charts.load('current', { packages: ['corechart', 'table', 'gauge', 'line', 'bar', 'table', 'gantt'] });
+                        google.charts.setOnLoadCallback(drawChart);
+                        var count;
+                        function drawChart() {
+                            count = 0;
+                            var arrayData = [];
+                            var header = [];
+                            header.push('Colaborador');
+                            header.push('Aprovadas');
+                            header.push('Não Aprovadas');
+                            //header.push({ role: 'annotation' });
+                            arrayData.push(header);
+
+                            $.ajax({
+                                 url: "@Html.Raw(Url.Action("GetTotalByUsers", "TimeRelease"))",
+                                        type: "POST",
+                                        dataType: "json",
+                                        data: { SearchStartDateReport: $('#@Html.FieldIdFor(model => model.SearchStartDateReport)').val(),
+                                        SearchEndDateReport: $('#@Html.FieldIdFor(model => model.SearchEndDateReport)').val() },
+                                error: function (xhr, status, error) {
+                                    var err = eval("(" + xhr.responseText + ")");
+                                    toastr.error(err.message);
+                                },
+                                success: function (data) {
+                                    data.Data.forEach(function (item) {
+                                        var temp = [];
+                                        temp.push(item.CreatedByID.substring(0,28));
+                                        temp.push(parseFloat(item.EndWork));
+                                        temp.push(parseFloat(item.StartWork));
+                                        //temp.push(parseFloat(item.TotalTime));
+
+                                        count++;
+                                        //console.log(item);
+                                        arrayData.push(temp);
+                                    });
+                                    drawBarGraph(arrayData);
+                                }
+                            });
+                        }
+
+                        function drawBarGraph(arrayData) {
+                            console.log(count = count * 30);
+                            var options = {
+                                colors: ["#73C6B6", "#F1948A"],
+                                title: 'Total Horas no período',
+
+                                hAxis: {
+                                    title: ''
+                                },
+                                vAxis: {
+                                    textStyle : {
+                                        fontSize: 12,
+                                    },
+                                    //title: 'Quantidade de horas',
+                                    //minValue: 0,
+                                    ticks: [0, .25, .5, .75, 1]
+                                },
+
+                                titleTextStyle: {
+                                    fontName: 'Calibri',
+                                    fontSize: 12,
+                                    bold: false,
+                                    italic: false
+                                },
+                                isStacked: true,
+                                isStacked: 'percent',
+                                width: '100%',
+                                height: count,
+                                annotations: {
+                                    textStyle: {
+                                    color: 'grey',
+                                    }
+                                }
+                            };
+
+                            var chartdata = new google.visualization.arrayToDataTable(arrayData);
+                            var chart = new google.visualization.BarChart(document.getElementById('chart'));
+                            chart.draw(chartdata, options);
+                        }
+            </script>
+            <div id="chart1"></div>
+            <script type="text/javascript">
+                        google.charts.load('current', { packages: ['corechart', 'table', 'gauge', 'line', 'bar', 'table', 'gantt'] });
+                        google.charts.setOnLoadCallback(drawChart1);
+                        var count1;
+                        function drawChart1() {
+                            count1 = 0;
+                            var arrayData1 = [];
+                            var header1 = [];
+                            header1.push('Colaborador');
+                            header1.push('Aprovadas');
+                            header1.push('Não Aprovadas');
+                            header1.push({ role: 'annotation' });
+                            arrayData1.push(header1);
+
+                            $.ajax({
+                                 url: "@Html.Raw(Url.Action("GetTotalByUsers", "TimeRelease"))",
+                                        type: "POST",
+                                        dataType: "json",
+                                        data: { SearchStartDateReport: $('#@Html.FieldIdFor(model => model.SearchStartDateReport)').val(),
+                                        SearchEndDateReport: $('#@Html.FieldIdFor(model => model.SearchEndDateReport)').val() },
+                                error: function (xhr, status, error) {
+                                    var err = eval("(" + xhr.responseText + ")");
+                                    toastr.error(err.message);
+                                },
+                                success: function (data) {
+                                    data.Data.forEach(function (item) {
+                                        var temp1 = [];
+                                        temp1.push(item.CreatedByID.substring(0, 28));
+                                        temp1.push(parseFloat(item.EndWork));
+                                        temp1.push(parseFloat(item.StartWork));
+                                        temp1.push(parseFloat(item.TotalTime));
+
+                                        count1++;
+                                        //console.log(item);
+                                        arrayData1.push(temp1);
+                                    });
+                                    drawBarGraph1(arrayData1);
+                                }
+                            });
+                        }
+
+                        function drawBarGraph1(arrayData1) {
+                            console.log(count1 = count1 * 30);
+                            var options1 = {
+                                colors: ["#73C6B6", "#F1948A"],
+                                title: 'Total Horas no período',
+
+                                hAxis: {
+                                    title: ''
+                                },
+                                vAxis: {
+                                    textStyle : {
+                                        fontSize: 12,
+                                    },
+                                    //title: 'Quantidade de horas',
+                                    //minValue: 0,
+                                    //ticks: [0, .25, .5, .75, 1]
+                                },
+
+                                titleTextStyle: {
+                                    fontName: 'Calibri',
+                                    fontSize: 12,
+                                    bold: false,
+                                    italic: false
+                                },
+                                isStacked: true,
+                                //isStacked: 'percent',
+                                width: '100%',
+                                height: count1,
+                                annotations: {
+                                    textStyle: {
+                                    color: 'grey',
+                                    }
+                                }
+                            };
+
+                            var chartdata1 = new google.visualization.arrayToDataTable(arrayData1);
+                            var chart1 = new google.visualization.BarChart(document.getElementById('chart1'));
+                            chart1.draw(chartdata1, options1);
+                        }
+            </script>
+            <br />
+            <div id="totalHoras-grid"></div>
+            <script>
+                    $(document).ready(function () {
+                        $("#totalHoras-grid").kendoGrid({
+                            dataSource: {
+                                type: "json",
+                                transport: {
+                                    read: {
+                                        url: "@Html.Raw(Url.Action("GetTotalByUsers", "TimeRelease"))",
+                                        type: "POST",
+                                        dataType: "json",
+                                        data: additionalData
+                                    }
+                                },
+                                schema: {
+                                    data: "Data",
+                                    total: "Total",
+                                    errors: "Errors"
+                                },
+                                error: function (e) {
+                                    display_kendoui_grid_error(e);
+                                    this.cancelChanges();
+                                },
+                                pageSize: 50,
+                                serverPaging: true,
+                                serverFiltering: true,
+                                serverSorting: false
+                                },
+                                resizable: true,
+                                groupable: true,
+                                sortable: true,
+                                pageable: {
+                                refresh: true,
+                                pageSizes: true,
+                                buttonCount: 5,
+                                messages: {
+                                    display: '{0} - {1} de {2} itens',
+                                    allPages: 'Todos',
+                                    itemsPerPage: 'Itens por página'
+                                }
+                            },
+                                columns: [ {
+                                    field: "CreatedByID",
+                                    title: "Colaborador",
+                                    width: 120,
+                                    headerAttributes: { style: "text-align:left" }
+                                }, {
+                                    field: "StartWork",
+                                    title: "Não aprovadas",
+                                    width: 70,
+                                    headerAttributes: { style: "text-align:left" }
+                                }, {
+                                    field: "EndWork",
+                                    title: "Aprovadas",
+                                    width: 70,
+                                    headerAttributes: { style: "text-align:left" }
+                                }, {
+                                    field: "TotalTime",
+                                    title: "Total Horas Apropriadas",
+                                    width: 70,
+                                    headerAttributes: { style: "text-align:left" }
+                            }],
+                            excelExport: function (e) {
+                                e.workbook.fileName = "LeanTest Cloud - Apropriação de horas Totalizadas.xlsx";
+                            }
+                        });
+                    });
+            </script>
+            <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#btnExportExcelReport').click(function () {
+                            var grid = $('#totalHoras-grid').data('kendoGrid');
+                            grid.saveAsExcel();
+                            return false;
+                        });
+
+                        $('#btnFilterReport').click(function () {
+                            var grid = $('#totalHoras-grid').data('kendoGrid');
+                            if (grid.dataSource.page() == 1) {
+                                grid.dataSource.page(1);
+                            }
+                            else {
+                                grid.dataSource.read({ parameter: "value" });
+                            }
+                            drawChart();
+                            drawChart1();
+
+                            return false;
+                        });
+
+                        $("#@Html.FieldIdFor(model => model.SearchStartDateReport)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btnFilterReport").click();
+                                return false;
+                            }
+                        });
+
+                        $("#@Html.FieldIdFor(model => model.SearchEndDateReport)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btnFilterReport").click();
+
+                                return false;
+                            }
+                        });
+                    });
+
+                    function additionalData() {
+                        var data = {
+                            SearchStartDateReport: $('#@Html.FieldIdFor(model => model.SearchStartDateReport)').val(),
+                            SearchEndDateReport: $('#@Html.FieldIdFor(model => model.SearchEndDateReport)').val()
+                        };
+                        addAntiForgeryToken(data);
+                        return data;
+                    };
+                    $(document).ready(function () {
+                        $("#SearchCustomerID").change(function () {
+                            $("#SearchDemandID").empty();
+                            $.ajax({
+                                type: 'POST',
+                                url: '@Url.Action("GetDemands")',
+                                dataType: 'json',
+                                data: { customerID: $("#SearchCustomerID").val(), isActive: false },
+                                success: function (itens) {
+                                    $("#SearchDemandID").append('<option value="">Selecione...</option>');
+                                    $.each(itens, function (i, item) {
+                                        $("#SearchDemandID").append('<option value="' + item.Value + '">' + item.Text + '</option>');
+                                    });
+                                },
+                                error: function (ex) {
+                                    alert('Failed to retrieve states.' + ex);
+                                }
+                            });
+                            return false;
+                        });
+                    });
+            </script>
+        </div>
+    </div>
+}

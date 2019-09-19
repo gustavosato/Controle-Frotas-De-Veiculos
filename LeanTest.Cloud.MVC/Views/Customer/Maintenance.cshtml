@@ -1,0 +1,103 @@
+﻿@model Lean.Test.Cloud.MVC.Models.Customers.CustomerModel
+
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+
+@Html.HiddenFor(model => model.CustomerID)
+@Html.HiddenFor(model => model.IsActive)
+@Html.HiddenFor(model => model.CreatedByID)
+@Html.HiddenFor(model => model.CreationDate)
+
+<div class="form-group row">
+    <div class="col-md-5 mb-auto">
+        <strong>@Html.LabelFor(model => model.CustomerName, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+        <strong><span style="color:black;">*</span></strong>
+        @Html.TextBoxFor(model => model.CustomerName, new { @class = "form-control text-left", placeholder = "Digite o nome da empresa", @autofocus = "autofocus" })
+        @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "form-text text-danger" })
+    </div>
+    <div class="col-md-5 mb-auto">
+        @Html.LabelFor(model => model.Site, new { @class = "col-sm-0 col-form-label text-left" })
+        @Html.TextBoxFor(model => model.Site, new { @class = "form-control text-left", placeholder = "Digite o endereço do site" })
+        @Html.ValidationMessageFor(model => model.Site, "", new { @class = "form-text text-danger" })
+    </div>
+    <div class="col-md-2 mb-auto">
+        @Html.LabelFor(model => model.CreationDate, new { @class = "col-sm-0 col-form-label text-left" })
+        @Html.TextBoxFor(model => model.CreationDate, new { @class = "form-control text-left", placeholder = "Gerado automaticamente", @readonly = "readonly" })
+        @Html.ValidationMessageFor(model => model.CreationDate, "", new { @class = "form-text text-danger" })
+    </div>
+    <div class="col-md-5 mb-auto">
+        <strong>@Html.LabelFor(model => model.SegmentID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+        <strong><span style="color:black;">*</span></strong>
+        @Html.DropDownList("SegmentID", Model.LoadSegments, "Selecione...", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.SegmentID, "", new { @class = "form-text text-danger" })
+    </div>
+    <div class="col-md-5 mb-auto">
+        <strong>@Html.LabelFor(model => model.Address, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+        <strong><span style="color:black;">*</span></strong>
+        @Html.TextBoxFor(model => model.Address, new { @class = "form-control", placeholder = "Digite um ou mais endereços conhecidos", rows = "2" })
+        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "form-text text-danger" })
+    </div>
+    <div class="col-md-2 mb-auto">
+        <strong>@Html.LabelFor(model => model.TypeID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+        <strong><span style="color:black;">*</span></strong>
+        @Html.DropDownList("TypeID", Model.LoadTypes, "Selecione...", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.TypeID, "", new { @class = "form-text text-danger" })
+    </div>
+    <div class="col-md-12 mb-auto">
+        @Html.LabelFor(model => model.Description, new { @class = "col-sm-0 col-form-label text-left" })
+        @Html.TextAreaFor(model => model.Description, new { @class = "form-control", placeholder = "Digite uma descrição", rows = "2" })
+        <script>
+            $(document).ready(function () {
+                $("#Description").kendoEditor({
+                    tools: [
+                        "formatting",
+                        "bold", "italic", "underline", "strikethrough",
+                        "justifyLeft", "justifyCenter", "justifyRight", "justifyFull",
+                        "insertUnorderedList", "insertOrderedList", "indent", "outdent",
+                        "createLink", "unlink", "insertImage", "insertFile",
+                        "subscript", "superscript",
+                        "tableWizard", "createTable",
+                        "addRowAbove", "addRowBelow",
+                        "addColumnLeft", "addColumnRight",
+                        "deleteRow", "deleteColumn",
+                        "viewHtml", "cleanFormatting",
+                        "fontName", "fontSize",
+                        "foreColor", "backColor"
+                    ],
+                    messages: {
+                        fontNameInherit: "Arial",
+                        fontSizeInherit: "3 (12pt)"
+                    },
+                    resizable: true
+                });
+            });
+
+            function ValidarCampo() {
+                var Description = document.getElementById("Description").value;
+
+                if (Description !== "") {
+                    return true
+                }
+                else if (Description === "") {
+                    Swal.fire({
+                        position: 'top-center',
+                        type: 'error',
+                        text: 'Descrição é um campo de preenchimento obrigatório!!!',
+                        showConfirmButton: false,
+                        confirmButtonColor: "#9ACD32",
+                        timer: 2500
+                    })
+                    return false
+                }
+                else {
+                    return true
+                }
+            }
+
+        </script>
+    </div>
+</div>
+

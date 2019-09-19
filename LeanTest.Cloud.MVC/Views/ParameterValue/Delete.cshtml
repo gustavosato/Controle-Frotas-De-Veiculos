@@ -1,0 +1,11 @@
+﻿@model Lean.Test.Cloud.MVC.Models.ParameterValues.ParameterValueModel
+
+@Html.HiddenFor(model => model.ParameterValueID)
+<div>
+    Deseja realmente excluir o seguinte registro?
+    <br />
+    <br />
+    <ul>
+        <li>Parâmetro: <strong>@Model.ParameterValue</strong></li>
+    </ul>
+</div>

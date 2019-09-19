@@ -1,0 +1,11 @@
+﻿@model Lean.Test.Cloud.MVC.Models.DailyLogs.DailyLogModel
+
+@Html.HiddenFor(model => model.DailyLogID)
+<div>
+    Deseja realmente excluir o seguinte registro?
+    <br />
+    <br />
+    <ul>
+        <li>Evento: <strong>@Model.Description</strong></li>
+    </ul> 
+</div>

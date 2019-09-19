@@ -1,0 +1,11 @@
+﻿@model Lean.Test.Cloud.MVC.Models.EquipmentAccessories.EquipmentAccessorieModel
+
+@Html.HiddenFor(model => model.EquipmentAccessorieID)
+<div>
+    Deseja realmente excluir o seguinte equipamento/acessório?
+    <br />
+    <br />
+    <ul>
+        <li>Equipamento: <strong>@Model.SerialNumbers</strong></li>
+    </ul>
+</div>

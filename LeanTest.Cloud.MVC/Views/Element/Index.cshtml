@@ -1,0 +1,466 @@
+﻿@model Lean.Test.Cloud.MVC.Models.Elements.ElementModel
+@{
+    ViewBag.Title = " - Elementos";
+    Layout = "~/Views/Shared/_ContentPage.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="container-fluid">
+        <br />
+        <div class="content-header clearfix">
+            <div class="pull-left">
+                <button type="button" onclick="Add()" id="btnNew" class="btn btn-dark" data-toggle="modal" data-target='#AddModal' title="Novo Registro">
+                    <i class="fa fa-plus-circle"></i> Novo
+                </button>
+                <button class="btn btn-primary" type="button" id="btnFiltrar" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" title="Filtrar">
+                    <i class="fa fa-filter"></i> Filtrar
+                </button>
+                <button type="button" id="btnExportExcel" class="btn btn-info" title="Exportar para Excel">
+                    <i class="fa fa-file-excel-o"></i> Exportar para Excel
+                </button>
+            </div>
+        </div>
+        <br />
+
+        <div class="card">
+
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <div class="row">
+                        <div class="col-md-12 mx-auto">
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.SearchApplicatioinID, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.DropDownList("SearchApplicatioinID", Model.SearchLoadApplications, "Selecione...", new { @class = "form-control" })
+                                </div>
+                                @Html.LabelFor(model => model.SearchFeatureID, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.DropDownList("SearchFeatureID", Model.SearchLoadFeatures, "Selecione...", new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                               
+                            </div>
+
+                            <br />
+                            <div class="col">
+                                <div class="text-center">
+                                    <button type="button" class="btn btn-success" id="btn-aplicar-filtros" title="Aplicar filtros">
+                                        <i class="fa fa-check-circle"></i> Filtrar
+                                    </button>
+                                    <button class="btn btn-secondary" type="reset" id="btnFiltrar" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" title="Fechar filtros">
+                                        <i class="fa fa-close"></i> Fechar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-2 mb-auto">
+                        <strong>@Html.LabelFor(model => model.Element, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        @Html.TextBoxFor(model => model.Element, new { @class = "form-control text-left", placeholder = "Digite o nome do elemento", @autofocus = "autofocus" })
+                        @Html.ValidationMessageFor(model => model.Element, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        <strong>@Html.LabelFor(model => model.ActionID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        @Html.DropDownList("ActionID", Model.LoadActions, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ActionID, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        <strong>@Html.LabelFor(model => model.DefaultValue, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        @Html.TextBoxFor(model => model.DefaultValue, new { @class = "form-control text-left", placeholder = "Digite o valor padrão", @autofocus = "autofocus" })
+                        @Html.ValidationMessageFor(model => model.DefaultValue, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-3 mb-auto">
+                        <strong>@Html.LabelFor(model => model.AutomationID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        @Html.TextBoxFor(model => model.AutomationID, new { @class = "form-control text-left", placeholder = "Digite o identificador do elemento", @autofocus = "autofocus" })
+                        @Html.ValidationMessageFor(model => model.AutomationID, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        <strong>@Html.LabelFor(model => model.TypeIdentificationID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        @Html.DropDownList("TypeIdentificationID", Model.LoadTypeIdentification, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TypeIdentificationID, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-1 mb-auto">
+                        <div class="pull-left">
+                            <strong>@Html.LabelFor(model => model.ElementID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+
+                            <button type="button" onclick="Add()" id="btnNew" class="btn btn-dark" data-toggle="modal" data-target='#AddModal' title="Novo Registro">
+                                <i class="fa fa-plus-circle"></i> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="element-tab" data-toggle="tab" href="#element" role="tab" aria-controls="element" aria-selected="true">Elementos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="browser-tab" data-toggle="tab" href="#browser" role="tab" aria-controls="browser" aria-selected="false">Browser</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="attachment-tab" data-toggle="tab" href="#attachment" role="tab" aria-controls="attachment" aria-selected="false">Script</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="element" role="tabpanel" aria-labelledby="element-tab">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <div id="element-grid"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="browser" role="tabpanel" aria-labelledby="browser-tab">
+                        <div class="form-group row">
+                            <div class="col-md-12 mb-auto">
+                                <iframe src="http://18.215.200.20" id="myframe" name="myframe" width="100%" height="768px"></iframe>
+                                <p><a href="#" id="backBtn">Back</a></p>
+
+                                <script type="text/javascript">
+
+                                    document.getElementById('backBtn').onclick = function () {
+                                        if (window.frames['myframe'].location.hash !== '#stopper') {
+                                            window.history.back();
+                                        }
+                                        // ... else hide the button?
+                                        return false; // pop event bubble
+                                    };
+                                    window.frames['myframe'].onload = function () {
+                                        this.location.hash = 'stopper';
+                                    };
+
+                                    //window.addEventListener('mouseover', function (e) {
+                                        applyMask(e.target);
+                                    });
+
+                                    function applyMask(target) {
+
+                                        document.getElementById('Element').value = target.className;
+                                        document.getElementById('AutomationID').value = target.className;
+
+
+                                        if (document.getElementsByClassName('highlight-wrap').length > 0) {
+                                            resizeMask(target);
+                                        } else {
+                                            createMask(target);
+                                        }
+                                    }
+
+                                    function resizeMask(target) {
+                                        var rect = target.getBoundingClientRect();
+                                        var hObj = document.getElementsByClassName('highlight-wrap')[0];
+                                        hObj.style.top = rect.top + "px";
+                                        hObj.style.width = rect.width + "px";
+                                        hObj.style.height = rect.height + "px";
+                                        hObj.style.left = rect.left + "px";
+                                        // hObj.style.WebkitTransition='top 0.2s';
+                                    }
+
+                                    function createMask(target) {
+                                        var rect = target.getBoundingClientRect();
+                                        var hObj = document.createElement("div");
+                                        hObj.className = 'highlight-wrap';
+                                        hObj.style.position = 'absolute';
+                                        hObj.style.top = rect.top + "px";
+                                        hObj.style.width = rect.width + "px";
+                                        hObj.style.height = rect.height + "px";
+                                        hObj.style.left = rect.left + "px";
+                                        hObj.style.backgroundColor = '#205081';
+                                        hObj.style.borderColor = 'red';
+                                        hObj.style.opacity = '0.5';
+                                        hObj.style.cursor = 'default';
+                                        hObj.style.pointerEvents = 'none';
+                                        //hObj.style.WebkitTransition='top 0.2s';
+                                        document.body.appendChild(hObj);
+                                    }
+
+                                    function clearMasks() {
+                                        var hwrappersLength = document.getElementsByClassName("highlight-wrap").length;
+                                        var hwrappers = document.getElementsByClassName("highlight-wrap");
+                                        if (hwrappersLength > 0) {
+                                            for (var i = 0; i < hwrappersLength; i++) {
+                                                console.log("Removing existing wrap");
+                                                hwrappers[i].remove();
+                                            }
+                                        }
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <script>
+
+                $(document).ready(function () {
+                    $("#element-grid").kendoGrid({
+
+                dataSource: {
+                    type: "json",
+                transport: {
+                read: {
+                    url: "@Html.Raw(Url.Action("GetAll", "Element"))",
+                    type: "POST",
+                    dataType: "json",
+                    data: additionalData
+                    }
+                },
+                schema: {
+                    data: "Data",
+                    total: "Total",
+                    errors: "Errors"
+                },
+                    error: function (e) {
+                    display_kendoui_grid_error(e);
+                    this.cancelChanges();
+                },
+                    pageSize: 10,
+                    serverPaging: true,
+                    serverFiltering: true,
+                    serverSorting: false
+                },
+                    resizable: true,
+                    groupable: true,
+                    sortable: true,
+                pageable: {
+                    refresh: true,
+                    pageSizes: true,
+                    buttonCount: 5,
+                messages: {
+                    display: '{0} - {1} de {2} itens',
+                    allPages: 'Todos',
+                    itemsPerPage: 'Itens por página'
+                }
+                },
+                    columns: [{
+                        field: "Element",
+                        title: "Nome",
+                        width: 50,
+                        headerAttributes: { style: "text-align:left" }
+                    }, {
+                            field: "ActionID",
+                        title: "Ação",
+                        width: 50,
+                        headerAttributes: { style: "text-align:left" }
+                   }, {
+                            field: "DefaultValue",
+                        title: "Valor Padrão",
+                        width: 90,
+                        headerAttributes: { style: "text-align:left" }
+                   }, {
+                            field: "AutomationID",
+                        title: "ID Automação",
+                        width: 70,
+                        headerAttributes: { style: "text-align:left" }
+                    }, {
+                            field: "TypeIdentificationID",
+                        title: "Tipo de Identificação",
+                        width: 50,
+                        headerAttributes: { style: "text-align:left" }
+                    }, {
+                        field: "",
+                        title: "Comandos",
+                        width: 50,
+                        headerAttributes: { style: "text-align:center" },
+                        attributes: { style: "text-align:center" },
+                        template: '<div title="Editar Contato" class="btn btn-primary btn-sm text-center" onclick="Edit(#=ElementID#)" data-toggle="modal" data-target="\\#MaintenanceModal"> <i class="fa fa-edit"></i> </div> ' +
+                            '<div title="Excluir Contato" class="btn btn-danger btn-sm text-center" onclick="Delete(#=ElementID#)" data-toggle="modal" data-target="\\#DeleteModal"> <i class="fa fa-trash"></i> </div> '
+
+                    }],
+                    excelExport: function (e) {
+                        e.workbook.fileName = "LeanTest Cloud - Contatos.xlsx";
+                    }
+                });
+            });
+
+                </script>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#btnExportExcel').click(function () {
+                            var grid = $('#element-grid').data('kendoGrid');
+                            grid.saveAsExcel();
+                            return false;
+                        });
+
+                        $('#btn-aplicar-filtros').click(function () {
+                            var grid = $('#element-grid').data('kendoGrid');
+                            if (grid.dataSource.page() == 1) {
+                                grid.dataSource.page(1);
+                            }
+                            else {
+                                grid.dataSource.read({ parameter: "value" });
+                            }
+                            return false;
+                        });
+
+                        $("#@Html.FieldIdFor(model => model.SearchApplicatioinID)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btn-aplicar-filtros").click();
+                                return false;
+                            }
+                        });
+
+                         $("#@Html.FieldIdFor(model => model.SearchFeatureID)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btn-aplicar-filtros").click();
+                                return false;
+                            }
+                         });
+                    });
+
+
+                function additionalData() {
+                    var data = {
+                        SearchApplicatioinID: $('#@Html.FieldIdFor(model => model.SearchApplicatioinID)').val(),
+                        SearchFeatureID: $('#@Html.FieldIdFor(model => model.SearchFeatureID)').val()
+                    };
+
+                    addAntiForgeryToken(data);
+
+                    return data;
+
+                    };
+
+                    var Delete = function (contactID) {
+                        var url = '/Element/GetByID?contactID=' + contactID + '&ActionName=Delete';
+
+                        $('#DeleteModalDiv').load(url, function () {
+
+                        })
+                    };
+
+                    var Edit = function (contactID) {
+                        var url = '/Element/GetByID?contactID=' + contactID + '&ActionName=Maintenance';
+
+                        $('#MaintenanceModalDiv').load(url, function () {
+
+                        })
+
+                        $('#MaintenanceModal').on('shown.bs.modal', function () {
+
+                            $('#calender-container .input-group.date').datepicker({
+                                multidate: false,
+                                multidateSeparator: ";",
+                                autoclose: true,
+                                daysOfWeekHighlighted: "0,6",
+                                todayBtn: true,
+                                todayHighlight: true,
+                                format: 'dd/mm/yyyy',
+                                language: 'pt-BR'
+                            });
+
+                        });
+                    };
+
+                    var Add = function () {
+                        var url = '/Element/New';
+
+                        $('#AddModalDiv').load(url, function () {
+
+                        })
+
+                        $('#AddModal').on('shown.bs.modal', function () {
+
+                            $('#calender-container .input-group.date').datepicker({
+                                multidate: false,
+                                multidateSeparator: ";",
+                                autoclose: true,
+                                daysOfWeekHighlighted: "0,6",
+                                todayBtn: true,
+                                todayHighlight: true,
+                                format: 'dd/mm/yyyy',
+                                language: 'pt-BR'
+                            });
+
+                        });
+                    };
+
+                </script>
+            </div>
+                    </div>
+                </div>
+
+                    }
+
+                    @using (Html.BeginForm("Add", "Element", FormMethod.Post))
+        {
+            <div class="modal fade" id="AddModal" role="dialog">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Novo Elemento</h3>
+                            <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        </div>
+                        <div class="modal-body" id="AddModalDiv">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fa fa-save"></i>  Salvar
+
+                            </button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                <i class="fa fa-close"></i>  Cancelar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+}
+
+                    @using (Html.BeginForm("Update", "Element", FormMethod.Post))
+        {
+            <div class="modal fade" id="MaintenanceModal" role="dialog">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Detalhes</h3>
+                            <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        </div>
+                        <div class="modal-body" id="MaintenanceModalDiv">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fa fa-save"></i>  Salvar
+                            </button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                <i class="fa fa-close"></i>  Cancelar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+}
+
+                    @using (Html.BeginForm("Delete", "Element", FormMethod.Post, new { novalidate = "novalidate" }))
+        {
+            <div class="modal fade" id="DeleteModal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Excluir</h3>
+                            <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        </div>
+                        <div class="modal-body" id="DeleteModalDiv">
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fa fa-check-circle"></i> Sim
+                            </button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                <i class="fa fa-close"></i> Não
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+}

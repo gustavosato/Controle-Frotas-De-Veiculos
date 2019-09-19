@@ -1,0 +1,27 @@
+﻿using Lean.Test.Cloud.Domain.Entities.Parameters;
+using Lean.Test.Cloud.MVC.Models.Parameters;
+
+namespace Lean.Test.Cloud.MVC.Extensions
+{
+    public static class ParameterMappingExtensions
+    {
+        public static ParameterModel ToModel(this Parameter entity)
+        {
+            if (entity == null)
+                return null;
+
+            var model = new ParameterModel
+            {
+                ParameterID = entity.parameterID,
+                ParameterName = entity.parameterName,
+                SystemFeatureID = entity.systemFeatureID,
+                CreatedByID = entity.createdByID,
+                CreationDate = entity.creationDate,
+                ModifiedByID = entity.modifiedByID,
+                LastModifiedDate = entity.lastModifiedDate
+            };
+
+            return model;
+        }
+    }
+}

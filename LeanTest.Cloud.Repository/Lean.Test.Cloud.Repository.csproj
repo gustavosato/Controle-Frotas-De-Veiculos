@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{15459321-03DF-4C66-B1B9-A7899331E50B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Lean.Test.Cloud.Repository</RootNamespace>
+    <AssemblyName>Lean.Test.Cloud.Repository</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.4\lib\net451\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Dapper.Contrib, Version=1.50.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.Contrib.1.50.4\lib\net451\Dapper.Contrib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\ResumeVacancieRepository.cs" />
+    <Compile Include="Data\VacancieResumeRepository.cs" />
+    <Compile Include="Data\SupportRepository.cs" />
+    <Compile Include="Data\CustomerUserRepository.cs" />
+    <Compile Include="Data\ContactRepository.cs" />
+    <Compile Include="Data\ContractRepository.cs" />
+    <Compile Include="Data\AnnexContractRepository.cs" />
+    <Compile Include="Data\ContractAdditiveRepository.cs" />
+    <Compile Include="Data\DashboardRepository.cs" />
+    <Compile Include="Data\GroupUserRepository.cs" />
+    <Compile Include="Data\PositionsSalarieRepository.cs" />
+    <Compile Include="Data\PipelineEventRepository.cs" />
+    <Compile Include="Data\PipelineRepository.cs" />
+    <Compile Include="Data\ResumeRepository.cs" />
+    <Compile Include="Data\MovimentEmployeeRepository.cs" />
+    <Compile Include="Data\DefectRepository.cs" />
+    <Compile Include="Data\IssueRepository.cs" />
+    <Compile Include="Data\EquipmentAccessorieRepository.cs" />
+    <Compile Include="Data\SkillRepository.cs" />
+    <Compile Include="Data\VacancieRepository .cs" />
+    <Compile Include="Data\WorkflowRepository.cs" />
+    <Compile Include="Data\TimeReleaseRepository.cs" />
+    <Compile Include="Data\TestScenarioFeatureRepository.cs" />
+    <Compile Include="Data\TestScenarioRepository.cs" />
+    <Compile Include="Data\ApplicationSystemRepository.cs" />
+    <Compile Include="Data\TestPackageRepository.cs" />
+    <Compile Include="Data\TestCaseRepository.cs" />
+    <Compile Include="Data\TemplateRepository.cs" />
+    <Compile Include="Data\TaskRepository.cs" />
+    <Compile Include="Data\SystemParameterRepository.cs" />
+    <Compile Include="Data\SystemMenuRepository.cs" />
+    <Compile Include="Data\ProfileRepository.cs" />
+    <Compile Include="Data\ParameterRepository.cs" />
+    <Compile Include="Data\LicenseRepository.cs" />
+    <Compile Include="Data\HistoricalRepository.cs" />
+    <Compile Include="Data\GroupRepository.cs" />
+    <Compile Include="Data\FeatureRepository.cs" />
+    <Compile Include="Data\ExpenseRepository.cs" />
+    <Compile Include="Data\SystemFeatureRepository.cs" />
+    <Compile Include="Data\ElementRepository.cs" />
+    <Compile Include="Data\DemandUserRepository.cs" />
+    <Compile Include="Data\DailyLogRepository.cs" />
+    <Compile Include="Data\DailyLogCommentRepository.cs" />
+    <Compile Include="Data\AttachmentRepository.cs" />
+    <Compile Include="Data\ChangeRequestRepository.cs" />
+    <Compile Include="Data\TestLogRepository.cs" />
+    <Compile Include="Data\AccountingEntrieRepository.cs" />
+    <Compile Include="Data\DemandRepository.cs" />
+    <Compile Include="Data\CustomerRepository.cs" />
+    <Compile Include="Data\ParameterValueRepository.cs" />
+    <Compile Include="Data\UserRepository.cs" />
+    <Compile Include="Data\BaseRepository.cs" />
+    <Compile Include="Map\ResumeVacancieDapper.cs" />
+    <Compile Include="Map\VacancieResumeDapper.cs" />
+    <Compile Include="Map\SupportDapper.cs" />
+    <Compile Include="Map\DashboardDapper.cs" />
+    <Compile Include="Map\GroupUserDapper.cs" />
+    <Compile Include="Map\PositionsSalarieDapper.cs" />
+    <Compile Include="Map\CustomerUserDapper.cs" />
+    <Compile Include="Map\ContractDapper.cs" />
+    <Compile Include="Map\AnnexContractDapper.cs" />
+    <Compile Include="Map\ContractAdditiveDapper.cs" />
+    <Compile Include="Map\ContactDapper.cs" />
+    <Compile Include="Map\PipelineEventDapper.cs" />
+    <Compile Include="Map\PipelineDapper.cs" />
+    <Compile Include="Map\ResumeDapper.cs" />
+    <Compile Include="Map\MovimentEmployeeDapper.cs" />
+    <Compile Include="Map\DefectDapper.cs" />
+    <Compile Include="Map\IssueDapper.cs" />
+    <Compile Include="Map\EquipmentAccessorieDapper.cs" />
+    <Compile Include="Map\LicenseDapper.cs" />
+    <Compile Include="Map\ApplicationSystemDapper.cs" />
+    <Compile Include="Map\AttachmentDapper.cs" />
+    <Compile Include="Map\DailyLogCommentDapper.cs" />
+    <Compile Include="Map\DemandDapper.cs" />
+    <Compile Include="Map\DemandUserDapper.cs" />
+    <Compile Include="Map\CustomerDapper.cs" />
+    <Compile Include="Map\ElementDapper.cs" />
+    <Compile Include="Map\SaleEventDapper.cs" />
+    <Compile Include="Map\SkillDapper.cs" />
+    <Compile Include="Map\SystemFeatureDapper.cs" />
+    <Compile Include="Map\ExpenseDapper.cs" />
+    <Compile Include="Map\FeatureDapper.cs" />
+    <Compile Include="Map\GroupDapper.cs" />
+    <Compile Include="Map\HistoricalDapper.cs" />
+    <Compile Include="Map\ParameterDapper.cs" />
+    <Compile Include="Map\SystemMenuDapper.cs" />
+    <Compile Include="Map\ProfileDapper.cs" />
+    <Compile Include="Map\ChangeRequestDapper.cs" />
+    <Compile Include="Map\AccountingEntrieDapper.cs" />
+    <Compile Include="Map\TestScenarioDapper.cs" />
+    <Compile Include="Map\TemplateDapper.cs" />
+    <Compile Include="Map\VacancieDapper.cs" />
+    <Compile Include="Map\WorkflowDapper.cs" />
+    <Compile Include="Map\TaskDapper.cs" />
+    <Compile Include="Map\TestPackageDapper.cs" />
+    <Compile Include="Map\DailyLogDapper.cs" />
+    <Compile Include="Map\DapperUtils.cs" />
+    <Compile Include="Map\ParameterValueDapper.cs" />
+    <Compile Include="Map\SystemParameterDapper.cs" />
+    <Compile Include="Map\TestCaseDapper.cs" />
+    <Compile Include="Map\TestLogDapper.cs" />
+    <Compile Include="Map\TestScenarioFeatureDapper.cs" />
+    <Compile Include="Map\UserDapper.cs" />
+    <Compile Include="Map\TimeReleaseDapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LeanTest.Cloud.Domain\Lean.Test.Cloud.Domain.csproj">
+      <Project>{5792190A-BCE6-4913-A42E-86FDD7076F87}</Project>
+      <Name>Lean.Test.Cloud.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,306 @@
+﻿@{
+    Layout = "~/Views/Shared/_Root.cshtml";
+}
+
+@if (Session["userID"] != null)
+{
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="@Url.Action("Index", "Principal")"><strong>LeanTest Cloud 5.0</strong></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-circle-o-notch"></i>  Gestão e Controle
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="@Url.Action("Index", "Demand")"><i class="fa fa-list"></i>  Demandas</a>
+                        <a class="dropdown-item" href="@Url.Action("Index", "TimeRelease")"><i class="fa fa-clock-o"></i>  Apropriação de Horas</a>
+                        <a class="dropdown-item" href="@Url.Action("Index", "DailyLog")"><i class="fa fa-calendar-minus-o"></i>  Registro de Eventos</a>
+                        <a class="dropdown-item" href="@Url.Action("Index", "Task")"><i class="fa fa-list"></i>  Tarefas</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="@Url.Action("Index", "Expense")"><i class="fa fa-money"></i>  Lançamento de Despesas</a>
+                        <a class="dropdown-item" href="@Url.Action("Index", "Support")"><i class="fa fa-wrench"></i>  Suporte</a>
+
+                    </div>
+                </li>
+                @if (Convert.ToString(Session["isAdmin"]) == "True")
+                {
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-id-card"></i>  Cadastros
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="@Url.Action("Index", "Customer")"><i class="fa fa-institution"></i>  Empresas</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "Contact")"><i class="fa fa-users"></i>  Contatos</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="@Url.Action("Index", "EquipmentAccessorie")"><i class="fa fa-list"></i>  Inventário</a>
+
+                        </div>
+                    </li>
+                }
+
+                @if (Convert.ToString(Session["isAdmin"]) == "True")
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-dollar"></i>  Financeiro
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="@Url.Action("Index", "Expense")"><i class="fa fa-money"></i>  Lançamento de Despesas</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="@Url.Action("Index", "AccountingEntrie")"><i class="fa fa-credit-card"></i>  Faturamentos de Projetos</a>
+                        </div>
+                    </li>
+                }
+                @if (Convert.ToString(Session["isAdmin"]) == "True")
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-users"></i>  RH
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="@Url.Action("Index", "User")"><i class="fa fa-user-md"></i>  Cadastro de Funcionários</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "MovimentEmployee")"><i class="fa fa-plane"></i>  Movimentação de Funcionário</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "Vacancie")"><i class="fa fa-user-plus"></i>  Vagas</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "Resume")"><i class="fa fa-id-card"></i>  Currículos</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "Skill")"><i class="fa fa-trophy"></i>  Habilidades e Competências</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "PositionsSalarie")"><i class="fa fa-money"></i>  Cargos e Salários</a>
+                        </div>
+                    </li>
+                }
+                @if (Convert.ToString(Session["isAdmin"]) == "True")
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-handshake-o"></i>  CRM
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="@Url.Action("Index", "Pipeline")"><i class="fa fa-connectdevelop"></i>  Pipeline de Vendas</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "PipelineEvent")"><i class="fa fa-mail-forward"></i>  Eventos de Pipeline</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "Contract")"><i class="fa fa-gavel"></i>  Contratos</a>
+
+                        </div>
+                    </li>
+                }
+                @if (Convert.ToString(Session["isAdmin"]) == "True")
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-check-square-o"></i>  Leantesting
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="@Url.Action("Index", "ApplicationSystem")"><i class="fa fa-th-large"></i>  Aplicações</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "Feature")"><i class="fa fa-codepen"></i>  Funcionalidades</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "Element")"><i class="fa fa-cube"></i>  Elementos</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="@Url.Action("Index", "TestPackage")"><i class="fa fa-suitcase"></i>  Pacotes de Testes</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "TestCase")"><i class="fa fa-newspaper-o"></i>  Casos de Teste</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "TestScenario")"><i class="fa fa-picture-o"></i>  Cenários de Teste</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "TestLog")"><i class="fa fa-file-o"></i>  Log dos Testes</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="@Url.Action("Index", "Defect")"><i class="fa fa-bug"></i>  Defeitos</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="@Url.Action("Index", "License")"><i class="fa fa-drivers-license"></i>  Controle de Licenças</a>
+                        </div>
+                    </li>
+                }
+                        @*@if (Convert.ToString(Session["isAdmin"]) == "True")
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-file"></i>  Documentos
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="@Url.Action("Index", "Attachment")"><i class="fa fa-paperclip"></i>  Documentos Anexados</a>
+
+                        </div>
+                    </li>
+                }*@
+            </ul>
+            @if (Convert.ToString(Session["isAdmin"]) == "True")
+            {
+                <div class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user-circle"></i>  Administração
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-submenu">
+                            <a class="dropdown-item" href="@Url.Action("Index", "User")"><i class="fa fa-user-plus"></i>  Usuários</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "Group")"><i class="fa fa-group"></i>  Grupos de Usuários</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "Profile")"><i class="fa fa-check-circle"></i>  Perfil</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="@Url.Action("Index", "SystemFeature")"><i class="fa fa-gear"></i>  Funcionalidades de Sistema</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "Parameter")"><i class="fa fa-gears"></i>  Parâmetro de funcionalidades</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "ParameterValue")"><i class="fa fa-list"></i>  Valores de Parâmetro</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "SystemParameter")"><i class="fa fa-sliders"></i>  Configurações</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "SystemMenu")"><i class="fa fa-thumb-tack"></i>  Menus do Sistema</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="btn btn-dark btn-sm">Seja bem vindo @Convert.ToString(Session["userName"])</div>
+            <strong><a class="nav-link" href="#" id="real-clock" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a></strong>
+
+            <div>
+                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="modal" data-target="#ExitApplication">
+                    <i class="fa fa-user-times"></i>  Sair
+                </a>
+
+            </div>
+
+        </div>
+    </nav>
+
+}
+else
+{
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="@Url.Action("Index", "Home")"><strong>LeanTest Cloud 5.0</strong></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+}
+
+@using (Html.BeginForm("Login", "User", FormMethod.Post))
+{
+    <div class="modal fade" id="LoginModal" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Controle de Acesso</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <div class="modal-body" id="LoginModalDiv">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="btnEnter" class="btn btn-success btn-sm">
+                        <i class="fa fa-check"></i>  Acessar
+                    </button>
+                    <button type="button" id="btnUpdatePassword" class="btn btn-success btn-sm">
+                        <i class="fa fa-save"></i>  Atualizar
+                    </button>
+                    <button type="button" id="btnCancel" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                        <i class="fa fa-close"></i>  Cancelar
+                    </button>
+                    <button type="button" id="btnAuthenticate" class="btn btn-success btn-sm">
+                        <i class="fa fa-check-circle"></i>  Autênticar
+                    </button>
+                    <button type="button" onclick="RememberPassword()" id="btnRememberPassword" class="btn btn-info btn-sm" data-dismiss="modal">
+                        <i class="fa fa-envelope"></i>  Esqueci minha senha
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@using (Html.BeginForm("AddByUser", "User", FormMethod.Post))
+{
+    <div class="modal fade" id="NewUserModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Informações do novo usuário</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <div class="modal-body" id="NewUserModalDiv">
+                </div>
+                <style>
+                    .text-xs-center {
+                        text-align: center;
+                    }
+                    .g-recaptcha {
+                        display: inline-block;
+                    }
+                </style>
+                <div class="text-xs-center">
+                    <div class="g-recaptcha" data-sitekey="6LeIj6QUAAAAAHAwWCHTO89ye9d86IiZsjSrANh7"></div>
+                </div>
+                @*<span style="display:inline-block; font-size:20px;margin:20px 0; padding:20px; border:0px solid #D3D3D3">
+                    @ViewBag.ErroCaptcha
+                </span>*@
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success btn-sm">
+                        <i class="fa fa-save"></i>  Salvar
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                        <i class="fa fa-close"></i>  Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { novalidate = "novalidate" }))
+{
+    <div class="modal fade" id="ExitApplication" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Sair da aplicação?</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <div class="modal-body" id="ExitApplicationDiv">
+                    Deseja realmente sair da aplicação?
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success btn-sm" onclick="Exit()">
+                        <i class="fa fa-check-circle"></i> Sim
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                        <i class="fa fa-close"></i> Não
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    //var clock = document.getElementById('real-clock1');
+    //setInterval(function () {
+    //clock.innerHTML = ((new Date).toLocaleString());
+    //}, 1000);
+
+    $("#btnEnter").hide();
+    $("#btnUpdatePassword").hide();
+    $("#btnCancel").hide();
+    $("#btnAuthenticate").show();
+    $("#btnRememberPassword").show();
+
+    var Signin = function () {
+        var url = '/User/LoadSignin';
+
+        $('#LoginModalDiv').load(url, function () {
+
+        })
+    };
+    var Signup = function () {
+        var url = '/User/LoadSignup';
+
+        $('#NewUserModalDiv').load(url, function () {
+
+        })
+    };
+
+    var Exit = function () {
+        var url = '/User/Exit';
+
+        $('#ExitApplication').load(url, function () {
+
+        })
+    };
+</script>
+
+@Html.Partial("_Notificacoes")
+@RenderBody()
+

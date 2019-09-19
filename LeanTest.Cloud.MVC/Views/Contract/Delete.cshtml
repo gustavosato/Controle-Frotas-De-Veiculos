@@ -1,0 +1,11 @@
+﻿@model Lean.Test.Cloud.MVC.Models.Contracts.ContractModel
+
+@Html.HiddenFor(model => model.ContractID)
+<div>
+    Deseja realmente excluir o seguinte contrato?
+    <br />
+    <br />
+    <ul>
+        <li>Contrato: <strong>@Model.ObjectContract</strong></li>
+    </ul>
+</div>

@@ -1,0 +1,12 @@
+﻿@model Lean.Test.Cloud.MVC.Models.Users.UserModel
+
+@Html.HiddenFor(model => model.UserID)
+<div>
+    Deseja realmente excluir o seguinte registro?
+    <br />
+    <br />
+    <ul>
+        <li>Nome do Usuário: <strong>@Model.UserName</strong></li>
+        <li>E-mail: <strong>@Model.Email</strong></li>
+    </ul>
+</div>

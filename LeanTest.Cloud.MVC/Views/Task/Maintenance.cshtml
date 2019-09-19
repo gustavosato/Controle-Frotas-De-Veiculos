@@ -1,0 +1,400 @@
+﻿@model Lean.Test.Cloud.MVC.Models.Tasks.TaskModel
+
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@Html.HiddenFor(model => model.TaskID)
+@Html.HiddenFor(model => model.CreatedByID)
+@Html.HiddenFor(model => model.CreationDate)
+
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="detail-tab" data-toggle="tab" href="#detail" role="tab" aria-controls="detail" aria-selected="true">Detalhes</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="attachment-tab" data-toggle="tab" href="#attachment" role="tab" aria-controls="attachment" aria-selected="false">Anexos</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="historical-tab" data-toggle="tab" href="#historical" role="tab" aria-controls="historical" aria-selected="false">Histórico de Alterações</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="detail" role="tabpanel" aria-labelledby="detail-tab">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-10 mb-auto">
+                        <strong>@Html.LabelFor(model => model.Summary, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.TextBoxFor(model => model.Summary, new { @class = "form-control text-left", placeholder = "Adicione...", @autofocus = "autofocus" })
+                        @Html.ValidationMessageFor(model => model.Summary, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.CreationDate, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.CreationDate, new { @class = "form-control text-left", @disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.CreationDate, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-8 mb-auto">
+                        <strong>@Html.LabelFor(model => model.DemandID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("DemandID", Model.LoadDemand, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.DemandID, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto" id="calender-container">
+                        <strong>@Html.LabelFor(model => model.TargetDate, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        <div class="input-group date">
+                            @Html.TextBoxFor(model => model.TargetDate, new { @class = "form-control", autocomplete = "off", placeholder = "Selecione..." })<span class="input-group-addon"></span>
+                            @Html.ValidationMessageFor(model => model.TargetDate, "", new { @class = "form-text text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-2 mb-auto" id="calender-container">
+                        @Html.LabelFor(model => model.ClosingDate, new { @class = "col-sm-0 col-form-label text-left" })
+                        <div class="input-group date">
+                            @Html.TextBoxFor(model => model.ClosingDate, new { @class = "form-control", autocomplete = "off", placeholder = "Selecione..." })<span class="input-group-addon"></span>
+                            @Html.ValidationMessageFor(model => model.ClosingDate, "", new { @class = "form-text text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-auto">
+                        @Html.LabelFor(model => model.StatusID, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.DropDownList("StatusID", Model.LoadStatus, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.StatusID, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-4 mb-auto">
+                        <strong>@Html.LabelFor(model => model.AssignToID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("AssignToID", Model.LoadAssignTo, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.AssignToID, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-4 mb-auto">
+                        @Html.LabelFor(model => model.CreatedByID, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.DropDownList("CreatedByID", Model.LoadCreatedBy, "Selecione...", new { @class = "form-control", @disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.CreatedByID, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-12 mb-auto">
+                        @Html.LabelFor(model => model.Description, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control", placeholder = "Digite uma descrição", rows = "3" })
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane fade" id="attachment" role="tabpanel" aria-labelledby="attachment-tab">
+        <div class="container-fluid">
+            <div class="row">
+                <div></div>
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-12 mb-auto">
+
+                        <div class="col-md-12 mx-auto">
+                            <div class="form-group row">
+                                <input type="file" name="file" />
+                            </div>
+                        </div>
+                        <div id="data-grid"></div>
+                        <script>
+
+                                $(document).ready(function () {
+                                    $("#data-grid").kendoGrid({
+
+                                dataSource: {
+                                    type: "json",
+                                transport: {
+                                read: {
+                                    url: "@Html.Raw(Url.Action("GetAllByRecordID", "Attachment"))",
+                                    type: "POST",
+                                    dataType: "json",
+                                    data: additionalData
+                                    }
+                                },
+                                schema: {
+                                    data: "Data",
+                                    total: "Total",
+                                    errors: "Errors"
+                                },
+                                    error: function (e) {
+                                    display_kendoui_grid_error(e);
+                                    this.cancelChanges();
+                                },
+                                    pageSize: 10,
+                                    serverPaging: true,
+                                    serverFiltering: true,
+                                    serverSorting: false
+                                },
+                                    resizable: true,
+                                    groupable: true,
+                                    sortable: true,
+                                pageable: {
+                                    refresh: true,
+                                    pageSizes: true,
+                                    buttonCount: 5,
+                                messages: {
+                                    display: '{0} - {1} de {2} itens',
+                                    allPages: 'Todos',
+                                    itemsPerPage: 'Itens por página'
+                                }
+                                },
+                                    columns: [{
+                                            field: "AttachmentID",
+                                            title: "ID",
+                                            width: 50,
+                                            headerAttributes: { style: "text-align:left" }
+                                    }, {
+                                            field: "FileName",
+                                            title: "Nome do arquivo",
+                                            width: 250,
+                                            headerAttributes: { style: "text-align:left" }
+                                    },{
+                                            field: "",
+                                            title: "Comandos",
+                                            width: 50,
+                                            headerAttributes: { style: "text-align:center" },
+                                            attributes: { style: "text-align:center" },
+                                            template: '<div title="Excluir" class="btn btn-danger btn-sm text-center" onclick="AttachmentDelete(#=AttachmentID#)" data-toggle="modal" data-target="\\#AttachmentDeleteModal"> <i class="fa fa-trash"></i> </div> ' +
+                                                '<a href="Attachment/Download?attachmentID=#=AttachmentID#" class="btn btn-info btn-sm text-center"> <i class="fa fa-download" text-danger false-icon"></i></a> '
+
+                                    }],
+                                    excelExport: function (e) {
+                                        e.workbook.fileName = "LeanTest Cloud - Anexos Tarefas.xlsx";
+                                    }
+                                });
+                            });
+
+                        </script>
+                        <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#btnExportExcel').click(function () {
+                            var grid = $('#data-grid').data('kendoGrid');
+                            grid.saveAsExcel();
+                            return false;
+                        });
+
+                        $('#btn-aplicar-filtros').click(function () {
+                            var grid = $('#data-grid').data('kendoGrid');
+                            if (grid.dataSource.page() == 1) {
+                                grid.dataSource.page(1);
+                            }
+                            else {
+                                grid.dataSource.read({ parameter: "value" });
+                            }
+                            return false;
+                        });
+
+                    });
+
+                        function additionalData() {
+                            var data = {
+                                RecordID: $('#@Html.FieldIdFor(model => model.TaskID)').val(),
+                                SystemFeatureID: "205"
+                            };
+
+                            addAntiForgeryToken(data);
+
+                            return data;
+
+                         };
+
+                        var AttachmentDelete = function (attachmentID) {
+                            var url = '/Attachment/GetByID?attachmentID=' + attachmentID + '&ActionName=Delete';
+
+                            $('#AttachmentDeleteModalDiv').load(url, function () {
+
+                            })
+                        };
+
+                        var Download = function (attachmentID) {
+                            var url = '/Attachment/Download?attachmentID=' + attachmentID;
+
+                            $('#DeleteModalDiv').load(url, function () {
+
+                            })
+                        };
+
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane fade" id="historical" role="tabpanel" aria-labelledby="historical-tab">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-12 mb-auto">
+                        <div id="historical-grid"></div>
+                        <script>
+
+                                $(document).ready(function () {
+                                    $("#historical-grid").kendoGrid({
+
+                                dataSource: {
+                                    type: "json",
+                                transport: {
+                                read: {
+                                    url: "@Html.Raw(Url.Action("GetAll", "Historical"))",
+                                    type: "POST",
+                                    dataType: "json",
+                                    data: additionalData
+                                    }
+                                },
+                                schema: {
+                                    data: "Data",
+                                    total: "Total",
+                                    errors: "Errors"
+                                },
+                                    error: function (e) {
+                                    display_kendoui_grid_error(e);
+                                    this.cancelChanges();
+                                },
+                                    pageSize: 10,
+                                    serverPaging: true,
+                                    serverFiltering: true,
+                                    serverSorting: false
+                                },
+                                    resizable: true,
+                                    groupable: true,
+                                    sortable: true,
+                                pageable: {
+                                    refresh: true,
+                                    pageSizes: true,
+                                    buttonCount: 5,
+                                messages: {
+                                    display: '{0} - {1} de {2} itens',
+                                    allPages: 'Todos',
+                                    itemsPerPage: 'Itens por página'
+                                }
+                                },
+                                columns: [{
+                                            field: "FieldName",
+                                            title: "Campo",
+                                            width: 70,
+                                            headerAttributes: { style: "text-align:left" }
+                                    }, {
+                                            field: "OldValue",
+                                            title: "Valor Anterior",
+                                            width: 100,
+                                            headerAttributes: { style: "text-align:left" }
+                                    }, {
+                                            field: "NewValue",
+                                            title: "Valor Atual",
+                                            width: 100,
+                                            headerAttributes: { style: "text-align:left" }
+                                    }, {
+                                            field: "CreatedByID",
+                                            title: "Alterado por",
+                                            width: 70,
+                                            headerAttributes: { style: "text-align:left" }
+                                    },{
+                                            field: "CreationDate",
+                                            title: "Data da Alteração",
+                                            width: 50,
+                                            headerAttributes: { style: "text-align:left" }
+                                    }],
+                                    excelExport: function (e) {
+                                        e.workbook.fileName = "LeanTest Cloud - Histórico Tarefas.xlsx";
+                                    }
+                                });
+                            });
+
+                        </script>
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('#btnExportExcel').click(function () {
+                                    var grid = $('#historical-grid').data('kendoGrid');
+                                    grid.saveAsExcel();
+                                    return false;
+                                });
+
+                                $('#btn-aplicar-filtros').click(function () {
+                                    var grid = $('#historical-grid').data('kendoGrid');
+                                    if (grid.dataSource.page() == 1) {
+                                        grid.dataSource.page(1);
+                                    }
+                                    else {
+                                        grid.dataSource.read({ parameter: "value" });
+                                    }
+                                    return false;
+                                });
+
+                            });
+
+                        function additionalData() {
+                            var data = {
+                                RecordID: $('#@Html.FieldIdFor(model => model.TaskID)').val(),
+                                SystemFeatureID: "205"
+                            };
+
+                            addAntiForgeryToken(data);
+
+                            return data;
+
+                            };
+
+                        </script>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+    $("#CustomerID").change(function () {
+        $("#cmbDemandID").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetDemands")',
+
+                dataType: 'json',
+                data: { customerID: $("#CustomerID").val() },
+                success: function (itens) {
+                    $("#cmbDemandID").append('<option value="">Selecione...</option>');
+                    $.each(itens, function (i, item) {
+                        $("#cmbDemandID").append('<option value="' + item.Value + '">' + item.Text + '</option>');
+                    });
+                },
+                error: function (ex) {
+                    alert('Falha ao recuperar valores' + ex);
+                }
+            });
+            return false;
+        })
+    });
+</script>
+
+<script language='JavaScript'>
+    function NumberOnly(e) {
+        var tecla = (window.event) ? e.keyCode : e.which;
+        if (tecla == 8 || tecla == 0)
+            return true;
+        if (tecla != 44 && tecla < 48 || tecla > 57)
+            return false;
+    }
+
+    //$('#ProgressPercentage').change(function () {
+    //    if (document.getElementById("ProgressPercentage").value == "") {
+    //        ProgressPercentage = "0"
+    //    }
+    //    else {
+    //        Progresspercentage = document.getElementById("Progresspercentage").value.replace(",", ".").replace("%", "");
+    //    }
+
+    //    document.getElementById('Progresspercentage').value = Progresspercentage.replace("%", "").replace(".", ",") + "%";
+    //});
+
+</script>﻿﻿
+

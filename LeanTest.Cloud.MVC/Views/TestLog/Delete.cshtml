@@ -1,0 +1,11 @@
+﻿@model Lean.Test.Cloud.MVC.Models.TestLogs.TestLogModel
+
+@Html.HiddenFor(model => model.LogID)
+<div>
+    Deseja realmente excluir o seguinte log?
+    <br />
+    <br />
+    <ul>
+        <li>StepName: <strong>@Model.StepName</strong></li>
+    </ul>
+</div>

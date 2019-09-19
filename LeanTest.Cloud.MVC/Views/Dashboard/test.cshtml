@@ -1,0 +1,473 @@
+﻿@model Lean.Test.Cloud.MVC.Models.Customers.CustomerModel
+@{
+    ViewBag.Title = " - Clientes";
+    Layout = "~/Views/Shared/_ContentPage.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="container-fluid">
+        <br />
+        <div class="content-header clearfix">
+            <div class="pull-left">
+                <button type="button" id="btnRefresh" class="btn btn-dark btn-sm" data-toggle="modal" data-target='#AddModal' title="Novo Registro">
+                    <i class="fa fa-refresh"></i> Atualizar
+                </button>
+                <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" title="Filtrar">
+                    <i class="fa fa-bar-chart"></i> Status das Demandas
+                </button>
+                <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" title="Filtrar">
+                    <i class="fa fa-pie-chart"></i> Execução dos Testes por Demanda
+                </button>
+                <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" title="Filtrar">
+                    <i class="fa fa-pie-chart"></i> Execução dos Testes por Aplicação
+                </button>
+                <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" title="Filtrar">
+                    <i class="fa fa-line-chart"></i> Defeitos por Demanda
+                </button>
+                <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" title="Filtrar">
+                    <i class="fa fa-line-chart"></i> Defeitos por Aplicação
+                </button>
+            </div>
+        </div>
+        <br />
+
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-12 mb-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                <div id="chart_div"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3 mb-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                <div id="chart_div1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                <div id="chart_div2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                <div id="chart_div3"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                <div id="chart_div4"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <div class="col-md-3 mb-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                <div id="chart_div5"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                <div id="chart_div6"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                <div id="chart_div7"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                <div id="chart_div8"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { packages: ['corechart', 'table', 'gauge', 'line', 'bar', 'table', 'gantt'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Status');
+            data.addColumn('number', 'No Run');
+            data.addColumn('number', 'Passed');
+            data.addColumn('number', 'Failed');
+            data.addColumn('number', 'Blocked');
+
+            data.addRows([
+                ['01/11/2019', 7.8, 8.8, 4.8, 10],
+                ['02/11/2019', 0.9, 6.5, 32.4, 20],
+                ['03/11/2019', 5.4, 5, 25.7, 10],
+                ['04/11/2019', 11.7, 18.8, 10.5, 15],
+                ['05/11/2019', 11.9, 17.6, 10.4, 10],
+                ['06/11/2019', 8.8, 13.6, 7.7, 10],
+                ['07/11/2019', 7.6, 12.3, 9.6, 20],
+                ['08/11/2019', 12.3, 29.2, 10.6, 5],
+                ['09/11/2019', 16.9, 4.9, 14.8, 10],
+                ['10/11/2019', 12.8, 3.9, 11.6, 7],
+                ['11/11/2019', 5.3, 7.9, 4.7, 17],
+                ['12/11/2019', 6.6, 8.4, 5.2, 21],
+                ['13/11/2019', 4.8, 6.3, 3.6, 5],
+                ['14/11/2019', 4.2, 6.2, 3.4, 4]
+            ]);
+
+            var options = {
+                colors: ["#ABB2B9", "#73C6B6", "#F1948A", "#F7DC6F", "#AED6F1", "#E5E7E9", "#D8BFD8", "#191970"],
+                chart: {
+                    title: 'Burn Down da Execução dos Teste',
+                    subtitle: 'Status da execução diária'
+                },
+                hAxis: {
+                    title: ''
+                },
+                vAxis: {
+                    title: 'Quantidade'
+                },
+                trendlines: {
+                    //0: {type: 'exponential', color: '#333', opacity: 1},
+                    //1: {type: 'linear', color: '#111', opacity: .5}
+                },
+                titleTextStyle: {
+                    color: '#ABB2B9',
+                    fontName: 'Calibri',
+                    fontSize: 22,
+                    bold: false,
+                    italic: false
+                },
+                width: '100%',
+                height: 300
+            };
+
+            var chart = new google.charts.Line(document.getElementById('chart_div'));
+
+            chart.draw(data, google.charts.Line.convertOptions(options));
+
+         
+            //grafico de pie
+            var data1 = google.visualization.arrayToDataTable([
+                ['Status', 'Total'],
+                ['No Run', 11],
+                ['Passed', 2],
+                ['Failed', 2],
+                ['Blocked', 2]
+            ]);
+
+            var options1 = {
+                colors: ["#ABB2B9", "#73C6B6", "#F1948A", "#F7DC6F", "#AED6F1", "#E5E7E9", "#D8BFD8", "#191970"],
+                title: 'Squad 01 X Status Execução',
+                legend: { position: 'right', maxLines: 4, alignment: 'start' },
+                slices: {
+                    1: { offset: 0.0 },
+                    2: { offset: 0.3 },
+                    3: { offset: 0.1 },
+                    4: { offset: 0.1 },
+                    5: { offset: 0.1 },
+                },
+                is3D: true,
+                titleTextStyle: {
+                    color: '#ABB2B9',
+                    fontName: 'Calibri',
+                    fontSize: 22,
+                    bold: false,
+                    italic: false
+                }
+            };
+
+                //grafico de pie
+                var data1 = google.visualization.arrayToDataTable([
+                    ['Status', 'Total'],
+                    ['Novo', 11],
+                    ['Aberto', 2],
+                    ['Fechado', 2],
+                    ['Bloqueado', 2]
+                ]);
+
+                var options1 = {
+                    colors: ["#ABB2B9", "#73C6B6", "#F1948A", "#F7DC6F", "#AED6F1", "#E5E7E9", "#D8BFD8", "#191970"],
+                    title: 'Squad 01 X Status Execução',
+                    legend: { position: 'right', maxLines: 4, alignment: 'start' },
+                    slices: {
+                        1: { offset: 0.0 },
+                        2: { offset: 0.3 },
+                        3: { offset: 0.1 },
+                        4: { offset: 0.1 },
+                        5: { offset: 0.1 },
+                    },
+                    is3D: true,
+                    titleTextStyle: {
+                        color: '#ABB2B9',
+                        fontName: 'Calibri',
+                        fontSize: 22,
+                        bold: false,
+                        italic: false
+                    }
+                };
+
+            var chart1 = new google.visualization.PieChart(document.getElementById('chart_div1'));
+            chart1.draw(data1, options1);
+
+            //grafico de pie
+            var data2 = google.visualization.arrayToDataTable([
+                ['Status', 'Total'],
+                ['No Run', 3],
+                ['Passed', 10],
+                ['Failed', 6],
+                ['Blocked', 2]
+            ]);
+
+            var options2 = {
+                colors: ["#ABB2B9", "#73C6B6", "#F1948A", "#F7DC6F", "#AED6F1", "#E5E7E9", "#D8BFD8", "#191970"],
+                title: 'Squad 2 - Status da Execução',
+                legend: { position: 'right', maxLines: 4, alignment: 'start' },
+                slices: {
+                    1: { offset: 0.0 },
+                    2: { offset: 0.3 },
+                    3: { offset: 0.1 },
+                    4: { offset: 0.1 },
+                    5: { offset: 0.1 },
+                },
+                is3D: true,
+                titleTextStyle: {
+                    color: '#ABB2B9',
+                    fontName: 'Calibri',
+                    fontSize: 22,
+                    bold: false,
+                    italic: false
+                }
+            };
+
+            var chart2 = new google.visualization.PieChart(document.getElementById('chart_div2'));
+            chart2.draw(data2, options2);
+
+            //grafico de pie
+            var data3 = google.visualization.arrayToDataTable([
+                ['Status', 'Total'],
+                ['No Run', 11],
+                ['Passed', 20],
+                ['Failed', 12],
+                ['Blocked', 2]
+            ]);
+
+            var options3 = {
+                colors: ["#ABB2B9", "#73C6B6", "#F1948A", "#F7DC6F", "#AED6F1", "#E5E7E9", "#D8BFD8", "#191970"],
+                title: 'Squad 3 - Status da Execução',
+                legend: { position: 'right', maxLines: 4, alignment: 'start' },
+                slices: {
+                    1: { offset: 0.0 },
+                    2: { offset: 0.3 },
+                    3: { offset: 0.1 },
+                    4: { offset: 0.1 },
+                    5: { offset: 0.1 },
+                },
+                is3D: true,
+                titleTextStyle: {
+                    color: '#ABB2B9',
+                    fontName: 'Calibri',
+                    fontSize: 22,
+                    bold: false,
+                    italic: false
+                }
+            };
+
+            var chart3 = new google.visualization.PieChart(document.getElementById('chart_div3'));
+            chart3.draw(data3, options3);
+
+            //grafico de pie
+            var data4 = google.visualization.arrayToDataTable([
+                ['Status', 'Total'],
+                ['No Run', 30],
+                ['Passed', 65],
+                ['Failed', 20],
+                ['Blocked', 14]
+
+            ]);
+
+            var options4 = {
+                colors: ["#ABB2B9", "#73C6B6", "#F1948A", "#F7DC6F", "#AED6F1", "#E5E7E9", "#D8BFD8", "#191970"],
+                title: 'Squad 4 - Status de Execução',
+                legend: { position: 'right', maxLines: 4, alignment: 'start' },
+                slices: {
+                    1: { offset: 0.0 },
+                    2: { offset: 0.3 },
+                    3: { offset: 0.1 },
+                    4: { offset: 0.1 },
+                    5: { offset: 0.1 },
+                },
+                is3D: true,
+                titleTextStyle: {
+                    color: '#ABB2B9',
+                    fontName: 'Calibri',
+                    fontSize: 22,
+                    bold: false,
+                    italic: false
+                }
+            };
+
+            var chart4 = new google.visualization.PieChart(document.getElementById('chart_div4'));
+            chart4.draw(data4, options4);
+
+            //defeitos
+            //grafico de pie
+            var data5 = google.visualization.arrayToDataTable([
+                ['Status', 'Total'],
+                ['Novo', 11],
+                ['Aberto', 2],
+                ['Fechado', 2],
+                ['Bloqueado', 2]
+            ]);
+
+            var options5 = {
+                colors: ["#ABB2B9", "#73C6B6", "#F1948A", "#F7DC6F", "#AED6F1", "#E5E7E9", "#D8BFD8", "#191970"],
+                title: 'Squad 01 X Status Defeitos',
+                legend: { position: 'right', maxLines: 4, alignment: 'start' },
+                slices: {
+                    1: { offset: 0.0 },
+                    2: { offset: 0.3 },
+                    3: { offset: 0.1 },
+                    4: { offset: 0.1 },
+                    5: { offset: 0.1 },
+                },
+                is3D: true,
+                titleTextStyle: {
+                    color: '#ABB2B9',
+                    fontName: 'Calibri',
+                    fontSize: 22,
+                    bold: false,
+                    italic: false
+                }
+            };
+
+            var chart5 = new google.visualization.PieChart(document.getElementById('chart_div5'));
+            chart5.draw(data5, options5);
+
+            //grafico de pie
+            var data6 = google.visualization.arrayToDataTable([
+                ['Status', 'Total'],
+                ['Novo', 3],
+                ['Aberto', 10],
+                ['Fechado', 6],
+                ['Bloqueado', 2]
+            ]);
+
+            var options6 = {
+                colors: ["#ABB2B9", "#73C6B6", "#F1948A", "#F7DC6F", "#AED6F1", "#E5E7E9", "#D8BFD8", "#191970"],
+                title: 'Squad 2 - Status da Execução',
+                legend: { position: 'right', maxLines: 4, alignment: 'start' },
+                slices: {
+                    1: { offset: 0.0 },
+                    2: { offset: 0.3 },
+                    3: { offset: 0.1 },
+                    4: { offset: 0.1 },
+                    5: { offset: 0.1 },
+                },
+                is3D: true,
+                titleTextStyle: {
+                    color: '#ABB2B9',
+                    fontName: 'Calibri',
+                    fontSize: 22,
+                    bold: false,
+                    italic: false
+                }
+            };
+
+            var chart6 = new google.visualization.PieChart(document.getElementById('chart_div6'));
+            chart6.draw(data6, options6);
+
+            //grafico de pie
+            var data7 = google.visualization.arrayToDataTable([
+                ['Status', 'Total'],
+                ['Novo', 11],
+                ['Aberto', 20],
+                ['Fechado', 12],
+                ['Bloqueado', 2]
+            ]);
+
+            var options7 = {
+                colors: ["#ABB2B9", "#73C6B6", "#F1948A", "#F7DC6F", "#AED6F1", "#E5E7E9", "#D8BFD8", "#191970"],
+                title: 'Squad 3 - Status da Execução',
+                legend: { position: 'right', maxLines: 4, alignment: 'start' },
+                slices: {
+                    1: { offset: 0.0 },
+                    2: { offset: 0.3 },
+                    3: { offset: 0.1 },
+                    4: { offset: 0.1 },
+                    5: { offset: 0.1 },
+                },
+                is3D: true,
+                titleTextStyle: {
+                    color: '#ABB2B9',
+                    fontName: 'Calibri',
+                    fontSize: 22,
+                    bold: false,
+                    italic: false
+                }
+            };
+
+            var chart7 = new google.visualization.PieChart(document.getElementById('chart_div7'));
+            chart7.draw(data7, options7);
+
+            //grafico de pie
+            var data8 = google.visualization.arrayToDataTable([
+                ['Status', 'Total'],
+                ['Novo', 30],
+                ['Aberto', 65],
+                ['Fechado', 20],
+                ['Bloqueado', 14]
+
+            ]);
+
+            var options8 = {
+                colors: ["#ABB2B9", "#73C6B6", "#F1948A", "#F7DC6F", "#AED6F1", "#E5E7E9", "#D8BFD8", "#191970"],
+                title: 'Squad 4 - Status de Execução',
+                legend: { position: 'right', maxLines: 4, alignment: 'start' },
+                slices: {
+                    1: { offset: 0.0 },
+                    2: { offset: 0.3 },
+                    3: { offset: 0.1 },
+                    4: { offset: 0.1 },
+                    5: { offset: 0.1 },
+                },
+                is3D: true,
+                titleTextStyle: {
+                    color: '#ABB2B9',
+                    fontName: 'Calibri',
+                    fontSize: 22,
+                    bold: false,
+                    italic: false
+                }
+            };
+
+            var chart8 = new google.visualization.PieChart(document.getElementById('chart_div8'));
+            chart8.draw(data8, options8);
+        }
+    </script>
+}

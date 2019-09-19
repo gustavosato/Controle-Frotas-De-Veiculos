@@ -1,0 +1,12 @@
+﻿@model Lean.Test.Cloud.MVC.Models.AccountingEntries.AccountingEntrieModel
+
+@Html.HiddenFor(model => model.AccountingEntrieID)
+<div>
+    Deseja realmente excluir o seguinte registro?
+    <br />
+    <br />
+    <ul>
+        <li>Data da Solicitação do Faturamento: <strong>@Model.CompetitionDate</strong></li>
+        <li>Valor a ser Faturado: <strong>@Model.ValueToBeRealized</strong></li>
+    </ul>
+</div>

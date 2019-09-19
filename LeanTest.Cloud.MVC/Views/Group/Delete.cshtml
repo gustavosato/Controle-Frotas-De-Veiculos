@@ -1,0 +1,11 @@
+﻿@model Lean.Test.Cloud.MVC.Models.Groups.GroupModel
+
+@Html.HiddenFor(model => model.GroupID)
+<div>
+    Deseja realmente excluir o seguinte registro?
+    <br />
+    <br />
+    <ul>
+        <li>Grupo: <strong>@Model.GroupName</strong></li>
+    </ul>
+</div>

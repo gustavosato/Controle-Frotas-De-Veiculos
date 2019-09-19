@@ -1,0 +1,464 @@
+﻿@model Lean.Test.Cloud.MVC.Models.Vacancies.VacancieModel
+@{
+    ViewBag.Title = " - Vagas";
+    Layout = "~/Views/Shared/_ContentPage.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="container-fluid">
+        <br />
+        <div class="content-header clearfix">
+
+            <div class="pull-left">
+
+
+                <button type="button" onclick="Add()" id="btnNew" class="btn btn-dark" data-toggle="modal" data-target='#AddModal' title="Novo Registro">
+                    <i class="fa fa-plus-circle"></i> Novo
+                </button>
+                <button class="btn btn-primary" type="button" id="btnFiltrar" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" title="Filtrar">
+                    <i class="fa fa-filter"></i> Filtrar
+                </button>
+                <button type="button" id="btnExportExcel" class="btn btn-info" title="Exportar para Excel">
+                    <i class="fa fa-file-excel-o"></i> Exportar para Excel
+                </button>
+            </div>
+        </div>
+        <br />
+
+        <div class="card">
+
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <div class="row">
+                        <div class="col-md-12 mx-auto">
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.SearchSummary, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.TextBoxFor(model => model.SearchSummary, new { @class = "form-control" })
+                                </div>
+                                @Html.LabelFor(model => model.SearchWorkPlace, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.TextBoxFor(model => model.SearchWorkPlace, new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.SearchVacanciesTypeID, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.DropDownList("SearchVacanciesTypeID", Model.SearchLoadVacanciesType, "Selecione...", new { @class = "form-control" })
+                                </div>
+                                @Html.LabelFor(model => model.SearchCreatedByID, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.DropDownList("SearchCreatedByID", Model.SearchLoadCreatedBy, "Selecione...", new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.SearchValidityID, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.DropDownList("SearchValidityID", Model.SearchLoadValidity, "Selecione...", new { @class = "form-control" })
+                                </div>
+                                @Html.LabelFor(model => model.SearchContractTypeID, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.DropDownList("SearchContractTypeID", Model.SearchLoadContractType, "Selecione...", new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.SearchCustomerID, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.DropDownList("SearchCustomerID", Model.SearchLoadCustomer, "Selecione...", new { @class = "form-control" })
+                                </div>
+                                @Html.LabelFor(model => model.SearchStatusID, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.DropDownList("SearchStatusID", Model.SearchLoadStatus, "Selecione...", new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <br />
+                            <div class="col">
+                                <div class="text-center">
+                                    <button type="button" class="btn btn-success" id="btn-aplicar-filtros" title="Aplicar filtros">
+                                        <i class="fa fa-check-circle"></i> Filtrar
+                                    </button>
+                                    <button class="btn btn-secondary" type="reset" id="btnFiltrar" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" title="Fechar filtros">
+                                        <i class="fa fa-close"></i> Fechar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div><h5>VAGAS</h5></div>
+
+                <div id="vacancie-grid"></div>
+                <script>
+
+                $(document).ready(function () {
+                    $("#vacancie-grid").kendoGrid({
+
+                dataSource: {
+                    type: "json",
+                transport: {
+                read: {
+                    url: "@Html.Raw(Url.Action("GetAll", "Vacancie"))",
+                    type: "POST",
+                    dataType: "json",
+                    data: additionalData
+                    }
+                },
+                schema: {
+                    data: "Data",
+                    total: "Total",
+                    errors: "Errors"
+                },
+                    error: function (e) {
+                    display_kendoui_grid_error(e);
+                    this.cancelChanges();
+                },
+                    pageSize: 10,
+                    serverPaging: true,
+                    serverFiltering: true,
+                    serverSorting: false
+                },
+                    resizable: true,
+                    groupable: true,
+                    sortable: true,
+                pageable: {
+                    refresh: true,
+                    pageSizes: true,
+                    buttonCount: 5,
+                messages: {
+                    display: '{0} - {1} de {2} itens',
+                    allPages: 'Todos',
+                    itemsPerPage: 'Itens por página'
+                }
+                },
+                    columns: [{
+                        field: "",
+                        title: "Comandos",
+                        width: 80,
+                        headerAttributes: { style: "text-align:center" },
+                        attributes: { style: "text-align:center" },
+                        template: '<div title="Editar Vagas" class="btn btn-primary btn-sm text-center" onclick="Edit(#=VacancieID#)" data-toggle="modal" data-target="\\#MaintenanceModal"> <i class="fa fa-edit"></i> </div> ' +
+                                  '<div title="Excluir Vagas" class="btn btn-danger btn-sm text-center" onclick="Delete(#=VacancieID#)" data-toggle="modal" data-target="\\#DeleteModal"> <i class="fa fa-trash"></i> </div> ' +
+                                  '<div title="Associar Currículo" class="btn btn-info btn-sm text-center" onclick="ResumeAssociate(#=VacancieID#)" data-toggle="modal" data-target="\\#ResumeAssociateModal"> <i class="fa fa-id-card"></i> </div> '
+                    }, {
+                        field: "Summary",
+                        title: "Sumário",
+                        width: 200,
+                        headerAttributes: { style: "text-align:left" }
+                    },{
+                        field: "VacanciesTypeID",
+                        title: "Tipo de Vagas",
+                        width: 100,
+                        headerAttributes: { style: "text-align:left" }
+                    },{
+                        field: "CustomerID",
+                        title: "Empresa",
+                        width: 80,
+                        headerAttributes: { style: "text-align:left" }
+                    },{
+                        field: "ContractTypeID",
+                        title: "Tipo de Contratação",
+                        width: 80,
+                        headerAttributes: { style: "text-align:left" }
+                    },{
+                        field: "ValidityID",
+                        title: "Vigência",
+                        width: 80,
+                        headerAttributes: { style: "text-align:left" }
+                    },{
+                        field: "WorkPlace",
+                        title: "Local de Trabalho",
+                        width: 80,
+                        headerAttributes: { style: "text-align:left" }
+                    },{
+                        field: "StatusID",
+                        title: "Status",
+                        width: 80,
+                        headerAttributes: { style: "text-align:left" }
+                    },{
+                        field: "CreatedByID",
+                        title: "Criado por",
+                        width: 100,
+                        headerAttributes: { style: "text-align:left" }
+                    }],
+                    excelExport: function (e) {
+                        e.workbook.fileName = "LeanTest Cloud - Vagas.xlsx";
+                    }
+                });
+            });
+
+                </script>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#btnExportExcel').click(function () {
+                            var grid = $('#vacancie-grid').data('kendoGrid');
+                            grid.saveAsExcel();
+                            return false;
+                        });
+
+                        $('#btn-aplicar-filtros').click(function () {
+                            var grid = $('#vacancie-grid').data('kendoGrid');
+                            if (grid.dataSource.page() == 1) {
+                                grid.dataSource.page(1);
+                            }
+                            else {
+                                grid.dataSource.read({ parameter: "value" });
+                            }
+                            return false;
+                        });
+
+                        $("#@Html.FieldIdFor(model => model.SearchSummary)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btn-aplicar-filtros").click();
+                                return false;
+                            }
+                        });
+
+                        $("#@Html.FieldIdFor(model => model.SearchVacanciesTypeID)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btn-aplicar-filtros").click();
+                                return false;
+                            }
+                        });
+
+                        $("#@Html.FieldIdFor(model => model.SearchCustomerID)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btn-aplicar-filtros").click();
+                                return false;
+                            }
+                        });
+
+                        $("#@Html.FieldIdFor(model => model.SearchContractTypeID)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btn-aplicar-filtros").click();
+                                return false;
+                            }
+                        });
+
+                        $("#@Html.FieldIdFor(model => model.SearchValidityID)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btn-aplicar-filtros").click();
+                                return false;
+                            }
+                        });
+
+                        $("#@Html.FieldIdFor(model => model.SearchStatusID)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btn-aplicar-filtros").click();
+                                return false;
+                            }
+                        });
+
+                        $("#@Html.FieldIdFor(model => model.SearchWorkPlace)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btn-aplicar-filtros").click();
+                                return false;
+                            }
+                        });
+
+                        $("#@Html.FieldIdFor(model => model.SearchCreatedByID)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btn-aplicar-filtros").click();
+                                return false;
+                            }
+                         });
+
+                    });
+
+
+                function additionalData() {
+                    var data = {
+                        SearchSummary: $('#@Html.FieldIdFor(model => model.SearchSummary)').val(),
+                        SearchVacanciesTypeID: $('#@Html.FieldIdFor(model => model.SearchVacanciesTypeID)').val(),
+                        SearchCustomerID: $('#@Html.FieldIdFor(model => model.SearchCustomerID)').val(),
+                        SearchContractTypeID: $('#@Html.FieldIdFor(model => model.SearchContractTypeID)').val(),
+                        SearchValidityID: $('#@Html.FieldIdFor(model => model.SearchValidityID)').val(),
+                        SearchStatusID: $('#@Html.FieldIdFor(model => model.SearchStatusID)').val(),
+                        SearchWorkPlace: $('#@Html.FieldIdFor(model => model.SearchWorkPlace)').val(),
+                        SearchCreatedByID: $('#@Html.FieldIdFor(model => model.SearchCreatedByID)').val(),
+
+                    };
+
+                    addAntiForgeryToken(data);
+
+                    return data;
+
+                    };
+
+                    var Delete = function (vacancieID) {
+                        var url = '/Vacancie/GetByID?vacancieID=' + vacancieID + '&ActionName=Delete';
+
+                        $('#DeleteModalDiv').load(url, function () {
+
+                        })
+                    };
+
+                    var Edit = function (vacancieID) {
+                        var url = '/Vacancie/GetByID?vacancieID=' + vacancieID + '&ActionName=Maintenance';
+
+                        $('#MaintenanceModalDiv').load(url, function () {
+
+                        })
+
+                        $('#MaintenanceModal').on('shown.bs.modal', function () {
+
+                            $('#calender-container .input-group.date').datepicker({
+                                multidate: false,
+                                multidateSeparator: ";",
+                                autoclose: true,
+                                daysOfWeekHighlighted: "0,6",
+                                todayBtn: true,
+                                todayHighlight: true,
+                                format: 'dd/mm/yyyy',
+                                language: 'pt-BR'
+                            });
+
+                        });
+                    };
+
+                    var ResumeAssociate = function (vacancieID) {
+                        var url = '/Vacancie/ResumeAssociate?vacancieID=' + vacancieID;
+
+                        $('#ResumeAssociateModalDiv').load(url, function () {
+
+                        })
+                    };
+
+                    var Add = function () {
+                        var url = '/Vacancie/New';
+
+                        $('#AddModalDiv').load(url, function () {
+
+                        })
+
+                        $('#AddModal').on('shown.bs.modal', function () {
+
+                            $('#calender-container .input-group.date').datepicker({
+                                multidate: false,
+                                multidateSeparator: ";",
+                                autoclose: true,
+                                daysOfWeekHighlighted: "0,6",
+                                todayBtn: true,
+                                todayHighlight: true,
+                                format: 'dd/mm/yyyy',
+                                language: 'pt-BR'
+                            });
+
+                        });
+                    };
+
+                </script>
+            </div>
+        </div>
+    </div>
+
+}
+
+@using (Html.BeginForm("Add", "Vacancie", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="modal fade" id="AddModal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Nova Vaga</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <div class="modal-body" id="AddModalDiv">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-save"></i>  Salvar
+
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        <i class="fa fa-close"></i>  Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Update", "Vacancie", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="modal fade" id="MaintenanceModal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Detalhes</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <div class="modal-body" id="MaintenanceModalDiv">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-save"></i>  Salvar
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        <i class="fa fa-close"></i>  Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Update", "Vacancie", FormMethod.Post, new { novalidate = "novalidate" }))
+{
+    <div class="modal fade" id="ResumeAssociateModal" role="dialog" overflow: auto>
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Associar Currículo(s)</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <div class="modal-body" id="ResumeAssociateModalDiv" overflow: auto>
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                        <i class="fa fa-close"></i> Fechar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@using (Html.BeginForm("Delete", "Vacancie", FormMethod.Post, new { novalidate = "novalidate" }))
+{
+    <div class="modal fade" id="DeleteModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Excluir</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <div class="modal-body" id="DeleteModalDiv">
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-check-circle"></i> Sim
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        <i class="fa fa-close"></i> Não
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

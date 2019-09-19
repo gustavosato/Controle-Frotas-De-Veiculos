@@ -1,0 +1,11 @@
+﻿@model Lean.Test.Cloud.MVC.Models.Vacancies.VacancieModel
+
+@Html.HiddenFor(model => model.VacancieID)
+<div>
+    Deseja realmente excluir o seguinte registro de vaga?
+    <br />
+    <br />
+    <ul>
+        <li>Vaga: <strong>@Model.Summary</strong></li>
+    </ul>
+</div>

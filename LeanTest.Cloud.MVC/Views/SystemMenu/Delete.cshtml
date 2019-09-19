@@ -1,0 +1,11 @@
+﻿@model Lean.Test.Cloud.MVC.Models.SystemMenus.SystemMenuModel
+
+@Html.HiddenFor(model => model.MenuID)
+<div>
+    Deseja realmente excluir o seguinte registro?
+    <br />
+    <br />
+    <ul>
+        <li>Menu: <strong>@Model.TextMenu</strong></li>
+    </ul>
+</div>

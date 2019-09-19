@@ -1,0 +1,519 @@
+﻿@model Lean.Test.Cloud.MVC.Models.AccountingEntries.AccountingEntrieModel
+@{
+    ViewBag.Title = " - Faturamento";
+    Layout = "~/Views/Shared/_ContentPage.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="container-fluid">
+        <br />
+        <div class="content-header clearfix">
+
+            <div class="pull-left">
+
+
+                <button type="button" onclick="Add()" id="btnNew" class="btn btn-dark btn-sm btn-sm" data-toggle="modal" data-target='#AddModal' title="Novo Registro">
+                    <i class="fa fa-plus-circle"></i> Novo
+                </button>
+                <button class="btn btn-primary btn-sm" type="button" id="btnFiltrar" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" title="Filtrar">
+                    <i class="fa fa-filter"></i> Filtrar
+                </button>
+                <button type="button" id="btnExportExcel" class="btn btn-info btn-sm btn-sm" title="Exportar para Excel">
+                    <i class="fa fa-file-excel-o"></i> Exportar para Excel
+                </button>
+            </div>
+        </div>
+        <br />
+
+        <div class="card">
+
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <div class="row">
+                        <div class="col-md-12 mx-auto">
+                            <div class="form-group row" id="calender-container">
+                                @Html.LabelFor(model => model.SearchCompetitionStartDate, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    <div class="input-group date">
+                                        @Html.TextBoxFor(model => model.SearchCompetitionStartDate, new { @class = "form-control", autocomplete = "off" })<span class="input-group-addon"></span>
+                                    </div>
+                                </div>
+                                @Html.LabelFor(model => model.SearchCustomerID, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.DropDownList("SearchCustomerID", Model.LoadSearchCustomers, "Selecione...", new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="form-group row" id="calender-container">
+                                @Html.LabelFor(model => model.SearchCompetitionEndDate, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    <div class="input-group date">
+                                        @Html.TextBoxFor(model => model.SearchCompetitionEndDate, new { @class = "form-control", autocomplete = "off" })<span class="input-group-addon"></span>
+                                    </div>
+                                </div>
+                                @Html.LabelFor(model => model.SearchDemandID, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.DropDownList("SearchDemandID", Model.LoadSearchDemands, "Selecione...", new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="form-group row" id="calender-container">
+                                @Html.LabelFor(model => model.SearchStatusID, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.DropDownList("SearchStatusID", Model.LoadSearchStatus, "Selecione...", new { @class = "form-control" })
+                                </div>
+                                @Html.LabelFor(model => model.SearchInvoiceNumber, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.TextBoxFor(model => model.SearchInvoiceNumber, new { @class = "form-control", autocomplete = "off" })
+                                </div>
+                            </div>
+                            <div class="form-group row" id="calender-container">
+                                @Html.LabelFor(model => model.SearchValueToBeRealized, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.TextBoxFor(model => model.SearchValueToBeRealized, new { @class = "form-control", autocomplete = "off" })
+                                </div>
+                                @Html.LabelFor(model => model.SearchRealizedValue, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.TextBoxFor(model => model.SearchRealizedValue, new { @class = "form-control", autocomplete = "off" })
+                                </div>
+                            </div>
+
+                            <br />
+                            <div class="col">
+                                <div class="text-center">
+                                    <button type="button" class="btn btn-success btn-sm" id="btn-aplicar-filtros" title="Aplicar filtros">
+                                        <i class="fa fa-check-circle"></i> Filtrar
+                                    </button>
+                                    <button class="btn btn-secondary btn-sm" type="reset" id="btnFiltrar" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" title="Fechar filtros">
+                                        <i class="fa fa-close"></i> Fechar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div><h5>FATURAS DE DEMANDAS</h5></div>
+                <div id="accountingEntries-grid"></div>
+                <script>
+
+                $(document).ready(function () {
+                $("#accountingEntries-grid").kendoGrid({
+
+                dataSource: {
+                    type: "json",
+                transport: {
+                read: {
+                    url: "@Html.Raw(Url.Action("GetAll", "AccountingEntrie"))",
+                    type: "POST",
+                    dataType: "json",
+                    data: additionalData
+                    }
+                },
+                schema: {
+                    data: "Data",
+                    total: "Total",
+                    errors: "Errors"
+                },
+                    error: function (e) {
+                    display_kendoui_grid_error(e);
+                    this.cancelChanges();
+                },
+                    pageSize: 10,
+                    serverPaging: true,
+                    serverFiltering: true,
+                    serverSorting: false
+                },
+                    resizable: true,
+                    groupable: true,
+                    sortable: true,
+                pageable: {
+                    refresh: true,
+                    pageSizes: true,
+                    buttonCount: 5,
+                messages: {
+                    display: '{0} - {1} de {2} itens',
+                    allPages: 'Todos',
+                    itemsPerPage: 'Itens por página'
+                }
+                },
+                    columns: [{
+                        field: "",
+                        title: "Comandos",
+                        width: 140,
+                        headerAttributes: { style: "text-align:center" },
+                        attributes: { style: "text-align:center" },
+                        template: '<div title="Editar Registro" class="btn btn-primary btn-sm text-center" onclick="Edit(#=AccountingEntrieID#)" data-toggle="modal" data-target="\\#MaintenanceModal"> <i class="fa fa-edit"></i> </div> ' +
+                        '<div title="Excluir Registro" class="btn btn-danger btn-sm text-center" onclick="Delete(#=AccountingEntrieID#)" data-toggle="modal" data-target="\\#DeleteModal"> <i class="fa fa-trash"></i> </div> ' +
+                        '# if(StatusID == "Lançado") {# <div title="Autorizar Faturamento" class="btn btn-dark btn-sm text-center" onclick="StatusChange(#=AccountingEntrieID#)" ><i class="fa fa-plus true-icon"></i></div> #}  ' +
+                        'else if(StatusID == "Faturamento Autorizado") { # <div title="Emitir Nota Fiscal" class="btn btn-warning btn-sm text-center" onclick="StatusChange(#=AccountingEntrieID#)" ><i class="fa fa-check-circle true-icon"></i></div> # }  ' +
+                        'else if(StatusID == "Nota Fiscal Emitida") { # <div title="Realizar Faturamento" class="btn btn-info btn-sm text-center" onclick="StatusChange(#=AccountingEntrieID#)" ><i class="fa fa-check true-icon"></i></div> # }  ' +
+                        'else if(StatusID == "Realizado") { # <div title="Cancelar" class="btn btn-success btn-sm text-center" onclick="StatusChange(#=AccountingEntrieID#)" ><i class="fa fa-check true-icon"></i></div> # }  ' +
+                        'else {# <i class="fa fa-close text-danger false-icon"></i> #}  #'
+                    }, {
+                        field: "CustomerID",
+                        title: "Empresa",
+                        width: 200,
+                        headerAttributes: { style: "text-align:left" }
+                    }, {
+
+                        field: "DemandID",
+                        title: "Demanda",
+                        width: 300,
+                        headerAttributes: { style: "text-align:left" }
+                    }, {
+                        field: "StatusID",
+                        title: "Status",
+                        width: 100,
+                        headerAttributes: { style: "text-align:left" }
+                    }, {
+                        field: "ValueToBeRealized",
+                        title: "Valor Original",
+                        width: 150,
+                        headerAttributes: { style: "text-align:left" }
+                    }, {
+                        field: "CompetitionDate",
+                        title: "Competência",
+                        width: 100,
+                        headerAttributes: { style: "text-align:left" }
+                    }, {
+                        field: "RealizedValue",
+                        title: "Valor Realizado",
+                        width: 150,
+                        headerAttributes: { style: "text-align:left" }
+                    }, {
+                        field: "InvoiceNumber",
+                        title: "Nota Fiscal",
+                        width: 100,
+                        headerAttributes: { style: "text-align:left" }
+                    }],
+                    excelExport: function (e) {
+                        e.workbook.fileName = "LeanTest Cloud - Faturamento.xlsx";
+                    }
+                });
+            });
+
+                </script>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                    $('#btnExportExcel').click(function () {
+                        var grid = $('#accountingEntries-grid').data('kendoGrid');
+                        grid.saveAsExcel();
+                        return false;
+                    });
+
+                    $('#btn-aplicar-filtros').click(function () {
+                        var grid = $('#accountingEntries-grid').data('kendoGrid');
+                        if (grid.dataSource.page() == 1) {
+                            grid.dataSource.page(1);
+                        }
+                        else {
+                            grid.dataSource.read({ parameter: "value" });
+                        }
+                        return false;
+                    });
+
+                    $("#@Html.FieldIdFor(model => model.SearchCustomerID)").keydown(function (event) {
+                        if (event.keyCode == 13) {
+                            $("#btn-aplicar-filtros").click();
+                            return false;
+                        }
+                    });
+
+                    $("#@Html.FieldIdFor(model => model.SearchDemandID)").keydown(function (event) {
+                        if (event.keyCode == 13) {
+                            $("#btn-aplicar-filtros").click();
+                            return false;
+                        }
+                    });
+
+                    $("#@Html.FieldIdFor(model => model.SearchCompetitionStartDate)").keydown(function (event) {
+                        if (event.keyCode == 13) {
+                            $("#btn-aplicar-filtros").click();
+                            return false;
+                        }
+                    });
+
+                    $("#@Html.FieldIdFor(model => model.SearchCompetitionEndDate)").keydown(function (event) {
+                        if (event.keyCode == 13) {
+                            $("#btn-aplicar-filtros").click();
+                            return false;
+                        }
+                    });
+
+                     $("#@Html.FieldIdFor(model => model.SearchStatusID)").keydown(function (event) {
+                        if (event.keyCode == 13) {
+                            $("#btn-aplicar-filtros").click();
+                            return false;
+                        }
+                    });
+
+                     $("#@Html.FieldIdFor(model => model.SearchInvoiceNumber)").keydown(function (event) {
+                        if (event.keyCode == 13) {
+                            $("#btn-aplicar-filtros").click();
+                            return false;
+                        }
+                    });
+
+                     $("#@Html.FieldIdFor(model => model.SearchValueToBeRealized)").keydown(function (event) {
+                        if (event.keyCode == 13) {
+                            $("#btn-aplicar-filtros").click();
+                            return false;
+                        }
+                     });
+
+                     $("#@Html.FieldIdFor(model => model.SearchRealizedValue)").keydown(function (event) {
+                        if (event.keyCode == 13) {
+                            $("#btn-aplicar-filtros").click();
+                            return false;
+                        }
+                    });
+                });
+
+                function additionalData() {
+                    var data = {
+                        SearchCustomerID: $('#@Html.FieldIdFor(model => model.SearchCustomerID)').val(),
+                        SearchDemandID: $('#@Html.FieldIdFor(model => model.SearchDemandID)').val(),
+                        SearchCompetitionStartDate: $('#@Html.FieldIdFor(model => model.SearchCompetitionStartDate)').val(),
+                        SearchCompetitionEndDate: $('#@Html.FieldIdFor(model => model.SearchCompetitionEndDate)').val(),
+                        SearchStatusID: $('#@Html.FieldIdFor(model => model.SearchStatusID)').val(),
+                        SearchInvoiceNumber: $('#@Html.FieldIdFor(model => model.SearchInvoiceNumber)').val(),
+                        SearchValueToBeRealized: $('#@Html.FieldIdFor(model => model.SearchValueToBeRealized)').val(),
+                        SearchRealizedValue: $('#@Html.FieldIdFor(model => model.SearchRealizedValue)').val(),
+
+                    };
+
+                    addAntiForgeryToken(data);
+
+                    return data;
+
+                    };
+
+                    var Delete = function (accountingEntrieID) {
+                        var url = '/AccountingEntrie/GetByID?accountingEntrieID=' + accountingEntrieID + '&ActionName=Delete';
+
+                        $('#DeleteModalDiv').load(url, function () {
+
+                        })
+                    };
+
+                    var Edit = function (accountingEntrieID) {
+                        var url = '/AccountingEntrie/GetByID?accountingEntrieID=' + accountingEntrieID + '&ActionName=Maintenance';
+
+                        $('#MaintenanceModalDiv').load(url, function () {
+
+                        })
+
+                        $('#MaintenanceModal').on('shown.bs.modal', function () {
+
+                            $('#calender-container .input-group.date').datepicker({
+                                multidate: false,
+                                multidateSeparator: ";",
+                                autoclose: true,
+                                daysOfWeekHighlighted: "0,6",
+                                todayBtn: true,
+                                todayHighlight: true,
+                                format: 'dd/mm/yyyy',
+                                language: 'pt-BR'
+                            });
+
+                        });
+                    };
+
+
+                    var Add = function () {
+                        var url = '/AccountingEntrie/New';
+
+                        $('#AddModalDiv').load(url, function () {
+
+                        })
+
+
+                        $('#AddModal').on('shown.bs.modal', function () {
+
+                            $('#calender-container .input-group.date').datepicker({
+                                multidate: false,
+                                multidateSeparator: ";",
+                                autoclose: true,
+                                daysOfWeekHighlighted: "0,6",
+                                todayBtn: true,
+                                todayHighlight: true,
+                                format: 'dd/mm/yyyy',
+                                language: 'pt-BR'
+                            });
+
+                        });
+                    };
+
+                    var StatusChange = function (accountingEntrieID) {
+
+                        var url = '/AccountingEntrie/StatusChange?accountingEntrieID=' + accountingEntrieID;
+
+                        $('#DeleteModalDiv').load(url, function () {
+
+                        })
+
+                        $("#btn-aplicar-filtros").click();
+
+                        return false;
+                    };
+
+                     $(document).ready(function () {
+                         $("#SearchCustomerID").change(function () {
+                             $("#SearchDemandID").empty();
+                            $.ajax({
+                                type: 'POST',
+                                url: '@Url.Action("GetDemands")',
+
+                                dataType: 'json',
+                                data: { customerID: $("#SearchCustomerID").val(), isActive: false },
+                                success: function (itens) {
+                                    $("#SearchDemandID").append('<option value="">Selecione...</option>');
+                                    $.each(itens, function (i, item) {
+                                        $("#SearchDemandID").append('<option value="' + item.Value + '">' + item.Text + '</option>');
+                                    });
+                                },
+                                error: function (ex) {
+                                    alert('Failed to retrieve states.' + ex);
+                                }
+                            });
+                            return false;
+                        })
+                    });
+
+                </script>
+            </div>
+        </div>
+    </div>
+
+}
+
+@using (Html.BeginForm("Add", "AccountingEntrie", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="modal fade" id="AddModal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Novo Lançamento Financeiro</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <div class="modal-body" id="AddModalDiv">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success btn-sm">
+                        <i class="fa fa-save"></i>  Salvar
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                        <i class="fa fa-close"></i>  Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Update", "AccountingEntrie", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="modal fade" id="MaintenanceModal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Detalhes</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <div class="modal-body" id="MaintenanceModalDiv">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success btn-sm">
+                        <i class="fa fa-save"></i>  Salvar
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                        <i class="fa fa-close"></i>  Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Delete", "AccountingEntrie", FormMethod.Post, new { novalidate = "novalidate" }))
+{
+    <div class="modal fade" id="DeleteModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Excluir</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <div class="modal-body" id="DeleteModalDiv">
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success btn-sm">
+                        <i class="fa fa-check-circle"></i> Sim
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                        <i class="fa fa-close"></i> Não
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("StatusChange", "AccountingEntrie", FormMethod.Post, new { novalidate = "novalidate" }))
+
+{
+    <div class="modal fade" id="StatusChangeModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Alteração de Status</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <div class="modal-body" id="StatusChangeModalDiv">
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success btn-sm">
+                        <i class="fa fa-check-circle"></i> Sim
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                        <i class="fa fa-close"></i> Não
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Delete", "Attachment", new { sourceController = "AccountingEntrie" }, FormMethod.Post, new { novalidate = "novalidate" }))
+{
+    <div class="modal fade" id="AttachmentDeleteModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Excluir</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <div class="modal-body" id="AttachmentDeleteModalDiv">
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-check-circle"></i> Sim
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        <i class="fa fa-close"></i> Não
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

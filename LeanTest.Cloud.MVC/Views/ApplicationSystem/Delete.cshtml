@@ -1,0 +1,11 @@
+﻿@model Lean.Test.Cloud.MVC.Models.ApplicationSystems.ApplicationSystemModel
+
+@Html.HiddenFor(model => model.ApplicationSystemID)
+<div>
+    Deseja realmente excluir o seguinte registro?
+    <br />
+    <br />
+    <ul>
+        <li>Nome: <strong>@Model.ApplicationSystemName</strong></li>
+    </ul>
+</div>

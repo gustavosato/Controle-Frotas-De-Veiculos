@@ -1,0 +1,609 @@
+﻿@model Lean.Test.Cloud.MVC.Models.Users.UserModel
+
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@Html.HiddenFor(model => model.UserID)
+@Html.HiddenFor(model => model.Password)
+@Html.HiddenFor(model => model.FirstAccess)
+@Html.HiddenFor(model => model.LastAccessDate)
+@Html.HiddenFor(model => model.LastIPAccess)
+@Html.HiddenFor(model => model.CreatedByID)
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="accessData-tab" data-toggle="tab" href="#accessData" role="tab" aria-controls="accessData" aria-selected="true">Dados de acesso</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="professionalData-tab" data-toggle="tab" href="#professionalData" role="tab" aria-controls="professionalData" aria-selected="false">Dados Profissionais</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="personalData-tab" data-toggle="tab" href="#personalData" role="tab" aria-controls="personalData" aria-selected="false">Dados Pessoais</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="financialData-tab" data-toggle="tab" href="#financialData" role="tab" aria-controls="financialData" aria-selected="false">Dados financeiros</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="attachment-tab" data-toggle="tab" href="#attachment" role="tab" aria-controls="attachment" aria-selected="false">Documentos</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="historical-tab" data-toggle="tab" href="#historical" role="tab" aria-controls="historical" aria-selected="false">Histórico de Alterações</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="accessData" role="tabpanel" aria-labelledby="accessData-tab">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-4 mb-auto">
+                        <strong>@Html.LabelFor(model => model.UserName, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control text-left", placeholder = "Digite o nome do usuário", @autofocus = "autofocus" })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-6 mb-auto">
+                        <strong>@Html.LabelFor(model => model.Email, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Digite o e-mail" })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.CreationDate, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.CreationDate, new { @class = "form-control text-left", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.CreationDate, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto" id="calender-container">
+                        <strong>@Html.LabelFor(model => model.AccessToDate, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        <div class="input-group date">
+                            @Html.TextBoxFor(model => model.AccessToDate, new { @class = "form-control", autocomplete = "off" })<span class="input-group-addon"></span>
+                            @Html.ValidationMessageFor(model => model.AccessToDate, "", new { @class = "form-text text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-md-2 mb-auto" id="calender-container">
+                        @Html.LabelFor(model => model.UpdateRecordTo, new { @class = "col-sm-0 col-form-label text-left" })
+                        <div class="input-group date">
+                            @Html.TextBoxFor(model => model.UpdateRecordTo, new { @class = "form-control", autocomplete = "off" })<span class="input-group-addon"></span>
+                            @Html.ValidationMessageFor(model => model.UpdateRecordTo, "", new { @class = "form-text text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-md-2 mb-auto" id="calender-container">
+                        @Html.LabelFor(model => model.ReleaseDateUpdateRecordTo, new { @class = "col-sm-0 col-form-label text-left" })
+                        <div class="input-group date">
+                            @Html.TextBoxFor(model => model.ReleaseDateUpdateRecordTo, new { @class = "form-control", autocomplete = "off" })<span class="input-group-addon"></span>
+                            @Html.ValidationMessageFor(model => model.ReleaseDateUpdateRecordTo, "", new { @class = "form-text text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.IsActive, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.CheckBoxFor(model => model.IsActive, new { @class = "checkbox" })
+                        @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.IsAdmin, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.CheckBoxFor(model => model.IsAdmin, new { @class = "checkbox" })
+                        @Html.ValidationMessageFor(model => model.IsAdmin, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.IsEmployee, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.CheckBoxFor(model => model.IsEmployee, new { @class = "checkbox" })
+                        @Html.ValidationMessageFor(model => model.IsEmployee, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-12 mb-auto">
+                        @Html.LabelFor(model => model.Description, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control", placeholder = "Digite uma descrição", rows = "2" })
+                        <script>
+                            $(document).ready(function () {
+                                $("#Description").kendoEditor({
+                                    tools: [
+                                        "formatting",
+                                        "bold", "italic", "underline", "strikethrough",
+                                        "justifyLeft", "justifyCenter", "justifyRight", "justifyFull",
+                                        "insertUnorderedList", "insertOrderedList", "indent", "outdent",
+                                        "createLink", "unlink", "insertImage", "insertFile",
+                                        "subscript", "superscript",
+                                        "tableWizard", "createTable",
+                                        "addRowAbove", "addRowBelow",
+                                        "addColumnLeft", "addColumnRight",
+                                        "deleteRow", "deleteColumn",
+                                        "viewHtml", "cleanFormatting",
+                                        "fontName", "fontSize",
+                                        "foreColor", "backColor"
+                                    ],
+                                    messages: {
+                                        fontNameInherit: "Arial",
+                                        fontSizeInherit: "3 (12pt)"
+                                    },
+                                    resizable: true
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="professionalData" role="tabpanel" aria-labelledby="professionalData-tab">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-2 mb-auto">
+                        <strong>@Html.LabelFor(model => model.DepartmentID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("DepartmentID", Model.LoadDepartments, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.DepartmentID, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-6 mb-auto">
+                        <strong>@Html.LabelFor(model => model.SupervisorID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("SupervisorID", Model.LoadSupervisors, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.SupervisorID, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-4 mb-auto">
+                        <strong>@Html.LabelFor(model => model.FunctionID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("FunctionID", Model.LoadFunctions, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.FunctionID, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        <strong>@Html.LabelFor(model => model.FunctionLevelID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("FunctionLevelID", Model.LoadFunctionLevels, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.FunctionLevelID, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                        <strong>@Html.LabelFor(model => model.LevelClassificationID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("LevelClassificationID", Model.LoadLevelClassifications, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.LevelClassificationID, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                        <strong>@Html.LabelFor(model => model.ContractTypeID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("ContractTypeID", Model.LoadContractTypes, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ContractTypeID, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                        <strong>@Html.LabelFor(model => model.HourTypeID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.DropDownList("HourTypeID", Model.LoadHourTypes, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.HourTypeID, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto" id="calender-container">
+                        <strong>@Html.LabelFor(model => model.StartJob, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        <div class="input-group date">
+                            @Html.TextBoxFor(model => model.StartJob, new { @class = "form-control", autocomplete = "off", placeholder = "Selecione..." })<span class="input-group-addon"></span>
+                            @Html.ValidationMessageFor(model => model.StartJob, "", new { @class = "form-text text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-md-2 mb-auto" id="calender-container">
+                        @Html.LabelFor(model => model.EndJob, new { @class = "col-sm-0 col-form-label text-left" })
+                        <div class="input-group date">
+                            @Html.TextBoxFor(model => model.EndJob, new { @class = "form-control", autocomplete = "off", placeholder = "Selecione..." })<span class="input-group-addon"></span>
+                            @Html.ValidationMessageFor(model => model.EndJob, "", new { @class = "form-text text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="personalData" role="tabpanel" aria-labelledby="personalData-tab">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.RG, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.RG, new { @class = "form-control", placeholder = "Digite RG" })
+                        @Html.ValidationMessageFor(model => model.RG, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.CPF, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.CPF, new { @class = "form-control", placeholder = "Digite CPF" })
+                        @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto" id="calender-container">
+                        @Html.LabelFor(model => model.DateOfBirth, new { @class = "col-sm-0 col-form-label text-left" })
+                        <div class="input-group date">
+                            @Html.TextBoxFor(model => model.DateOfBirth, new { @class = "form-control", autocomplete = "off", placeholder = "Selecione..." })<span class="input-group-addon"></span>
+                            @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "form-text text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-auto">
+                        @Html.LabelFor(model => model.HomeAddress, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.HomeAddress, new { @class = "form-control text-left", placeholder = "Digite o endereço" })
+                        @Html.ValidationMessageFor(model => model.HomeAddress, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.CEP, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.CEP, new { @class = "form-control", placeholder = "Digite CEP" })
+                        @Html.ValidationMessageFor(model => model.CEP, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-4 mb-auto">
+                        @Html.LabelFor(model => model.District, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.District, new { @class = "form-control", placeholder = "Digite o bairro" })
+                        @Html.ValidationMessageFor(model => model.District, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-4 mb-auto">
+                        @Html.LabelFor(model => model.City, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.City, new { @class = "form-control", placeholder = "Digite a cidade" })
+                        @Html.ValidationMessageFor(model => model.City, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.State, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.State, new { @class = "form-control", placeholder = "Digite o estado" })
+                        @Html.ValidationMessageFor(model => model.State, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        <strong>@Html.LabelFor(model => model.CellNumber, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.TextBoxFor(model => model.CellNumber, new { @class = "form-control", placeholder = "Digite o número" })
+                        @Html.ValidationMessageFor(model => model.CellNumber, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.HomePhone, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.HomePhone, new { @class = "form-control", placeholder = "Digite o número" })
+                        @Html.ValidationMessageFor(model => model.HomePhone, "", new { @class = "form-text text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="financialData" role="tabpanel" aria-labelledby="financialData-tab">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+
+                    <div class="col-md-2 mb-auto">
+                        <strong>@Html.LabelFor(model => model.TotalCost, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+                        <strong><span style="color:black;">*</span></strong>
+                        @Html.TextBoxFor(model => model.TotalCost, new { @class = "form-control", placeholder = "Digite o custo total" })
+                        @Html.ValidationMessageFor(model => model.TotalCost, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.TypePerson, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.DropDownList("TypePerson", Model.LoadTypePersons, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TypePerson, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.BankName, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.BankName, new { @class = "form-control", placeholder = "Digite o nome do banco" })
+                        @Html.ValidationMessageFor(model => model.BankName, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.TypeBankAccount, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.DropDownList("TypeBankAccount", Model.LoadTypeBankAccounts, "Selecione...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TypeBankAccount, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.Agency, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.Agency, new { @class = "form-control", placeholder = "Digite a agência" })
+                        @Html.ValidationMessageFor(model => model.Agency, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.BankAccount, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.BankAccount, new { @class = "form-control", placeholder = "Digite o numero da conta" })
+                        @Html.ValidationMessageFor(model => model.BankAccount, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-4 mb-auto">
+                        @Html.LabelFor(model => model.SocialReason, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.SocialReason, new { @class = "form-control", placeholder = "Razão social" })
+                        @Html.ValidationMessageFor(model => model.SocialReason, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.CNPJ, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.CNPJ, new { @class = "form-control", placeholder = "Digite o CNPJ" })
+                        @Html.ValidationMessageFor(model => model.CNPJ, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-4 mb-auto">
+                        @Html.LabelFor(model => model.RegisteredCity, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.RegisteredCity, new { @class = "form-control", placeholder = "Digite o cidade" })
+                        @Html.ValidationMessageFor(model => model.RegisteredCity, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.OptingSimple, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.CheckBoxFor(model => model.OptingSimple, new { @class = "checkbox" })
+                        @Html.ValidationMessageFor(model => model.OptingSimple, "", new { @class = "form-text text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="attachment" role="tabpanel" aria-labelledby="attachment-tab">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-12 mb-auto">
+
+                        <div class="col-md-12 mx-auto">
+                            <div class="form-group row">
+                                <input type="file" name="file" />
+                            </div>
+                        </div>
+                        <div id="data-grid"></div>
+                        <script>
+
+                                $(document).ready(function () {
+                                    $("#data-grid").kendoGrid({
+
+                                dataSource: {
+                                    type: "json",
+                                transport: {
+                                read: {
+                                    url: "@Html.Raw(Url.Action("GetAllByRecordID", "Attachment"))",
+                                    type: "POST",
+                                    dataType: "json",
+                                    data: additionalData
+                                    }
+                                },
+                                schema: {
+                                    data: "Data",
+                                    total: "Total",
+                                    errors: "Errors"
+                                },
+                                    error: function (e) {
+                                    display_kendoui_grid_error(e);
+                                    this.cancelChanges();
+                                },
+                                    pageSize: 10,
+                                    serverPaging: true,
+                                    serverFiltering: true,
+                                    serverSorting: false
+                                },
+                                    resizable: true,
+                                    groupable: true,
+                                    sortable: true,
+                                pageable: {
+                                    refresh: true,
+                                    pageSizes: true,
+                                    buttonCount: 5,
+                                messages: {
+                                    display: '{0} - {1} de {2} itens',
+                                    allPages: 'Todos',
+                                    itemsPerPage: 'Itens por página'
+                                }
+                                },
+                                    columns: [{
+                                            field: "AttachmentID",
+                                            title: "ID",
+                                            width: 50,
+                                            headerAttributes: { style: "text-align:left" }
+                                    }, {
+                                            field: "FileName",
+                                            title: "Nome do arquivo",
+                                            width: 250,
+                                            headerAttributes: { style: "text-align:left" }
+                                    },{
+                                            field: "",
+                                            title: "Comandos",
+                                            width: 50,
+                                            headerAttributes: { style: "text-align:center" },
+                                            attributes: { style: "text-align:center" },
+                                            template: '<div title="Excluir Registro" class="btn btn-danger btn-sm text-center" onclick="AttachmentDelete(#=AttachmentID#)" data-toggle="modal" data-target="\\#AttachmentDeleteModal"> <i class="fa fa-trash"></i> </div> ' +
+                                            '<a href="Attachment/Download?attachmentID=#=AttachmentID#" class="btn btn-info btn-sm text-center"> <i class="fa fa-download" text-danger false-icon"></i></a>'
+
+                                    }],
+                                    excelExport: function (e) {
+                                        e.workbook.fileName = "LeanTest Cloud - Documentos.xlsx";
+                                    }
+                                });
+                            });
+
+                        </script>
+                        <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#btnExportExcel').click(function () {
+                            var grid = $('#data-grid').data('kendoGrid');
+                            grid.saveAsExcel();
+                            return false;
+                        });
+
+                        $('#btn-aplicar-filtros').click(function () {
+                            var grid = $('#data-grid').data('kendoGrid');
+                            if (grid.dataSource.page() == 1) {
+                                grid.dataSource.page(1);
+                            }
+                            else {
+                                grid.dataSource.read({ parameter: "value" });
+                            }
+                            return false;
+                        });
+
+                    });
+
+                        function additionalData() {
+                            var data = {
+                                RecordID: $('#@Html.FieldIdFor(model => model.UserID)').val(),
+                                SystemFeatureID: "100"
+                            };
+
+                            addAntiForgeryToken(data);
+
+                            return data;
+
+                            };
+
+                            var AttachmentDelete = function (attachmentID) {
+                                var url = '/Attachment/GetByID?attachmentID=' + attachmentID + '&ActionName=Delete';
+
+                                $('#AttachmentDeleteModalDiv').load(url, function () {
+
+                                })
+                            };
+
+                            var Download = function (attachmentID) {
+                                var url = '/Attachment/Download?attachmentID=' + attachmentID;
+
+                                $('#DeleteModalDiv').load(url, function () {
+
+                                })
+                            };
+
+                        </script>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="historical" role="tabpanel" aria-labelledby="historical-tab">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-12 mb-auto">
+                        <div id="historical-grid"></div>
+                        <script>
+
+                                $(document).ready(function () {
+                                    $("#historical-grid").kendoGrid({
+
+                                dataSource: {
+                                    type: "json",
+                                transport: {
+                                read: {
+                                    url: "@Html.Raw(Url.Action("GetAll", "Historical"))",
+                                    type: "POST",
+                                    dataType: "json",
+                                    data: additionalData
+                                    }
+                                },
+                                schema: {
+                                    data: "Data",
+                                    total: "Total",
+                                    errors: "Errors"
+                                },
+                                    error: function (e) {
+                                    display_kendoui_grid_error(e);
+                                    this.cancelChanges();
+                                },
+                                    pageSize: 10,
+                                    serverPaging: true,
+                                    serverFiltering: true,
+                                    serverSorting: false
+                                },
+                                    resizable: true,
+                                    groupable: true,
+                                    sortable: true,
+                                pageable: {
+                                    refresh: true,
+                                    pageSizes: true,
+                                    buttonCount: 5,
+                                messages: {
+                                    display: '{0} - {1} de {2} itens',
+                                    allPages: 'Todos',
+                                    itemsPerPage: 'Itens por página'
+                                }
+                                },
+                                columns: [{
+                                            field: "FieldName",
+                                            title: "Campo",
+                                            width: 70,
+                                            headerAttributes: { style: "text-align:left" }
+                                    }, {
+                                            field: "OldValue",
+                                            title: "Valor Anterior",
+                                            width: 100,
+                                            headerAttributes: { style: "text-align:left" }
+                                    }, {
+                                            field: "NewValue",
+                                            title: "Valor Atual",
+                                            width: 100,
+                                            headerAttributes: { style: "text-align:left" }
+                                    }, {
+                                            field: "CreatedByID",
+                                            title: "Alterado por",
+                                            width: 70,
+                                            headerAttributes: { style: "text-align:left" }
+                                    },{
+                                            field: "CreationDate",
+                                            title: "Data da Alteração",
+                                            width: 50,
+                                            headerAttributes: { style: "text-align:left" }
+                                    }],
+                                    excelExport: function (e) {
+                                        e.workbook.fileName = "LeanTest Cloud - Anexos.xlsx";
+                                    }
+                                });
+                            });
+
+                        </script>
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('#btnExportExcel').click(function () {
+                                    var grid = $('#historical-grid').data('kendoGrid');
+                                    grid.saveAsExcel();
+                                    return false;
+                                });
+
+                                $('#btn-aplicar-filtros').click(function () {
+                                    var grid = $('#historical-grid').data('kendoGrid');
+                                    if (grid.dataSource.page() == 1) {
+                                        grid.dataSource.page(1);
+                                    }
+                                    else {
+                                        grid.dataSource.read({ parameter: "value" });
+                                    }
+                                    return false;
+                                });
+
+
+                            });
+
+                        function additionalData() {
+                            var data = {
+                                RecordID: $('#@Html.FieldIdFor(model => model.UserID)').val(),
+                                SystemFeatureID: "100"
+                            };
+
+                            addAntiForgeryToken(data);
+
+                            return data;
+
+                            };
+
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>  $(document).ready(function () {
+        $("#CellNumber").kendoMaskedTextBox({
+            mask: "(00) 00000-0000"
+        });
+  
+        $("#HomePhone").kendoMaskedTextBox({
+            mask: "(00) 0000-0000"
+        });
+        $("#CEP").kendoMaskedTextBox({
+            mask: "00000-000"
+        });
+        $("#CPF").kendoMaskedTextBox({
+            mask: "000.000.000-00"
+        });
+        $("#RG").kendoMaskedTextBox({
+            mask: "00.000.000-A"
+        });
+        $("#CNPJ").kendoMaskedTextBox({
+            mask: "00.000.000/0000-00"
+        });
+       
+    });
+
+
+</script>

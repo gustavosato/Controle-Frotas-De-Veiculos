@@ -1,0 +1,11 @@
+﻿@model Lean.Test.Cloud.MVC.Models.Licenses.LicenseModel
+
+@Html.HiddenFor(model => model.LicenseID)
+<div>
+    Deseja realmente excluir o seguinte registro?
+    <br />
+    <br />
+    <ul>
+        <li>Code: <strong>@Model.LicenseCode</strong></li>
+    </ul>
+</div>

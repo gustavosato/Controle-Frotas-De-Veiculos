@@ -1,0 +1,125 @@
+﻿@model Lean.Test.Cloud.MVC.Models.Licenses.LicenseModel
+
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@Html.HiddenFor(model => model.LicenseID)
+@Html.HiddenFor(model => model.CreatedByID)
+@Html.HiddenFor(model => model.ApprovedByID)
+@Html.HiddenFor(model => model.ApprovedDate)
+
+
+<div>
+    <div class="form-group row">
+        <div class="col-md-3 mb-auto">
+            <strong>@Html.LabelFor(model => model.CustomerID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+            <strong><span style="color:black;">*</span></strong>
+            @Html.DropDownList("CustomerID", Model.LoadSCustomers, "Selecione...", new { @class = "form-control", @autofocus = "autofocus" })
+            @Html.ValidationMessageFor(model => model.CustomerID, "", new { @class = "form-text text-danger" })
+        </div>
+        <div class="col-md-7 mb-auto">
+            <strong>@Html.LabelFor(model => model.LicenseCode, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+            <strong><span style="color:black;">*</span></strong>
+            @Html.TextBoxFor(model => model.LicenseCode, new { @class = "form-control text-left", placeholder = "Digite o código" })
+            @Html.ValidationMessageFor(model => model.LicenseCode, "", new { @class = "form-text text-danger" })
+        </div>
+
+        <div class="col-md-2 mb-auto">
+            @Html.LabelFor(model => model.CreationDate, new { @class = "col-sm-0 col-form-label text-left" })
+
+            @Html.TextBoxFor(model => model.CreationDate, new { @class = "form-control text-left", @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.CreationDate, "", new { @class = "form-text text-danger" })
+        </div>
+
+        <div class="col-md-3 mb-auto">
+            <strong>@Html.LabelFor(model => model.LicenseTypeID, new { @class = "col-sm-0 col-form-label text-left" })</strong>
+            <strong><span style="color:black;">*</span></strong>
+            @Html.DropDownList("LicenseTypeID", Model.LoadLicenseTypes, "Selecione...", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.LicenseTypeID, "", new { @class = "form-text text-danger" })
+        </div>
+
+        <div class="col-md-3 mb-auto">
+            @Html.LabelFor(model => model.CreatedByID, new { @class = "col-sm-0 col-form-label text-left" })
+            @Html.DropDownList("CreatedByID", Model.LoadCreatedBys, "Selecione...", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CreatedByID, "", new { @class = "form-text text-danger" })
+        </div>
+
+        <div class="col-md-2 mb-auto">
+            @Html.LabelFor(model => model.HostName, new { @class = "col-sm-0 col-form-label text-left" })
+
+            @Html.TextBoxFor(model => model.HostName, new { @class = "form-control text-left", @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.HostName, "", new { @class = "form-text text-danger" })
+        </div>
+        <div class="col-md-2 mb-auto">
+            @Html.LabelFor(model => model.MacAddress, new { @class = "col-sm-0 col-form-label text-left" })
+
+            @Html.TextBoxFor(model => model.MacAddress, new { @class = "form-control text-left", @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.MacAddress, "", new { @class = "form-text text-danger" })
+        </div>
+        <div class="col-md-2 mb-auto" id="calender-container">
+            @Html.LabelFor(model => model.ExpirationDate, new { @class = "col-sm-0 col-form-label text-left" })
+            <div class="input-group date">
+                @Html.TextBoxFor(model => model.ExpirationDate, new { @class = "form-control", autocomplete = "off", placeholder = "Selecione..." })<span class="input-group-addon"></span>
+                @Html.ValidationMessageFor(model => model.ExpirationDate, "", new { @class = "form-text text-danger" })
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Descrição</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="license-tab" data-toggle="tab" href="#license" role="tab" aria-controls="license" aria-selected="false">Licença</a>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+            <div class="form-group row">
+                <div class="col-md-12 mb-auto">
+                    <br />
+                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control", placeholder = "Digite uma descrição", rows = "2" })
+                    <script>
+                        $(document).ready(function () {
+                            $("#Description").kendoEditor({
+                                tools: [
+                                    "formatting",
+                                    "bold", "italic", "underline", "strikethrough",
+                                    "justifyLeft", "justifyCenter", "justifyRight", "justifyFull",
+                                    "insertUnorderedList", "insertOrderedList", "indent", "outdent",
+                                    "createLink", "unlink", "insertImage", "insertFile",
+                                    "subscript", "superscript",
+                                    "tableWizard", "createTable",
+                                    "addRowAbove", "addRowBelow",
+                                    "addColumnLeft", "addColumnRight",
+                                    "deleteRow", "deleteColumn",
+                                    "viewHtml", "cleanFormatting",
+                                    "fontName", "fontSize",
+                                    "foreColor", "backColor"
+                                ],
+                                messages: {
+                                    fontNameInherit: "Arial",
+                                    fontSizeInherit: "3 (12pt)"
+                                },
+                                resizable: true
+                            });
+                        });
+
+                       
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="license" role="tabpanel" aria-labelledby="license-tab">
+            <div class="col-md-12 mb-auto">
+                <br />
+                <strong>@Html.TextAreaFor(model => model.License, new { @class = "form-control", placeholder = "Gerado automaticamente após aprovação", rows = "12", @readonly = "readonly" })</strong>
+            </div>
+        </div>
+    </div>
+</div>
