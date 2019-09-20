@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.Pipelines
+﻿namespace ControleVeiculos.Domain.Command.Pipelines
 {
     public class FilterPipelineCommand
     {

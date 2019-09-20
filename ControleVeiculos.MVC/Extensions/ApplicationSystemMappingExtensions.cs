@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.ApplicationSystems;
-using Lean.Test.Cloud.MVC.Models.ApplicationSystems;
+﻿using ControleVeiculos.Domain.Entities.ApplicationSystems;
+using ControleVeiculos.MVC.Models.ApplicationSystems;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class ApplicationSystemMappingExtensions
     {

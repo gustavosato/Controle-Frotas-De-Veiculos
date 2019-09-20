@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.SystemMenus
+﻿namespace ControleVeiculos.Domain.Command.SystemMenus
 {
     public class FilterSystemMenuCommand
     {

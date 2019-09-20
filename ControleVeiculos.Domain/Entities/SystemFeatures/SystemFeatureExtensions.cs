@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.SystemFeatures;
+﻿using ControleVeiculos.Domain.Command.SystemFeatures;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.SystemFeatures
+namespace ControleVeiculos.Domain.Entities.SystemFeatures
 {
     public static class SystemFeatureExtensions
     {

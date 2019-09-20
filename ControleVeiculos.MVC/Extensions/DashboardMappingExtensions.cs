@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.Dashboards;
-using Lean.Test.Cloud.MVC.Models.Dashboards;
+﻿using ControleVeiculos.Domain.Entities.Dashboards;
+using ControleVeiculos.MVC.Models.Dashboards;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class DashboardMappingExtensions
     {

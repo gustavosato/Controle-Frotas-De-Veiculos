@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.MVC.Infrastructure.Notification
+﻿namespace ControleVeiculos.MVC.Infrastructure.Notification
 {
     public enum NotifyType
     {

@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.ContractAdditives
+﻿namespace ControleVeiculos.Domain.Entities.ContractAdditives
 {
         public class ContractAdditive
         {

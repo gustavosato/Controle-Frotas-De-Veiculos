@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Lean.Test.Cloud.Domain.Command.Dashboards
+namespace ControleVeiculos.Domain.Command.Dashboards
 {
     public class MaintenanceDashboardCommand
     {

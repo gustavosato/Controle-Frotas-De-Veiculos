@@ -1,16 +1,16 @@
-﻿using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.MVC.Infrastructure.KendoUI;
-using Lean.Test.Cloud.MVC.Models.SystemParameter;
+﻿using ControleVeiculos.Domain.Services;
+using ControleVeiculos.MVC.Infrastructure.KendoUI;
+using ControleVeiculos.MVC.Models.SystemParameter;
 using System;
 using System.Linq;
-using Lean.Test.Cloud.MVC.Extensions;
+using ControleVeiculos.MVC.Extensions;
 using System.Web.Mvc;
-using Lean.Test.Cloud.Domain.Command.SystemParameters;
-using Lean.Test.Cloud.Domain.Entities.SystemParameters;
-using Lean.Test.Cloud.Domain.Command.Profiles;
-using Lean.Test.Cloud.Domain;
+using ControleVeiculos.Domain.Command.SystemParameters;
+using ControleVeiculos.Domain.Entities.SystemParameters;
+using ControleVeiculos.Domain.Command.Profiles;
+using ControleVeiculos.Domain;
 
-namespace Lean.Test.Cloud.MVC.Controllers
+namespace ControleVeiculos.MVC.Controllers
 {
     public class SystemParameterController : BaseController
     {

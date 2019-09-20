@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lean.Test.Cloud.Domain
+namespace ControleVeiculos.Domain
 {
     public interface IPagedList<T> : IList<T>
     {

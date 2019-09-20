@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.DailyLogs;
-using Lean.Test.Cloud.Domain.Entities.DailyLogs;
+﻿using ControleVeiculos.Domain.Command.DailyLogs;
+using ControleVeiculos.Domain.Entities.DailyLogs;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Services
+namespace ControleVeiculos.Domain.Services
 {
     public interface IDailyLogService : IDisposable
     {

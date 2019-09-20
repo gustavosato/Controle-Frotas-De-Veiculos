@@ -1,17 +1,17 @@
-﻿using Lean.Test.Cloud.Domain.Entities.GroupsUsers;
-using Lean.Test.Cloud.Domain.Repositories;
+﻿using ControleVeiculos.Domain.Entities.GroupsUsers;
+using ControleVeiculos.Domain.Repositories;
 using System.Data;
 using Dapper;
 using System.Linq;
 using System.Data.SqlClient;
 using System.Collections.Generic;
-using Lean.Test.Cloud.Repository.Map;
+using ControleVeiculos.Repository.Map;
 using Dapper.Contrib.Extensions;
 using System;
-using Lean.Test.Cloud.Domain.Command.Groups;
-using Lean.Test.Cloud.Domain.Entities.Groups;
+using ControleVeiculos.Domain.Command.Groups;
+using ControleVeiculos.Domain.Entities.Groups;
 
-namespace Lean.Test.Cloud.Repository.Data
+namespace ControleVeiculos.Repository.Data
 {
     public class GroupUserRepository : BaseRepository, IGroupUserRepository
     {

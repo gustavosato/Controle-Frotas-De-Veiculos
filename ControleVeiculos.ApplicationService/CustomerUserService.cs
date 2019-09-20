@@ -1,14 +1,14 @@
-﻿using Lean.Test.Cloud.Domain;
-using Lean.Test.Cloud.Domain.Command.CustomersUsers;
-using Lean.Test.Cloud.Domain.Entities.CustomersUsers;
-using Lean.Test.Cloud.Domain.Repositories;
-using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.Domain.Entities.Customers;
-using Lean.Test.Cloud.Domain.Command.Customers;
+﻿using ControleVeiculos.Domain;
+using ControleVeiculos.Domain.Command.CustomersUsers;
+using ControleVeiculos.Domain.Entities.CustomersUsers;
+using ControleVeiculos.Domain.Repositories;
+using ControleVeiculos.Domain.Services;
+using ControleVeiculos.Domain.Entities.Customers;
+using ControleVeiculos.Domain.Command.Customers;
 
 
 
-namespace Lean.Test.Cloud.ApplicationService
+namespace ControleVeiculos.ApplicationService
 {
     public class CustomerUserService : BaseAppService, ICustomerUserService
     {

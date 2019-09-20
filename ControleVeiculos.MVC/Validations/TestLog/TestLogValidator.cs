@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.TestLogs;
+using ControleVeiculos.MVC.Models.TestLogs;
 
-namespace Lean.Test.Cloud.MVC.Validations.TestLogs
+namespace ControleVeiculos.MVC.Validations.TestLogs
 {
     public class TestLogValidator : AbstractValidator<TestLogModel>
     {

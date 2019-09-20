@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.SystemParameters
+﻿namespace ControleVeiculos.Domain.Command.SystemParameters
 {
     public class MaintenanceSystemParameterCommand
     {

@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.Attachments;
+using ControleVeiculos.MVC.Models.Attachments;
 
-namespace Lean.Test.Cloud.MVC.Validations.Attachments
+namespace ControleVeiculos.MVC.Validations.Attachments
 {
     public class AttachmentValidator : AbstractValidator<AttachmentModel>
     {

@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.Contracts
+﻿namespace ControleVeiculos.Domain.Entities.Contracts
 {
         public class Contract
         {

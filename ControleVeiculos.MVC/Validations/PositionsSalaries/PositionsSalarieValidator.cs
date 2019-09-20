@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.PositionsSalaries;
+using ControleVeiculos.MVC.Models.PositionsSalaries;
 
-namespace Lean.Test.Cloud.MVC.Validations.PositionsSalaries
+namespace ControleVeiculos.MVC.Validations.PositionsSalaries
 {
     public class PositionsSalarieValidator : AbstractValidator<PositionsSalarieModel>
     {

@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.EquipmentAccessories;
-using Lean.Test.Cloud.MVC.Models.EquipmentAccessories;
+﻿using ControleVeiculos.Domain.Entities.EquipmentAccessories;
+using ControleVeiculos.MVC.Models.EquipmentAccessories;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class EquipmentAccessorieMappingExtensions
     {

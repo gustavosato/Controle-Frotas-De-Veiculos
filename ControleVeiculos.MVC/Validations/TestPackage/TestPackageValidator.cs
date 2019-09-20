@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.TestPackages;
+using ControleVeiculos.MVC.Models.TestPackages;
 
-namespace Lean.Test.Cloud.MVC.Validations.TestPackages
+namespace ControleVeiculos.MVC.Validations.TestPackages
 {
     public class TestPackageValidator : AbstractValidator<TestPackageModel>
     {

@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.Skills;
-using Lean.Test.Cloud.MVC.Models.Skills;
+﻿using ControleVeiculos.Domain.Entities.Skills;
+using ControleVeiculos.MVC.Models.Skills;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class SkillMappingExtensions
     {

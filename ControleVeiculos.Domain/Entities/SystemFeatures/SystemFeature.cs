@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.SystemFeatures
+﻿namespace ControleVeiculos.Domain.Entities.SystemFeatures
 {
     public class SystemFeature
     {

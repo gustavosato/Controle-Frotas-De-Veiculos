@@ -1,9 +1,9 @@
-﻿using Lean.Test.Cloud.Domain.Command.Vacancies;
-using Lean.Test.Cloud.Domain.Entities.Vacancies;
-using Lean.Test.Cloud.Domain.Entities.ResumeVacancies;
+﻿using ControleVeiculos.Domain.Command.Vacancies;
+using ControleVeiculos.Domain.Entities.Vacancies;
+using ControleVeiculos.Domain.Entities.ResumeVacancies;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface IResumeVacancieRepository
     {

@@ -1,18 +1,18 @@
-﻿using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.MVC.Infrastructure.KendoUI;
-using Lean.Test.Cloud.MVC.Models.Customers;
+﻿using ControleVeiculos.Domain.Services;
+using ControleVeiculos.MVC.Infrastructure.KendoUI;
+using ControleVeiculos.MVC.Models.Customers;
 using System;
 using System.Linq;
-using Lean.Test.Cloud.MVC.Extensions;
+using ControleVeiculos.MVC.Extensions;
 using System.Web.Mvc;
-using Lean.Test.Cloud.Domain.Command.Customers;
-using Lean.Test.Cloud.Domain.Entities.Customers;
-using Lean.Test.Cloud.Domain.Command.Profiles;
-using Lean.Test.Cloud.Domain;
-using Lean.Test.Cloud.MVC.Infrastructure.Mvc;
-using Lean.Test.Cloud.Domain.Command.CustomersUsers;
+using ControleVeiculos.Domain.Command.Customers;
+using ControleVeiculos.Domain.Entities.Customers;
+using ControleVeiculos.Domain.Command.Profiles;
+using ControleVeiculos.Domain;
+//using ControleVeiculos.MVC.Infrastructure.Mvc;
+using ControleVeiculos.Domain.Command.CustomersUsers;
 
-namespace Lean.Test.Cloud.MVC.Controllers
+namespace ControleVeiculos.MVC.Controllers
 {
     public class CustomerController : BaseController
     {

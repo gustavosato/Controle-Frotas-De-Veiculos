@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.Users;
+﻿using ControleVeiculos.Domain.Command.Users;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.Users
+namespace ControleVeiculos.Domain.Entities.Users
 {
     public static class UserExtensions
     {

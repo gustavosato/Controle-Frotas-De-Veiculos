@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.Expenses
+﻿namespace ControleVeiculos.Domain.Command.Expenses
 {
     public class MaintenanceExpenseCommand
     {

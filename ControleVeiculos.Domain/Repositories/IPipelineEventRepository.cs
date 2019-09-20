@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.PipelineEvents;
-using Lean.Test.Cloud.Domain.Entities.PipelineEvents;
+﻿using ControleVeiculos.Domain.Command.PipelineEvents;
+using ControleVeiculos.Domain.Entities.PipelineEvents;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface IPipelineEventRepository
     {

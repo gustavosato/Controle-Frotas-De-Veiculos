@@ -1,11 +1,11 @@
-﻿using Lean.Test.Cloud.MVC.Infrastructure.Notification;
+﻿using ControleVeiculos.MVC.Infrastructure.Notification;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Controllers
+namespace ControleVeiculos.MVC.Controllers
 {
     public class BaseController : Controller
     {

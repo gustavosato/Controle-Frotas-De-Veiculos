@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.Resumes;
-using Lean.Test.Cloud.MVC.Models.Resumes;
+﻿using ControleVeiculos.Domain.Entities.Resumes;
+using ControleVeiculos.MVC.Models.Resumes;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class ResumeMappingExtensions
     {

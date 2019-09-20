@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.Demands;
+﻿using ControleVeiculos.Domain.Command.Demands;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.Demands
+namespace ControleVeiculos.Domain.Entities.Demands
 {
     public static class DemandExtensions
     {

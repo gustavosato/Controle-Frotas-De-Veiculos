@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.Vacancies;
-using Lean.Test.Cloud.MVC.Models.Vacancies;
+﻿using ControleVeiculos.Domain.Entities.Vacancies;
+using ControleVeiculos.MVC.Models.Vacancies;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class VacancieMappingExtensions
     {

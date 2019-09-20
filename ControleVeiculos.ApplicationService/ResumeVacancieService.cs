@@ -1,17 +1,17 @@
-﻿using Lean.Test.Cloud.Domain;
-using Lean.Test.Cloud.Domain.Entities.ResumeVacancies;
-using Lean.Test.Cloud.Domain.Repositories;
-using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.Domain.Command.ResumeVacancies;
+﻿using ControleVeiculos.Domain;
+using ControleVeiculos.Domain.Entities.ResumeVacancies;
+using ControleVeiculos.Domain.Repositories;
+using ControleVeiculos.Domain.Services;
+using ControleVeiculos.Domain.Command.ResumeVacancies;
 using System.Linq;
 using System.Collections.Generic;
-using Lean.Test.Cloud.SharedKernel.Common;
-using Lean.Test.Cloud.Domain.Entities.Vacancies;
-using Lean.Test.Cloud.Domain.Command.Vacancies;
-using Lean.Test.Cloud.Domain.Command.Resumes;
-using Lean.Test.Cloud.Domain.Entities.Resumes;
+using ControleVeiculos.SharedKernel.Common;
+using ControleVeiculos.Domain.Entities.Vacancies;
+using ControleVeiculos.Domain.Command.Vacancies;
+using ControleVeiculos.Domain.Command.Resumes;
+using ControleVeiculos.Domain.Entities.Resumes;
 
-namespace Lean.Test.Cloud.ApplicationService
+namespace ControleVeiculos.ApplicationService
 {
     public class ResumeVacancieService : BaseAppService, IResumeVacancieService
     {

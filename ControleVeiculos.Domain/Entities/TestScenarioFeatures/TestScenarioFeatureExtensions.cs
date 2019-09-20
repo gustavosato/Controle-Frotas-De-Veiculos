@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.TestScenarioFeatures;
+﻿using ControleVeiculos.Domain.Command.TestScenarioFeatures;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.TestScenarioFeatures
+namespace ControleVeiculos.Domain.Entities.TestScenarioFeatures
 {
     public static class TestScenarioFeatureExtensions
     {

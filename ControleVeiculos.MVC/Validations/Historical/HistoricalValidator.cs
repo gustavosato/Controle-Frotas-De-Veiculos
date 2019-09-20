@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.Historicals;
+using ControleVeiculos.MVC.Models.Historicals;
 
-namespace Lean.Test.Cloud.MVC.Validations.Historicals
+namespace ControleVeiculos.MVC.Validations.Historicals
 {
     public class HistoricalValidator : AbstractValidator<HistoricalModel>
     {

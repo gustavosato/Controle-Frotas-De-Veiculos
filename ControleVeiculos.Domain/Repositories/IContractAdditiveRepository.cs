@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.ContractAdditives;
-using Lean.Test.Cloud.Domain.Entities.ContractAdditives;
+﻿using ControleVeiculos.Domain.Command.ContractAdditives;
+using ControleVeiculos.Domain.Entities.ContractAdditives;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface IContractAdditiveRepository
     {

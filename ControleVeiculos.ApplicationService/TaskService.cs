@@ -1,11 +1,11 @@
-﻿using Lean.Test.Cloud.Domain;
-using Lean.Test.Cloud.Domain.Entities.Tasks;
-using Lean.Test.Cloud.Domain.Repositories;
-using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.Domain.Command.Tasks;
+﻿using ControleVeiculos.Domain;
+using ControleVeiculos.Domain.Entities.Tasks;
+using ControleVeiculos.Domain.Repositories;
+using ControleVeiculos.Domain.Services;
+using ControleVeiculos.Domain.Command.Tasks;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.ApplicationService
+namespace ControleVeiculos.ApplicationService
 {
     public class TaskService : BaseAppService, ITaskService
     {

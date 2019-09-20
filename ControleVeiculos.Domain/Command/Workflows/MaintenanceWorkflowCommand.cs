@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.Workflows
+﻿namespace ControleVeiculos.Domain.Command.Workflows
 {
     public class MaintenanceWorkflowCommand
     {

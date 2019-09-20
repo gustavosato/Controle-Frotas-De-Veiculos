@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.Groups;
-using Lean.Test.Cloud.MVC.Models.Groups;
+﻿using ControleVeiculos.Domain.Entities.Groups;
+using ControleVeiculos.MVC.Models.Groups;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class GroupMappingExtensions
     {

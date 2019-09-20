@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.TimeReleases;
-using Lean.Test.Cloud.Domain.Entities.TimeReleases;
+﻿using ControleVeiculos.Domain.Command.TimeReleases;
+using ControleVeiculos.Domain.Entities.TimeReleases;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface ITimeReleaseRepository
     {

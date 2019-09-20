@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.Expenses;
+using ControleVeiculos.MVC.Models.Expenses;
 
-namespace Lean.Test.Cloud.MVC.Validations.Expenses
+namespace ControleVeiculos.MVC.Validations.Expenses
 {
     public class ExpenseValidator : AbstractValidator<ExpenseModel>
     {

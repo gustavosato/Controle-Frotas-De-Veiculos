@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.TimeReleases;
+using ControleVeiculos.MVC.Models.TimeReleases;
 
-namespace Lean.Test.Cloud.MVC.Validations.TimeRelease
+namespace ControleVeiculos.MVC.Validations.TimeRelease
 {
     public class TimeReleaseValidator : AbstractValidator<TimeReleaseModel>
     {

@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.Elements;
-using Lean.Test.Cloud.Domain.Entities.Elements;
+﻿using ControleVeiculos.Domain.Command.Elements;
+using ControleVeiculos.Domain.Entities.Elements;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Services
+namespace ControleVeiculos.Domain.Services
 {
     public interface IElementService : IDisposable
     {

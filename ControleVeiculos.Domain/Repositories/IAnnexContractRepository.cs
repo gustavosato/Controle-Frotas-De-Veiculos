@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.AnnexContracts;
-using Lean.Test.Cloud.Domain.Entities.AnnexContracts;
+﻿using ControleVeiculos.Domain.Command.AnnexContracts;
+using ControleVeiculos.Domain.Entities.AnnexContracts;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface IAnnexContractRepository
     {

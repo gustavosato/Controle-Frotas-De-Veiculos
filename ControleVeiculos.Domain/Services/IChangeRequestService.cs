@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.ChangeRequests;
-using Lean.Test.Cloud.Domain.Entities.ChangeRequests;
+﻿using ControleVeiculos.Domain.Command.ChangeRequests;
+using ControleVeiculos.Domain.Entities.ChangeRequests;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Services
+namespace ControleVeiculos.Domain.Services
 {
     public interface IChangeRequestService : IDisposable
     {

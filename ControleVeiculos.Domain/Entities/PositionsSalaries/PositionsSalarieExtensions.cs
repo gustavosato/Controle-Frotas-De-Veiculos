@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.PositionsSalaries;
+﻿using ControleVeiculos.Domain.Command.PositionsSalaries;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.PositionsSalaries
+namespace ControleVeiculos.Domain.Entities.PositionsSalaries
 {
     public static class PositionsSalarieExtensions
     {

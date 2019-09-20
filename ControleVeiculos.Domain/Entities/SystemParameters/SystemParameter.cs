@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.SystemParameters
+﻿namespace ControleVeiculos.Domain.Entities.SystemParameters
 {
     public class SystemParameter
     {

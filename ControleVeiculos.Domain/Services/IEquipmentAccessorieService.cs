@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.EquipmentAccessories;
-using Lean.Test.Cloud.Domain.Entities.EquipmentAccessories;
+﻿using ControleVeiculos.Domain.Command.EquipmentAccessories;
+using ControleVeiculos.Domain.Entities.EquipmentAccessories;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Services
+namespace ControleVeiculos.Domain.Services
 {
     public interface IEquipmentAccessorieService : IDisposable
     {

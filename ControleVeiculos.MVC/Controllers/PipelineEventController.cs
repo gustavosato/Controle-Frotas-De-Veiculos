@@ -1,20 +1,20 @@
-﻿using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.MVC.Infrastructure.KendoUI;
-using Lean.Test.Cloud.MVC.Models.PipelineEvents;
+﻿using ControleVeiculos.Domain.Services;
+using ControleVeiculos.MVC.Infrastructure.KendoUI;
+using ControleVeiculos.MVC.Models.PipelineEvents;
 using System;
 using System.Linq;
-using Lean.Test.Cloud.MVC.Extensions;
+using ControleVeiculos.MVC.Extensions;
 using System.Web.Mvc;
-using Lean.Test.Cloud.Domain.Command.PipelineEvents;
-using Lean.Test.Cloud.Domain.Entities.PipelineEvents;
-using Lean.Test.Cloud.Domain;
-using Lean.Test.Cloud.MVC.Infrastructure.Mvc;
-using Lean.Test.Cloud.MVC.Models.Historicals;
-using Lean.Test.Cloud.Domain.Command.Profiles;
-using Lean.Test.Cloud.Domain.Command.Historicals;
-using Lean.Test.Cloud.MVC.Models.Pipelines;
+using ControleVeiculos.Domain.Command.PipelineEvents;
+using ControleVeiculos.Domain.Entities.PipelineEvents;
+using ControleVeiculos.Domain;
+//using ControleVeiculos.MVC.Infrastructure.Mvc;
+using ControleVeiculos.MVC.Models.Historicals;
+using ControleVeiculos.Domain.Command.Profiles;
+using ControleVeiculos.Domain.Command.Historicals;
+using ControleVeiculos.MVC.Models.Pipelines;
 
-namespace Lean.Test.Cloud.MVC.Controllers
+namespace ControleVeiculos.MVC.Controllers
 {
     public class PipelineEventController : BaseController
     {

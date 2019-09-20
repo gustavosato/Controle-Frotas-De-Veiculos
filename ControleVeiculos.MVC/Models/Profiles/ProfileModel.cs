@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using FluentValidation.Attributes;
-using Lean.Test.Cloud.MVC.Validations.Profiles;
+using ControleVeiculos.MVC.Validations.Profiles;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Models.Profiles
+namespace ControleVeiculos.MVC.Models.Profiles
 {
     [Validator(typeof(ProfileValidator))]
     public class ProfileModel

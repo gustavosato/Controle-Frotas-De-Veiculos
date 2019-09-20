@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.Contacts
+﻿namespace ControleVeiculos.Domain.Entities.Contacts
 {
     public class Contact
     {

@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.Defects;
-using Lean.Test.Cloud.Domain.Entities.Defects;
+﻿using ControleVeiculos.Domain.Command.Defects;
+using ControleVeiculos.Domain.Entities.Defects;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface IDefectRepository
     {

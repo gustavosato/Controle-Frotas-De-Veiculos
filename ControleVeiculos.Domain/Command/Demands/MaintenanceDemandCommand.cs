@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.Demands
+﻿namespace ControleVeiculos.Domain.Command.Demands
 {
     public class MaintenanceDemandCommand
     {

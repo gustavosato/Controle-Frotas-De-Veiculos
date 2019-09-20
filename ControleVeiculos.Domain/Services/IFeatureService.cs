@@ -1,9 +1,9 @@
-﻿using Lean.Test.Cloud.Domain.Command.Features;
-using Lean.Test.Cloud.Domain.Entities.Features;
+﻿using ControleVeiculos.Domain.Command.Features;
+using ControleVeiculos.Domain.Entities.Features;
 using System;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Services
+namespace ControleVeiculos.Domain.Services
 {
     public interface IFeatureService : IDisposable
     {

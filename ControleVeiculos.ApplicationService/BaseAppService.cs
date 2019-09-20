@@ -2,7 +2,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Lean.Test.Cloud.ApplicationService
+namespace ControleVeiculos.ApplicationService
 {
     public class BaseAppService : IDisposable
     {

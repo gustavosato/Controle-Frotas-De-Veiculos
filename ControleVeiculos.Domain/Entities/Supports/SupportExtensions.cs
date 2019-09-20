@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.Supports;
+﻿using ControleVeiculos.Domain.Command.Supports;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.Supports
+namespace ControleVeiculos.Domain.Entities.Supports
 {
     public static class SupportExtensions
     {

@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.TestCases;
+using ControleVeiculos.MVC.Models.TestCases;
 
-namespace Lean.Test.Cloud.MVC.Validations.TestCases
+namespace ControleVeiculos.MVC.Validations.TestCases
 {
     public class TestCaseValidator : AbstractValidator<TestCaseModel>
     {

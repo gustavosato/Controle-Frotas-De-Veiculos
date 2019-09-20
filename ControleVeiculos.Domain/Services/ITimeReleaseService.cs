@@ -1,9 +1,9 @@
-﻿using Lean.Test.Cloud.Domain.Command.TimeReleases;
-using Lean.Test.Cloud.Domain.Entities.TimeReleases;
+﻿using ControleVeiculos.Domain.Command.TimeReleases;
+using ControleVeiculos.Domain.Entities.TimeReleases;
 using System;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Services
+namespace ControleVeiculos.Domain.Services
 {
     public interface ITimeReleaseService : IDisposable
     {

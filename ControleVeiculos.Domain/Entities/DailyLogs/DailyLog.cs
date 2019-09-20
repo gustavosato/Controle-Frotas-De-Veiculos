@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.DailyLogs
+﻿namespace ControleVeiculos.Domain.Entities.DailyLogs
 {
     public class DailyLog
     {

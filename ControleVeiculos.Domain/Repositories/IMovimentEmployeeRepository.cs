@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.MovimentEmployees;
-using Lean.Test.Cloud.Domain.Entities.MovimentEmployees;
+﻿using ControleVeiculos.Domain.Command.MovimentEmployees;
+using ControleVeiculos.Domain.Entities.MovimentEmployees;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface IMovimentEmployeeRepository
     {

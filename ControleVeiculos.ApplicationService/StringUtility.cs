@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Lean.Test.Cloud.Domain.Services;
+using ControleVeiculos.Domain.Services;
 using System.Web;
 
-namespace Lean.Test.Cloud.ApplicationService
+namespace ControleVeiculos.ApplicationService
 {
     public class StringUtilityService : BaseAppService, Domain.Services.IStringUtilityService
     {

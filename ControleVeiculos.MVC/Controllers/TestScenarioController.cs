@@ -1,20 +1,20 @@
-﻿using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.MVC.Infrastructure.KendoUI;
-using Lean.Test.Cloud.MVC.Models.TestScenarios;
+﻿using ControleVeiculos.Domain.Services;
+using ControleVeiculos.MVC.Infrastructure.KendoUI;
+using ControleVeiculos.MVC.Models.TestScenarios;
 using System;
 using System.Linq;
-using Lean.Test.Cloud.MVC.Extensions;
+using ControleVeiculos.MVC.Extensions;
 using System.Web.Mvc;
-using Lean.Test.Cloud.Domain.Command.TestScenarios;
-using Lean.Test.Cloud.Domain.Entities.TestScenarios;
-using Lean.Test.Cloud.Domain;
-using Lean.Test.Cloud.MVC.Infrastructure.Mvc;
-using Lean.Test.Cloud.Domain.Command.TestScenarioFeatures;
-using Lean.Test.Cloud.Domain.Command.Features;
-using Lean.Test.Cloud.MVC.Models.Features;
-using Lean.Test.Cloud.MVC.Models.TestScenarioFeatures;
+using ControleVeiculos.Domain.Command.TestScenarios;
+using ControleVeiculos.Domain.Entities.TestScenarios;
+using ControleVeiculos.Domain;
+//using ControleVeiculos.MVC.Infrastructure.Mvc;
+using ControleVeiculos.Domain.Command.TestScenarioFeatures;
+using ControleVeiculos.Domain.Command.Features;
+using ControleVeiculos.MVC.Models.Features;
+using ControleVeiculos.MVC.Models.TestScenarioFeatures;
 
-namespace Lean.Test.Cloud.MVC.Controllers
+namespace ControleVeiculos.MVC.Controllers
 {
     public class TestScenarioController : BaseController
     {

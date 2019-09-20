@@ -1,9 +1,9 @@
-﻿using Lean.Test.Cloud.Domain.Command.Groups;
-using Lean.Test.Cloud.Domain.Entities.Groups;
+﻿using ControleVeiculos.Domain.Command.Groups;
+using ControleVeiculos.Domain.Entities.Groups;
 using System;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Services
+namespace ControleVeiculos.Domain.Services
 {
     public interface IGroupService : IDisposable
     {

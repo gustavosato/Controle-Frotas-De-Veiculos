@@ -1,10 +1,10 @@
-﻿using Lean.Test.Cloud.Domain;
-using Lean.Test.Cloud.Domain.Entities.Profiles;
-using Lean.Test.Cloud.Domain.Repositories;
-using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.Domain.Command.Profiles;
+﻿using ControleVeiculos.Domain;
+using ControleVeiculos.Domain.Entities.Profiles;
+using ControleVeiculos.Domain.Repositories;
+using ControleVeiculos.Domain.Services;
+using ControleVeiculos.Domain.Command.Profiles;
 
-namespace Lean.Test.Cloud.ApplicationService
+namespace ControleVeiculos.ApplicationService
 {
     public class ProfileService : BaseAppService, IProfilesService
     {

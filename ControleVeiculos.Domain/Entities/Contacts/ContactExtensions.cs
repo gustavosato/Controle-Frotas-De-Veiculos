@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.Contacts;
+﻿using ControleVeiculos.Domain.Command.Contacts;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.Contacts
+namespace ControleVeiculos.Domain.Entities.Contacts
 {
     public static class ContactExtensions
     {

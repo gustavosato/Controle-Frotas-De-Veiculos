@@ -1,11 +1,11 @@
 ﻿using FluentValidation.Attributes;
-using Lean.Test.Cloud.MVC.Validations.Elements;
+using ControleVeiculos.MVC.Validations.Elements;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Models.Elements
+namespace ControleVeiculos.MVC.Models.Elements
 {
     [Validator(typeof(ElementValidator))]
     public class ElementModel

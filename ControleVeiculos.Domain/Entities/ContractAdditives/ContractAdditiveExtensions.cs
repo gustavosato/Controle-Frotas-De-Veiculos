@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.ContractAdditives;
+﻿using ControleVeiculos.Domain.Command.ContractAdditives;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.ContractAdditives
+namespace ControleVeiculos.Domain.Entities.ContractAdditives
 {
     public static class ContractAdditiveExtensions
     {

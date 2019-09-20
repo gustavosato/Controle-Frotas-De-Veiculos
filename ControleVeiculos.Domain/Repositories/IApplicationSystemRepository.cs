@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.ApplicationSystems;
-using Lean.Test.Cloud.Domain.Entities.ApplicationSystems;
+﻿using ControleVeiculos.Domain.Command.ApplicationSystems;
+using ControleVeiculos.Domain.Entities.ApplicationSystems;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface IApplicationSystemRepository
     {

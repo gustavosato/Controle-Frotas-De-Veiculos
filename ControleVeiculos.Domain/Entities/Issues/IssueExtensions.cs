@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.Issues;
+﻿using ControleVeiculos.Domain.Command.Issues;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.Issues
+namespace ControleVeiculos.Domain.Entities.Issues
 {
     public static class IssueExtensions
     {

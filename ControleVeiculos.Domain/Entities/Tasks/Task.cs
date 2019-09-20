@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.Tasks
+﻿namespace ControleVeiculos.Domain.Entities.Tasks
 {
     public class Task
     {

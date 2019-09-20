@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.PipelineEvents
+﻿namespace ControleVeiculos.Domain.Command.PipelineEvents
 {
     public class FilterPipelineEventCommand
     {        

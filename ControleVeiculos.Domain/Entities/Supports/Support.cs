@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.Supports
+﻿namespace ControleVeiculos.Domain.Entities.Supports
 {
     public class Support
     {

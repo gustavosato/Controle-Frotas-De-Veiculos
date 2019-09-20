@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.DailyLogs;
+﻿using ControleVeiculos.Domain.Command.DailyLogs;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.DailyLogs
+namespace ControleVeiculos.Domain.Entities.DailyLogs
 {
     public static class DailyLogExtensions
     {

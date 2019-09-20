@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.Defects
+﻿namespace ControleVeiculos.Domain.Entities.Defects
 {
     public class Defect
     {

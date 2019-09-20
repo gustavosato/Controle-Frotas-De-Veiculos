@@ -1,5 +1,5 @@
 ﻿using Dapper.Contrib.Extensions;
-namespace Lean.Test.Cloud.Repository.Map
+namespace ControleVeiculos.Repository.Map
 {
     [Table("Contacts")]
     public class ContactDapper

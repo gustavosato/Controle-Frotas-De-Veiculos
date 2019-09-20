@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.Historicals
+﻿namespace ControleVeiculos.Domain.Command.Historicals
 {
     public class MaintenanceHistoricalCommand
     {

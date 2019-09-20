@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.Demands;
-using Lean.Test.Cloud.MVC.Models.Demands;
+﻿using ControleVeiculos.Domain.Entities.Demands;
+using ControleVeiculos.MVC.Models.Demands;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class DemandMappingExtensions
     {

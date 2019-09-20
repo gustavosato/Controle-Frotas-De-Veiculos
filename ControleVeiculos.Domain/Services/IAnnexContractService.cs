@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.AnnexContracts;
-using Lean.Test.Cloud.Domain.Entities.AnnexContracts;
+﻿using ControleVeiculos.Domain.Command.AnnexContracts;
+using ControleVeiculos.Domain.Entities.AnnexContracts;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Services
+namespace ControleVeiculos.Domain.Services
 {
     public interface IAnnexContractService : IDisposable
     {

@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.Contacts;
-using Lean.Test.Cloud.MVC.Models.Contacts;
+﻿using ControleVeiculos.Domain.Entities.Contacts;
+using ControleVeiculos.MVC.Models.Contacts;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class ContactMappingExtensions
     {

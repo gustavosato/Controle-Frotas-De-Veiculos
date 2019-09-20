@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.Defects;
-using Lean.Test.Cloud.MVC.Models.Defects;
+﻿using ControleVeiculos.Domain.Entities.Defects;
+using ControleVeiculos.MVC.Models.Defects;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class DefectMappingExtensions
     {

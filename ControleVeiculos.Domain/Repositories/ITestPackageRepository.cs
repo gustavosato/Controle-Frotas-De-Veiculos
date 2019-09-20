@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.TestPackages;
-using Lean.Test.Cloud.Domain.Entities.TestPackages;
+﻿using ControleVeiculos.Domain.Command.TestPackages;
+using ControleVeiculos.Domain.Entities.TestPackages;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface ITestPackageRepository
     {

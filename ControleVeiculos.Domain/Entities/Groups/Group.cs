@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.Groups
+﻿namespace ControleVeiculos.Domain.Entities.Groups
 {
     public class Group
     {

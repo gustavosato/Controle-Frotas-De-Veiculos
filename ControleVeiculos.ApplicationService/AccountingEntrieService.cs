@@ -1,10 +1,10 @@
-﻿using Lean.Test.Cloud.Domain;
-using Lean.Test.Cloud.Domain.Entities.AccountingEntries;
-using Lean.Test.Cloud.Domain.Repositories;
-using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.Domain.Command.AccountingEntries;
+﻿using ControleVeiculos.Domain;
+using ControleVeiculos.Domain.Entities.AccountingEntries;
+using ControleVeiculos.Domain.Repositories;
+using ControleVeiculos.Domain.Services;
+using ControleVeiculos.Domain.Command.AccountingEntries;
 
-namespace Lean.Test.Cloud.ApplicationService
+namespace ControleVeiculos.ApplicationService
 {
     public class AccountingEntrieService : BaseAppService, IAccountingEntrieService
     {

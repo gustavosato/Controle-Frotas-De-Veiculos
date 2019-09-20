@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.Dashboards;
+﻿using ControleVeiculos.Domain.Command.Dashboards;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.Dashboards
+namespace ControleVeiculos.Domain.Entities.Dashboards
 {
     public static class DashboardExtensions
     {

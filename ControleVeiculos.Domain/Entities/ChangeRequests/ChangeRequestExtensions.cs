@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.ChangeRequests;
+﻿using ControleVeiculos.Domain.Command.ChangeRequests;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.ChangeRequests
+namespace ControleVeiculos.Domain.Entities.ChangeRequests
 {
     public static class ChangeRequestExtensions
     {

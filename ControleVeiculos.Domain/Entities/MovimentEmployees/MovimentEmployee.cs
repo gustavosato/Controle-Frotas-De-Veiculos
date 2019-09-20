@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.MovimentEmployees
+﻿namespace ControleVeiculos.Domain.Entities.MovimentEmployees
 {
         public class MovimentEmployee
         {

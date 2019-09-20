@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.ApplicationSystems
+﻿namespace ControleVeiculos.Domain.Entities.ApplicationSystems
 {
     public class ApplicationSystem
     {

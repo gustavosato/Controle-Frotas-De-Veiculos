@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.DailyLogComments;
-using Lean.Test.Cloud.Domain.Entities.DailyLogComments;
+﻿using ControleVeiculos.Domain.Command.DailyLogComments;
+using ControleVeiculos.Domain.Entities.DailyLogComments;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface IDailyLogCommentRepository
     {

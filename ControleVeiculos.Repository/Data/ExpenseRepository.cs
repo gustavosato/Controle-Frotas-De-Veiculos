@@ -1,16 +1,16 @@
-﻿using Lean.Test.Cloud.Domain.Entities.Expenses;
-using Lean.Test.Cloud.Domain.Repositories;
+﻿using ControleVeiculos.Domain.Entities.Expenses;
+using ControleVeiculos.Domain.Repositories;
 using System.Data;
 using Dapper;
 using System.Linq;
 using System.Data.SqlClient;
 using System.Collections.Generic;
-using Lean.Test.Cloud.Repository.Map;
+using ControleVeiculos.Repository.Map;
 using Dapper.Contrib.Extensions;
-using Lean.Test.Cloud.Domain.Command.Expenses;
+using ControleVeiculos.Domain.Command.Expenses;
 using System;
 
-namespace Lean.Test.Cloud.Repository.Data
+namespace ControleVeiculos.Repository.Data
 {
     public class ExpenseRepository : BaseRepository, IExpenseRepository
     {

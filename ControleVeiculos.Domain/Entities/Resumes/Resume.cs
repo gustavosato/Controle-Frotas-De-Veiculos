@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.Resumes
+﻿namespace ControleVeiculos.Domain.Entities.Resumes
 {
     public class Resume
     {

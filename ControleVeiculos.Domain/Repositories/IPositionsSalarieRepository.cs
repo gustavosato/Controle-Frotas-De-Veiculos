@@ -1,9 +1,9 @@
-﻿using Lean.Test.Cloud.Domain.Command.PositionsSalaries;
-using Lean.Test.Cloud.Domain.Entities.PositionsSalaries;
+﻿using ControleVeiculos.Domain.Command.PositionsSalaries;
+using ControleVeiculos.Domain.Entities.PositionsSalaries;
 using System.Collections.Generic;
 
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface IPositionsSalarieRepository
     {

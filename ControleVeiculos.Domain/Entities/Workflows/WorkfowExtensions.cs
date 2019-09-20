@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.Workflows;
+﻿using ControleVeiculos.Domain.Command.Workflows;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.Workflows
+namespace ControleVeiculos.Domain.Entities.Workflows
 {
     public static class WorkflowExtensions
     {

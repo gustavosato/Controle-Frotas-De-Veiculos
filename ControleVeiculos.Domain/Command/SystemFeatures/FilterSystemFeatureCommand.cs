@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.SystemFeatures
+﻿namespace ControleVeiculos.Domain.Command.SystemFeatures
 {
     public class FilterSystemFeatureCommand
     {

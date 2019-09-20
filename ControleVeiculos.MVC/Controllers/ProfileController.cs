@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Lean.Test.Cloud.Domain.Command.Profiles;
-using Lean.Test.Cloud.Domain.Entities.Profiles;
-using Lean.Test.Cloud.Domain;
-using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.MVC.Models.Profiles;
-using Lean.Test.Cloud.MVC.Infrastructure.KendoUI;
-using Lean.Test.Cloud.MVC.Extensions;
+using ControleVeiculos.Domain.Command.Profiles;
+using ControleVeiculos.Domain.Entities.Profiles;
+using ControleVeiculos.Domain;
+using ControleVeiculos.Domain.Services;
+using ControleVeiculos.MVC.Models.Profiles;
+using ControleVeiculos.MVC.Infrastructure.KendoUI;
+using ControleVeiculos.MVC.Extensions;
 
-namespace Lean.Test.Cloud.MVC.Controllers
+namespace ControleVeiculos.MVC.Controllers
 {
     public class ProfileController : BaseController
     {

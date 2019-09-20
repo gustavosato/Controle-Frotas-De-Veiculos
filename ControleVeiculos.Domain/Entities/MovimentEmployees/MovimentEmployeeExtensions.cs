@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.MovimentEmployees;
+﻿using ControleVeiculos.Domain.Command.MovimentEmployees;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.MovimentEmployees
+namespace ControleVeiculos.Domain.Entities.MovimentEmployees
 {
     public static class MovimentEmployeeExtensions
     {

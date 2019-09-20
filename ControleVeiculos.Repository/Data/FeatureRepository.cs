@@ -1,15 +1,15 @@
-﻿using Lean.Test.Cloud.Domain.Entities.Features;
-using Lean.Test.Cloud.Domain.Repositories;
+﻿using ControleVeiculos.Domain.Entities.Features;
+using ControleVeiculos.Domain.Repositories;
 using System.Data;
 using Dapper;
 using System.Linq;
 using System.Data.SqlClient;
 using System.Collections.Generic;
-using Lean.Test.Cloud.Repository.Map;
+using ControleVeiculos.Repository.Map;
 using Dapper.Contrib.Extensions;
-using Lean.Test.Cloud.Domain.Command.Features;
+using ControleVeiculos.Domain.Command.Features;
 
-namespace Lean.Test.Cloud.Repository.Data
+namespace ControleVeiculos.Repository.Data
 {
     public class FeatureRepository : BaseRepository, IFeatureRepository
     {

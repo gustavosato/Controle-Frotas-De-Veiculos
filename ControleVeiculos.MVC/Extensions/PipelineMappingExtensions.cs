@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.Pipelines;
-using Lean.Test.Cloud.MVC.Models.Pipelines;
+﻿using ControleVeiculos.Domain.Entities.Pipelines;
+using ControleVeiculos.MVC.Models.Pipelines;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class PipelineMappingExtensions
     {

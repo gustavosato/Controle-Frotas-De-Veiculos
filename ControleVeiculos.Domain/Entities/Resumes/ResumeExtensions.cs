@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.Resumes;
+﻿using ControleVeiculos.Domain.Command.Resumes;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.Resumes
+namespace ControleVeiculos.Domain.Entities.Resumes
 {
     public static class ResumeExtensions
     {

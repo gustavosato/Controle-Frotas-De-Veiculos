@@ -1,11 +1,11 @@
 ﻿using FluentValidation.Attributes;
-using Lean.Test.Cloud.MVC.Validations.AnnexContract;
+using ControleVeiculos.MVC.Validations.AnnexContract;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Models.AnnexContracts
+namespace ControleVeiculos.MVC.Models.AnnexContracts
 {
     [Validator(typeof(AnnexContractValidator))]
     public class AnnexContractModel

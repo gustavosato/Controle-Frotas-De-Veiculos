@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.TestLogs
+﻿namespace ControleVeiculos.Domain.Entities.TestLogs
 {
     public enum SearchType
     {

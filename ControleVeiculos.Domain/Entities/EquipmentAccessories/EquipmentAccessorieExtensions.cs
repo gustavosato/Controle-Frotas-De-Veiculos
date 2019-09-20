@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.EquipmentAccessories;
+﻿using ControleVeiculos.Domain.Command.EquipmentAccessories;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.EquipmentAccessories
+namespace ControleVeiculos.Domain.Entities.EquipmentAccessories
 {
     public static class EquipmentAccessorieExtensions
     {

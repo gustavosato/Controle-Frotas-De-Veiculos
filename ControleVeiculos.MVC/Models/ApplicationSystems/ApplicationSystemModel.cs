@@ -1,11 +1,11 @@
 ﻿using FluentValidation.Attributes;
-using Lean.Test.Cloud.MVC.Validations.ApplicationSystem;
+using ControleVeiculos.MVC.Validations.ApplicationSystem;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Models.ApplicationSystems
+namespace ControleVeiculos.MVC.Models.ApplicationSystems
 {
     [Validator(typeof(ApplicationSystemValidator))]
     public class ApplicationSystemModel

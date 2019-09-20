@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.DailyLogs;
+using ControleVeiculos.MVC.Models.DailyLogs;
 
-namespace Lean.Test.Cloud.MVC.Validations.DailyLog
+namespace ControleVeiculos.MVC.Validations.DailyLog
 {
     public class DailyLogValidator : AbstractValidator<DailyLogModel>
     {

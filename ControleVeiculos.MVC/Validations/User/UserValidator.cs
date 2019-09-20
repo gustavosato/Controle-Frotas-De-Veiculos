@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.Users;
+using ControleVeiculos.MVC.Models.Users;
 
-namespace Lean.Test.Cloud.MVC.Validations.Users
+namespace ControleVeiculos.MVC.Validations.Users
 {
     public class UserValidator : AbstractValidator<UserModel>
     {

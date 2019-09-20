@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.PipelineEvents;
-using Lean.Test.Cloud.MVC.Models.PipelineEvents;
+﻿using ControleVeiculos.Domain.Entities.PipelineEvents;
+using ControleVeiculos.MVC.Models.PipelineEvents;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class PipelineEventMappingExtensions
     {

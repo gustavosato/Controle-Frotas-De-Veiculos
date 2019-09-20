@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.AccountingEntries;
+﻿using ControleVeiculos.Domain.Command.AccountingEntries;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.AccountingEntries
+namespace ControleVeiculos.Domain.Entities.AccountingEntries
 {
     public static class AccountingEntrieExtensions
     {

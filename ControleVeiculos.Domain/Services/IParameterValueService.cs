@@ -1,10 +1,10 @@
-﻿using Lean.Test.Cloud.Domain.Command.ParameterValues;
-using Lean.Test.Cloud.Domain.Entities.ParameterValues;
+﻿using ControleVeiculos.Domain.Command.ParameterValues;
+using ControleVeiculos.Domain.Entities.ParameterValues;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Services
+namespace ControleVeiculos.Domain.Services
 {
     public interface IParameterValueService : IDisposable
     {

@@ -1,11 +1,11 @@
-﻿using Lean.Test.Cloud.Domain;
-using Lean.Test.Cloud.Domain.Entities.ContractAdditives;
-using Lean.Test.Cloud.Domain.Repositories;
-using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.Domain.Command.ContractAdditives;
+﻿using ControleVeiculos.Domain;
+using ControleVeiculos.Domain.Entities.ContractAdditives;
+using ControleVeiculos.Domain.Repositories;
+using ControleVeiculos.Domain.Services;
+using ControleVeiculos.Domain.Command.ContractAdditives;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.ApplicationService
+namespace ControleVeiculos.ApplicationService
 {
     public class ContractAdditiveService : BaseAppService, IContractAdditiveService
     {

@@ -1,8 +1,8 @@
 ﻿
 using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.Demands;
+using ControleVeiculos.MVC.Models.Demands;
 
-namespace Lean.Test.Cloud.MVC.Validations.Demands
+namespace ControleVeiculos.MVC.Validations.Demands
 {
     public class DemandValidator : AbstractValidator<DemandModel>
     {

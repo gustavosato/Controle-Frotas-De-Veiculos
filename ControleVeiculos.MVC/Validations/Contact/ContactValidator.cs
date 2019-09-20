@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.Contacts;
+using ControleVeiculos.MVC.Models.Contacts;
 
-namespace Lean.Test.Cloud.MVC.Validations.Contacts
+namespace ControleVeiculos.MVC.Validations.Contacts
 {
     public class ContactValidator : AbstractValidator<ContactModel>
     {

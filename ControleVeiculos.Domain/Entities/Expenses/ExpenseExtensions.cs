@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.Expenses;
+﻿using ControleVeiculos.Domain.Command.Expenses;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.Expenses
+namespace ControleVeiculos.Domain.Entities.Expenses
 {
     public static class ExpenseExtensions
     {

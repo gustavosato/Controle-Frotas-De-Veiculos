@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.AccountingEntries
+﻿namespace ControleVeiculos.Domain.Command.AccountingEntries
 {  public class FilterAccountingEntrieCommand
     {
         public string ClassID { get; set; }

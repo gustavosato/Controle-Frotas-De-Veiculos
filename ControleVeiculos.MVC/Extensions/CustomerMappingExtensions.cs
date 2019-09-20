@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.Customers;
-using Lean.Test.Cloud.MVC.Models.Customers;
+﻿using ControleVeiculos.Domain.Entities.Customers;
+using ControleVeiculos.MVC.Models.Customers;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class CustomerMappingExtensions
     {

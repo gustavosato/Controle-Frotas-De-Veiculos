@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.Licenses;
-using Lean.Test.Cloud.MVC.Models.Licenses;
+﻿using ControleVeiculos.Domain.Entities.Licenses;
+using ControleVeiculos.MVC.Models.Licenses;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class LicenseMappingExtensions
     {

@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.Licenses
+﻿namespace ControleVeiculos.Domain.Command.Licenses
 {
     public class MaintenanceLicenseCommand
     {

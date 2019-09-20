@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.Expenses;
-using Lean.Test.Cloud.MVC.Models.Expenses;
+﻿using ControleVeiculos.Domain.Entities.Expenses;
+using ControleVeiculos.MVC.Models.Expenses;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class ExpenseMappingExtensions
     {

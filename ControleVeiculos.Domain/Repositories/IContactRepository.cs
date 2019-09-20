@@ -1,9 +1,9 @@
-﻿using Lean.Test.Cloud.Domain.Command.Contacts;
-using Lean.Test.Cloud.Domain.Entities.Contacts;
+﻿using ControleVeiculos.Domain.Command.Contacts;
+using ControleVeiculos.Domain.Entities.Contacts;
 using System.Collections.Generic;
 
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface IContactRepository
     {

@@ -1,11 +1,11 @@
 ﻿using FluentValidation.Attributes;
-using Lean.Test.Cloud.MVC.Validations.Resumes;
+using ControleVeiculos.MVC.Validations.Resumes;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Models.Resumes
+namespace ControleVeiculos.MVC.Models.Resumes
 {
     [Validator(typeof(ResumeValidator))]
     public class ResumeModel

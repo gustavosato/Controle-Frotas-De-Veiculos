@@ -1,21 +1,21 @@
-﻿using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.MVC.Infrastructure.KendoUI;
-using Lean.Test.Cloud.MVC.Models.DailyLogs;
+﻿using ControleVeiculos.Domain.Services;
+using ControleVeiculos.MVC.Infrastructure.KendoUI;
+using ControleVeiculos.MVC.Models.DailyLogs;
 using System;
 using System.Linq;
-using Lean.Test.Cloud.MVC.Extensions;
+using ControleVeiculos.MVC.Extensions;
 using System.Web.Mvc;
-using Lean.Test.Cloud.Domain.Command.DailyLogs;
-using Lean.Test.Cloud.Domain.Entities.DailyLogs;
-using Lean.Test.Cloud.Domain;
-using Lean.Test.Cloud.MVC.Infrastructure.Mvc;
+using ControleVeiculos.Domain.Command.DailyLogs;
+using ControleVeiculos.Domain.Entities.DailyLogs;
+using ControleVeiculos.Domain;
+//using ControleVeiculos.MVC.Infrastructure.Mvc;
 using System.Web;
 using System.IO;
-using Lean.Test.Cloud.Domain.Command.Profiles;
-using Lean.Test.Cloud.MVC.Models.Attachments;
-using Lean.Test.Cloud.Domain.Command.Attachments;
+using ControleVeiculos.Domain.Command.Profiles;
+using ControleVeiculos.MVC.Models.Attachments;
+using ControleVeiculos.Domain.Command.Attachments;
 
-namespace Lean.Test.Cloud.MVC.Controllers
+namespace ControleVeiculos.MVC.Controllers
 {
     public class DailyLogController : BaseController
     {

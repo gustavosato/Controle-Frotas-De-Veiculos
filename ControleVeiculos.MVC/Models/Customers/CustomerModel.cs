@@ -1,11 +1,11 @@
 ﻿using FluentValidation.Attributes;
-using Lean.Test.Cloud.MVC.Validations.Customer;
+using ControleVeiculos.MVC.Validations.Customer;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Models.Customers
+namespace ControleVeiculos.MVC.Models.Customers
 {
     [Validator(typeof(CustomerValidator))]
     public class CustomerModel

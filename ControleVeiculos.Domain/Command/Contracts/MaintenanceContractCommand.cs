@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.Contracts
+﻿namespace ControleVeiculos.Domain.Command.Contracts
 {
     public class MaintenanceContractCommand
     {

@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.Parameters;
-using Lean.Test.Cloud.MVC.Models.Parameters;
+﻿using ControleVeiculos.Domain.Entities.Parameters;
+using ControleVeiculos.MVC.Models.Parameters;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class ParameterMappingExtensions
     {

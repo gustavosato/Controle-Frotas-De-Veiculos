@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.Customers
+﻿namespace ControleVeiculos.Domain.Command.Customers
 {
     public class FilterCustomerCommand
     {

@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.EquipmentAccessories;
+using ControleVeiculos.MVC.Models.EquipmentAccessories;
 
-namespace Lean.Test.Cloud.MVC.Validations.EquipmentAccessories
+namespace ControleVeiculos.MVC.Validations.EquipmentAccessories
 {
     public class EquipmentAccessorieValidator : AbstractValidator<EquipmentAccessorieModel>
     {

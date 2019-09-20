@@ -1,11 +1,11 @@
 ﻿using FluentValidation.Attributes;
-using Lean.Test.Cloud.MVC.Validations.Historicals;
+using ControleVeiculos.MVC.Validations.Historicals;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Models.Historicals
+namespace ControleVeiculos.MVC.Models.Historicals
 {
     [Validator(typeof(HistoricalValidator))]
     public class HistoricalModel

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Lean.Test.Cloud.Domain
+namespace ControleVeiculos.Domain
 {
     [Serializable]
     public class PagedList<T> : List<T>, IPagedList<T>

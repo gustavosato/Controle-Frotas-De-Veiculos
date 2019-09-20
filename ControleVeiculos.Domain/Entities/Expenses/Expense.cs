@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.Expenses
+﻿namespace ControleVeiculos.Domain.Entities.Expenses
 {
     public class Expense
     {

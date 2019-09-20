@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.SystemMenus;
-using Lean.Test.Cloud.Domain.Entities.SystemMenus;
+﻿using ControleVeiculos.Domain.Command.SystemMenus;
+using ControleVeiculos.Domain.Entities.SystemMenus;
 using System;
-namespace Lean.Test.Cloud.Domain.Services
+namespace ControleVeiculos.Domain.Services
 {
     public interface ISystemMenuService : IDisposable
     {

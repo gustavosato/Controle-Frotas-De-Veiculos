@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.Profiles;
+using ControleVeiculos.MVC.Models.Profiles;
 
-namespace Lean.Test.Cloud.MVC.Validations.Profiles
+namespace ControleVeiculos.MVC.Validations.Profiles
 {
     public class ProfileValidator : AbstractValidator<ProfileModel>
     {

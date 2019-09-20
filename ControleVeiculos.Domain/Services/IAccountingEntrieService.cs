@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.AccountingEntries;
-using Lean.Test.Cloud.Domain.Entities.AccountingEntries;
+﻿using ControleVeiculos.Domain.Command.AccountingEntries;
+using ControleVeiculos.Domain.Entities.AccountingEntries;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Services
+namespace ControleVeiculos.Domain.Services
 {
     public interface IAccountingEntrieService : IDisposable
     {

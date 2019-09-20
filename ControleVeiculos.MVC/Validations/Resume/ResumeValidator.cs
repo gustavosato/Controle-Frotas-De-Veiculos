@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.Resumes;
+using ControleVeiculos.MVC.Models.Resumes;
 
-namespace Lean.Test.Cloud.MVC.Validations.Resumes
+namespace ControleVeiculos.MVC.Validations.Resumes
 {
     public class ResumeValidator : AbstractValidator<ResumeModel>
     {

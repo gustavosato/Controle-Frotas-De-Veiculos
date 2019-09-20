@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.Defects;
+﻿using ControleVeiculos.Domain.Command.Defects;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.Defects
+namespace ControleVeiculos.Domain.Entities.Defects
 {
     public static class DefectExtensions
     {

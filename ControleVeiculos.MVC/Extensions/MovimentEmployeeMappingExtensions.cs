@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.MovimentEmployees;
-using Lean.Test.Cloud.MVC.Models.MovimentEmployees;
+﻿using ControleVeiculos.Domain.Entities.MovimentEmployees;
+using ControleVeiculos.MVC.Models.MovimentEmployees;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class MovimentEmployeeMappingExtensions
     {

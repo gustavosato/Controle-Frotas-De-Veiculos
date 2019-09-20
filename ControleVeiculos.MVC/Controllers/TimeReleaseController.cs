@@ -1,29 +1,29 @@
-﻿using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.MVC.Infrastructure.KendoUI;
-using Lean.Test.Cloud.MVC.Models.TimeReleases;
+﻿using ControleVeiculos.Domain.Services;
+using ControleVeiculos.MVC.Infrastructure.KendoUI;
+using ControleVeiculos.MVC.Models.TimeReleases;
 using System;
 using System.Linq;
-using Lean.Test.Cloud.MVC.Extensions;
+using ControleVeiculos.MVC.Extensions;
 using System.Web.Mvc;
-using Lean.Test.Cloud.Domain.Command.TimeReleases;
-using Lean.Test.Cloud.Domain.Entities.TimeReleases;
-using Lean.Test.Cloud.Domain;
-using Lean.Test.Cloud.MVC.Infrastructure.Mvc;
-using Lean.Test.Cloud.MVC.Models.SystemParameter;
-using Lean.Test.Cloud.MVC.Models.Users;
+using ControleVeiculos.Domain.Command.TimeReleases;
+using ControleVeiculos.Domain.Entities.TimeReleases;
+using ControleVeiculos.Domain;
+//using ControleVeiculos.MVC.Infrastructure.Mvc;
+using ControleVeiculos.MVC.Models.SystemParameter;
+using ControleVeiculos.MVC.Models.Users;
 using System.Globalization;
-using Lean.Test.Cloud.MVC.Models.Demands;
-using Lean.Test.Cloud.MVC.Models.Historicals;
-using Lean.Test.Cloud.Domain.Command.Historicals;
+using ControleVeiculos.MVC.Models.Demands;
+using ControleVeiculos.MVC.Models.Historicals;
+using ControleVeiculos.Domain.Command.Historicals;
 using System.Web;
 using System.IO;
-using Lean.Test.Cloud.Domain.Command.Demands;
-using Lean.Test.Cloud.Domain.Command.Profiles;
-using Lean.Test.Cloud.Domain.Command.Customers;
-using Lean.Test.Cloud.MVC.Models.DailyLogs;
-using Lean.Test.Cloud.Domain.Command.DailyLogs;
+using ControleVeiculos.Domain.Command.Demands;
+using ControleVeiculos.Domain.Command.Profiles;
+using ControleVeiculos.Domain.Command.Customers;
+using ControleVeiculos.MVC.Models.DailyLogs;
+using ControleVeiculos.Domain.Command.DailyLogs;
 
-namespace Lean.Test.Cloud.MVC.Controllers
+namespace ControleVeiculos.MVC.Controllers
 {
     public class TimeReleaseController : BaseController
     {

@@ -1,12 +1,12 @@
-﻿using Lean.Test.Cloud.Domain.Command.Resumes;
-using Lean.Test.Cloud.Domain.Command.Vacancies;
-using Lean.Test.Cloud.Domain.Command.VacanciesResumes;
-using Lean.Test.Cloud.Domain.Entities.Resumes;
-using Lean.Test.Cloud.Domain.Entities.Vacancies;
-using Lean.Test.Cloud.Domain.Entities.VacanciesResumes;
+﻿using ControleVeiculos.Domain.Command.Resumes;
+using ControleVeiculos.Domain.Command.Vacancies;
+using ControleVeiculos.Domain.Command.VacanciesResumes;
+using ControleVeiculos.Domain.Entities.Resumes;
+using ControleVeiculos.Domain.Entities.Vacancies;
+using ControleVeiculos.Domain.Entities.VacanciesResumes;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface IVacancieResumeRepository
     {

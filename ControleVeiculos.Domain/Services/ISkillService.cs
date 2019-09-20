@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.Skills;
-using Lean.Test.Cloud.Domain.Entities.Skills;
+﻿using ControleVeiculos.Domain.Command.Skills;
+using ControleVeiculos.Domain.Entities.Skills;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Services
+namespace ControleVeiculos.Domain.Services
 {
     public interface ISkillService : IDisposable
     {

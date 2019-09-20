@@ -1,11 +1,11 @@
-﻿using Lean.Test.Cloud.Domain;
-using Lean.Test.Cloud.Domain.Entities.TestLogs;
-using Lean.Test.Cloud.Domain.Repositories;
-using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.Domain.Command.TestLogs;
+﻿using ControleVeiculos.Domain;
+using ControleVeiculos.Domain.Entities.TestLogs;
+using ControleVeiculos.Domain.Repositories;
+using ControleVeiculos.Domain.Services;
+using ControleVeiculos.Domain.Command.TestLogs;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.ApplicationService
+namespace ControleVeiculos.ApplicationService
 {
     public class TestLogService : BaseAppService, ITestLogService
     {

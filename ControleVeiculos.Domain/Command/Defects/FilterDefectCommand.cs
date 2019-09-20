@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.Defects
+﻿namespace ControleVeiculos.Domain.Command.Defects
 {
     public class FilterDefectCommand
     {

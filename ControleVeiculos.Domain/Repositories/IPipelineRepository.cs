@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.Pipelines;
-using Lean.Test.Cloud.Domain.Entities.Pipelines;
+﻿using ControleVeiculos.Domain.Command.Pipelines;
+using ControleVeiculos.Domain.Entities.Pipelines;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface IPipelineRepository
     {

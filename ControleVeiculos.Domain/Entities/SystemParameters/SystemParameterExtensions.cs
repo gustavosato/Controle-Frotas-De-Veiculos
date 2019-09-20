@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.SystemParameters;
+﻿using ControleVeiculos.Domain.Command.SystemParameters;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.SystemParameters
+namespace ControleVeiculos.Domain.Entities.SystemParameters
 {
     public static class SystemParameterExtensions
     {

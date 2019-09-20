@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.TestCases;
-using Lean.Test.Cloud.Domain.Entities.TestCases;
+﻿using ControleVeiculos.Domain.Command.TestCases;
+using ControleVeiculos.Domain.Entities.TestCases;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface ITestCaseRepository
     {

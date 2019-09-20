@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.Attachments;
-using Lean.Test.Cloud.MVC.Models.Attachments;
+﻿using ControleVeiculos.Domain.Entities.Attachments;
+using ControleVeiculos.MVC.Models.Attachments;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class AttachmentMappingExtensions
     {

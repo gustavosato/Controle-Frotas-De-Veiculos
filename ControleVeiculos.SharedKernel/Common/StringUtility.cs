@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace Lean.Test.Cloud.SharedKernel.Common
+namespace ControleVeiculos.SharedKernel.Common
 {
     public class StringUtility
     {

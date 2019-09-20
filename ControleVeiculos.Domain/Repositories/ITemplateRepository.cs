@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.Templates;
-using Lean.Test.Cloud.Domain.Entities.Templates;
+﻿using ControleVeiculos.Domain.Command.Templates;
+using ControleVeiculos.Domain.Entities.Templates;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface ITemplateRepository
     {

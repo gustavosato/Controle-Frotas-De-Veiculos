@@ -1,10 +1,10 @@
-﻿using Lean.Test.Cloud.Domain.Command.Groups;
-using Lean.Test.Cloud.Domain.Command.GroupsUsers;
-using Lean.Test.Cloud.Domain.Entities.Groups;
-using Lean.Test.Cloud.Domain.Entities.GroupsUsers;
+﻿using ControleVeiculos.Domain.Command.Groups;
+using ControleVeiculos.Domain.Command.GroupsUsers;
+using ControleVeiculos.Domain.Entities.Groups;
+using ControleVeiculos.Domain.Entities.GroupsUsers;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface IGroupUserRepository
     {

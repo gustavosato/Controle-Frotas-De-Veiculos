@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.TestLogs;
+﻿using ControleVeiculos.Domain.Command.TestLogs;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.TestLogs
+namespace ControleVeiculos.Domain.Entities.TestLogs
 {
     public static class TestLogExtensions
     {

@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.ParameterValues
+﻿namespace ControleVeiculos.Domain.Entities.ParameterValues
 {
     public class ParameterValue
     {

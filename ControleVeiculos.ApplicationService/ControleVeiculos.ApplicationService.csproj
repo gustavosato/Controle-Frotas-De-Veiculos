@@ -7,8 +7,8 @@
     <ProjectGuid>{C1716B09-BA02-4B2D-9D1F-5C4F10858D09}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lean.Test.Cloud.ApplicationService</RootNamespace>
-    <AssemblyName>Lean.Test.Cloud.ApplicationService</AssemblyName>
+    <RootNamespace>ControleVeiculos.ApplicationService</RootNamespace>
+    <AssemblyName>ControleVeiculos.ApplicationService</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -119,13 +119,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LeanTest.Cloud.Domain\Lean.Test.Cloud.Domain.csproj">
+    <ProjectReference Include="..\ControleVeiculos.Domain\ControleVeiculos.Domain.csproj">
       <Project>{5792190a-bce6-4913-a42e-86fdd7076f87}</Project>
       <Name>Lean.Test.Cloud.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LeanTest.Cloud.SharedKernel\Lean.Test.Cloud.SharedKernel.csproj">
+    <ProjectReference Include="..\ControleVeiculos.SharedKernel\ControleVeiculos.SharedKernel.csproj">
       <Project>{100f3a9d-209a-4210-ac31-cdebb5cabfdb}</Project>
-      <Name>Lean.Test.Cloud.SharedKernel</Name>
+      <Name>ControleVeiculos.SharedKernel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

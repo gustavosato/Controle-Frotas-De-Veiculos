@@ -1,7 +1,7 @@
 ﻿using System;
-using Lean.Test.Cloud.Domain.Entities.ApplicationSystems;
+using ControleVeiculos.Domain.Entities.ApplicationSystems;
 
-namespace Lean.Test.Cloud.Domain
+namespace ControleVeiculos.Domain
 {
     public class Result
     {

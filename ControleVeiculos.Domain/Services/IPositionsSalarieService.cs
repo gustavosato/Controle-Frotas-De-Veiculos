@@ -1,9 +1,9 @@
-﻿using Lean.Test.Cloud.Domain.Command.PositionsSalaries;
-using Lean.Test.Cloud.Domain.Entities.PositionsSalaries;
+﻿using ControleVeiculos.Domain.Command.PositionsSalaries;
+using ControleVeiculos.Domain.Entities.PositionsSalaries;
 using System;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Services
+namespace ControleVeiculos.Domain.Services
 {
     public interface IPositionsSalarieService : IDisposable
     {

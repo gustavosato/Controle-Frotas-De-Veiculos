@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.Vacancies
+﻿namespace ControleVeiculos.Domain.Command.Vacancies
 {
     public class FilterVacancieCommand
     {

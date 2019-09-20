@@ -1,18 +1,18 @@
-﻿using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.MVC.Infrastructure.KendoUI;       
-using Lean.Test.Cloud.MVC.Models.ParameterValues;
+﻿using ControleVeiculos.Domain.Services;
+using ControleVeiculos.MVC.Infrastructure.KendoUI;       
+using ControleVeiculos.MVC.Models.ParameterValues;
 using System;
 using System.Linq;
-using Lean.Test.Cloud.MVC.Extensions;
+using ControleVeiculos.MVC.Extensions;
 using System.Web.Mvc;
-using Lean.Test.Cloud.Domain.Command.ParameterValues;
-using Lean.Test.Cloud.Domain.Entities.ParameterValues;
-using Lean.Test.Cloud.Domain;
-using Lean.Test.Cloud.Domain.Command.Profiles;
-using Lean.Test.Cloud.MVC.Infrastructure.Mvc;
+using ControleVeiculos.Domain.Command.ParameterValues;
+using ControleVeiculos.Domain.Entities.ParameterValues;
+using ControleVeiculos.Domain;
+using ControleVeiculos.Domain.Command.Profiles;
+//using ControleVeiculos.MVC.Infrastructure.Mvc;
 
 
-namespace Lean.Test.Cloud.MVC.Controllers
+namespace ControleVeiculos.MVC.Controllers
 {
     public class ParameterValueController : BaseController
     {

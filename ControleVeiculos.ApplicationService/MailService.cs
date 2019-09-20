@@ -1,9 +1,9 @@
-﻿using Lean.Test.Cloud.Domain.Services;
+﻿using ControleVeiculos.Domain.Services;
 using System.Net;
 using System.Net.Mail;
 
 
-namespace Lean.Test.Cloud.ApplicationService
+namespace ControleVeiculos.ApplicationService
 {
     public class MailService : BaseAppService, IMailService
     {

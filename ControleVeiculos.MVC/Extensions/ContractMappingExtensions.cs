@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.Contracts;
-using Lean.Test.Cloud.MVC.Models.Contracts;
+﻿using ControleVeiculos.Domain.Entities.Contracts;
+using ControleVeiculos.MVC.Models.Contracts;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class ContractMappingExtensions
     {

@@ -1,19 +1,19 @@
-﻿using Lean.Test.Cloud.Domain.Entities.ResumeVacancies;
-using Lean.Test.Cloud.Domain.Repositories;
+﻿using ControleVeiculos.Domain.Entities.ResumeVacancies;
+using ControleVeiculos.Domain.Repositories;
 using System.Data;
 using Dapper;
 using System.Linq;
 using System.Data.SqlClient;
 using System.Collections.Generic;
-using Lean.Test.Cloud.Repository.Map;
+using ControleVeiculos.Repository.Map;
 using Dapper.Contrib.Extensions;
 using System;
-using Lean.Test.Cloud.Domain.Command.Vacancies;
-using Lean.Test.Cloud.Domain.Entities.Vacancies;
-using Lean.Test.Cloud.Domain.Command.Resumes;
-using Lean.Test.Cloud.Domain.Entities.Resumes;
+using ControleVeiculos.Domain.Command.Vacancies;
+using ControleVeiculos.Domain.Entities.Vacancies;
+using ControleVeiculos.Domain.Command.Resumes;
+using ControleVeiculos.Domain.Entities.Resumes;
 
-namespace Lean.Test.Cloud.Repository.Data
+namespace ControleVeiculos.Repository.Data
 {
     public class ResumeVacancieRepository : BaseRepository, IResumeVacancieRepository
     {

@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.TestLogs;
-using Lean.Test.Cloud.Domain.Entities.TestLogs;
+﻿using ControleVeiculos.Domain.Command.TestLogs;
+using ControleVeiculos.Domain.Entities.TestLogs;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface ITestLogRepository
     {

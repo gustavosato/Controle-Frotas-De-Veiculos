@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.Customers;
+﻿using ControleVeiculos.Domain.Command.Customers;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.Customers
+namespace ControleVeiculos.Domain.Entities.Customers
 {
     public static class CustomerExtensions
     {

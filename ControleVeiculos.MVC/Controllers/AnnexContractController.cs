@@ -1,18 +1,18 @@
-﻿using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.MVC.Infrastructure.KendoUI;
-using Lean.Test.Cloud.MVC.Models.AnnexContracts;
+﻿using ControleVeiculos.Domain.Services;
+using ControleVeiculos.MVC.Infrastructure.KendoUI;
+using ControleVeiculos.MVC.Models.AnnexContracts;
 using System;
 using System.Linq;
-using Lean.Test.Cloud.MVC.Extensions;
+using ControleVeiculos.MVC.Extensions;
 using System.Web.Mvc;
-using Lean.Test.Cloud.Domain.Command.AnnexContracts;
-using Lean.Test.Cloud.Domain.Entities.AnnexContracts;
-using Lean.Test.Cloud.Domain;
-using Lean.Test.Cloud.Domain.Command.Profiles;
-using Lean.Test.Cloud.MVC.Infrastructure.Mvc;
+using ControleVeiculos.Domain.Command.AnnexContracts;
+using ControleVeiculos.Domain.Entities.AnnexContracts;
+using ControleVeiculos.Domain;
+using ControleVeiculos.Domain.Command.Profiles;
+//using ControleVeiculos.MVC.Infrastructure.Mvc;
 
 
-namespace Lean.Test.Cloud.MVC.Controllers
+namespace ControleVeiculos.MVC.Controllers
 {
     public class AnnexContractController : BaseController
     {

@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.Vacancies;
+using ControleVeiculos.MVC.Models.Vacancies;
 
-namespace Lean.Test.Cloud.MVC.Validations.Vacancies
+namespace ControleVeiculos.MVC.Validations.Vacancies
 {
     public class VacancieValidator : AbstractValidator<VacancieModel>
     {

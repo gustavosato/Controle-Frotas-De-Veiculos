@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.Historicals;
-using Lean.Test.Cloud.Domain.Entities.Historicals;
+﻿using ControleVeiculos.Domain.Command.Historicals;
+using ControleVeiculos.Domain.Entities.Historicals;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface IHistoricalRepository
     {

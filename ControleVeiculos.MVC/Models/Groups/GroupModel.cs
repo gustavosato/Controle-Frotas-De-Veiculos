@@ -1,11 +1,11 @@
 ﻿using FluentValidation.Attributes;
-using Lean.Test.Cloud.MVC.Validations.Groups;
+using ControleVeiculos.MVC.Validations.Groups;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Models.Groups
+namespace ControleVeiculos.MVC.Models.Groups
 {
     [Validator(typeof(GroupValidator))]
     public class GroupModel

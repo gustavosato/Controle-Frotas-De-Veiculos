@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.ContractAdditives;
-using Lean.Test.Cloud.MVC.Models.ContractAdditives;
+﻿using ControleVeiculos.Domain.Entities.ContractAdditives;
+using ControleVeiculos.MVC.Models.ContractAdditives;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class ContractAdditiveMappingExtensions
     {

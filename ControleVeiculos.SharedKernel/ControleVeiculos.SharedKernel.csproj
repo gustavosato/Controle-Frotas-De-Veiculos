@@ -7,8 +7,8 @@
     <ProjectGuid>{100F3A9D-209A-4210-AC31-CDEBB5CABFDB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lean.Test.Cloud.SharedKernel</RootNamespace>
-    <AssemblyName>Lean.Test.Cloud.SharedKernel</AssemblyName>
+    <RootNamespace>ControleVeiculos.SharedKernel</RootNamespace>
+    <AssemblyName>ControleVeiculos.SharedKernel</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>

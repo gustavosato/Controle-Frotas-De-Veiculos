@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.TimeReleases
+﻿namespace ControleVeiculos.Domain.Command.TimeReleases
 {
     public class FilterTimeReleaseCommand
     {

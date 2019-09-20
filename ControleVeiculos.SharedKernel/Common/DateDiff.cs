@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lean.Test.Cloud.SharedKernel.Common
+namespace ControleVeiculos.SharedKernel.Common
 {
     class DateDiff
     {

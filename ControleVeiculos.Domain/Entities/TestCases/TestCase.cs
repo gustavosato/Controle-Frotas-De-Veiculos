@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.TestCases
+﻿namespace ControleVeiculos.Domain.Entities.TestCases
 {
     public class TestCase
     {

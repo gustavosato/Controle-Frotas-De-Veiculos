@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.DailyLogs
+﻿namespace ControleVeiculos.Domain.Command.DailyLogs
 {
     public class FilterDailyLogCommand
     {

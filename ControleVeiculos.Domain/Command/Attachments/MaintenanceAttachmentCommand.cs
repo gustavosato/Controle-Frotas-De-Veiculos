@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.Attachments
+﻿namespace ControleVeiculos.Domain.Command.Attachments
 {
     public class MaintenanceAttachmentCommand
     {

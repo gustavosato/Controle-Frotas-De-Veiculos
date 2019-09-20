@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.Templates;
-using Lean.Test.Cloud.Domain.Entities.Templates;
+﻿using ControleVeiculos.Domain.Command.Templates;
+using ControleVeiculos.Domain.Entities.Templates;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Services
+namespace ControleVeiculos.Domain.Services
 {
     public interface ITemplateService : IDisposable
     {

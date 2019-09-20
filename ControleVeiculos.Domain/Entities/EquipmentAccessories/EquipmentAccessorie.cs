@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.EquipmentAccessories
+﻿namespace ControleVeiculos.Domain.Entities.EquipmentAccessories
 {
     public class EquipmentAccessorie
     {

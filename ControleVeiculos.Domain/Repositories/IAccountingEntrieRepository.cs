@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.AccountingEntries;
-using Lean.Test.Cloud.Domain.Entities.AccountingEntries;
+﻿using ControleVeiculos.Domain.Command.AccountingEntries;
+using ControleVeiculos.Domain.Entities.AccountingEntries;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface IAccountingEntrieRepository
     {

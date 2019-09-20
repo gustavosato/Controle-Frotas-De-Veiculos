@@ -1,9 +1,9 @@
-﻿using Lean.Test.Cloud.Domain.Command.Demands;
-using Lean.Test.Cloud.Domain.Entities.Demands;
+﻿using ControleVeiculos.Domain.Command.Demands;
+using ControleVeiculos.Domain.Entities.Demands;
 using System;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Services
+namespace ControleVeiculos.Domain.Services
 {
     public interface IDemandService : IDisposable
     {

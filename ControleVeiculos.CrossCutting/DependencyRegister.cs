@@ -1,10 +1,10 @@
 ﻿using Autofac;
-using Lean.Test.Cloud.Domain.Repositories;
-using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.Repository.Data;
-using Lean.Test.Cloud.ApplicationService;
+using ControleVeiculos.Domain.Repositories;
+using ControleVeiculos.Domain.Services;
+using ControleVeiculos.Repository.Data;
+using ControleVeiculos.ApplicationService;
 
-namespace Lean.Test.Cloud.CrossCutting
+namespace ControleVeiculos.CrossCutting
 {
     public class DependencyRegister
     {

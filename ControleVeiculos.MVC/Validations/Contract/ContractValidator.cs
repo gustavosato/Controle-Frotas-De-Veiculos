@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.Contracts;
+using ControleVeiculos.MVC.Models.Contracts;
 using System;
 
-namespace Lean.Test.Cloud.MVC.Validations.Contract
+namespace ControleVeiculos.MVC.Validations.Contract
 {
     public class ContractValidator : AbstractValidator<ContractModel>
     {

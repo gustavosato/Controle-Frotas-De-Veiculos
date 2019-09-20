@@ -7,8 +7,8 @@
     <ProjectGuid>{5792190A-BCE6-4913-A42E-86FDD7076F87}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lean.Test.Cloud.Domain</RootNamespace>
-    <AssemblyName>Lean.Test.Cloud.Domain</AssemblyName>
+    <RootNamespace>ControleVeiculos.Domain</RootNamespace>
+    <AssemblyName>ControleVeiculos.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -383,12 +383,6 @@
     <Compile Include="Services\IVacancieService.cs" />
     <Compile Include="Services\IWorkflowService.cs" />
     <Compile Include="Services\IUserService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LeanTest.Cloud.SharedKernel\Lean.Test.Cloud.SharedKernel.csproj">
-      <Project>{100f3a9d-209a-4210-ac31-cdebb5cabfdb}</Project>
-      <Name>Lean.Test.Cloud.SharedKernel</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Validations\" />

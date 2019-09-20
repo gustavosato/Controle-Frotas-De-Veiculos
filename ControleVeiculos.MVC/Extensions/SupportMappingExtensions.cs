@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.Supports;
-using Lean.Test.Cloud.MVC.Models.Supports;
+﻿using ControleVeiculos.Domain.Entities.Supports;
+using ControleVeiculos.MVC.Models.Supports;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class SupportMappingExtensions
     {

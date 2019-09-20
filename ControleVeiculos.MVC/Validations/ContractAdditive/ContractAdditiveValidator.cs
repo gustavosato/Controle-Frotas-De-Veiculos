@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.ContractAdditives;
+using ControleVeiculos.MVC.Models.ContractAdditives;
 
-namespace Lean.Test.Cloud.MVC.Validations.ContractAdditive
+namespace ControleVeiculos.MVC.Validations.ContractAdditive
 {
     public class ContractAdditiveValidator : AbstractValidator<ContractAdditiveModel>
     {

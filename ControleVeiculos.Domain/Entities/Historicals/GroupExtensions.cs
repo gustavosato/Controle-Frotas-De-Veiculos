@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.Historicals;
+﻿using ControleVeiculos.Domain.Command.Historicals;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.Historicals
+namespace ControleVeiculos.Domain.Entities.Historicals
 {
     public static class HistoricalExtensions
     {

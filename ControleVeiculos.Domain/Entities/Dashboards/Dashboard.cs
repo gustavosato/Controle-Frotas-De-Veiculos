@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.Dashboards
+﻿namespace ControleVeiculos.Domain.Entities.Dashboards
 {
     public class Dashboard
     {

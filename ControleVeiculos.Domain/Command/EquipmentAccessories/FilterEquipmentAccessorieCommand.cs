@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.EquipmentAccessories
+﻿namespace ControleVeiculos.Domain.Command.EquipmentAccessories
 {
     public class FilterEquipmentAccessorieCommand
     {

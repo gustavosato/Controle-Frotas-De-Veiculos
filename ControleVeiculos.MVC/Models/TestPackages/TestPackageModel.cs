@@ -1,11 +1,11 @@
 ﻿using FluentValidation.Attributes;
-using Lean.Test.Cloud.MVC.Validations.TestPackages;
+using ControleVeiculos.MVC.Validations.TestPackages;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Models.TestPackages
+namespace ControleVeiculos.MVC.Models.TestPackages
 {
     [Validator(typeof(TestPackageValidator))]
     public class TestPackageModel

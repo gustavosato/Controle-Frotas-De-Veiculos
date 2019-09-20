@@ -1,10 +1,10 @@
-﻿using Lean.Test.Cloud.Domain;
-using Lean.Test.Cloud.Domain.Entities.DailyLogs;
-using Lean.Test.Cloud.Domain.Repositories;
-using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.Domain.Command.DailyLogs;
+﻿using ControleVeiculos.Domain;
+using ControleVeiculos.Domain.Entities.DailyLogs;
+using ControleVeiculos.Domain.Repositories;
+using ControleVeiculos.Domain.Services;
+using ControleVeiculos.Domain.Command.DailyLogs;
 
-namespace Lean.Test.Cloud.ApplicationService
+namespace ControleVeiculos.ApplicationService
 {
     public class DailyLogService : BaseAppService, IDailyLogService
     {

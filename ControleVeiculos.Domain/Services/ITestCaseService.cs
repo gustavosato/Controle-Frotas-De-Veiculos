@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.TestCases;
-using Lean.Test.Cloud.Domain.Entities.TestCases;
+﻿using ControleVeiculos.Domain.Command.TestCases;
+using ControleVeiculos.Domain.Entities.TestCases;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Services
+namespace ControleVeiculos.Domain.Services
 {
     public interface ITestCaseService : IDisposable
     {

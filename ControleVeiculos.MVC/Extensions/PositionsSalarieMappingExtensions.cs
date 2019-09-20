@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.PositionsSalaries;
-using Lean.Test.Cloud.MVC.Models.PositionsSalaries;
+﻿using ControleVeiculos.Domain.Entities.PositionsSalaries;
+using ControleVeiculos.MVC.Models.PositionsSalaries;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class PositionsSalarieMappingExtensions
     {

@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.Licenses;
+﻿using ControleVeiculos.Domain.Command.Licenses;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.Licenses
+namespace ControleVeiculos.Domain.Entities.Licenses
 {
     public static class LicenseExtensions
     {

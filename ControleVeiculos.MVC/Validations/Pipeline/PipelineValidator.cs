@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.Pipelines;
+using ControleVeiculos.MVC.Models.Pipelines;
 
-namespace Lean.Test.Cloud.MVC.Validations.Pipelines
+namespace ControleVeiculos.MVC.Validations.Pipelines
 {
     public class PipelineValidator : AbstractValidator<PipelineModel>
     {

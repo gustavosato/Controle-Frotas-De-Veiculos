@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.ChangeRequests;
-using Lean.Test.Cloud.Domain.Entities.ChangeRequests;
+﻿using ControleVeiculos.Domain.Command.ChangeRequests;
+using ControleVeiculos.Domain.Entities.ChangeRequests;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface IChangeRequestRepository
     {

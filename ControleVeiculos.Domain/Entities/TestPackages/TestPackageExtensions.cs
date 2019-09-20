@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.TestPackages;
+﻿using ControleVeiculos.Domain.Command.TestPackages;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.TestPackages
+namespace ControleVeiculos.Domain.Entities.TestPackages
 {
     public static class TestPackageExtensions
     {

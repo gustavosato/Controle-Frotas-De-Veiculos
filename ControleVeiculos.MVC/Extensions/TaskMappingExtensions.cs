@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.Tasks;
-using Lean.Test.Cloud.MVC.Models.Tasks;
+﻿using ControleVeiculos.Domain.Entities.Tasks;
+using ControleVeiculos.MVC.Models.Tasks;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class TaskMappingExtensions
     {

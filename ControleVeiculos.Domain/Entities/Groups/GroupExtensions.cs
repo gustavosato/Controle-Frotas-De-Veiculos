@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.Groups;
+﻿using ControleVeiculos.Domain.Command.Groups;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.Groups
+namespace ControleVeiculos.Domain.Entities.Groups
 {
     public static class GroupExtensions
     {

@@ -1,9 +1,9 @@
-﻿using Lean.Test.Cloud.Domain.Command.Dashboards;
-using Lean.Test.Cloud.Domain.Entities.Dashboards;
+﻿using ControleVeiculos.Domain.Command.Dashboards;
+using ControleVeiculos.Domain.Entities.Dashboards;
 using System;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Services
+namespace ControleVeiculos.Domain.Services
 {
     public interface IDashboardService : IDisposable
     {

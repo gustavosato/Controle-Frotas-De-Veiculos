@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.Features;
+using ControleVeiculos.MVC.Models.Features;
 
-namespace Lean.Test.Cloud.MVC.Validations.Features
+namespace ControleVeiculos.MVC.Validations.Features
 {
     public class FeatureValidator : AbstractValidator<FeatureModel>
     {

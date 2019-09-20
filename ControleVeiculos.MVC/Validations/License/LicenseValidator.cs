@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.Licenses;
+using ControleVeiculos.MVC.Models.Licenses;
 
-namespace Lean.Test.Cloud.MVC.Validations.Licenses
+namespace ControleVeiculos.MVC.Validations.Licenses
 {
     public class LicenseValidator : AbstractValidator<LicenseModel>
     {

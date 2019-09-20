@@ -1,11 +1,11 @@
 ﻿using FluentValidation.Attributes;
-using Lean.Test.Cloud.MVC.Validations.Licenses;
+using ControleVeiculos.MVC.Validations.Licenses;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Models.Licenses
+namespace ControleVeiculos.MVC.Models.Licenses
 {
     [Validator(typeof(LicenseValidator))]
     public class LicenseModel

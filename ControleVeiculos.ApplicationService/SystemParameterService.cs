@@ -1,11 +1,11 @@
-﻿using Lean.Test.Cloud.Domain;
-using Lean.Test.Cloud.Domain.Entities.SystemParameters;
-using Lean.Test.Cloud.Domain.Repositories;
-using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.Domain.Command.SystemParameters;
+﻿using ControleVeiculos.Domain;
+using ControleVeiculos.Domain.Entities.SystemParameters;
+using ControleVeiculos.Domain.Repositories;
+using ControleVeiculos.Domain.Services;
+using ControleVeiculos.Domain.Command.SystemParameters;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.ApplicationService
+namespace ControleVeiculos.ApplicationService
 {
     public class SystemParameterService : BaseAppService, ISystemParameterService
     {

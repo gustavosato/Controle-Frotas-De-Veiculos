@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace Lean.Test.Cloud.Repository.Data
+namespace ControleVeiculos.Repository.Data
 {
     public abstract class BaseRepository
     {

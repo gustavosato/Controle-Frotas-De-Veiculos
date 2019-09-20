@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.AccountingEntries;
+using ControleVeiculos.MVC.Models.AccountingEntries;
 
-namespace Lean.Test.Cloud.MVC.Validations.AccountingEntries
+namespace ControleVeiculos.MVC.Validations.AccountingEntries
 {
     public class AccountingEntrieValidator : AbstractValidator<AccountingEntrieModel>
     {

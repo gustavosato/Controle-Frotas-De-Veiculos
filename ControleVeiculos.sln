@@ -13,26 +13,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Domain", "3-Domain", "{2C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Application Service", "2-Application Service", "{D5539D86-F180-4716-B754-BD66E386ECA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lean.Test.Cloud.MVC", "LeanTest.Cloud.MVC\Lean.Test.Cloud.MVC.csproj", "{0F829173-4A4C-4BC0-A936-FEB85B058294}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleVeiculos.MVC", "ControleVeiculos.MVC\ControleVeiculos.MVC.csproj", "{0F829173-4A4C-4BC0-A936-FEB85B058294}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C1716B09-BA02-4B2D-9D1F-5C4F10858D09} = {C1716B09-BA02-4B2D-9D1F-5C4F10858D09}
+		{15459321-03DF-4C66-B1B9-A7899331E50B} = {15459321-03DF-4C66-B1B9-A7899331E50B}
+		{9268C0D1-8042-4DC9-A983-63447EDA3A3B} = {9268C0D1-8042-4DC9-A983-63447EDA3A3B}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lean.Test.Cloud.WCF", "LeanTest.Cloud.WCF\Lean.Test.Cloud.WCF.csproj", "{7A373813-9539-4929-8ADC-5161DB0FA225}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleVeiculos.ApplicationService", "ControleVeiculos.ApplicationService\ControleVeiculos.ApplicationService.csproj", "{C1716B09-BA02-4B2D-9D1F-5C4F10858D09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lean.Test.Cloud.ApplicationService", "LeanTest.Cloud.ApplicationService\Lean.Test.Cloud.ApplicationService.csproj", "{C1716B09-BA02-4B2D-9D1F-5C4F10858D09}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleVeiculos.Domain", "ControleVeiculos.Domain\ControleVeiculos.Domain.csproj", "{5792190A-BCE6-4913-A42E-86FDD7076F87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lean.Test.Cloud.Domain", "LeanTest.Cloud.Domain\Lean.Test.Cloud.Domain.csproj", "{5792190A-BCE6-4913-A42E-86FDD7076F87}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleVeiculos.SharedKernel", "ControleVeiculos.SharedKernel\ControleVeiculos.SharedKernel.csproj", "{100F3A9D-209A-4210-AC31-CDEBB5CABFDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lean.Test.Cloud.SharedKernel", "LeanTest.Cloud.SharedKernel\Lean.Test.Cloud.SharedKernel.csproj", "{100F3A9D-209A-4210-AC31-CDEBB5CABFDB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lean.Test.Cloud.CrossCutting", "LeanTest.Cloud.CrossCutting\Lean.Test.Cloud.CrossCutting.csproj", "{7FD5D06D-B901-45F1-B515-7072AD6EA3D6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleVeiculos.CrossCutting", "ControleVeiculos.CrossCutting\ControleVeiculos.CrossCutting.csproj", "{7FD5D06D-B901-45F1-B515-7072AD6EA3D6}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C1716B09-BA02-4B2D-9D1F-5C4F10858D09} = {C1716B09-BA02-4B2D-9D1F-5C4F10858D09}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lean.Test.Cloud.Repository", "LeanTest.Cloud.Repository\Lean.Test.Cloud.Repository.csproj", "{15459321-03DF-4C66-B1B9-A7899331E50B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleVeiculos.Repository", "ControleVeiculos.Repository\ControleVeiculos.Repository.csproj", "{15459321-03DF-4C66-B1B9-A7899331E50B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lean.Test.Cloud.Business", "LeanTest.Cloud.Business\Lean.Test.Cloud.Business.csproj", "{9268C0D1-8042-4DC9-A983-63447EDA3A3B}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Lean.Test.Automation.API", "..\lean.test.automation.api\Lean.Test.Automation.API.vbproj", "{771A4CA1-E817-441C-B219-A450E3E83E9A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleVeiculos.Business", "ControleVeiculos.Business\ControleVeiculos.Business.csproj", "{9268C0D1-8042-4DC9-A983-63447EDA3A3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,14 +51,6 @@ Global
 		{0F829173-4A4C-4BC0-A936-FEB85B058294}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0F829173-4A4C-4BC0-A936-FEB85B058294}.Release|x86.ActiveCfg = Release|x86
 		{0F829173-4A4C-4BC0-A936-FEB85B058294}.Release|x86.Build.0 = Release|x86
-		{7A373813-9539-4929-8ADC-5161DB0FA225}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7A373813-9539-4929-8ADC-5161DB0FA225}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7A373813-9539-4929-8ADC-5161DB0FA225}.Debug|x86.ActiveCfg = Debug|x86
-		{7A373813-9539-4929-8ADC-5161DB0FA225}.Debug|x86.Build.0 = Debug|x86
-		{7A373813-9539-4929-8ADC-5161DB0FA225}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7A373813-9539-4929-8ADC-5161DB0FA225}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7A373813-9539-4929-8ADC-5161DB0FA225}.Release|x86.ActiveCfg = Release|x86
-		{7A373813-9539-4929-8ADC-5161DB0FA225}.Release|x86.Build.0 = Release|x86
 		{C1716B09-BA02-4B2D-9D1F-5C4F10858D09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C1716B09-BA02-4B2D-9D1F-5C4F10858D09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1716B09-BA02-4B2D-9D1F-5C4F10858D09}.Debug|x86.ActiveCfg = Debug|x86
@@ -106,28 +99,18 @@ Global
 		{9268C0D1-8042-4DC9-A983-63447EDA3A3B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9268C0D1-8042-4DC9-A983-63447EDA3A3B}.Release|x86.ActiveCfg = Release|x86
 		{9268C0D1-8042-4DC9-A983-63447EDA3A3B}.Release|x86.Build.0 = Release|x86
-		{771A4CA1-E817-441C-B219-A450E3E83E9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{771A4CA1-E817-441C-B219-A450E3E83E9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{771A4CA1-E817-441C-B219-A450E3E83E9A}.Debug|x86.ActiveCfg = Debug|x86
-		{771A4CA1-E817-441C-B219-A450E3E83E9A}.Debug|x86.Build.0 = Debug|x86
-		{771A4CA1-E817-441C-B219-A450E3E83E9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{771A4CA1-E817-441C-B219-A450E3E83E9A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{771A4CA1-E817-441C-B219-A450E3E83E9A}.Release|x86.ActiveCfg = Release|x86
-		{771A4CA1-E817-441C-B219-A450E3E83E9A}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0F829173-4A4C-4BC0-A936-FEB85B058294} = {82B2434D-368C-4145-84A6-121088945316}
-		{7A373813-9539-4929-8ADC-5161DB0FA225} = {82B2434D-368C-4145-84A6-121088945316}
 		{C1716B09-BA02-4B2D-9D1F-5C4F10858D09} = {D5539D86-F180-4716-B754-BD66E386ECA6}
 		{5792190A-BCE6-4913-A42E-86FDD7076F87} = {2C49EBB1-F998-42E8-A9B4-7AB028140B19}
 		{100F3A9D-209A-4210-AC31-CDEBB5CABFDB} = {2C49EBB1-F998-42E8-A9B4-7AB028140B19}
 		{7FD5D06D-B901-45F1-B515-7072AD6EA3D6} = {F08D6C79-58D5-4341-B39C-AEFB5A33ED67}
 		{15459321-03DF-4C66-B1B9-A7899331E50B} = {F08D6C79-58D5-4341-B39C-AEFB5A33ED67}
 		{9268C0D1-8042-4DC9-A983-63447EDA3A3B} = {97FF6C17-6614-47F7-B282-692EE4A01E48}
-		{771A4CA1-E817-441C-B219-A450E3E83E9A} = {D5539D86-F180-4716-B754-BD66E386ECA6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E58BCFC4-97D0-4BE7-A211-D9B40B6F639A}

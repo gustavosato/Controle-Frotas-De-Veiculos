@@ -1,11 +1,11 @@
 ﻿using FluentValidation.Attributes;
-using Lean.Test.Cloud.MVC.Validations.Contract;
+using ControleVeiculos.MVC.Validations.Contract;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Models.Contracts
+namespace ControleVeiculos.MVC.Models.Contracts
 {
     [Validator(typeof(ContractValidator))]
     public class ContractModel

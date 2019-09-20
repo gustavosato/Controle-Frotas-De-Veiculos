@@ -1,18 +1,18 @@
-﻿using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.MVC.Infrastructure.KendoUI;       
-using Lean.Test.Cloud.MVC.Models.Contacts;
+﻿using ControleVeiculos.Domain.Services;
+using ControleVeiculos.MVC.Infrastructure.KendoUI;       
+using ControleVeiculos.MVC.Models.Contacts;
 using System;
 using System.Linq;
-using Lean.Test.Cloud.MVC.Extensions;
+using ControleVeiculos.MVC.Extensions;
 using System.Web.Mvc;
-using Lean.Test.Cloud.Domain.Command.Contacts;
-using Lean.Test.Cloud.Domain.Entities.Contacts;
-using Lean.Test.Cloud.Domain.Command.Profiles;
-using Lean.Test.Cloud.Domain;
-using Lean.Test.Cloud.MVC.Infrastructure.Mvc;
+using ControleVeiculos.Domain.Command.Contacts;
+using ControleVeiculos.Domain.Entities.Contacts;
+using ControleVeiculos.Domain.Command.Profiles;
+using ControleVeiculos.Domain;
+//using ControleVeiculos.MVC.Infrastructure.Mvc;
 
 
-namespace Lean.Test.Cloud.MVC.Controllers
+namespace ControleVeiculos.MVC.Controllers
 {
     public class ContactController : BaseController
     {

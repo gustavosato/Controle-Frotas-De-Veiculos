@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.Groups;
+using ControleVeiculos.MVC.Models.Groups;
 
-namespace Lean.Test.Cloud.MVC.Validations.Groups
+namespace ControleVeiculos.MVC.Validations.Groups
 {
     public class GroupValidator : AbstractValidator<GroupModel>
     {

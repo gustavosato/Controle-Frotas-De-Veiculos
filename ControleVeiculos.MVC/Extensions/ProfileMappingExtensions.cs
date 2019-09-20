@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.Profiles;
-using Lean.Test.Cloud.MVC.Models.Profiles;
+﻿using ControleVeiculos.Domain.Entities.Profiles;
+using ControleVeiculos.MVC.Models.Profiles;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class ProfileMappingExtensions
     {

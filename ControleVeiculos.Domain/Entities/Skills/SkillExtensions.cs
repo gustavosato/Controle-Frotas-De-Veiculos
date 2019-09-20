@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.Skills;
+﻿using ControleVeiculos.Domain.Command.Skills;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.Skills
+namespace ControleVeiculos.Domain.Entities.Skills
 {
     public static class SkillExtensions
     {

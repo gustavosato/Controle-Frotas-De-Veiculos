@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.Resumes;
-using Lean.Test.Cloud.Domain.Entities.Resumes;
+﻿using ControleVeiculos.Domain.Command.Resumes;
+using ControleVeiculos.Domain.Entities.Resumes;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface IResumeRepository
     {

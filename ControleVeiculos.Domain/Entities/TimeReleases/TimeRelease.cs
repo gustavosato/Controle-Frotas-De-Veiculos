@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.TimeReleases
+﻿namespace ControleVeiculos.Domain.Entities.TimeReleases
 {
     public class TimeRelease
     {

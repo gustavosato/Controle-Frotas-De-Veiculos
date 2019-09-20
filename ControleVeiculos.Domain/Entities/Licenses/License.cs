@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.Licenses
+﻿namespace ControleVeiculos.Domain.Entities.Licenses
 {
     public class License
     {

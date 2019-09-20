@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.ParameterValues;
+using ControleVeiculos.MVC.Models.ParameterValues;
 
-namespace Lean.Test.Cloud.MVC.Validations.ParameterValues
+namespace ControleVeiculos.MVC.Validations.ParameterValues
 {
     public class ParameterValueValidator : AbstractValidator<ParameterValueModel>
     {

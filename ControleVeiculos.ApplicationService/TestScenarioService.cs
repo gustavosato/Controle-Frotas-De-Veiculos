@@ -1,11 +1,11 @@
-﻿using Lean.Test.Cloud.Domain;
-using Lean.Test.Cloud.Domain.Entities.TestScenarios;
-using Lean.Test.Cloud.Domain.Repositories;
-using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.Domain.Command.TestScenarios;
+﻿using ControleVeiculos.Domain;
+using ControleVeiculos.Domain.Entities.TestScenarios;
+using ControleVeiculos.Domain.Repositories;
+using ControleVeiculos.Domain.Services;
+using ControleVeiculos.Domain.Command.TestScenarios;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.ApplicationService
+namespace ControleVeiculos.ApplicationService
 {
     public class TestScenarioService : BaseAppService, ITestScenarioService
     {

@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.TestPackages
+﻿namespace ControleVeiculos.Domain.Entities.TestPackages
 {
     public class TestPackage
     {

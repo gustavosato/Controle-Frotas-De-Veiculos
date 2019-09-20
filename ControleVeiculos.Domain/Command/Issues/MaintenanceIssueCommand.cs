@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.Issues
+﻿namespace ControleVeiculos.Domain.Command.Issues
 {
     public class MaintenanceIssueCommand
     {

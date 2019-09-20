@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.AnnexContracts
+﻿namespace ControleVeiculos.Domain.Entities.AnnexContracts
 {
         public class AnnexContract
         {

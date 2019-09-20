@@ -1,11 +1,11 @@
 ﻿using FluentValidation.Attributes;
-using Lean.Test.Cloud.MVC.Validations.TestLogs;
+using ControleVeiculos.MVC.Validations.TestLogs;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Models.TestLogs
+namespace ControleVeiculos.MVC.Models.TestLogs
 {
     [Validator(typeof(TestLogValidator))]
     public class TestLogModel

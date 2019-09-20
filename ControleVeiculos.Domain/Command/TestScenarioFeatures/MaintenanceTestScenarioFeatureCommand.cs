@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.TestScenarioFeatures
+﻿namespace ControleVeiculos.Domain.Command.TestScenarioFeatures
 {
     public class MaintenanceTestScenarioFeatureCommand
     {

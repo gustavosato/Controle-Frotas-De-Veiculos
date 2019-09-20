@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.Vacancies;
+﻿using ControleVeiculos.Domain.Command.Vacancies;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.Vacancies
+namespace ControleVeiculos.Domain.Entities.Vacancies
 {
     public static class VacancieExtensions
     {

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Lean.Test.Cloud.MVC")]
+[assembly: AssemblyTitle("ControleVeiculos.MVC")]
 [assembly: AssemblyDescription("LeanTest Accelerator 5.0")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Lean.Test.Cloud.MVC")]
+[assembly: AssemblyProduct("ControleVeiculos.MVC")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.SystemMenus;
-using Lean.Test.Cloud.MVC.Models.SystemMenus;
+﻿using ControleVeiculos.Domain.Entities.SystemMenus;
+using ControleVeiculos.MVC.Models.SystemMenus;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class SystemMenuMappingExtensions
     {

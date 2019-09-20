@@ -1,11 +1,11 @@
-﻿using Lean.Test.Cloud.Domain.Command.Resumes;
-using Lean.Test.Cloud.Domain.Command.ResumeVacancies;
-using Lean.Test.Cloud.Domain.Command.Vacancies;
-using Lean.Test.Cloud.Domain.Entities.Resumes;
-using Lean.Test.Cloud.Domain.Entities.Vacancies;
+﻿using ControleVeiculos.Domain.Command.Resumes;
+using ControleVeiculos.Domain.Command.ResumeVacancies;
+using ControleVeiculos.Domain.Command.Vacancies;
+using ControleVeiculos.Domain.Entities.Resumes;
+using ControleVeiculos.Domain.Entities.Vacancies;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Services
+namespace ControleVeiculos.Domain.Services
 {
     public interface IResumeVacancieService : IDisposable
     {

@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.ApplicationSystems;
+﻿using ControleVeiculos.Domain.Command.ApplicationSystems;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.ApplicationSystems
+namespace ControleVeiculos.Domain.Entities.ApplicationSystems
 {
     public static class ApplicationSystemExtensions
     {

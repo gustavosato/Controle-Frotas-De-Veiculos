@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.Supports;
+using ControleVeiculos.MVC.Models.Supports;
 
-namespace Lean.Test.Cloud.MVC.Validations.Supports
+namespace ControleVeiculos.MVC.Validations.Supports
 {
     public class SupportValidator : AbstractValidator<SupportModel>
     {

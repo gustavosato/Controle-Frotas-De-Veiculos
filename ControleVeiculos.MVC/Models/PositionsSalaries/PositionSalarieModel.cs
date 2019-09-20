@@ -1,11 +1,11 @@
 ﻿using FluentValidation.Attributes;
-using Lean.Test.Cloud.MVC.Validations.PositionsSalaries;
+using ControleVeiculos.MVC.Validations.PositionsSalaries;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Models.PositionsSalaries
+namespace ControleVeiculos.MVC.Models.PositionsSalaries
 {
     [Validator(typeof(PositionsSalarieValidator))]
     public class PositionsSalarieModel

@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.Users
+﻿namespace ControleVeiculos.Domain.Command.Users
 {
     public class MaintenanceUserCommand
     {

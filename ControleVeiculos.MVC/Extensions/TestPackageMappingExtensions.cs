@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.TestPackages;
-using Lean.Test.Cloud.MVC.Models.TestPackages;
+﻿using ControleVeiculos.Domain.Entities.TestPackages;
+using ControleVeiculos.MVC.Models.TestPackages;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class TestPackageMappingExtensions
     {

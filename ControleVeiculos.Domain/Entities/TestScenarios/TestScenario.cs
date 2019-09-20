@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.TestScenarios
+﻿namespace ControleVeiculos.Domain.Entities.TestScenarios
 {
     public class TestScenario
     {

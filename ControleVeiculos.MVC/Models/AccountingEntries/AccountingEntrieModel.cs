@@ -1,11 +1,11 @@
 ﻿using FluentValidation.Attributes;
-using Lean.Test.Cloud.MVC.Validations.AccountingEntries;
+using ControleVeiculos.MVC.Validations.AccountingEntries;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Models.AccountingEntries
+namespace ControleVeiculos.MVC.Models.AccountingEntries
 {
     [Validator(typeof(AccountingEntrieValidator))]
     public class AccountingEntrieModel

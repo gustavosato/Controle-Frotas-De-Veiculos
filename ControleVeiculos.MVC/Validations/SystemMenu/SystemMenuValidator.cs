@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.SystemMenus;
+using ControleVeiculos.MVC.Models.SystemMenus;
 
-namespace Lean.Test.Cloud.MVC.Validations.SystemMenus
+namespace ControleVeiculos.MVC.Validations.SystemMenus
 {
     public class SystemMenuValidator : AbstractValidator<SystemMenuModel>
     {

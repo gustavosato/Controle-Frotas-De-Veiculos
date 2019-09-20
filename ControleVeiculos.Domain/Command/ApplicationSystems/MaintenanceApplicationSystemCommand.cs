@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.ApplicationSystems
+﻿namespace ControleVeiculos.Domain.Command.ApplicationSystems
 {
     public class MaintenanceApplicationSystemCommand
     {

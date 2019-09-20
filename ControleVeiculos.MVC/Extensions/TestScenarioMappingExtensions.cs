@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.TestScenarios;
-using Lean.Test.Cloud.MVC.Models.TestScenarios;
+﻿using ControleVeiculos.Domain.Entities.TestScenarios;
+using ControleVeiculos.MVC.Models.TestScenarios;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class TestScenarioMappingExtensions
     {

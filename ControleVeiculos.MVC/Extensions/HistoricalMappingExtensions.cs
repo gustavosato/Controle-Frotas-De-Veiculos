@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.Historicals;
-using Lean.Test.Cloud.MVC.Models.Historicals;
+﻿using ControleVeiculos.Domain.Entities.Historicals;
+using ControleVeiculos.MVC.Models.Historicals;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class HistoricalMappingExtensions
     {

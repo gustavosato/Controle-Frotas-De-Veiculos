@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.Demands;
-using Lean.Test.Cloud.Domain.Entities.Demands;
+﻿using ControleVeiculos.Domain.Command.Demands;
+using ControleVeiculos.Domain.Entities.Demands;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface IDemandRepository
     {

@@ -1,25 +1,25 @@
-﻿using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.MVC.Infrastructure.KendoUI;       
-using Lean.Test.Cloud.MVC.Models.Pipelines;
+﻿using ControleVeiculos.Domain.Services;
+using ControleVeiculos.MVC.Infrastructure.KendoUI;       
+using ControleVeiculos.MVC.Models.Pipelines;
 using System;
 using System.Linq;
-using Lean.Test.Cloud.MVC.Extensions;
+using ControleVeiculos.MVC.Extensions;
 using System.Web.Mvc;
-using Lean.Test.Cloud.Domain.Command.Pipelines;
-using Lean.Test.Cloud.Domain.Entities.Pipelines;
-using Lean.Test.Cloud.Domain;
-using Lean.Test.Cloud.MVC.Infrastructure.Mvc;
+using ControleVeiculos.Domain.Command.Pipelines;
+using ControleVeiculos.Domain.Entities.Pipelines;
+using ControleVeiculos.Domain;
+//using ControleVeiculos.MVC.Infrastructure.Mvc;
 using System.Globalization;
 using System.IO;
-using Lean.Test.Cloud.MVC.Models.Attachments;
-using Lean.Test.Cloud.Domain.Command.Attachments;
+using ControleVeiculos.MVC.Models.Attachments;
+using ControleVeiculos.Domain.Command.Attachments;
 using System.Web;
-using Lean.Test.Cloud.Domain.Command.Customers;
-using Lean.Test.Cloud.Domain.Command.Profiles;
-using Lean.Test.Cloud.Domain.Command.Historicals;
-using Lean.Test.Cloud.MVC.Models.Historicals;
+using ControleVeiculos.Domain.Command.Customers;
+using ControleVeiculos.Domain.Command.Profiles;
+using ControleVeiculos.Domain.Command.Historicals;
+using ControleVeiculos.MVC.Models.Historicals;
 
-namespace Lean.Test.Cloud.MVC.Controllers
+namespace ControleVeiculos.MVC.Controllers
 {
     public class PipelineController : BaseController
     {

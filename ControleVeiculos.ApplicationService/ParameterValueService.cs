@@ -1,13 +1,13 @@
-﻿using Lean.Test.Cloud.Domain;
-using Lean.Test.Cloud.Domain.Entities.ParameterValues;
-using Lean.Test.Cloud.Domain.Repositories;
-using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.Domain.Command.ParameterValues;
+﻿using ControleVeiculos.Domain;
+using ControleVeiculos.Domain.Entities.ParameterValues;
+using ControleVeiculos.Domain.Repositories;
+using ControleVeiculos.Domain.Services;
+using ControleVeiculos.Domain.Command.ParameterValues;
 using System.Linq;
 using System.Collections.Generic;
-using Lean.Test.Cloud.SharedKernel.Common;
+using ControleVeiculos.SharedKernel.Common;
 
-namespace Lean.Test.Cloud.ApplicationService
+namespace ControleVeiculos.ApplicationService
 {
     public class ParameterValueService : BaseAppService, IParameterValueService
     {

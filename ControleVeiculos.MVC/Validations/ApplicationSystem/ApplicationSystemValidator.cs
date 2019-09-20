@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.ApplicationSystems;
+using ControleVeiculos.MVC.Models.ApplicationSystems;
 
-namespace Lean.Test.Cloud.MVC.Validations.ApplicationSystem
+namespace ControleVeiculos.MVC.Validations.ApplicationSystem
 {
     public class ApplicationSystemValidator : AbstractValidator<ApplicationSystemModel>
     {

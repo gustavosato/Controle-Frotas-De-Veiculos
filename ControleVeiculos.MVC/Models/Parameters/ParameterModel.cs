@@ -1,11 +1,11 @@
 ﻿using FluentValidation.Attributes;
-using Lean.Test.Cloud.MVC.Validations.Parameters;
+using ControleVeiculos.MVC.Validations.Parameters;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Models.Parameters
+namespace ControleVeiculos.MVC.Models.Parameters
 {
     [Validator(typeof(ParameterValidator))]
     public class ParameterModel

@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.ChangeRequests
+﻿namespace ControleVeiculos.Domain.Entities.ChangeRequests
 {
     public class ChangeRequest
     {

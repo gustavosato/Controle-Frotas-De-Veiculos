@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.Elements;
-using Lean.Test.Cloud.MVC.Models.Elements;
+﻿using ControleVeiculos.Domain.Entities.Elements;
+using ControleVeiculos.MVC.Models.Elements;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class ElementMappingExtensions
     {

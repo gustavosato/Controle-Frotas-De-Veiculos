@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.TestLogs
+﻿namespace ControleVeiculos.Domain.Command.TestLogs
 {
     public class MaintenanceTestLogCommand
     {

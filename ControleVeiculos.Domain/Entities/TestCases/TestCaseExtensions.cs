@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.TestCases;
+﻿using ControleVeiculos.Domain.Command.TestCases;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.TestCases
+namespace ControleVeiculos.Domain.Entities.TestCases
 {
     public static class TestCaseExtensions
     {

@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.TestPackages
+﻿namespace ControleVeiculos.Domain.Command.TestPackages
 {
     public class MaintenanceTestPackageCommand
     {

@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.Contacts
+﻿namespace ControleVeiculos.Domain.Command.Contacts
 {
     public class MaintenanceContactCommand
     {

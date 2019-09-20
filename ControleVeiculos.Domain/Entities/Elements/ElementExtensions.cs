@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.Elements;
+﻿using ControleVeiculos.Domain.Command.Elements;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.Elements
+namespace ControleVeiculos.Domain.Entities.Elements
 {
     public static class ElementExtensions
     {

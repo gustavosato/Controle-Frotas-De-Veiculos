@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.CustomersUsers
+﻿namespace ControleVeiculos.Domain.Entities.CustomersUsers
 {
     public class CustomerUser
     {

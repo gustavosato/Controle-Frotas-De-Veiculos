@@ -1,11 +1,11 @@
 ﻿using FluentValidation.Attributes;
-using Lean.Test.Cloud.MVC.Validations.Vacancies;
+using ControleVeiculos.MVC.Validations.Vacancies;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Models.Vacancies
+namespace ControleVeiculos.MVC.Models.Vacancies
 {
     [Validator(typeof(VacancieValidator))]
     public class VacancieModel

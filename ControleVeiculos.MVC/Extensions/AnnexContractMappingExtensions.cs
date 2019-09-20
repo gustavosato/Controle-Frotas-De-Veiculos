@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.AnnexContracts;
-using Lean.Test.Cloud.MVC.Models.AnnexContracts;
+﻿using ControleVeiculos.Domain.Entities.AnnexContracts;
+using ControleVeiculos.MVC.Models.AnnexContracts;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class AnnexContractMappingExtensions
     {

@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.AnnexContracts;
+using ControleVeiculos.MVC.Models.AnnexContracts;
 
-namespace Lean.Test.Cloud.MVC.Validations.AnnexContract
+namespace ControleVeiculos.MVC.Validations.AnnexContract
 {
     public class AnnexContractValidator : AbstractValidator<AnnexContractModel>
     {

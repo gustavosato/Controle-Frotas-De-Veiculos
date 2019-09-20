@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.Skills
+﻿namespace ControleVeiculos.Domain.Command.Skills
 {
     public class MaintenanceSkillCommand
     {

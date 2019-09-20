@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.Tasks;
+﻿using ControleVeiculos.Domain.Command.Tasks;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.Tasks
+namespace ControleVeiculos.Domain.Entities.Tasks
 {
     public static class TaskExtensions
     {

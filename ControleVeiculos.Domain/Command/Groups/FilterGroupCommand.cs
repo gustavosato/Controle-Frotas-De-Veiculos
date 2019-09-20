@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.Groups
+﻿namespace ControleVeiculos.Domain.Command.Groups
 {
     public class FilterGroupCommand
     {

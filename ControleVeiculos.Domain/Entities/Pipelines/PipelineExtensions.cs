@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.Pipelines;
+﻿using ControleVeiculos.Domain.Command.Pipelines;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.Pipelines
+namespace ControleVeiculos.Domain.Entities.Pipelines
 {
     public static class PipelineExtensions
     {

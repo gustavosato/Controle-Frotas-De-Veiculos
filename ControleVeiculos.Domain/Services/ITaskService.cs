@@ -1,9 +1,9 @@
-﻿using Lean.Test.Cloud.Domain.Command.Tasks;
-using Lean.Test.Cloud.Domain.Entities.Tasks;
+﻿using ControleVeiculos.Domain.Command.Tasks;
+using ControleVeiculos.Domain.Entities.Tasks;
 using System;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Services
+namespace ControleVeiculos.Domain.Services
 {
     public interface ITaskService : IDisposable
     {

@@ -14,8 +14,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lean.Test.Cloud.MVC</RootNamespace>
-    <AssemblyName>Lean.Test.Cloud.MVC</AssemblyName>
+    <RootNamespace>ControleVeiculos.MVC</RootNamespace>
+    <AssemblyName>ControleVeiculos.MVC</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -76,6 +76,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -99,9 +102,6 @@
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.Http">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.4\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
@@ -636,13 +636,13 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LeanTest.Cloud.CrossCutting\Lean.Test.Cloud.CrossCutting.csproj">
+    <ProjectReference Include="..\ControleVeiculos.CrossCutting\ControleVeiculos.CrossCutting.csproj">
       <Project>{7fd5d06d-b901-45f1-b515-7072ad6ea3d6}</Project>
-      <Name>Lean.Test.Cloud.CrossCutting</Name>
+      <Name>ControleVeiculos.CrossCutting</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LeanTest.Cloud.Domain\Lean.Test.Cloud.Domain.csproj">
+    <ProjectReference Include="..\ControleVeiculos.Domain\ControleVeiculos.Domain.csproj">
       <Project>{5792190a-bce6-4913-a42e-86fdd7076f87}</Project>
-      <Name>Lean.Test.Cloud.Domain</Name>
+      <Name>ControleVeiculos.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

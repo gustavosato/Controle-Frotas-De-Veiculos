@@ -1,11 +1,11 @@
 ﻿using FluentValidation.Attributes;
-using Lean.Test.Cloud.MVC.Validations.Pipelines;
+using ControleVeiculos.MVC.Validations.Pipelines;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Models.Pipelines
+namespace ControleVeiculos.MVC.Models.Pipelines
 {
     [Validator(typeof(PipelineValidator))]
     public class PipelineModel

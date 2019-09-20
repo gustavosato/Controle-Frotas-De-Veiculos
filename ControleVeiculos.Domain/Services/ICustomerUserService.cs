@@ -1,10 +1,10 @@
-﻿using Lean.Test.Cloud.Domain.Command.CustomersUsers;
-using Lean.Test.Cloud.Domain.Command.Customers;
-using Lean.Test.Cloud.Domain.Entities.Customers;
-using Lean.Test.Cloud.Domain.Entities.CustomersUsers;
+﻿using ControleVeiculos.Domain.Command.CustomersUsers;
+using ControleVeiculos.Domain.Command.Customers;
+using ControleVeiculos.Domain.Entities.Customers;
+using ControleVeiculos.Domain.Entities.CustomersUsers;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Services
+namespace ControleVeiculos.Domain.Services
 {
     public interface ICustomerUserService : IDisposable
     {

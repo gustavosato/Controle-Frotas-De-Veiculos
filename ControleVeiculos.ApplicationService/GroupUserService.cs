@@ -1,15 +1,15 @@
-﻿using Lean.Test.Cloud.Domain;
-using Lean.Test.Cloud.Domain.Entities.GroupsUsers;
-using Lean.Test.Cloud.Domain.Repositories;
-using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.Domain.Command.GroupsUsers;
+﻿using ControleVeiculos.Domain;
+using ControleVeiculos.Domain.Entities.GroupsUsers;
+using ControleVeiculos.Domain.Repositories;
+using ControleVeiculos.Domain.Services;
+using ControleVeiculos.Domain.Command.GroupsUsers;
 using System.Linq;
 using System.Collections.Generic;
-using Lean.Test.Cloud.SharedKernel.Common;
-using Lean.Test.Cloud.Domain.Entities.Groups;
-using Lean.Test.Cloud.Domain.Command.Groups;
+using ControleVeiculos.SharedKernel.Common;
+using ControleVeiculos.Domain.Entities.Groups;
+using ControleVeiculos.Domain.Command.Groups;
 
-namespace Lean.Test.Cloud.ApplicationService
+namespace ControleVeiculos.ApplicationService
 {
     public class GroupUserService : BaseAppService, IGroupUserService
     {

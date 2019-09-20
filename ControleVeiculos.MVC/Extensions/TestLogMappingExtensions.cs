@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.TestLogs;
-using Lean.Test.Cloud.MVC.Models.TestLogs;
+﻿using ControleVeiculos.Domain.Entities.TestLogs;
+using ControleVeiculos.MVC.Models.TestLogs;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class TestLogMappingExtensions
     {

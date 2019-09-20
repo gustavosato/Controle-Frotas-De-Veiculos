@@ -1,7 +1,7 @@
 ﻿using System;
-using Lean.Test.Cloud.Domain.Services;
+using ControleVeiculos.Domain.Services;
 
-namespace Lean.Test.Cloud.ApplicationService
+namespace ControleVeiculos.ApplicationService
 {
     public class LicenseGeneratorService : BaseAppService, ILicenseGeneratorService
     {

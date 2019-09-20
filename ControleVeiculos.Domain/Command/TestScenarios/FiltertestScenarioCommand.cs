@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.TestScenarios
+﻿namespace ControleVeiculos.Domain.Command.TestScenarios
 {
     public class FilterTestScenarioCommand
     {

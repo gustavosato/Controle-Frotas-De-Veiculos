@@ -1,11 +1,11 @@
 ﻿using FluentValidation.Attributes;
-using Lean.Test.Cloud.MVC.Validations.MovimentEmployee;
+using ControleVeiculos.MVC.Validations.MovimentEmployee;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Models.MovimentEmployees
+namespace ControleVeiculos.MVC.Models.MovimentEmployees
 {
     [Validator(typeof(MovimentEmployeeValidator))]
     public class MovimentEmployeeModel

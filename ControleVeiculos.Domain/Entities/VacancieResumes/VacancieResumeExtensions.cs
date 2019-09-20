@@ -1,6 +1,6 @@
-﻿using Lean.Test.Cloud.Domain.Command.VacanciesResumes;
+﻿using ControleVeiculos.Domain.Command.VacanciesResumes;
 
-namespace Lean.Test.Cloud.Domain.Entities.VacanciesResumes
+namespace ControleVeiculos.Domain.Entities.VacanciesResumes
 {
     public static class VacancieResumeExtensions
     {

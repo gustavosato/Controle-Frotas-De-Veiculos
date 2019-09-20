@@ -1,11 +1,11 @@
 ﻿using FluentValidation.Attributes;
-using Lean.Test.Cloud.MVC.Validations.Supports;
+using ControleVeiculos.MVC.Validations.Supports;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Models.Supports
+namespace ControleVeiculos.MVC.Models.Supports
 {
     [Validator(typeof(SupportValidator))]
     public class SupportModel

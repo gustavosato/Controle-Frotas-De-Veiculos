@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.Workflows;
-using Lean.Test.Cloud.Domain.Entities.Workflows;
+﻿using ControleVeiculos.Domain.Command.Workflows;
+using ControleVeiculos.Domain.Entities.Workflows;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface IWorkflowRepository
     {

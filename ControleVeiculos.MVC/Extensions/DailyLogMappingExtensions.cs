@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.DailyLogs;
-using Lean.Test.Cloud.MVC.Models.DailyLogs;
+﻿using ControleVeiculos.Domain.Entities.DailyLogs;
+using ControleVeiculos.MVC.Models.DailyLogs;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class DailyLogMappingExtensions
     {

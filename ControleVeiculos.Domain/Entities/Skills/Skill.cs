@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.Skills
+﻿namespace ControleVeiculos.Domain.Entities.Skills
 {
     public class Skill
     {

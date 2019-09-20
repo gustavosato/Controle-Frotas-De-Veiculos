@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.Expenses;
-using Lean.Test.Cloud.Domain.Entities.Expenses;
+﻿using ControleVeiculos.Domain.Command.Expenses;
+using ControleVeiculos.Domain.Entities.Expenses;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Services
+namespace ControleVeiculos.Domain.Services
 {
     public interface IExpenseService : IDisposable
     {

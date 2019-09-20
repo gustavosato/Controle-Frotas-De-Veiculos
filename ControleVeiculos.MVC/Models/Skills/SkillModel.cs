@@ -1,11 +1,11 @@
 ﻿using FluentValidation.Attributes;
-using Lean.Test.Cloud.MVC.Validations.Skills;
+using ControleVeiculos.MVC.Validations.Skills;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Models.Skills
+namespace ControleVeiculos.MVC.Models.Skills
 {
     [Validator(typeof(SkillValidator))]
     public class SkillModel

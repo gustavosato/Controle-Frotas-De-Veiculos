@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.Profiles;
+﻿using ControleVeiculos.Domain.Command.Profiles;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.Profiles
+namespace ControleVeiculos.Domain.Entities.Profiles
 {
     public static class ProfileExtensions
     {

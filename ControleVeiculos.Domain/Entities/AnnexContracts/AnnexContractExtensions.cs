@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.AnnexContracts;
+﻿using ControleVeiculos.Domain.Command.AnnexContracts;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.AnnexContracts
+namespace ControleVeiculos.Domain.Entities.AnnexContracts
 {
     public static class AnnexContractExtensions
     {

@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.ChangeRequests
+﻿namespace ControleVeiculos.Domain.Command.ChangeRequests
 {
     public class FilterChangeRequestCommand
     {

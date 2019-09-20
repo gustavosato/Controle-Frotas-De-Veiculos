@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.Skills;
+using ControleVeiculos.MVC.Models.Skills;
 
-namespace Lean.Test.Cloud.MVC.Validations.Skills
+namespace ControleVeiculos.MVC.Validations.Skills
 {
     public class SkillValidator : AbstractValidator<SkillModel>
     {

@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.Elements;
+using ControleVeiculos.MVC.Models.Elements;
 
-namespace Lean.Test.Cloud.MVC.Validations.Elements
+namespace ControleVeiculos.MVC.Validations.Elements
 {
     public class ElementValidator : AbstractValidator<ElementModel>
     {

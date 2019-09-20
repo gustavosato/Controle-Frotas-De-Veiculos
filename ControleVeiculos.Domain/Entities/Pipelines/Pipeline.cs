@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.Pipelines
+﻿namespace ControleVeiculos.Domain.Entities.Pipelines
 {
     public class Pipeline
     {

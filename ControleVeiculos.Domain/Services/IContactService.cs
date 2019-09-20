@@ -1,9 +1,9 @@
-﻿using Lean.Test.Cloud.Domain.Command.Contacts;
-using Lean.Test.Cloud.Domain.Entities.Contacts;
+﻿using ControleVeiculos.Domain.Command.Contacts;
+using ControleVeiculos.Domain.Entities.Contacts;
 using System;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Services
+namespace ControleVeiculos.Domain.Services
 {
     public interface IContactService : IDisposable
     {

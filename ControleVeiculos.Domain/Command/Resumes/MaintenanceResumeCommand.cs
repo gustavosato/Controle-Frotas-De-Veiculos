@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Command.Resumes
+﻿namespace ControleVeiculos.Domain.Command.Resumes
 {
     public class MaintenanceResumeCommand
     {

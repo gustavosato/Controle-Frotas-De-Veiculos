@@ -10,6 +10,7 @@ using System.Web.Routing;
 using ControleVeiculos.MVC.Infrastructure;
 using ControleVeiculos.CrossCutting;
 using System.Web.Optimization;
+using ControleVeiculos.Infrastructure;
 
 namespace ControleVeiculos.MVC
 {

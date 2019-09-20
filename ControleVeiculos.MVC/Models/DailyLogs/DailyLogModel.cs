@@ -1,12 +1,12 @@
 ﻿using FluentValidation.Attributes;
-using Lean.Test.Cloud.MVC.Validations.DailyLog;
+using ControleVeiculos.MVC.Validations.DailyLog;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using System.Collections.Generic;
 
 
-namespace Lean.Test.Cloud.MVC.Models.DailyLogs
+namespace ControleVeiculos.MVC.Models.DailyLogs
 {
     [Validator(typeof(DailyLogValidator))]
     public class DailyLogModel

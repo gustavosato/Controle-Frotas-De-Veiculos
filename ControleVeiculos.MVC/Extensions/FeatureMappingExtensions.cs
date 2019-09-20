@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.Features;
-using Lean.Test.Cloud.MVC.Models.Features;
+﻿using ControleVeiculos.Domain.Entities.Features;
+using ControleVeiculos.MVC.Models.Features;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class FeatureMappingExtensions
     {

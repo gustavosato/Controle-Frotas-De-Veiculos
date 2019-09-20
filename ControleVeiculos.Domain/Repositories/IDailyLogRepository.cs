@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.DailyLogs;
-using Lean.Test.Cloud.Domain.Entities.DailyLogs;
+﻿using ControleVeiculos.Domain.Command.DailyLogs;
+using ControleVeiculos.Domain.Entities.DailyLogs;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface IDailyLogRepository
     {

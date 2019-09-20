@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Controllers
+namespace ControleVeiculos.MVC.Controllers
 {
     public class PrincipalController : BaseController
     {

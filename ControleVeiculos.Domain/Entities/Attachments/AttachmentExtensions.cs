@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.Attachments;
+﻿using ControleVeiculos.Domain.Command.Attachments;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.Attachments
+namespace ControleVeiculos.Domain.Entities.Attachments
 {
     public static class AttachmentExtensions
     {

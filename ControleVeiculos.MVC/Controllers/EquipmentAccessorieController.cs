@@ -1,21 +1,21 @@
-﻿using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.MVC.Infrastructure.KendoUI;
-using Lean.Test.Cloud.MVC.Models.EquipmentAccessories;
+﻿using ControleVeiculos.Domain.Services;
+using ControleVeiculos.MVC.Infrastructure.KendoUI;
+using ControleVeiculos.MVC.Models.EquipmentAccessories;
 using System;
 using System.Linq;
-using Lean.Test.Cloud.MVC.Extensions;
+using ControleVeiculos.MVC.Extensions;
 using System.Web.Mvc;
-using Lean.Test.Cloud.Domain.Command.EquipmentAccessories;
-using Lean.Test.Cloud.Domain.Entities.EquipmentAccessories;
-using Lean.Test.Cloud.Domain;
-using Lean.Test.Cloud.MVC.Infrastructure.Mvc;
+using ControleVeiculos.Domain.Command.EquipmentAccessories;
+using ControleVeiculos.Domain.Entities.EquipmentAccessories;
+using ControleVeiculos.Domain;
+//using ControleVeiculos.MVC.Infrastructure.Mvc;
 using System.Globalization;
-using Lean.Test.Cloud.Domain.Command.Historicals;
-using Lean.Test.Cloud.Domain.Command.Profiles;
-using Lean.Test.Cloud.MVC.Models.Historicals;
+using ControleVeiculos.Domain.Command.Historicals;
+using ControleVeiculos.Domain.Command.Profiles;
+using ControleVeiculos.MVC.Models.Historicals;
 using FluentValidation.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Controllers
+namespace ControleVeiculos.MVC.Controllers
 {
     public class EquipmentAccessorieController : BaseController
     {

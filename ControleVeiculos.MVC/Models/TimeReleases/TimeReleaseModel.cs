@@ -1,11 +1,11 @@
 ﻿using FluentValidation.Attributes;
-using Lean.Test.Cloud.MVC.Validations.TimeRelease;
+using ControleVeiculos.MVC.Validations.TimeRelease;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Models.TimeReleases
+namespace ControleVeiculos.MVC.Models.TimeReleases
 {
     [Validator(typeof(TimeReleaseValidator))]
     public class TimeReleaseModel

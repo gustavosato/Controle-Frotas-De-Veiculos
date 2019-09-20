@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.TimeReleases;
+﻿using ControleVeiculos.Domain.Command.TimeReleases;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.TimeReleases
+namespace ControleVeiculos.Domain.Entities.TimeReleases
 {
     public static class TimeReleaseExtensions
     {

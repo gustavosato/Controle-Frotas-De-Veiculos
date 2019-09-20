@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.Historicals
+﻿namespace ControleVeiculos.Domain.Entities.Historicals
 {
     public class Historical
     {

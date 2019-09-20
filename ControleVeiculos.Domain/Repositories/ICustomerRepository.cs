@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.Customers;
-using Lean.Test.Cloud.Domain.Entities.Customers;
+﻿using ControleVeiculos.Domain.Command.Customers;
+using ControleVeiculos.Domain.Entities.Customers;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface ICustomerRepository
     {

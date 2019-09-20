@@ -1,24 +1,24 @@
-﻿using Lean.Test.Cloud.Domain.Services;
-using Lean.Test.Cloud.MVC.Infrastructure.KendoUI;       
-using Lean.Test.Cloud.MVC.Models.Resumes;
+﻿using ControleVeiculos.Domain.Services;
+using ControleVeiculos.MVC.Infrastructure.KendoUI;       
+using ControleVeiculos.MVC.Models.Resumes;
 using System;
 using System.Linq;
-using Lean.Test.Cloud.MVC.Extensions;
+using ControleVeiculos.MVC.Extensions;
 using System.Web.Mvc;
-using Lean.Test.Cloud.Domain.Command.Resumes;
-using Lean.Test.Cloud.Domain.Entities.Resumes;
-using Lean.Test.Cloud.Domain;
-using Lean.Test.Cloud.MVC.Infrastructure.Mvc;
+using ControleVeiculos.Domain.Command.Resumes;
+using ControleVeiculos.Domain.Entities.Resumes;
+using ControleVeiculos.Domain;
+//using ControleVeiculos.MVC.Infrastructure.Mvc;
 using System.Web;
 using System.IO;
-using Lean.Test.Cloud.MVC.Models.Attachments;
-using Lean.Test.Cloud.Domain.Command.Profiles;
-using Lean.Test.Cloud.Domain.Command.Attachments;
-using Lean.Test.Cloud.MVC.Models.Vacancies;
-using Lean.Test.Cloud.Domain.Command.Vacancies;
-using Lean.Test.Cloud.Domain.Command.ResumeVacancies;
+using ControleVeiculos.MVC.Models.Attachments;
+using ControleVeiculos.Domain.Command.Profiles;
+using ControleVeiculos.Domain.Command.Attachments;
+using ControleVeiculos.MVC.Models.Vacancies;
+using ControleVeiculos.Domain.Command.Vacancies;
+using ControleVeiculos.Domain.Command.ResumeVacancies;
 
-namespace Lean.Test.Cloud.MVC.Controllers
+namespace ControleVeiculos.MVC.Controllers
 {
     public class ResumeController : BaseController
     {

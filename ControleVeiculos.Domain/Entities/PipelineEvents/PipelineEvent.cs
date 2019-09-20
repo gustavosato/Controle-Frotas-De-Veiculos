@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.PipelineEvents
+﻿namespace ControleVeiculos.Domain.Entities.PipelineEvents
 {
     public class PipelineEvent
     {

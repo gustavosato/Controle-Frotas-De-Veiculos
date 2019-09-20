@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.Profiles;
-using Lean.Test.Cloud.Domain.Entities.Profiles;
+﻿using ControleVeiculos.Domain.Command.Profiles;
+using ControleVeiculos.Domain.Entities.Profiles;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface IProfileRepository
     {

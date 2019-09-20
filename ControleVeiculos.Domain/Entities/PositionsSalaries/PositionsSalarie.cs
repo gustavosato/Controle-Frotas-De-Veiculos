@@ -1,4 +1,4 @@
-﻿namespace Lean.Test.Cloud.Domain.Entities.PositionsSalaries
+﻿namespace ControleVeiculos.Domain.Entities.PositionsSalaries
 {
     public class PositionsSalarie
     {

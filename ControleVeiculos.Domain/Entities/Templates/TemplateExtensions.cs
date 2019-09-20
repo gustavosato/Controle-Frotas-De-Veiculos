@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Command.Templates;
+﻿using ControleVeiculos.Domain.Command.Templates;
 using System;
 
-namespace Lean.Test.Cloud.Domain.Entities.Templates
+namespace ControleVeiculos.Domain.Entities.Templates
 {
     public static class TemplateExtensions
     {

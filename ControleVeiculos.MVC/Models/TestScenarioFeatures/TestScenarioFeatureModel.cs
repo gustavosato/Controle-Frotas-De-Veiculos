@@ -1,11 +1,11 @@
 ﻿using FluentValidation.Attributes;
-using Lean.Test.Cloud.MVC.Validations.TestScenarioFeatures;
+using ControleVeiculos.MVC.Validations.TestScenarioFeatures;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Models.TestScenarioFeatures
+namespace ControleVeiculos.MVC.Models.TestScenarioFeatures
 {
     [Validator(typeof(TestScenarioFeatureValidator))]
     public class TestScenarioFeatureModel

@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.MovimentEmployees;
+using ControleVeiculos.MVC.Models.MovimentEmployees;
 
-namespace Lean.Test.Cloud.MVC.Validations.MovimentEmployee
+namespace ControleVeiculos.MVC.Validations.MovimentEmployee
 {
     public class MovimentEmployeeValidator : AbstractValidator<MovimentEmployeeModel>
     {

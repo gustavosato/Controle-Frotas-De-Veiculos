@@ -9,8 +9,8 @@
     <ProjectGuid>{9268C0D1-8042-4DC9-A983-63447EDA3A3B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lean.Test.Cloud.Business</RootNamespace>
-    <AssemblyName>Lean.Test.Cloud.Business</AssemblyName>
+    <RootNamespace>ControleVeiculos.Business</RootNamespace>
+    <AssemblyName>ControleVeiculos.Business</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -101,29 +101,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationService\generateLicense.cs" />
-    <Compile Include="BaseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LeanTest.Cloud.ApplicationService\Lean.Test.Cloud.ApplicationService.csproj">
+    <ProjectReference Include="..\ControleVeiculos.ApplicationService\ControleVeiculos.ApplicationService.csproj">
       <Project>{c1716b09-ba02-4b2d-9d1f-5c4f10858d09}</Project>
-      <Name>Lean.Test.Cloud.ApplicationService</Name>
+      <Name>ControleVeiculos.ApplicationService</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LeanTest.Cloud.CrossCutting\Lean.Test.Cloud.CrossCutting.csproj">
+    <ProjectReference Include="..\ControleVeiculos.CrossCutting\ControleVeiculos.CrossCutting.csproj">
       <Project>{7fd5d06d-b901-45f1-b515-7072ad6ea3d6}</Project>
-      <Name>Lean.Test.Cloud.CrossCutting</Name>
+      <Name>ControleVeiculos.CrossCutting</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LeanTest.Cloud.Domain\Lean.Test.Cloud.Domain.csproj">
+    <ProjectReference Include="..\ControleVeiculos.Domain\ControleVeiculos.Domain.csproj">
       <Project>{5792190A-BCE6-4913-A42E-86FDD7076F87}</Project>
-      <Name>Lean.Test.Cloud.Domain</Name>
+      <Name>ControleVeiculos.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LeanTest.Cloud.Repository\Lean.Test.Cloud.Repository.csproj">
+    <ProjectReference Include="..\ControleVeiculos.Repository\ControleVeiculos.Repository.csproj">
       <Project>{15459321-03df-4c66-b1b9-a7899331e50b}</Project>
-      <Name>Lean.Test.Cloud.Repository</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LeanTest.Cloud.WCF\Lean.Test.Cloud.WCF.csproj">
-      <Project>{7A373813-9539-4929-8ADC-5161DB0FA225}</Project>
-      <Name>Lean.Test.Cloud.WCF</Name>
+      <Name>ControleVeiculos.Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

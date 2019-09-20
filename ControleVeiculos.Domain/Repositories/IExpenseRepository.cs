@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.Expenses;
-using Lean.Test.Cloud.Domain.Entities.Expenses;
+﻿using ControleVeiculos.Domain.Command.Expenses;
+using ControleVeiculos.Domain.Entities.Expenses;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface IExpenseRepository
     {

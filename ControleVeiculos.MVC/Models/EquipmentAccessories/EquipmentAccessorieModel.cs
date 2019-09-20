@@ -1,11 +1,11 @@
 ﻿using FluentValidation.Attributes;
-using Lean.Test.Cloud.MVC.Validations.EquipmentAccessories;
+using ControleVeiculos.MVC.Validations.EquipmentAccessories;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Models.EquipmentAccessories
+namespace ControleVeiculos.MVC.Models.EquipmentAccessories
 {
     [Validator(typeof(EquipmentAccessorieValidator))]
     public class EquipmentAccessorieModel

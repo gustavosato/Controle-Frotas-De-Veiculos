@@ -1,9 +1,9 @@
-﻿using Lean.Test.Cloud.Domain.Command.Supports;
-using Lean.Test.Cloud.Domain.Entities.Supports;
+﻿using ControleVeiculos.Domain.Command.Supports;
+using ControleVeiculos.Domain.Entities.Supports;
 using System.Collections.Generic;
 
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface ISupportRepository
     {

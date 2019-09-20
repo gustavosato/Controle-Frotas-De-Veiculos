@@ -1,16 +1,16 @@
-﻿using Lean.Test.Cloud.Domain.Entities.TestPackages;
-using Lean.Test.Cloud.Domain.Repositories;
+﻿using ControleVeiculos.Domain.Entities.TestPackages;
+using ControleVeiculos.Domain.Repositories;
 using System.Data;
 using Dapper;
 using System.Linq;
 using System.Data.SqlClient;
 using System.Collections.Generic;
-using Lean.Test.Cloud.Repository.Map;
+using ControleVeiculos.Repository.Map;
 using Dapper.Contrib.Extensions;
-using Lean.Test.Cloud.Domain.Command.TestPackages;
+using ControleVeiculos.Domain.Command.TestPackages;
 using System;
 
-namespace Lean.Test.Cloud.Repository.Data
+namespace ControleVeiculos.Repository.Data
 {
     public class TestPackageRepository : BaseRepository, ITestPackageRepository
     {

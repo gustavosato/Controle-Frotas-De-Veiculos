@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.Defects;
+using ControleVeiculos.MVC.Models.Defects;
 
-namespace Lean.Test.Cloud.MVC.Validations.Defects
+namespace ControleVeiculos.MVC.Validations.Defects
 {
     public class DefectValidator : AbstractValidator<DefectModel>
     {

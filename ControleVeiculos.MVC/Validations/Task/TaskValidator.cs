@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Lean.Test.Cloud.MVC.Models.Tasks;
+using ControleVeiculos.MVC.Models.Tasks;
 
-namespace Lean.Test.Cloud.MVC.Validations.Tasks
+namespace ControleVeiculos.MVC.Validations.Tasks
 {
     public class TaskValidator : AbstractValidator<TaskModel>
     {

@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Models.Dashboards
+namespace ControleVeiculos.MVC.Models.Dashboards
 {
     public class DashboardModel
     {   

@@ -1,7 +1,7 @@
-﻿using Lean.Test.Cloud.Domain.Entities.TimeReleases;
-using Lean.Test.Cloud.MVC.Models.TimeReleases;
+﻿using ControleVeiculos.Domain.Entities.TimeReleases;
+using ControleVeiculos.MVC.Models.TimeReleases;
 
-namespace Lean.Test.Cloud.MVC.Extensions
+namespace ControleVeiculos.MVC.Extensions
 {
     public static class TimeReleaseMappingExtensions
     {

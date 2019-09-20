@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Lean.Test.Cloud.MVC.Models.Gravames
+namespace ControleVeiculos.MVC.Models.Gravames
 {
     public class GravameListModel
     {

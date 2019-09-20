@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.SystemMenus;
-using Lean.Test.Cloud.Domain.Entities.SystemMenus;
+﻿using ControleVeiculos.Domain.Command.SystemMenus;
+using ControleVeiculos.Domain.Entities.SystemMenus;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface ISystemMenuRepository
     {

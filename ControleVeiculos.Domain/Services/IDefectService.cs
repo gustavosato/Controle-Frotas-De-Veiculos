@@ -1,9 +1,9 @@
-﻿using Lean.Test.Cloud.Domain.Command.Defects;
-using Lean.Test.Cloud.Domain.Entities.Defects;
+﻿using ControleVeiculos.Domain.Command.Defects;
+using ControleVeiculos.Domain.Entities.Defects;
 using System;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Services
+namespace ControleVeiculos.Domain.Services
 {
     public interface IDefectService : IDisposable
     {

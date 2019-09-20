@@ -1,7 +1,7 @@
 ﻿using System.ServiceModel;
 using System.Xml.Serialization;
 
-namespace Lean.Test.Cloud.WCF.DTO.SaoPaulo.Autenticacao
+namespace ControleVeiculos.WCF.DTO.SaoPaulo.Autenticacao
 {
     [MessageContract(WrapperName = "autenticaEmpresa")]
     public class AutenticaEmpresaSpDTO

@@ -1,15 +1,15 @@
-﻿using Lean.Test.Cloud.Domain.Entities.Contacts;
-using Lean.Test.Cloud.Domain.Repositories;
+﻿using ControleVeiculos.Domain.Entities.Contacts;
+using ControleVeiculos.Domain.Repositories;
 using System.Data;
 using Dapper;
 using System.Linq;
 using System.Data.SqlClient;
 using System.Collections.Generic;
-using Lean.Test.Cloud.Repository.Map;
+using ControleVeiculos.Repository.Map;
 using Dapper.Contrib.Extensions;
-using Lean.Test.Cloud.Domain.Command.Contacts;
+using ControleVeiculos.Domain.Command.Contacts;
 
-namespace Lean.Test.Cloud.Repository.Data
+namespace ControleVeiculos.Repository.Data
 {
     public class ContactRepository : BaseRepository, IContactRepository
     {

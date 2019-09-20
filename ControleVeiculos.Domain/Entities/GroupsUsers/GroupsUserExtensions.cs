@@ -1,6 +1,6 @@
-﻿using Lean.Test.Cloud.Domain.Command.GroupsUsers;
+﻿using ControleVeiculos.Domain.Command.GroupsUsers;
 
-namespace Lean.Test.Cloud.Domain.Entities.GroupsUsers
+namespace ControleVeiculos.Domain.Entities.GroupsUsers
 {
     public static class GroupUserExtensions
     {
