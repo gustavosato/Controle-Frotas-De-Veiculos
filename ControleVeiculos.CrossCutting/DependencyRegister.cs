@@ -25,7 +25,6 @@ namespace ControleVeiculos.CrossCutting
             container.RegisterType<ExpenseService>().As<IExpenseService>();
             container.RegisterType<ExportManagerService>().As<IExportManagerService>();
             container.RegisterType<FeatureService>().As<IFeatureService>();
-            container.RegisterType<LicenseService>().As<ILicenseService>();
             container.RegisterType<LicenseGeneratorService>().As<ILicenseGeneratorService>();
             container.RegisterType<MailService>().As<IMailService>();
             container.RegisterType<MovimentEmployeeService>().As<IMovimentEmployeeService>();
@@ -77,7 +76,6 @@ namespace ControleVeiculos.CrossCutting
             container.RegisterType<GroupUserRepository>().As<IGroupUserRepository>();
             container.RegisterType<ExpenseRepository>().As<IExpenseRepository>();
             container.RegisterType<FeatureRepository>().As<IFeatureRepository>();
-            container.RegisterType<LicenseRepository>().As<ILicenseRepository>();
             container.RegisterType<MovimentEmployeeRepository>().As<IMovimentEmployeeRepository>();
             container.RegisterType<ParameterRepository>().As<IParameterRepository>();
             container.RegisterType<ParameterValueRepository>().As<IParameterValueRepository>();

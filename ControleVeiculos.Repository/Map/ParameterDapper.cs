@@ -1,5 +1,5 @@
 ﻿using Dapper.Contrib.Extensions;
-namespace ControleVeiculos.Repository.Map
+namespace Lean.Test.Cloud.Repository.Map
 {
     [Table("Parameters")]
     public class ParameterDapper

@@ -1,16 +1,16 @@
-﻿using ControleVeiculos.Domain.Entities.ParameterValues;
-using ControleVeiculos.Domain.Repositories;
+﻿using Lean.Test.Cloud.Domain.Entities.ParameterValues;
+using Lean.Test.Cloud.Domain.Repositories;
 using System.Data;
 using Dapper;
 using System.Linq;
 using System.Data.SqlClient;
 using System;
 using System.Collections.Generic;
-using ControleVeiculos.Repository.Map;
+using Lean.Test.Cloud.Repository.Map;
 using Dapper.Contrib.Extensions;
-using ControleVeiculos.Domain.Command.ParameterValues;
+using Lean.Test.Cloud.Domain.Command.ParameterValues;
 
-namespace ControleVeiculos.Repository.Data
+namespace Lean.Test.Cloud.Repository.Data
 {
     public class ParameterValueRepository : BaseRepository, IParameterValueRepository
     {

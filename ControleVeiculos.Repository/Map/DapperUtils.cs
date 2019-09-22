@@ -30,7 +30,6 @@ using ControleVeiculos.Domain.Entities.TestScenarioFeatures;
 using ControleVeiculos.Domain.Entities.TimeReleases;
 using ControleVeiculos.Domain.Entities.GroupsUsers;
 using ControleVeiculos.Domain.Entities.Workflows;
-using ControleVeiculos.Domain.Entities.Licenses;
 using ControleVeiculos.Domain.Entities.EquipmentAccessories;
 using ControleVeiculos.Domain.Entities.Issues;
 using ControleVeiculos.Domain.Entities.Defects;
@@ -850,29 +849,6 @@ namespace ControleVeiculos.Repository.Map
             workflowDapper.lastModifiedDate = workflow.lastModifiedDate;
 
             return workflowDapper;
-        }
-
-        public static LicenseDapper Map(this License license, int primaryKey)
-        {
-            LicenseDapper licenseDapper = new LicenseDapper();
-
-            licenseDapper.licenseID = primaryKey;
-            licenseDapper.licenseCode = license.licenseCode;
-            licenseDapper.customerID = license.customerID;
-            licenseDapper.expirationDate = license.expirationDate;
-            licenseDapper.licenseTypeID = license.licenseTypeID;
-            licenseDapper.hostName = license.hostName;
-            licenseDapper.macAddress = license.macAddress;
-            licenseDapper.description = license.description;
-            licenseDapper.license = license.license;
-            licenseDapper.approvedByID = license.approvedByID;
-            licenseDapper.approvedDate = license.approvedDate;
-            licenseDapper.createdByID = license.createdByID;
-            licenseDapper.creationDate = license.creationDate;
-            licenseDapper.modifiedByID = license.modifiedByID;
-            licenseDapper.lastModifiedDate = license.lastModifiedDate;
-
-            return licenseDapper;
         }
 
         public static EquipmentAccessorieDapper Map(this EquipmentAccessorie equipmentAccessorie, int primaryKey)

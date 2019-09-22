@@ -1,9 +1,9 @@
-﻿using ControleVeiculos.Domain.Command.Groups;
-using ControleVeiculos.Domain.Entities.Groups;
+﻿using Lean.Test.Cloud.Domain.Command.Groups;
+using Lean.Test.Cloud.Domain.Entities.Groups;
 using System.Collections.Generic;
 
 
-namespace ControleVeiculos.Domain.Repositories
+namespace Lean.Test.Cloud.Domain.Repositories
 {
     public interface IGroupRepository
     {
