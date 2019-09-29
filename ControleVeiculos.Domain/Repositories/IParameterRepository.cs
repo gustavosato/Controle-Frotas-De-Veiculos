@@ -1,8 +1,8 @@
-﻿using Lean.Test.Cloud.Domain.Command.Parameters;
-using Lean.Test.Cloud.Domain.Entities.Parameters;
+﻿using ControleVeiculos.Domain.Command.Parameters;
+using ControleVeiculos.Domain.Entities.Parameters;
 using System.Collections.Generic;
 
-namespace Lean.Test.Cloud.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface IParameterRepository
     {

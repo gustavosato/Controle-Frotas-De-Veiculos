@@ -79,15 +79,15 @@
   <ItemGroup>
     <ProjectReference Include="..\ControleVeiculos.ApplicationService\ControleVeiculos.ApplicationService.csproj">
       <Project>{c1716b09-ba02-4b2d-9d1f-5c4f10858d09}</Project>
-      <Name>Lean.Test.Cloud.ApplicationService</Name>
+      <Name>ControleVeiculos.ApplicationService</Name>
     </ProjectReference>
     <ProjectReference Include="..\ControleVeiculos.Domain\ControleVeiculos.Domain.csproj">
       <Project>{5792190a-bce6-4913-a42e-86fdd7076f87}</Project>
-      <Name>Lean.Test.Cloud.Domain</Name>
+      <Name>ControleVeiculos.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\ControleVeiculos.Repository\ControleVeiculos.Repository.csproj">
       <Project>{15459321-03df-4c66-b1b9-a7899331e50b}</Project>
-      <Name>Lean.Test.Cloud.Repository</Name>
+      <Name>ControleVeiculos.Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

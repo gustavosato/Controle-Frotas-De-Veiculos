@@ -1,111 +1,16 @@
 ﻿using ControleVeiculos.Domain.Entities.Users;
-using ControleVeiculos.Domain.Entities.Demands;
 using ControleVeiculos.Domain.Entities.ParameterValues;
 using ControleVeiculos.Domain.Entities.ApplicationSystems;
-using ControleVeiculos.Domain.Entities.Attachments;
-using ControleVeiculos.Domain.Entities.AccountingEntries;
-using ControleVeiculos.Domain.Entities.ChangeRequests;
-using ControleVeiculos.Domain.Entities.DailyLogComments;
-using ControleVeiculos.Domain.Entities.DailyLogs;
-using ControleVeiculos.Domain.Entities.DemandsUsers;
-using ControleVeiculos.Domain.Entities.Customers;
-using ControleVeiculos.Domain.Entities.CustomersUsers;
-using ControleVeiculos.Domain.Entities.Elements;
 using ControleVeiculos.Domain.Entities.SystemFeatures;
-using ControleVeiculos.Domain.Entities.Expenses;
-using ControleVeiculos.Domain.Entities.Features;
-using ControleVeiculos.Domain.Entities.Groups;
-using ControleVeiculos.Domain.Entities.Historicals;
 using ControleVeiculos.Domain.Entities.Parameters;
-using ControleVeiculos.Domain.Entities.Profiles;
 using ControleVeiculos.Domain.Entities.SystemMenus;
 using ControleVeiculos.Domain.Entities.SystemParameters;
-using ControleVeiculos.Domain.Entities.Tasks;
-using ControleVeiculos.Domain.Entities.Templates;
-using ControleVeiculos.Domain.Entities.TestCases;
-using ControleVeiculos.Domain.Entities.TestLogs;
-using ControleVeiculos.Domain.Entities.TestPackages;
-using ControleVeiculos.Domain.Entities.TestScenarios;
-using ControleVeiculos.Domain.Entities.TestScenarioFeatures;
-using ControleVeiculos.Domain.Entities.TimeReleases;
-using ControleVeiculos.Domain.Entities.GroupsUsers;
-using ControleVeiculos.Domain.Entities.Workflows;
-using ControleVeiculos.Domain.Entities.EquipmentAccessories;
-using ControleVeiculos.Domain.Entities.Issues;
-using ControleVeiculos.Domain.Entities.Defects;
-using ControleVeiculos.Domain.Entities.MovimentEmployees;
-using ControleVeiculos.Domain.Entities.Pipelines;
-using ControleVeiculos.Domain.Entities.Resumes;
-using ControleVeiculos.Domain.Entities.PipelineEvents;
-using ControleVeiculos.Domain.Entities.Vacancies;
-using ControleVeiculos.Domain.Entities.Contracts;
-using ControleVeiculos.Domain.Entities.AnnexContracts;
-using ControleVeiculos.Domain.Entities.ContractAdditives;
-using ControleVeiculos.Domain.Entities.Contacts;
-using ControleVeiculos.Domain.Entities.PositionsSalaries;
-using ControleVeiculos.Domain.Entities.Skills;
-using ControleVeiculos.Domain.Entities.Dashboards;
-using ControleVeiculos.Domain.Entities.Supports;
-using ControleVeiculos.Domain.Entities.VacanciesResumes;
-using ControleVeiculos.Domain.Entities.ResumeVacancies;
+using Lean.Test.Cloud.Repository.Map;
 
 namespace ControleVeiculos.Repository.Map
 {
     public static class DapperUtils
     {
-        public static DemandDapper Map(this Demand demand, int primaryKey)
-        {
-            DemandDapper demandDapper = new DemandDapper();
-
-            demandDapper.demandID = primaryKey;
-            demandDapper.demandName = demand.demandName;
-            demandDapper.typeID = demand.typeID;
-            demandDapper.statusID = demand.statusID;
-            demandDapper.scope = demand.scope;
-            demandDapper.externalCode = demand.externalCode;
-            demandDapper.demandCode = demand.demandCode;
-            demandDapper.responsibleID = demand.responsibleID;
-            demandDapper.assignToTargetID = demand.assignToTargetID;
-            demandDapper.planningStartDate = demand.planningStartDate;
-            demandDapper.planningEndDate = demand.planningEndDate;
-            demandDapper.managementEffort = demand.managementEffort;
-            demandDapper.planningEffort = demand.planningEffort;
-            demandDapper.executionEffort = demand.executionEffort;
-            demandDapper.description = demand.description;
-            demandDapper.customerID = demand.customerID;
-            demandDapper.serviceID = demand.serviceID;
-            demandDapper.oportunityID = demand.oportunityID;
-            demandDapper.isActive = demand.isActive;
-            demandDapper.creationDate = demand.creationDate;
-            demandDapper.createdByID = demand.createdByID;
-            demandDapper.lastModifiedDate = demand.lastModifiedDate;
-            demandDapper.modifiedByID = demand.modifiedByID;
-
-            return demandDapper;
-        }
-
-        public static PositionsSalarieDapper Map(this PositionsSalarie positionsSalarie, int primaryKey)
-        {
-            PositionsSalarieDapper positionsSalarieDapper = new PositionsSalarieDapper();
-
-            positionsSalarieDapper.positionsSalarieID = primaryKey;
-            positionsSalarieDapper.functionID = positionsSalarie.functionID;
-            positionsSalarieDapper.levelID = positionsSalarie.levelID;
-            positionsSalarieDapper.classificationID = positionsSalarie.classificationID;
-            positionsSalarieDapper.amountPJ = positionsSalarie.amountPJ;
-            positionsSalarieDapper.amountCLT = positionsSalarie.amountCLT;
-            positionsSalarieDapper.amountCLTFLEX = positionsSalarie.amountCLTFLEX;
-            positionsSalarieDapper.creationDate = positionsSalarie.creationDate;
-            positionsSalarieDapper.createdByID = positionsSalarie.createdByID;
-            positionsSalarieDapper.lastModifiedDate = positionsSalarie.lastModifiedDate;
-            positionsSalarieDapper.modifiedByID = positionsSalarie.modifiedByID;
-            positionsSalarieDapper.startingDate = positionsSalarie.startingDate;
-            positionsSalarieDapper.closingDate = positionsSalarie.closingDate;
-
-
-
-            return positionsSalarieDapper;
-        }
 
         public static ParameterValueDapper Map(this ParameterValue parameterValue, int primaryKey)
         {
@@ -123,6 +28,21 @@ namespace ControleVeiculos.Repository.Map
             parameterValueDapper.modifiedByID = parameterValue.modifiedByID;
 
             return parameterValueDapper;
+        }
+
+        public static ParameterDapper Map(this Parameter parameter, int primaryKey)
+        {
+            ParameterDapper parameterDapper = new ParameterDapper();
+
+            parameterDapper.parameterID = primaryKey;
+            parameterDapper.parameterName = parameter.parameterName;
+            parameterDapper.systemFeatureID = parameter.systemFeatureID;
+            parameterDapper.createdByID = parameter.createdByID;
+            parameterDapper.creationDate = parameter.creationDate;
+            parameterDapper.lastModifiedDate = parameter.lastModifiedDate;
+            parameterDapper.modifiedByID = parameter.modifiedByID;
+
+            return parameterDapper;
         }
 
         public static UserDapper Map(this User user, int primaryKey)
@@ -198,171 +118,6 @@ namespace ControleVeiculos.Repository.Map
 
         }
 
-        public static AttachmentDapper Map(this Attachment attachment, int primaryKey)
-        {
-            AttachmentDapper attachmentDapper = new AttachmentDapper();
-
-            attachmentDapper.attachmentID = primaryKey;
-            attachmentDapper.fileName = attachment.fileName;
-            attachmentDapper.description = attachment.description;
-            attachmentDapper.binaryFile = attachment.binaryFile;
-            attachmentDapper.pathFile = attachment.pathFile;
-            attachmentDapper.sizeFile = attachment.sizeFile;
-            attachmentDapper.recordID = attachment.recordID;
-            attachmentDapper.systemFeatureID = attachment.systemFeatureID;
-            attachmentDapper.createdByID = attachment.createdByID;
-            attachmentDapper.creationDate = attachment.creationDate;
-            attachmentDapper.lastModifiedDate = attachment.lastModifiedDate;
-            attachmentDapper.modifiedByID = attachment.modifiedByID;
-
-            return attachmentDapper;
-        }
-
-        public static AccountingEntrieDapper Map(this AccountingEntrie accountingEntrie, int primaryKey)
-        {
-            AccountingEntrieDapper accountingEntrieDapper = new AccountingEntrieDapper();
-
-            accountingEntrieDapper.accountingEntrieID = primaryKey;
-            accountingEntrieDapper.classID = accountingEntrie.classID;
-            accountingEntrieDapper.categoryID = accountingEntrie.categoryID;
-            accountingEntrieDapper.subCategoryID = accountingEntrie.subCategoryID;
-            accountingEntrieDapper.accountID = accountingEntrie.accountID;
-            accountingEntrieDapper.statusID = accountingEntrie.statusID;
-            accountingEntrieDapper.valueToBeRealized = accountingEntrie.valueToBeRealized;
-            accountingEntrieDapper.competitionDate = accountingEntrie.competitionDate;
-            accountingEntrieDapper.realizedValue = accountingEntrie.realizedValue;
-            accountingEntrieDapper.dueDate = accountingEntrie.dueDate;
-            accountingEntrieDapper.interest = accountingEntrie.interest;
-            accountingEntrieDapper.invoiceNumber = accountingEntrie.invoiceNumber;
-            accountingEntrieDapper.documentNumber = accountingEntrie.documentNumber;
-            accountingEntrieDapper.customerID = accountingEntrie.customerID;
-            accountingEntrieDapper.description = accountingEntrie.description;
-            accountingEntrieDapper.demandID = accountingEntrie.demandID;
-            accountingEntrieDapper.employeeID = accountingEntrie.employeeID;
-            accountingEntrieDapper.createdByID = accountingEntrie.createdByID;
-            accountingEntrieDapper.creationDate = accountingEntrie.creationDate;
-            accountingEntrieDapper.lastModifiedDate = accountingEntrie.lastModifiedDate;
-            accountingEntrieDapper.modifiedByID = accountingEntrie.modifiedByID;
-
-            return accountingEntrieDapper;
-
-        }
-
-        public static ChangeRequestDapper Map(this ChangeRequest changeRequest, int primaryKey)
-        {
-            ChangeRequestDapper changeRequestDapper = new ChangeRequestDapper();
-
-            changeRequestDapper.changeRequestID = primaryKey;
-            changeRequestDapper.summary = changeRequest.summary;
-            changeRequestDapper.managementEffort = changeRequest.managementEffort;
-            changeRequestDapper.planningEffort = changeRequest.planningEffort;
-            changeRequestDapper.executionEffort = changeRequest.executionEffort;
-            changeRequestDapper.statusID = changeRequest.statusID;
-            changeRequestDapper.targetDate = changeRequest.targetDate;
-            changeRequestDapper.approvedDate = changeRequest.approvedDate;
-            changeRequestDapper.description = changeRequest.description;
-            changeRequestDapper.demandID = changeRequest.demandID;
-            changeRequestDapper.requestByID = changeRequest.requestByID;
-            changeRequestDapper.createdByID = changeRequest.createdByID;
-            changeRequestDapper.creationDate = changeRequest.creationDate;
-            changeRequestDapper.lastModifiedDate = changeRequest.lastModifiedDate;
-            changeRequestDapper.modifiedByID = changeRequest.modifiedByID;
-
-            return changeRequestDapper;
-        }
-
-        public static DailyLogCommentDapper Map(this DailyLogComment dailyLogComment, int primaryKey)
-        {
-            DailyLogCommentDapper dailyLogCommentDapper = new DailyLogCommentDapper();
-
-            dailyLogCommentDapper.dailyLogsCommentID = primaryKey;
-            dailyLogCommentDapper.descrition = dailyLogComment.descrition;
-            dailyLogCommentDapper.createdByID = dailyLogComment.createdByID;
-            dailyLogCommentDapper.creationDate = dailyLogComment.creationDate;
-            dailyLogCommentDapper.lastModifiedDate = dailyLogComment.lastModifiedDate;
-            dailyLogCommentDapper.modifiedByID = dailyLogComment.modifiedByID;
-
-            return dailyLogCommentDapper;
-        }
-
-        public static DailyLogDapper Map(this DailyLog dailyLog, int primaryKey)
-
-        {
-            DailyLogDapper dailyLogDapper = new DailyLogDapper();
-
-            dailyLogDapper.dailyLogID = primaryKey;
-            dailyLogDapper.description = dailyLog.description;
-            dailyLogDapper.demandID = dailyLog.demandID;
-            dailyLogDapper.isInternal = dailyLog.isInternal;
-            dailyLogDapper.createdByID = dailyLog.createdByID;
-            dailyLogDapper.creationDate = dailyLog.creationDate;
-            dailyLogDapper.lastModifiedDate = dailyLog.lastModifiedDate;
-            dailyLogDapper.modifiedByID = dailyLog.modifiedByID;
-
-            return dailyLogDapper;
-        }
-
-        public static DemandUserDapper Map(this DemandUser demandUser)
-        {
-            DemandUserDapper demandUserDapper = new DemandUserDapper();
-
-            demandUserDapper.demandID = demandUser.demandID;
-            demandUserDapper.userID = demandUser.userID;
-
-            return demandUserDapper;
-        }
-
-        public static CustomerDapper Map(this Customer customer, int primaryKey)
-        {
-            CustomerDapper customerDapper = new CustomerDapper();
-
-            customerDapper.customerID = primaryKey;
-            customerDapper.customerName = customer.customerName;
-            customerDapper.description = customer.description;
-            customerDapper.isActive = customer.isActive;
-            customerDapper.segmentID = customer.segmentID;
-            customerDapper.typeID = customer.typeID;
-            customerDapper.site = customer.site;
-            customerDapper.address = customer.address;
-            customerDapper.createdByID = customer.createdByID;
-            customerDapper.creationDate = customer.creationDate;
-            customerDapper.lastModifiedDate = customer.lastModifiedDate;
-            customerDapper.modifiedByID = customer.modifiedByID;
-
-            return customerDapper;
-        }
-
-        public static CustomerUserDapper Map(this CustomerUser customerUser)
-        {
-            CustomerUserDapper customerUserDapper = new CustomerUserDapper();
-
-            customerUserDapper.customerID = customerUser.customerID;
-            customerUserDapper.userID = customerUser.userID;
-
-            return customerUserDapper;
-        }
-
-        public static ElementDapper Map(this Element element, int primaryKey)
-        {
-            ElementDapper elementDapper = new ElementDapper();
-
-            elementDapper.elementID = primaryKey;
-            elementDapper.element = element.element;
-            elementDapper.actionID = element.actionID;
-            elementDapper.defaultValue = element.defaultValue;
-            elementDapper.valuePerKilometer = element.valuePerKilometer;
-            elementDapper.domains = element.domains;
-            elementDapper.automationID = element.automationID;
-            elementDapper.typeIdentificationID = element.typeIdentificationID;
-            elementDapper.featureID = element.featureID;
-            elementDapper.createdByID = element.createdByID;
-            elementDapper.creationDate = element.creationDate;
-            elementDapper.lastModifiedDate = element.lastModifiedDate;
-            elementDapper.modifiedByID = element.modifiedByID;
-
-            return elementDapper;
-        }
-
         public static SystemFeatureDapper Map(this SystemFeature systemFeature, int primaryKey)
         {
             SystemFeatureDapper systemFeatureDapper = new SystemFeatureDapper();
@@ -376,173 +131,6 @@ namespace ControleVeiculos.Repository.Map
             systemFeatureDapper.modifiedByID = systemFeature.modifiedByID;
 
             return systemFeatureDapper;
-        }
-
-
-        public static PipelineDapper Map(this Pipeline pipeline, int primaryKey)
-        {
-            PipelineDapper pipelineDapper = new PipelineDapper();
-
-            pipelineDapper.oportunityID = primaryKey;
-            pipelineDapper.customerID = pipeline.customerID;
-            pipelineDapper.oportunityCode = pipeline.oportunityCode;
-            pipelineDapper.summary = pipeline.summary;
-            pipelineDapper.description = pipeline.description;
-            pipelineDapper.priorityID = pipeline.priorityID;
-            pipelineDapper.faseID = pipeline.faseID;
-            pipelineDapper.ownerID = pipeline.ownerID;
-            pipelineDapper.saleManagerID = pipeline.saleManagerID;
-            pipelineDapper.preSalesID = pipeline.preSalesID;
-            pipelineDapper.operationManagerID = pipeline.operationManagerID;
-            pipelineDapper.typeID = pipeline.typeID;
-            pipelineDapper.costCenterID = pipeline.costCenterID;
-            pipelineDapper.offerID = pipeline.offerID;
-            pipelineDapper.sponsor = pipeline.sponsor;
-            pipelineDapper.powerSponsor = pipeline.powerSponsor;
-            pipelineDapper.expectedValue = pipeline.expectedValue;
-            pipelineDapper.targetDate = pipeline.targetDate;
-            pipelineDapper.statusID = pipeline.statusID;
-            pipelineDapper.probability = pipeline.probability;
-            pipelineDapper.billed = pipeline.billed;
-            pipelineDapper.comments = pipeline.comments;
-            pipelineDapper.closingDate = pipeline.closingDate;
-            pipelineDapper.frequencyOfInteractionID = pipeline.frequencyOfInteractionID;
-            pipelineDapper.approvedByID = pipeline.approvedByID;
-            pipelineDapper.approvedDate = pipeline.approvedDate;
-            pipelineDapper.quarter1 = pipeline.quarter1;
-            pipelineDapper.quarter2 = pipeline.quarter2;
-            pipelineDapper.quarter3 = pipeline.quarter3;
-            pipelineDapper.quarter4 = pipeline.quarter4;
-            pipelineDapper.createdByID = pipeline.createdByID;
-            pipelineDapper.creationDate = pipeline.creationDate;
-            pipelineDapper.lastModifiedDate = pipeline.lastModifiedDate;
-            pipelineDapper.modifiedByID = pipeline.modifiedByID;
-
-            return pipelineDapper;
-        }
-
-
-        public static ExpenseDapper Map(this Expense expense, int primaryKey)
-        {
-            ExpenseDapper expenseDapper = new ExpenseDapper();
-
-            expenseDapper.expenseID = primaryKey;
-            expenseDapper.description = expense.description;
-            expenseDapper.registerDate = expense.registerDate;
-            expenseDapper.typeExpenseID = expense.typeExpenseID;
-            expenseDapper.demandID = expense.demandID;
-            expenseDapper.statusID = expense.statusID;
-            expenseDapper.customerID = expense.customerID;
-            expenseDapper.departmentID = expense.departmentID;
-            expenseDapper.subTotal = expense.subTotal;
-            expenseDapper.Kilometer = expense.kilometer;
-            expenseDapper.amountExpense = expense.amountExpense;
-            expenseDapper.refundable = expense.refundable;
-            expenseDapper.approvedByID = expense.approvedByID;
-            expenseDapper.approvedDate = expense.approvedDate;
-            expenseDapper.createdByID = expense.createdByID;
-            expenseDapper.creationDate = expense.creationDate;
-            expenseDapper.lastModifiedDate = expense.lastModifiedDate;
-            expenseDapper.modifiedByID = expense.modifiedByID;
-
-            return expenseDapper;
-        }
-
-        public static FeatureDapper Map(this Feature feature, int primaryKey)
-        {
-            FeatureDapper featureDapper = new FeatureDapper();
-
-            featureDapper.featureID = primaryKey;
-            featureDapper.featureName = feature.featureName;
-            featureDapper.statusID = feature.statusID;
-            featureDapper.description = feature.description;
-            featureDapper.applicationSystemID = feature.applicationSystemID;
-            featureDapper.developerID = feature.developerID;
-            featureDapper.featureTypeID = feature.featureTypeID;
-            featureDapper.metaScript = feature.metaScript;
-            featureDapper.automationScript = feature.automationScript;
-            featureDapper.testPoints = feature.testPoints;
-            featureDapper.targetDate = feature.targetDate;
-            featureDapper.timeEffort = feature.timeEffort;
-            featureDapper.createdByID = feature.createdByID;
-            featureDapper.creationDate = feature.creationDate;
-            featureDapper.lastModifiedDate = feature.lastModifiedDate;
-            featureDapper.modifiedByID = feature.modifiedByID;
-
-            return featureDapper;
-        }
-
-        public static GroupDapper Map(this Group group, int primaryKey)
-        {
-            GroupDapper groupDapper = new GroupDapper();
-
-            groupDapper.groupID = primaryKey;
-            groupDapper.groupName = group.groupName;
-            groupDapper.isSystem = group.isSystem;
-            groupDapper.description = group.description;
-            groupDapper.createdByID = group.createdByID;
-            groupDapper.creationDate = group.creationDate;
-            groupDapper.lastModifiedDate = group.lastModifiedDate;
-            groupDapper.modifiedByID = group.modifiedByID;
-
-            return groupDapper;
-        }
-
-        public static HistoricalDapper Map(this Historical historical, int primaryKey)
-        {
-            HistoricalDapper historicalDapper = new HistoricalDapper();
-
-            historicalDapper.historicalID = primaryKey;
-            historicalDapper.systemFeatureID = historical.systemFeatureID;
-            historicalDapper.recordID = historical.recordID;
-            historicalDapper.actionID = historical.actionID;
-            historicalDapper.oldValue = historical.oldValue;
-            historicalDapper.newValue = historical.newValue;
-            historicalDapper.fieldName = historical.fieldName;
-            historicalDapper.createdByID = historical.createdByID;
-            historicalDapper.creationDate = historical.creationDate;
-            historicalDapper.lastModifiedDate = historical.lastModifiedDate;
-            historicalDapper.modifiedByID = historical.modifiedByID;
-
-            return historicalDapper;
-        }
-
-        public static ParameterDapper Map(this Parameter parameter, int primaryKey)
-        {
-            ParameterDapper parameterDapper = new ParameterDapper();
-
-            parameterDapper.parameterID = primaryKey;
-            parameterDapper.parameterName = parameter.parameterName;
-            parameterDapper.systemFeatureID = parameter.systemFeatureID;
-            parameterDapper.createdByID = parameter.createdByID;
-            parameterDapper.creationDate = parameter.creationDate;
-            parameterDapper.lastModifiedDate = parameter.lastModifiedDate;
-            parameterDapper.modifiedByID = parameter.modifiedByID;
-
-            return parameterDapper;
-        }
-
-        public static ProfileDapper Map(this Profile profile, int primaryKey)
-        {
-            ProfileDapper profileDapper = new ProfileDapper();
-
-            profileDapper.profileID = primaryKey;
-            profileDapper.groupID = profile.GroupID;
-            profileDapper.systemFeatureID = profile.SystemFeatureID;
-            profileDapper.allowView = profile.AllowView;
-            profileDapper.allowAdd = profile.AllowAdd;
-            profileDapper.allowUpdate = profile.AllowUpdate;
-            profileDapper.allowDelete = profile.AllowDelete;
-            profileDapper.allowChangeStatus = profile.AllowChangeStatus;
-            profileDapper.allowAddRemove = profile.AllowAddRemove;
-            profileDapper.allowExportExcel = profile.AllowExportExcel;
-            profileDapper.allowReportView = profile.AllowReportView;
-            profileDapper.createdByID = profile.CreatedByID;
-            profileDapper.creationDate = profile.CreationDate;
-            profileDapper.lastModifiedDate = profile.LastModifiedDate;
-            profileDapper.modifiedByID = profile.ModifiedByID;
-
-            return profileDapper;
         }
 
         public static SystemMenuDapper Map(this SystemMenu systemMenu, int primaryKey)
@@ -582,574 +170,317 @@ namespace ControleVeiculos.Repository.Map
             return systemParameterDapper;
         }
 
-        public static TaskDapper Map(this Task task, int primaryKey)
+        public static ClienteDapper Map(this Clientes clientes, int primaryKey)
         {
-            TaskDapper taskDapper = new TaskDapper();
+            ClienteDapper clientesDapper = new ClienteDapper();
 
-            taskDapper.taskID = primaryKey;
-            taskDapper.summary = task.summary;
-            taskDapper.description = task.description;
-            taskDapper.assignToID = task.assignToID;
-            taskDapper.demandID = task.demandID;
-            taskDapper.customerID = task.customerID;
-            taskDapper.statusID = task.statusID;
-            taskDapper.targetDate = task.targetDate;
-            taskDapper.closingDate = task.closingDate;
-            taskDapper.createdByID = task.createdByID;
-            taskDapper.creationDate = task.creationDate;
-            taskDapper.lastModifiedDate = task.lastModifiedDate;
-            taskDapper.modifiedByID = task.modifiedByID;
+            clientesDapper.clienteID = primaryKey;
+            clientesDapper.nomeCliente = clientes.nomeCliente;
+            clientesDapper.ramo = clientes.ramo;
+            clientesDapper.estado = clientes.estado;
+            clientesDapper.cidade = clientes.cidade;
+            clientesDapper.telefone = clientes.telefone;
+            clientesDapper.email = clientes.email;
+            clientesDapper.status = clientes.status;
 
-            return taskDapper;
+            return clientesDapper;
         }
 
-        public static TemplateDapper Map(this Template template, int primaryKey)
+        public static StatusDapper Map(this Status status, int primaryKey)
         {
-            TemplateDapper templateDapper = new TemplateDapper();
+            StatusDapper statusDapper = new StatusDapper();
 
-            templateDapper.templateID = primaryKey;
-            templateDapper.templateName = template.templateName;
-            templateDapper.description = template.description;
-            templateDapper.domainID = template.domainID;
-            templateDapper.createdByID = template.createdByID;
-            templateDapper.creationDate = template.creationDate;
-            templateDapper.modifiedByID = template.modifiedByID;
-            templateDapper.lastModifiedDate = template.lastModifiedDate;
+            statusDapper.statusID = primaryKey;
+            statusDapper.disponibilidade = status.disponibilidade;
+            statusDapper.emUso = status.emUso;
+            statusDapper.emManutencao = status.emManutencao;
+            statusDapper.reservado = status.reservado;
+            statusDapper.veiculoID = status.veiculoID;
+            
+            return statusDapper;
+        }
+        
+        public static FuncionarioDapper Map(this Funcionarios funcionarios, int primaryKey)
+        {
+            FuncionarioDapper funcionariosDapper = new FuncionarioDapper();
 
-            return templateDapper;
+            funcionariosDapper.funcionarioID = primaryKey;
+            funcionariosDapper.nomeFuncionario = funcionarios.nomeFuncionario;
+            funcionariosDapper.endereco = funcionarios.endereco;
+            funcionariosDapper.cpf = funcionarios.cpf;
+            funcionariosDapper.funcao = funcionarios.funcao;
+            funcionariosDapper.setor = funcionarios.setor;
+            funcionariosDapper.telefone = funcionarios.telefone;
+            funcionariosDapper.numeroCnh = funcionarios.numeroCnh;
+
+            return funcionariosDapper;
+        }
+        public static CnhDapper Map(this Cnh cnh, int primaryKey)
+        {
+            CnhDapper cnhDapper = new CnhDapper();
+
+            cnhDapper.numeroCnh = primaryKey;
+            cnhDapper.validade = cnh.validade;
+            cnhDapper.categoria = cnh.categoria;
+            cnhDapper.funcionarioID = cnh.funcionarioID;
+            
+            return cnhDapper;
         }
 
-        public static ResumeDapper Map(this Resume resume, int primaryKey)
+        public static ReservaDapper Map(this Reservas reservas, int primaryKey)
         {
-            ResumeDapper resumeDapper = new ResumeDapper();
+            ReservaDapper reservasDapper = new ReservaDapper();
 
-            resumeDapper.resumeID = primaryKey;
-            resumeDapper.summary = resume.summary;
-            resumeDapper.functionID = resume.functionID;
-            resumeDapper.description = resume.description;
-            resumeDapper.genderID = resume.genderID;
-            resumeDapper.age = resume.age;
-            resumeDapper.timeExperience = resume.timeExperience;
-            resumeDapper.functionLevelID = resume.functionLevelID;
-            resumeDapper.statusRhID = resume.statusRhID;
-            resumeDapper.approvedDateRh = resume.approvedDateRh;
-            resumeDapper.statusManagerID = resume.statusManagerID;
-            resumeDapper.approvedDateManager = resume.approvedDateManager;
-            resumeDapper.statusClientID = resume.statusClientID;
-            resumeDapper.approvedDateClient = resume.approvedDateClient;
-            resumeDapper.expectedSalary = resume.expectedSalary;
-            resumeDapper.contractTypeID = resume.contractTypeID;
-            resumeDapper.isEmployee = resume.isEmployee;
-            resumeDapper.willingToTravel = resume.willingToTravel;
-            resumeDapper.maritalStatusID = resume.maritalStatusID;
-            resumeDapper.haveChildren = resume.haveChildren;
-            resumeDapper.isSmoker = resume.isSmoker;
-            resumeDapper.availabilityToStart = resume.availabilityToStart;
-            resumeDapper.observation = resume.observation;
-            resumeDapper.createdByID = resume.createdByID;
-            resumeDapper.creationDate = resume.creationDate;
-            resumeDapper.modifiedByID = resume.modifiedByID;
-            resumeDapper.lastModifiedDate = resume.lastModifiedDate;
-            resumeDapper.resultRh = resume.resultRh;
-            resumeDapper.resultManager = resume.resultManager;
-            resumeDapper.resultClient = resume.resultClient;
-
-            return resumeDapper;
+            reservasDapper.reservaID = primaryKey;
+            reservasDapper.dataReserva = reservas.dataReserva;
+            reservasDapper.finalidade = reservas.finalidade;
+            reservasDapper.destino = reservas.destino;
+            reservasDapper.funcionarioID = reservas.funcionarioID;
+            reservasDapper.numeroCnh = reservas.numeroCnh;
+            reservasDapper.veiculoID = reservas.veiculoID;
+            
+            return reservasDapper;
         }
 
-        public static TestCaseDapper Map(this TestCase testCase, int primaryKey)
+        public static VeiculoDapper Map(this Veiculos veiculos, int primaryKey)
         {
-            TestCaseDapper testCaseDapper = new TestCaseDapper();
+            VeiculoDapper veiculosDapper = new VeiculoDapper();
 
-            testCaseDapper.testCaseID = primaryKey;
-            testCaseDapper.statusID = testCase.statusID;
-            testCaseDapper.testCase = testCase.testCase;
-            testCaseDapper.description = testCase.description;
-            testCaseDapper.precondition = testCase.precondition;
-            testCaseDapper.expectedResult = testCase.expectedResult;
-            testCaseDapper.featureID = testCase.featureID;
-            testCaseDapper.testScenarioID = testCase.testScenarioID;
-            testCaseDapper.executionOrder = testCase.executionOrder;
-            testCaseDapper.flowTestID = testCase.flowTestID;
-            testCaseDapper.startExecution = testCase.startExecution;
-            testCaseDapper.endExecution = testCase.endExecution;
-            testCaseDapper.timeExecution = testCase.timeExecution;
-            testCaseDapper.release = testCase.release;
-            testCaseDapper.cycle = testCase.cycle;
-            testCaseDapper.testTypeID = testCase.testTypeID;
-            testCaseDapper.createdByID = testCase.createdByID;
-            testCaseDapper.creationDate = testCase.creationDate;
-            testCaseDapper.modifiedByID = testCase.modifiedByID;
-            testCaseDapper.lastModifiedDate = testCase.lastModifiedDate;
-
-            return testCaseDapper;
+            veiculosDapper.veiculoID = primaryKey;
+            veiculosDapper.modelo = veiculos.packageName;
+            veiculosDapper.cor = veiculos.description;
+            veiculosDapper.placa = veiculos.demandID;
+            veiculosDapper.status = veiculos.statusID;
+            veiculosDapper.ano = veiculos.release;
+            veiculosDapper.numeroChassi = veiculos.cycle;
+            veiculosDapper.motor = veiculos.emailsToSendReport;
+            veiculosDapper.manutencaoID = veiculos.tecnologyID;
+            veiculosDapper.abastecimentoID = veiculos.browserID;
+            
+            return veiculosDapper;
         }
 
-        public static TestLogDapper Map(this TestLog testLog, int primaryKey)
+        public static ManutencaoDapper Map(this Manutencao manutencao, int primaryKey)
         {
-            TestLogDapper testLogDapper = new TestLogDapper();
+            ManutencaoDapper manutencaoDapper = new ManutencaoDapper();
 
-            testLogDapper.logID = primaryKey;
-            testLogDapper.testID = testLog.testID;
-            testLogDapper.statusID = testLog.statusID;
-            testLogDapper.stepName = testLog.stepName;
-            testLogDapper.expectedResult = testLog.expectedResult;
-            testLogDapper.actualResult = testLog.actualResult;
-            testLogDapper.pathEvidence = testLog.pathEvidence;
-            testLogDapper.createdByID = testLog.createdByID;
-            testLogDapper.creationDate = testLog.creationDate;
-            testLogDapper.modifiedByID = testLog.modifiedByID;
-            testLogDapper.lastModifiedDate = testLog.lastModifiedDate;
+            manutencaoDapper.manutencaoID = primaryKey;
+            manutencaoDapper.responsavel = manutencao.responsavel;
+            manutencaoDapper.dataManutencao = manutencao.dataManutencao;
+            manutencaoDapper.descricao = manutencao.descricao;
+            manutencaoDapper.veiculoID = manutencao.veiculoID;
+            
+            return manutencaoDapper;
+        }
+        public static AbastecimentoDapper Map(this Abastecimentos abastecimentos, int primaryKey)
+        {
+            AbastecimentoDapper abastecimentosDapper = new AbastecimentoDapper();
 
-            return testLogDapper;
+            abastecimentosDapper.abastecimentoID = primaryKey;
+            abastecimentosDapper.tipoCombustivel = abastecimentos.summary;
+            abastecimentosDapper.responsavel = abastecimentos.description;
+            abastecimentosDapper.data = abastecimentos.statusID;
+            abastecimentosDapper.kmAtual = abastecimentos.severityID;
+            abastecimentosDapper.veiculoID = abastecimentos.priorityID;
+            
+            return abastecimentosDapper;
+        }
+        public static EmprestimoDapper Map(this Emprestimo emprestimo, int primaryKey)
+        {
+            EmprestimoDapper emprestimoDapper = new EmprestimoDapper();
+
+            emprestimoDapper.emprestimoID = primaryKey;
+            emprestimoDapper.kmInicial = emprestimo.kmInicial;
+            emprestimoDapper.kmFinal = emprestimo.kmFinal;
+            emprestimoDapper.dataSaida = emprestimo.dataSaida;
+            emprestimoDapper.dataRetorno = emprestimo.dataRetorno;
+            emprestimoDapper.destino = emprestimo.destino;
+            emprestimoDapper.veiculoID = emprestimo.veiculoID;
+            emprestimoDapper.funcionarioID = emprestimo.funcionarioID;
+ 
+            return emprestimoDapper;
         }
 
-        public static TestPackageDapper Map(this TestPackage testPackage, int primaryKey)
+        public static MotoristaDapper Map(this Motoristas motoristas, int primaryKey)
         {
-            TestPackageDapper testPackageDapper = new TestPackageDapper();
+            MotoristaDapper motoristasDapper = new MotoristaDapper();
 
-            testPackageDapper.testPackageID = primaryKey;
-            testPackageDapper.packageName = testPackage.packageName;
-            testPackageDapper.description = testPackage.description;
-            testPackageDapper.demandID = testPackage.demandID;
-            testPackageDapper.statusID = testPackage.statusID;
-            testPackageDapper.release = testPackage.release;
-            testPackageDapper.cycle = testPackage.cycle;
-            testPackageDapper.emailsToSendReport = testPackage.emailsToSendReport;
-            testPackageDapper.tecnologyID = testPackage.tecnologyID;
-            testPackageDapper.browserID = testPackage.browserID;
-            testPackageDapper.executionSpeedy = testPackage.executionSpeedy;
-            testPackageDapper.resetApp = testPackage.resetApp;
-            testPackageDapper.highLight = testPackage.highLight;
-            testPackageDapper.highLightOut = testPackage.highLightOut;
-            testPackageDapper.deviceID = testPackage.deviceID;
-            testPackageDapper.platformNameID = testPackage.platformNameID;
-            testPackageDapper.sendEmail = testPackage.sendEmail;
-            testPackageDapper.generateLog = testPackage.generateLog;
-            testPackageDapper.logHtml = testPackage.logHtml;
-            testPackageDapper.methodologyID = testPackage.methodologyID;
-            testPackageDapper.solutionPath = testPackage.solutionPath;
-            testPackageDapper.leantestVariable = testPackage.leantestVariable;
-            testPackageDapper.saveEvidenceToExternalPath = testPackage.saveEvidenceToExternalPath;
-            testPackageDapper.createdByID = testPackage.createdByID;
-            testPackageDapper.creationDate = testPackage.creationDate;
-            testPackageDapper.modifiedByID = testPackage.modifiedByID;
-            testPackageDapper.lastModifiedDate = testPackage.lastModifiedDate;
-
-            return testPackageDapper;
+            motoristasDapper.motoristaID = primaryKey;
+            motoristasDapper.nomeMotorista = motoristas.kmInicial;
+            motoristasDapper.numeroCnh = motoristas.kmFinal;
+           
+            return motoristasDapper;
         }
 
-        public static TestScenarioDapper Map(this TestScenario testScenario, int primaryKey)
+        public static DepartamentoDapper Map(this Departamento departamento, int primaryKey)
         {
-            TestScenarioDapper testScenarioDapper = new TestScenarioDapper();
+            DepartamentoDapper departamentoDapper = new DepartamentoDapper();
 
-            testScenarioDapper.testScenarioID = primaryKey;
-            testScenarioDapper.testScenario = testScenario.testScenario;
-            testScenarioDapper.description = testScenario.description;
-            testScenarioDapper.statusID = testScenario.statusID;
-            testScenarioDapper.executionOrder = testScenario.executionOrder;
-            testScenarioDapper.startExecution = testScenario.startExecution;
-            testScenarioDapper.endExecution = testScenario.endExecution;
-            testScenarioDapper.timeExecution = testScenario.timeExecution;
-            testScenarioDapper.testTypeID = testScenario.testTypeID;
-            testScenarioDapper.executionTypeID = testScenario.executionTypeID;
-            testScenarioDapper.createdByID = testScenario.createdByID;
-            testScenarioDapper.creationDate = testScenario.creationDate;
-            testScenarioDapper.modifiedByID = testScenario.modifiedByID;
-            testScenarioDapper.lastModifiedDate = testScenario.lastModifiedDate;
-            testScenarioDapper.testPackageID = testScenario.testPackageID;
+            departamentoDapper.departamentoID = primaryKey;
+            departamentoDapper.nomeDepartamento = departamento.nomeDepartamento;
+            departamentoDapper.descricao = departamento.descricao;
+            departamentoDapper.funcionarioID = departamento.funcionarioID;
 
-            return testScenarioDapper;
+            return departamentoDapper;
         }
 
-        public static TestScenarioFeatureDapper Map(this TestScenarioFeature testScenarioFeature, int primaryKey)
+        public static RotaDapper Map(this Rotas rotas, int primaryKey)
         {
-            TestScenarioFeatureDapper testScenarioFeatureDapper = new TestScenarioFeatureDapper();
+            RotaDapper rotasDapper = new RotaDapper();
 
-            testScenarioFeatureDapper.testScenarioFeatureID = primaryKey;
-            testScenarioFeatureDapper.testScenarioID = testScenarioFeature.testScenarioID;
-            testScenarioFeatureDapper.featureID = testScenarioFeature.featureID;
-            testScenarioFeatureDapper.executionOrder = testScenarioFeature.executionOrder;
-            testScenarioFeatureDapper.isLoop = testScenarioFeature.isLoop;
-            testScenarioFeatureDapper.statusID = testScenarioFeature.statusID;
-            testScenarioFeatureDapper.toolsTestID = testScenarioFeature.toolsTestID;
-            testScenarioFeatureDapper.testID = testScenarioFeature.testID;
-            testScenarioFeatureDapper.createdByID = testScenarioFeature.createdByID;
-            testScenarioFeatureDapper.creationDate = testScenarioFeature.creationDate;
-            testScenarioFeatureDapper.modifiedByID = testScenarioFeature.modifiedByID;
-            testScenarioFeatureDapper.lastModifiedDate = testScenarioFeature.lastModifiedDate;
+            rotasDapper.rotaID = primaryKey;
+            rotasDapper.cidade = rotas.cidade;
+            rotasDapper.estado = rotas.estado;
+            rotasDapper.distancia = rotas.distancia;
+            rotasDapper.pedagio = rotas.pedagio;
+            rotasDapper.dataIda = rotas.dataIda;
+            rotasDapper.dataVolta = rotas.dataVolta;
 
-            return testScenarioFeatureDapper;
+            return rotasDapper;
         }
 
-        public static TimeReleaseDapper Map(this TimeRelease timeRelease, int primaryKey)
+        public static SeguroDapper Map(this Seguro seguro, int primaryKey)
         {
-            TimeReleaseDapper timeReleaseDapper = new TimeReleaseDapper();
+            SeguroDapper seguroDapper = new SeguroDapper();
 
-            timeReleaseDapper.timeReleaseID = primaryKey;
-            timeReleaseDapper.registerDate = timeRelease.registerDate;
-            timeReleaseDapper.startWork = timeRelease.startWork;
-            timeReleaseDapper.endWork = timeRelease.endWork;
-            timeReleaseDapper.demandID = timeRelease.demandID;
-            timeReleaseDapper.isApproved = timeRelease.isApproved;
-            timeReleaseDapper.activityID = timeRelease.activityID;
-            timeReleaseDapper.approvedByID = timeRelease.approvedByID;
-            timeReleaseDapper.approvedDate = timeRelease.approvedDate;
-            timeReleaseDapper.description = timeRelease.description;
-            timeReleaseDapper.reasonChange = timeRelease.reasonChange;
-            timeReleaseDapper.createdByID = timeRelease.createdByID;
-            timeReleaseDapper.creationDate = timeRelease.creationDate;
-            timeReleaseDapper.modifiedByID = timeRelease.modifiedByID;
-            timeReleaseDapper.lastModifiedDate = timeRelease.lastModifiedDate;
+            seguroDapper.seguroID = primaryKey;
+            seguroDapper.apolice = seguro.apolice;
+            seguroDapper.seguradora = seguro.seguradora;
+            seguroDapper.franquia = seguro.franquia;
+            seguroDapper.tipoSeguro = seguro.tipoSeguro;
+            seguroDapper.dataContratacao = seguro.dataContratacao;
+            seguroDapper.vigencia = seguro.vigencia;
+            seguroDapper.fimContratacao = seguro.fimContratacao;
+            seguroDapper.renovacao = seguro.renovacao;
+            seguroDapper.telefoneSeguradora = seguro.telefoneSeguradora;
+            seguroDapper.periodoCarencia = seguro.periodoCarencia;
+            seguroDapper.indenizacao = seguro.indenizacao;
+            seguroDapper.sinistroID = seguro.sinistroID;
+            seguroDapper.veiculoID = seguro.veiculoID;
 
-            return timeReleaseDapper;
+
+            return seguroDapper;
         }
 
-        public static GroupUserDapper Map(this GroupUser groupUser)
+        public static SinistroDapper Map(this Sinistro sinistro, int primaryKey)
         {
-            GroupUserDapper groupUserDapper = new GroupUserDapper();
+            SinistroDapper sinistroDapper = new SinistroDapper();
 
-            groupUserDapper.groupID = groupUser.groupID;
-            groupUserDapper.userID = groupUser.userID;
-
-            return groupUserDapper;
+            sinistroDapper.sinistroID = primaryKey;
+            sinistroDapper.apolice = sinistro.apolice;
+            sinistroDapper.franquia = sinistro.franquia;
+            sinistroDapper.tipoSinistro = sinistro.tipoSinistro;
+           
+            return sinistroDapper;
         }
 
-        public static VacancieResumeDapper Map(this VacancieResume vacancieResume)
+        public static FilialDapper Map(this Filiais filiais, int primaryKey)
         {
-            VacancieResumeDapper vacancieResumeDapper = new VacancieResumeDapper();
+            FilialDapper filiaisDapper = new FilialDapper();
 
-            vacancieResumeDapper.vacancieID = vacancieResume.vacancieID;
-            vacancieResumeDapper.resumeID = vacancieResume.resumeID;
+            filiaisDapper.filialID = primaryKey;
+            filiaisDapper.nomeFilial = filiais.nomeFilial;
+            filiaisDapper.cidade = filiais.cidade;
+            filiaisDapper.estado = filiais.estado;
 
-            return vacancieResumeDapper;
+            return filiaisDapper;
         }
 
-        public static ResumeVacancieDapper Map(this ResumeVacancie resumeVacancie)
+        public static EntradaSaidaDapper Map(this EntradaSaida entradaSaida, int primaryKey)
         {
-            ResumeVacancieDapper resumeVacancieDapper = new ResumeVacancieDapper();
+            EntradaSaidaDapper entradaSaidaDapper = new EntradaSaidaDapper();
 
-            resumeVacancieDapper.resumeID = resumeVacancie.resumeID;
-            resumeVacancieDapper.vacancieID = resumeVacancie.vacancieID;
+            entradaSaidaDapper.entradaSaidaID = primaryKey;
+            entradaSaidaDapper.emprestimoID = entradaSaida.emprestimoID;
+            entradaSaidaDapper.servicosID = entradaSaida.servicosID;
+            entradaSaidaDapper.veiculoID = entradaSaida.veiculoID;
 
-            return resumeVacancieDapper;
-        }
-        public static WorkflowDapper Map(this Workflow workflow, int primaryKey)
-        {
-            WorkflowDapper workflowDapper = new WorkflowDapper();
-
-            workflowDapper.workflowID = primaryKey;
-            workflowDapper.systemFeatureID = workflow.systemFeatureID;
-            workflowDapper.groupID = workflow.groupID;
-            workflowDapper.statusID = workflow.statusID;
-            workflowDapper.statusToID = workflow.statusToID;
-            workflowDapper.createdByID = workflow.createdByID;
-            workflowDapper.creationDate = workflow.creationDate;
-            workflowDapper.modifiedByID = workflow.modifiedByID;
-            workflowDapper.lastModifiedDate = workflow.lastModifiedDate;
-
-            return workflowDapper;
+            return entradaSaidaDapper;
         }
 
-        public static EquipmentAccessorieDapper Map(this EquipmentAccessorie equipmentAccessorie, int primaryKey)
+        public static FinancaDapper Map(this Financas financas, int primaryKey)
         {
-            EquipmentAccessorieDapper equipmentAccessorieDapper = new EquipmentAccessorieDapper();
+            FinancaDapper financasDapper = new FinancaDapper();
 
-            equipmentAccessorieDapper.equipmentAccessorieID = primaryKey;
-            equipmentAccessorieDapper.description = equipmentAccessorie.description;
-            equipmentAccessorieDapper.serialNumber = equipmentAccessorie.serialNumber;
-            equipmentAccessorieDapper.modelName = equipmentAccessorie.modelName;
-            equipmentAccessorieDapper.assignToID = equipmentAccessorie.assignToID;
-            equipmentAccessorieDapper.typeID = equipmentAccessorie.typeID;
-            equipmentAccessorieDapper.invoicing = equipmentAccessorie.invoicing;
-            equipmentAccessorieDapper.amountInvoicing = equipmentAccessorie.amountInvoicing;
-            equipmentAccessorieDapper.createdByID = equipmentAccessorie.createdByID;
-            equipmentAccessorieDapper.creationDate = equipmentAccessorie.creationDate;
-            equipmentAccessorieDapper.modifiedByID = equipmentAccessorie.modifiedByID;
-            equipmentAccessorieDapper.lastModifiedDate = equipmentAccessorie.lastModifiedDate;
-            equipmentAccessorieDapper.startDate = equipmentAccessorie.startDate;
-            equipmentAccessorieDapper.endDate = equipmentAccessorie.endDate;
-
-
-            return equipmentAccessorieDapper;
-
-        }
-        public static IssueDapper Map(this Issue issue, int primaryKey)
-        {
-            IssueDapper issueDapper = new IssueDapper();
-
-            issueDapper.issueID = primaryKey;
-            issueDapper.summary = issue.summary;
-            issueDapper.description = issue.description;
-            issueDapper.statusID = issue.statusID;
-            issueDapper.severityID = issue.severityID;
-            issueDapper.priorityID = issue.priorityID;
-            issueDapper.assingToID = issue.assingToID;
-            issueDapper.typeID = issue.typeID;
-            issueDapper.resolutionID = issue.resolutionID;
-            issueDapper.resolution = issue.resolution;
-            issueDapper.resolutionDate = issue.resolutionDate;
-            issueDapper.createdByID = issue.createdByID;
-            issueDapper.creationDate = issue.creationDate;
-            issueDapper.modifiedByID = issue.modifiedByID;
-            issueDapper.lastModifiedDate = issue.lastModifiedDate;
-
-            return issueDapper;
+            financasDapper.financaID = primaryKey;
+            financasDapper.valorCarro = financas.valorCarro;
+            financasDapper.valorSeguro = financas.valorSeguro;
+            financasDapper.valorAgua = financas.valorAgua;
+            financasDapper.valorLuz = financas.valorLuz;
+            financasDapper.valorInternet = financas.valorInternet;
+            financasDapper.valorManutencao = financas.valorManutencao;
+            financasDapper.salarios = financas.salarios;
+            financasDapper.gastosExtras = financas.gastosExtras;
+           
+            return financasDapper;
         }
 
-        public static DefectDapper Map(this Defect defect, int primaryKey)
+        public static FinancaDapper Map(this Financas financas, int primaryKey)
         {
-            DefectDapper defectDapper = new DefectDapper();
+            FinancaDapper financasDapper = new FinancaDapper();
 
-            defectDapper.defectID = primaryKey;
-            defectDapper.summary = defect.summary;
-            defectDapper.description = defect.description;
-            defectDapper.statusID = defect.statusID;
-            defectDapper.severityID = defect.severityID;
-            defectDapper.priorityID = defect.priorityID;
-            defectDapper.assingToID = defect.assingToID;
-            defectDapper.typeID = defect.typeID;
-            defectDapper.resolutionID = defect.resolutionID;
-            defectDapper.resolution = defect.resolution;
-            defectDapper.resolutionDate = defect.resolutionDate;
-            defectDapper.applicationSystemID = defect.applicationSystemID;
-            defectDapper.featureID = defect.featureID;
-            defectDapper.createdByID = defect.createdByID;
-            defectDapper.creationDate = defect.creationDate;
-            defectDapper.modifiedByID = defect.modifiedByID;
-            defectDapper.lastModifiedDate = defect.lastModifiedDate;
+            financasDapper.financaID = primaryKey;
+            financasDapper.valorCarro = financas.valorCarro;
+            financasDapper.valorSeguro = financas.valorSeguro;
+            financasDapper.valorAgua = financas.valorAgua;
+            financasDapper.valorLuz = financas.valorLuz;
+            financasDapper.valorInternet = financas.valorInternet;
+            financasDapper.valorManutencao = financas.valorManutencao;
+            financasDapper.salarios = financas.salarios;
+            financasDapper.gastosExtras = financas.gastosExtras;
 
-            return defectDapper;
+            return financasDapper;
         }
 
-        public static PipelineEventDapper Map(this PipelineEvent pipelineEvent, int primaryKey)
+        public static KilometragemDapper Map(this Kilometragem kilometragem, int primaryKey)
         {
-            PipelineEventDapper pipelineEventDapper = new PipelineEventDapper();
+            KilometragemDapper kilometragemDapper = new KilometragemDapper();
 
-            pipelineEventDapper.saleEventID = primaryKey;
-            pipelineEventDapper.registerDate = pipelineEvent.registerDate;
-            pipelineEventDapper.typeID = pipelineEvent.typeID;
-            pipelineEventDapper.nextStepID = pipelineEvent.nextStepID;
-            pipelineEventDapper.targetDate = pipelineEvent.targetDate;
-            pipelineEventDapper.description = pipelineEvent.description;
-            pipelineEventDapper.oportunityID = pipelineEvent.oportunityID;
-            pipelineEventDapper.createdByID = pipelineEvent.createdByID;
-            pipelineEventDapper.creationDate = pipelineEvent.creationDate;
-            pipelineEventDapper.lastModifiedDate = pipelineEvent.lastModifiedDate;
-            pipelineEventDapper.modifiedByID = pipelineEvent.modifiedByID;
-
-            return pipelineEventDapper;
+            kilometragemDapper.kilometragemID = primaryKey;
+            kilometragemDapper.kilometragemTotal = kilometragem.kilometragemTotal;
+            kilometragemDapper.veiculoID = kilometragem.veiculoID;
+           
+            return kilometragemDapper;
         }
 
-        public static MovimentEmployeeDapper Map(this MovimentEmployee movimentEmployee, int primaryKey)
+        public static MultaDapper Map(this Multas multas, int primaryKey)
         {
-            MovimentEmployeeDapper movimentEmployeeDapper = new MovimentEmployeeDapper();
+            MultaDapper multasDapper = new MultaDapper();
 
-            movimentEmployeeDapper.movimentEmployeeID = primaryKey;
-            movimentEmployeeDapper.employeeID = movimentEmployee.employeeID;
-            movimentEmployeeDapper.startDate = movimentEmployee.startDate;
-            movimentEmployeeDapper.endDate = movimentEmployee.endDate;
-            movimentEmployeeDapper.statusID = movimentEmployee.statusID;
-            movimentEmployeeDapper.movimentEmployeeTypeID = movimentEmployee.movimentEmployeeTypeID;
-            movimentEmployeeDapper.approvedDate = movimentEmployee.approvedDate;
-            movimentEmployeeDapper.approvedByID = movimentEmployee.approvedByID;
-            movimentEmployeeDapper.description = movimentEmployee.description;
-            movimentEmployeeDapper.createdByID = movimentEmployee.createdByID;
-            movimentEmployeeDapper.creationDate = movimentEmployee.creationDate;
-            movimentEmployeeDapper.modifiedByID = movimentEmployee.modifiedByID;
-            movimentEmployeeDapper.lastModifiedDate = movimentEmployee.lastModifiedDate;
-
-            return movimentEmployeeDapper;
+            multasDapper.multaID = primaryKey;
+            multasDapper.veiculoID = multas.veiculoID;
+            multasDapper.clienteID = multas.clienteID;
+            multasDapper.cnhID = multas.cnhID;
+            
+            return multasDapper;
         }
 
-        public static VacancieDapper Map(this Vacancie vacancie, int primaryKey)
+        public static AcessorioDapper Map(this Acessorios acessorios, int primaryKey)
         {
-            VacancieDapper vacancieDapper = new VacancieDapper();
+            AcessorioDapper acessoriosDapper = new AcessorioDapper();
 
-            vacancieDapper.vacancieID = primaryKey;
-            vacancieDapper.vacanciesTypeID = vacancie.vacanciesTypeID;
-            vacancieDapper.summary = vacancie.summary;
-            vacancieDapper.description = vacancie.description;
-            vacancieDapper.customerID = vacancie.customerID;
-            vacancieDapper.internalApplicantID = vacancie.internalApplicantID;
-            vacancieDapper.externalApplicantID = vacancie.externalApplicantID;
-            vacancieDapper.assignToID = vacancie.assignToID;
-            vacancieDapper.contractTypeID = vacancie.contractTypeID;
-            vacancieDapper.validityID = vacancie.validityID;
-            vacancieDapper.statusID = vacancie.statusID;
-            vacancieDapper.openingDate = vacancie.openingDate;
-            vacancieDapper.closingDate = vacancie.closingDate;
-            vacancieDapper.expectedStartDate = vacancie.expectedStartDate;
-            vacancieDapper.maximumValue = vacancie.maximumValue;
-            vacancieDapper.closedValue = vacancie.closedValue;
-            vacancieDapper.workPlace = vacancie.workPlace;
-            vacancieDapper.resumeSelectedID = vacancie.resumeSelectedID;
-            vacancieDapper.createdByID = vacancie.createdByID;
-            vacancieDapper.creationDate = vacancie.creationDate;
-            vacancieDapper.modifiedByID = vacancie.modifiedByID;
-            vacancieDapper.lastModifiedDate = vacancie.lastModifiedDate;
+            acessoriosDapper.acessorioID = primaryKey;
+            acessoriosDapper.gps = acessorios.gps;
+            acessoriosDapper.airBag = acessorios.airBag;
+            acessoriosDapper.arCondicionado = acessorios.arCondicionado;
+            acessoriosDapper.direcao = acessorios.direcao;
+            acessoriosDapper.travasEletricas = acessorios.travasEletricas;
+            acessoriosDapper.vidroEletrico = acessorios.vidroEletrico;
+            acessoriosDapper.alarme = acessorios.alarme;
 
-            return vacancieDapper;
+            return acessoriosDapper;
         }
 
-        public static ContractDapper Map(this Contract contract, int primaryKey)
+        public static DocumentoDapper Map(this Documentos documentos, int primaryKey)
         {
-            ContractDapper contractDapper = new ContractDapper();
+            DocumentoDapper documentosDapper = new DocumentoDapper();
 
-            contractDapper.contractID = primaryKey;
-            contractDapper.oportunityID = contract.oportunityID;
-            contractDapper.contractTypeID = contract.contractTypeID;
-            contractDapper.contractorCustomerID = contract.contractorCustomerID;
-            contractDapper.contractingCustomerID = contract.contractingCustomerID;
-            contractDapper.objectContract = contract.objectContract;
-            contractDapper.startDate = contract.startDate;
-            contractDapper.endDate = contract.endDate;
-            contractDapper.periodValidityID = contract.periodValidityID;
-            contractDapper.extencionID = contract.extencionID;
-            contractDapper.extencionPeriodID = contract.extencionPeriodID;
-            contractDapper.resetModalityID = contract.resetModalityID;
-            contractDapper.billingCondition = contract.billingCondition;
-            contractDapper.createdByID = contract.createdByID;
-            contractDapper.creationDate = contract.creationDate;
-            contractDapper.modifiedByID = contract.modifiedByID;
-            contractDapper.lastModifiedDate = contract.lastModifiedDate;
-
-            return contractDapper;
-        }
-
-        public static AnnexContractDapper Map(this AnnexContract annexContract, int primaryKey)
-        {
-            AnnexContractDapper annexContractDapper = new AnnexContractDapper();
-
-            annexContractDapper.annexID = primaryKey;
-            annexContractDapper.oportunityID = annexContract.oportunityID;
-            annexContractDapper.contractID = annexContract.contractID;
-            annexContractDapper.summary = annexContract.summary;
-            annexContractDapper.annexObject = annexContract.annexObject;
-            annexContractDapper.startDate = annexContract.startDate;
-            annexContractDapper.endDate = annexContract.endDate;
-            annexContractDapper.extencionPeriodID = annexContract.extencionPeriodID;
-            annexContractDapper.createdByID = annexContract.createdByID;
-            annexContractDapper.creationDate = annexContract.creationDate;
-            annexContractDapper.modifiedByID = annexContract.modifiedByID;
-            annexContractDapper.lastModifiedDate = annexContract.lastModifiedDate;
-
-            return annexContractDapper;
-        }
-
-        public static ContractAdditiveDapper Map(this ContractAdditive contractAdditive, int primaryKey)
-        {
-            ContractAdditiveDapper contractAdditiveDapper = new ContractAdditiveDapper();
-
-            contractAdditiveDapper.additiveID = primaryKey;
-            contractAdditiveDapper.contractID = contractAdditive.contractID;
-            contractAdditiveDapper.additiveObject = contractAdditive.additiveObject;
-            contractAdditiveDapper.startDate = contractAdditive.startDate;
-            contractAdditiveDapper.endDate = contractAdditive.endDate;
-            contractAdditiveDapper.periodValidityID = contractAdditive.periodValidityID;
-            contractAdditiveDapper.extencionID = contractAdditive.extencionID;
-            contractAdditiveDapper.extencionPeriodID = contractAdditive.extencionPeriodID;
-            contractAdditiveDapper.resetModalityID = contractAdditive.resetModalityID;
-            contractAdditiveDapper.billingCondition = contractAdditive.billingCondition;
-            contractAdditiveDapper.oportunityID = contractAdditive.oportunityID;
-            contractAdditiveDapper.createdByID = contractAdditive.createdByID;
-            contractAdditiveDapper.creationDate = contractAdditive.creationDate;
-            contractAdditiveDapper.modifiedByID = contractAdditive.modifiedByID;
-            contractAdditiveDapper.lastModifiedDate = contractAdditive.lastModifiedDate;
-
-            return contractAdditiveDapper;
-        }
-
-        public static ContactDapper Map(this Contact contact, int primaryKey)
-        {
-            ContactDapper contactDapper = new ContactDapper();
-
-            contactDapper.contactID = primaryKey;
-            contactDapper.contactName = contact.contactName;
-            contactDapper.email = contact.email;
-            contactDapper.cellNumber = contact.cellNumber;
-            contactDapper.telNumber = contact.telNumber;
-            contactDapper.functionID = contact.functionID;
-            contactDapper.customerID = contact.customerID;
-            contactDapper.description = contact.description;
-            contactDapper.feature = contact.feature;
-            contactDapper.createdByID = contact.createdByID;
-            contactDapper.creationDate = contact.creationDate;
-            contactDapper.modifiedByID = contact.modifiedByID;
-            contactDapper.lastModifiedDate = contact.lastModifiedDate;
-
-            return contactDapper;
-        }
-
-        public static SupportDapper Map(this Support support, int primaryKey)
-        {
-            SupportDapper supportDapper = new SupportDapper();
-
-            supportDapper.supportID = primaryKey;
-            supportDapper.summary = support.summary;
-            supportDapper.description = support.description;
-            supportDapper.severityID = support.severityID;
-            supportDapper.statusID = support.statusID;
-            supportDapper.priorityID = support.priorityID;
-            supportDapper.typeID = support.typeID;
-            supportDapper.assingToID = support.assingToID;
-            supportDapper.resolutionDate = support.resolutionDate;
-            supportDapper.customerID = support.customerID;
-            supportDapper.createdByID = support.createdByID;
-            supportDapper.creationDate = support.creationDate;
-            supportDapper.modifiedByID = support.modifiedByID;
-            supportDapper.lastModifiedDate = support.lastModifiedDate;
-
-            return supportDapper;
-        }
-
-        public static SkillDapper Map(this Skill skill, int primaryKey)
-		{
-			SkillDapper skillDapper = new SkillDapper();
-
-			skillDapper.skillID = primaryKey;
-			skillDapper.summary = skill.summary;
-			skillDapper.skillTypeID = skill.skillTypeID;
-			skillDapper.description = skill.description;
-			skillDapper.createdByID = skill.createdByID;
-			skillDapper.creationDate = skill.creationDate;
-			skillDapper.modifiedByID = skill.modifiedByID;
-			skillDapper.lastModifiedDate = skill.lastModifiedDate;
-
-			return skillDapper;
-		}
-
-        public static DashboardDapper Map(this Dashboard dashboard, int primaryKey)
-        {
-            DashboardDapper dashboardDapper = new DashboardDapper();
-
-            dashboardDapper.dashboardID = primaryKey;
-            dashboardDapper.item1 = dashboard.item1;
-            dashboardDapper.item2 = dashboard.item2;
-            dashboardDapper.item3 = dashboard.item3;
-            dashboardDapper.item4 = dashboard.item4;
-            dashboardDapper.item5 = dashboard.item5;
-            dashboardDapper.item6 = dashboard.item6;
-            dashboardDapper.item7 = dashboard.item7;
-            dashboardDapper.item8 = dashboard.item8;
-            dashboardDapper.item9 = dashboard.item9;
-            dashboardDapper.item10 = dashboard.item10;
-            dashboardDapper.item11 = dashboard.item11;
-            dashboardDapper.item12 = dashboard.item12;
-            dashboardDapper.item13 = dashboard.item13;
-            dashboardDapper.item14 = dashboard.item14;
-            dashboardDapper.item15 = dashboard.item15;
-            dashboardDapper.item16 = dashboard.item16;
-            dashboardDapper.item17 = dashboard.item17;
-            dashboardDapper.item18 = dashboard.item18;
-            dashboardDapper.item19 = dashboard.item19;
-            dashboardDapper.item20 = dashboard.item20;
-            dashboardDapper.createdByID = dashboard.createdByID;
-            dashboardDapper.creationDate = dashboard.creationDate;
-            dashboardDapper.modifiedByID = dashboard.modifiedByID;
-            dashboardDapper.lastModifiedDate = dashboard.lastModifiedDate;
-
-            return dashboardDapper;
+            documentosDapper.documentoID = primaryKey;
+            documentosDapper.seguroID = documentos.seguroID;
+            documentosDapper.numeroCnh = documentos.numeroCnh;
+            documentosDapper.clienteID = documentos.clienteID;
+            
+            return documentosDapper;
         }
     } 
 }

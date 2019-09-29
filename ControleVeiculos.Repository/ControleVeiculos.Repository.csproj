@@ -72,50 +72,73 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\IssueRepository.cs" />
     <Compile Include="Data\ParameterRepository.cs" />
     <Compile Include="Data\ParameterValueRepository.cs" />
-    <Compile Include="Data\VacancieRepository .cs" />
-    <Compile Include="Data\TestScenarioRepository.cs" />
+    <Compile Include="Data\FuncionarioRepository .cs" />
+    <Compile Include="Data\CnhRepository.cs" />
     <Compile Include="Data\ApplicationSystemRepository.cs" />
-    <Compile Include="Data\TestPackageRepository.cs" />
-    <Compile Include="Data\TestCaseRepository.cs" />
-    <Compile Include="Data\TemplateRepository.cs" />
+    <Compile Include="Data\ReservaRepository.cs" />
+    <Compile Include="Data\ManutencaoRepository.cs" />
+    <Compile Include="Data\AbastecimentoRepository.cs" />
     <Compile Include="Data\SystemParameterRepository.cs" />
     <Compile Include="Data\SystemMenuRepository.cs" />
-    <Compile Include="Data\ProfileRepository.cs" />
     <Compile Include="Data\GroupRepository.cs" />
     <Compile Include="Data\SystemFeatureRepository.cs" />
-    <Compile Include="Data\TestLogRepository.cs" />
+    <Compile Include="Data\EmprestimoRepository.cs" />
+    <Compile Include="Data\ClienteRepository.cs" />
+    <Compile Include="Data\MotoristaRepository.cs" />
+    <Compile Include="Data\DepartamentoRepository.cs" />
+    <Compile Include="Data\RotaRepository.cs" />
+    <Compile Include="Data\SeguroRepository.cs" />
+    <Compile Include="Data\SinistroRepository.cs" />
+    <Compile Include="Data\FilialRepository.cs" />
+    <Compile Include="Data\EntradaSaidaRepository.cs" />
+    <Compile Include="Data\FinancaRepository.cs" />
+    <Compile Include="Data\KilometragemRepository.cs" />
+    <Compile Include="Data\MultaRepository.cs" />
+    <Compile Include="Data\AcessorioRepository.cs" />
+    <Compile Include="Data\DocumentoRepository.cs" />
+    <Compile Include="Data\VeiculoRepository.cs" />
     <Compile Include="Data\UserRepository.cs" />
     <Compile Include="Map\ParameterDapper.cs" />
     <Compile Include="Map\ParameterValueDapper.cs" />
-    <Compile Include="Map\SupportDapper.cs" />
-    <Compile Include="Map\IssueDapper.cs" />
     <Compile Include="Map\ApplicationSystemDapper.cs" />
     <Compile Include="Map\SystemFeatureDapper.cs" />
-    <Compile Include="Map\GroupDapper.cs" />
+    <Compile Include="Map\EmprestimoDapper.cs" />
     <Compile Include="Map\SystemMenuDapper.cs" />
-    <Compile Include="Map\ProfileDapper.cs" />
-    <Compile Include="Map\TestScenarioDapper.cs" />
-    <Compile Include="Map\TemplateDapper.cs" />
-    <Compile Include="Map\VacancieDapper.cs" />
-    <Compile Include="Map\TestPackageDapper.cs" />
+    <Compile Include="Map\StatusDapper.cs" />
+    <Compile Include="Map\CnhDapper.cs" />
+    <Compile Include="Map\AbastecimentoDapper.cs" />
+    <Compile Include="Map\FuncionarioDapper.cs" />
+    <Compile Include="Map\ReservaDapper.cs" />
     <Compile Include="Map\DapperUtils.cs" />
     <Compile Include="Map\SystemParameterDapper.cs" />
-    <Compile Include="Map\TestCaseDapper.cs" />
-    <Compile Include="Map\TestLogDapper.cs" />
+    <Compile Include="Map\ManutencaoDapper.cs" />
+    <Compile Include="Map\ClienteDapper.cs" />
+    <Compile Include="Map\MotoristaDapper.cs" />
+    <Compile Include="Map\DepartamentoDapper.cs" />
+    <Compile Include="Map\RotaDapper.cs" />
+    <Compile Include="Map\SeguroDapper.cs" />
+    <Compile Include="Map\SinistroDapper.cs" />
+    <Compile Include="Map\FilialDapper.cs" />
+    <Compile Include="Map\EntradaSaidaDapper.cs" />
+    <Compile Include="Map\FinancaDapper.cs" />
+    <Compile Include="Map\KilometragemDapper.cs" />
+    <Compile Include="Map\MultaDapper.cs" />
+    <Compile Include="Map\AcessorioDapper.cs" />
+    <Compile Include="Map\DocumentoDapper.cs" />
+    <Compile Include="Map\VeiculoDapper.cs" />
     <Compile Include="Map\UserDapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ControleVeiculos.Domain\ControleVeiculos.Domain.csproj">
-      <Project>{5792190A-BCE6-4913-A42E-86FDD7076F87}</Project>
-      <Name>Lean.Test.Cloud.Domain</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\ControleVeiculos.Domain\ControleVeiculos.Domain.csproj">
+      <Project>{5792190a-bce6-4913-a42e-86fdd7076f87}</Project>
+      <Name>ControleVeiculos.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

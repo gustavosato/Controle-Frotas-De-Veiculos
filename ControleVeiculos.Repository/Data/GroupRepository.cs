@@ -1,4 +1,4 @@
-﻿using ControleVeiculos.Domain.Entities.Groups;
+﻿using ControleVeiculos.Domain.Entities.Statuss;
 using ControleVeiculos.Domain.Repositories;
 using System.Data;
 using Dapper;
@@ -7,28 +7,28 @@ using System.Data.SqlClient;
 using System.Collections.Generic;
 using ControleVeiculos.Repository.Map;
 using Dapper.Contrib.Extensions;
-using ControleVeiculos.Domain.Command.Groups;
+using ControleVeiculos.Domain.Command.Statuss;
 using System;
 
 namespace ControleVeiculos.Repository.Data
 {
-    public class GroupRepository : BaseRepository, IGroupRepository
+    public class StatusRepository : BaseRepository, IStatusRepository
     {
-        public void Add(Group Group)
+        public void Add(Status Status)
         {
             using (IDbConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT ISNULL(MAX(CAST(groupID AS INT))+1,1) FROM dbo.Groups");
+                string sql = string.Format("SELECT ISNULL(MAX(CAST(statusID AS INT))+1,1) FROM dbo.Statuss");
 
                 int primaryKey = conn.Query<int>(sql).FirstOrDefault();
 
-                GroupDapper groupDapper = Group.Map(primaryKey);
+                StatusDapper statusDapper = Status.Map(primaryKey);
                 try
                 {
-                    conn.Insert<GroupDapper>(groupDapper);
+                    conn.Insert<StatusDapper>(statusDapper);
 
                 }
                 catch (Exception ex)
@@ -38,32 +38,32 @@ namespace ControleVeiculos.Repository.Data
             }
         }
 
-        public void Update(Group group)
+        public void Update(Status status)
         {
             using (IDbConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                GroupDapper groupDapper = group.Map(group.groupID);
+                StatusDapper statusDapper = status.Map(status.statusID);
 
-                conn.Update<GroupDapper>(groupDapper);
+                conn.Update<StatusDapper>(statusDapper);
             }
         }
 
-        public Group GetByID(int groupID)
+        public Status GetByID(int statusID)
         {
             using (IDbConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
 
-                string sql = string.Format("SELECT * FROM dbo.Groups WHERE groupID = '{0}'", groupID);
+                string sql = string.Format("SELECT * FROM dbo.Statuss WHERE statusID = '{0}'", statusID);
 
-                return conn.Query<Group>(sql).FirstOrDefault();
+                return conn.Query<Status>(sql).FirstOrDefault();
             }
         }
 
-        public List<Group> GetAll(FilterGroupCommand command)
+        public List<Status> GetAll(FilterStatusCommand command)
         {
             using (IDbConnection conn = new SqlConnection())
             {
@@ -71,55 +71,55 @@ namespace ControleVeiculos.Repository.Data
                 conn.Open();
 
 
-                string sql = string.Format("SELECT groupID, groupName, g.description " +
-                                           "FROM Groups g " +
+                string sql = string.Format("SELECT statusID, statusName, g.description " +
+                                           "FROM Statuss g " +
                                            "WHERE 1 = 1 ");
 
 
-                if (!string.IsNullOrEmpty(command.GroupName))
-                    sql += string.Format("AND g.groupName LIKE '%{0}%'", command.GroupName);
+                if (!string.IsNullOrEmpty(command.StatusName))
+                    sql += string.Format("AND g.statusName LIKE '%{0}%'", command.StatusName);
 
-                sql += "ORDER BY groupName";
+                sql += "ORDER BY statusName";
 
-                return conn.Query<Group>(sql).ToList();
+                return conn.Query<Status>(sql).ToList();
             }
         }
 
-        public List<Group> GetAll(int groupID)
+        public List<Status> GetAll(int statusID)
         {
             using (IDbConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT * FROM dbo.Groups  ");
+                string sql = string.Format("SELECT * FROM dbo.Statuss  ");
 
-                sql += "ORDER BY groupName";
+                sql += "ORDER BY statusName";
 
-                return conn.Query<Group>(sql).ToList();
+                return conn.Query<Status>(sql).ToList();
             }
         }
 
-        public void Delete(int groupID)
+        public void Delete(int statusID)
         {
             using (IDbConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("DELETE FROM dbo.Groups WHERE groupID = '{0}'", groupID);
+                string sql = string.Format("DELETE FROM dbo.Statuss WHERE statusID = '{0}'", statusID);
                 conn.ExecuteScalar(sql);
             }
         }
 
-       public string GetGroupNameByID(int groupID)
+       public string GetStatusNameByID(int statusID)
         {
             using (IDbConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT groupName FROM dbo.Groups WHERE groupID = {0}", groupID);
+                string sql = string.Format("SELECT statusName FROM dbo.Statuss WHERE statusID = {0}", statusID);
 
                 return conn.Query<string>(sql).FirstOrDefault();
 

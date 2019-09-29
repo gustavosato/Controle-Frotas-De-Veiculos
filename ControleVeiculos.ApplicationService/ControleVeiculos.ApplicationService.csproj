@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GroupService.cs" />
     <Compile Include="ProfileService.cs" />
     <Compile Include="SystemMenuService.cs" />
     <Compile Include="TestCaseService.cs" />
@@ -81,7 +82,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ControleVeiculos.Domain\ControleVeiculos.Domain.csproj">
       <Project>{5792190a-bce6-4913-a42e-86fdd7076f87}</Project>
-      <Name>Lean.Test.Cloud.Domain</Name>
+      <Name>ControleVeiculos.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\ControleVeiculos.SharedKernel\ControleVeiculos.SharedKernel.csproj">
       <Project>{100f3a9d-209a-4210-ac31-cdebb5cabfdb}</Project>

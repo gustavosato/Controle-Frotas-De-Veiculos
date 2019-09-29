@@ -308,6 +308,7 @@
     <Compile Include="Models\Home\MenusModel.cs" />
     <Compile Include="Models\Features\FeatureModel.cs" />
     <Compile Include="Models\Parameters\ParameterModel.cs" />
+    <Compile Include="Models\ParameterValue\ParameterValue.cs" />
     <Compile Include="Models\Profiles\ProfileModel.cs" />
     <Compile Include="Models\SystemMenus\SystemMenuModel.cs" />
     <Compile Include="Models\SystemFeature\SystemFeatureModel.cs" />
