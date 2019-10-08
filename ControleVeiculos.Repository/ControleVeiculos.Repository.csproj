@@ -72,6 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\BaseRepository.cs" />
     <Compile Include="Data\ParameterRepository.cs" />
     <Compile Include="Data\ParameterValueRepository.cs" />
     <Compile Include="Data\FuncionarioRepository .cs" />

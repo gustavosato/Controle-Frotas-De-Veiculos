@@ -5,7 +5,28 @@ using ControleVeiculos.Domain.Entities.SystemFeatures;
 using ControleVeiculos.Domain.Entities.Parameters;
 using ControleVeiculos.Domain.Entities.SystemMenus;
 using ControleVeiculos.Domain.Entities.SystemParameters;
-using Lean.Test.Cloud.Repository.Map;
+using ControleVeiculos.Repository.Map;
+using ControleVeiculos.Domain.Entities.Clientes;
+using ControleVeiculos.Domain.Entities.Status;
+using ControleVeiculos.Domain.Entities.Funcionarios;
+using ControleVeiculos.Domain.Entities.Cnhs;
+using ControleVeiculos.Domain.Entities.Reservas;
+using ControleVeiculos.Domain.Entities.Veiculos;
+using ControleVeiculos.Domain.Entities.Manutencoes;
+using ControleVeiculos.Domain.Entities.Abastecimentos;
+using ControleVeiculos.Domain.Entities.Emprestimos;
+using ControleVeiculos.Domain.Entities.Motoristas;
+using ControleVeiculos.Domain.Entities.Departamentos;
+using ControleVeiculos.Domain.Entities.Rotas;
+using ControleVeiculos.Domain.Entities.Seguros;
+using ControleVeiculos.Domain.Entities.Sinistros;
+using ControleVeiculos.Domain.Entities.Filiais;
+using ControleVeiculos.Domain.Entities.EntradaSaidas;
+using ControleVeiculos.Domain.Entities.Financas;
+using ControleVeiculos.Domain.Entities.Kilometragens;
+using ControleVeiculos.Domain.Entities.Multas;
+using ControleVeiculos.Domain.Entities.Acessorios;
+using ControleVeiculos.Domain.Entities.Documentos;
 
 namespace ControleVeiculos.Repository.Map
 {
@@ -170,20 +191,20 @@ namespace ControleVeiculos.Repository.Map
             return systemParameterDapper;
         }
 
-        public static ClienteDapper Map(this Clientes clientes, int primaryKey)
+        public static ClienteDapper Map(this Cliente cliente, int primaryKey)
         {
-            ClienteDapper clientesDapper = new ClienteDapper();
+            ClienteDapper clienteDapper = new ClienteDapper();
 
-            clientesDapper.clienteID = primaryKey;
-            clientesDapper.nomeCliente = clientes.nomeCliente;
-            clientesDapper.ramo = clientes.ramo;
-            clientesDapper.estado = clientes.estado;
-            clientesDapper.cidade = clientes.cidade;
-            clientesDapper.telefone = clientes.telefone;
-            clientesDapper.email = clientes.email;
-            clientesDapper.status = clientes.status;
+            clienteDapper.clienteID = primaryKey;
+            clienteDapper.nomeCliente = cliente.nomeCliente;
+            clienteDapper.ramo = cliente.ramo;
+            clienteDapper.estado = cliente.estado;
+            clienteDapper.cidade = cliente.cidade;
+            clienteDapper.telefone = cliente.telefone;
+            clienteDapper.email = cliente.email;
+            clienteDapper.status = cliente.status;
 
-            return clientesDapper;
+            return clienteDapper;
         }
 
         public static StatusDapper Map(this Status status, int primaryKey)
@@ -200,18 +221,18 @@ namespace ControleVeiculos.Repository.Map
             return statusDapper;
         }
         
-        public static FuncionarioDapper Map(this Funcionarios funcionarios, int primaryKey)
+        public static FuncionarioDapper Map(this Funcionario funcionario, int primaryKey)
         {
             FuncionarioDapper funcionariosDapper = new FuncionarioDapper();
 
             funcionariosDapper.funcionarioID = primaryKey;
-            funcionariosDapper.nomeFuncionario = funcionarios.nomeFuncionario;
-            funcionariosDapper.endereco = funcionarios.endereco;
-            funcionariosDapper.cpf = funcionarios.cpf;
-            funcionariosDapper.funcao = funcionarios.funcao;
-            funcionariosDapper.setor = funcionarios.setor;
-            funcionariosDapper.telefone = funcionarios.telefone;
-            funcionariosDapper.numeroCnh = funcionarios.numeroCnh;
+            funcionariosDapper.nomeFuncionario = funcionario.nomeFuncionario;
+            funcionariosDapper.endereco = funcionario.endereco;
+            funcionariosDapper.cpf = funcionario.cpf;
+            funcionariosDapper.funcao = funcionario.funcao;
+            funcionariosDapper.setor = funcionario.setor;
+            funcionariosDapper.telefone = funcionario.telefone;
+            funcionariosDapper.numeroCnh = funcionario.numeroCnh;
 
             return funcionariosDapper;
         }
@@ -219,7 +240,8 @@ namespace ControleVeiculos.Repository.Map
         {
             CnhDapper cnhDapper = new CnhDapper();
 
-            cnhDapper.numeroCnh = primaryKey;
+            cnhDapper.cnhID = primaryKey;
+            cnhDapper.numeroCnh = cnh.numeroCnh;
             cnhDapper.validade = cnh.validade;
             cnhDapper.categoria = cnh.categoria;
             cnhDapper.funcionarioID = cnh.funcionarioID;
@@ -227,37 +249,37 @@ namespace ControleVeiculos.Repository.Map
             return cnhDapper;
         }
 
-        public static ReservaDapper Map(this Reservas reservas, int primaryKey)
+        public static ReservaDapper Map(this Reserva reserva, int primaryKey)
         {
-            ReservaDapper reservasDapper = new ReservaDapper();
+            ReservaDapper reservaDapper = new ReservaDapper();
 
-            reservasDapper.reservaID = primaryKey;
-            reservasDapper.dataReserva = reservas.dataReserva;
-            reservasDapper.finalidade = reservas.finalidade;
-            reservasDapper.destino = reservas.destino;
-            reservasDapper.funcionarioID = reservas.funcionarioID;
-            reservasDapper.numeroCnh = reservas.numeroCnh;
-            reservasDapper.veiculoID = reservas.veiculoID;
+            reservaDapper.reservaID = primaryKey;
+            reservaDapper.dataReserva = reserva.dataReserva;
+            reservaDapper.finalidade = reserva.finalidade;
+            reservaDapper.destino = reserva.destino;
+            reservaDapper.funcionarioID = reserva.funcionarioID;
+            reservaDapper.numeroCnh = reserva.numeroCnh;
+            reservaDapper.veiculoID = reserva.veiculoID;
             
-            return reservasDapper;
+            return reservaDapper;
         }
 
-        public static VeiculoDapper Map(this Veiculos veiculos, int primaryKey)
+        public static VeiculoDapper Map(this Veiculo veiculo, int primaryKey)
         {
-            VeiculoDapper veiculosDapper = new VeiculoDapper();
+            VeiculoDapper veiculoDapper = new VeiculoDapper();
 
-            veiculosDapper.veiculoID = primaryKey;
-            veiculosDapper.modelo = veiculos.packageName;
-            veiculosDapper.cor = veiculos.description;
-            veiculosDapper.placa = veiculos.demandID;
-            veiculosDapper.status = veiculos.statusID;
-            veiculosDapper.ano = veiculos.release;
-            veiculosDapper.numeroChassi = veiculos.cycle;
-            veiculosDapper.motor = veiculos.emailsToSendReport;
-            veiculosDapper.manutencaoID = veiculos.tecnologyID;
-            veiculosDapper.abastecimentoID = veiculos.browserID;
+            veiculoDapper.veiculoID = primaryKey;
+            veiculoDapper.modelo = veiculo.modelo;
+            veiculoDapper.cor = veiculo.cor;
+            veiculoDapper.placa = veiculo.placa;
+            veiculoDapper.status = veiculo.status;
+            veiculoDapper.ano = veiculo.ano;
+            veiculoDapper.numeroChassi = veiculo.numeroChassi;
+            veiculoDapper.motor = veiculo.motor;
+            veiculoDapper.manutencaoID = veiculo.manutencaoID;
+            veiculoDapper.abastecimentoID = veiculo.abastecimentoID;
             
-            return veiculosDapper;
+            return veiculoDapper;
         }
 
         public static ManutencaoDapper Map(this Manutencao manutencao, int primaryKey)
@@ -272,18 +294,18 @@ namespace ControleVeiculos.Repository.Map
             
             return manutencaoDapper;
         }
-        public static AbastecimentoDapper Map(this Abastecimentos abastecimentos, int primaryKey)
+        public static AbastecimentoDapper Map(this Abastecimento abastecimento, int primaryKey)
         {
-            AbastecimentoDapper abastecimentosDapper = new AbastecimentoDapper();
+            AbastecimentoDapper abastecimentoDapper = new AbastecimentoDapper();
 
-            abastecimentosDapper.abastecimentoID = primaryKey;
-            abastecimentosDapper.tipoCombustivel = abastecimentos.summary;
-            abastecimentosDapper.responsavel = abastecimentos.description;
-            abastecimentosDapper.data = abastecimentos.statusID;
-            abastecimentosDapper.kmAtual = abastecimentos.severityID;
-            abastecimentosDapper.veiculoID = abastecimentos.priorityID;
+            abastecimentoDapper.abastecimentoID = primaryKey;
+            abastecimentoDapper.tipoCombustivel = abastecimento.tipoCombustivel;
+            abastecimentoDapper.responsavel = abastecimento.responsavel;
+            abastecimentoDapper.data = abastecimento.data;
+            abastecimentoDapper.kmAtual = abastecimento.kmAtual;
+            abastecimentoDapper.veiculoID = abastecimento.veiculoID;
             
-            return abastecimentosDapper;
+            return abastecimentoDapper;
         }
         public static EmprestimoDapper Map(this Emprestimo emprestimo, int primaryKey)
         {
@@ -301,15 +323,15 @@ namespace ControleVeiculos.Repository.Map
             return emprestimoDapper;
         }
 
-        public static MotoristaDapper Map(this Motoristas motoristas, int primaryKey)
+        public static MotoristaDapper Map(this Motorista motorista, int primaryKey)
         {
-            MotoristaDapper motoristasDapper = new MotoristaDapper();
+            MotoristaDapper motoristaDapper = new MotoristaDapper();
 
-            motoristasDapper.motoristaID = primaryKey;
-            motoristasDapper.nomeMotorista = motoristas.kmInicial;
-            motoristasDapper.numeroCnh = motoristas.kmFinal;
+            motoristaDapper.motoristaID = primaryKey;
+            motoristaDapper.nomeMotorista = motorista.nomeMotorista;
+            motoristaDapper.numeroCnh = motorista.numeroCnh;
            
-            return motoristasDapper;
+            return motoristaDapper;
         }
 
         public static DepartamentoDapper Map(this Departamento departamento, int primaryKey)
@@ -324,19 +346,19 @@ namespace ControleVeiculos.Repository.Map
             return departamentoDapper;
         }
 
-        public static RotaDapper Map(this Rotas rotas, int primaryKey)
+        public static RotaDapper Map(this Rota rota, int primaryKey)
         {
-            RotaDapper rotasDapper = new RotaDapper();
+            RotaDapper rotaDapper = new RotaDapper();
 
-            rotasDapper.rotaID = primaryKey;
-            rotasDapper.cidade = rotas.cidade;
-            rotasDapper.estado = rotas.estado;
-            rotasDapper.distancia = rotas.distancia;
-            rotasDapper.pedagio = rotas.pedagio;
-            rotasDapper.dataIda = rotas.dataIda;
-            rotasDapper.dataVolta = rotas.dataVolta;
+            rotaDapper.rotaID = primaryKey;
+            rotaDapper.cidade = rota.cidade;
+            rotaDapper.estado = rota.estado;
+            rotaDapper.distancia = rota.distancia;
+            rotaDapper.pedagio = rota.pedagio;
+            rotaDapper.dataIda = rota.dataIda;
+            rotaDapper.dataVolta = rota.dataVolta;
 
-            return rotasDapper;
+            return rotaDapper;
         }
 
         public static SeguroDapper Map(this Seguro seguro, int primaryKey)
@@ -374,16 +396,16 @@ namespace ControleVeiculos.Repository.Map
             return sinistroDapper;
         }
 
-        public static FilialDapper Map(this Filiais filiais, int primaryKey)
+        public static FilialDapper Map(this Filial filial, int primaryKey)
         {
-            FilialDapper filiaisDapper = new FilialDapper();
+            FilialDapper filialDapper = new FilialDapper();
 
-            filiaisDapper.filialID = primaryKey;
-            filiaisDapper.nomeFilial = filiais.nomeFilial;
-            filiaisDapper.cidade = filiais.cidade;
-            filiaisDapper.estado = filiais.estado;
+            filialDapper.filialID = primaryKey;
+            filialDapper.nomeFilial = filial.nomeFilial;
+            filialDapper.cidade = filial.cidade;
+            filialDapper.estado = filial.estado;
 
-            return filiaisDapper;
+            return filialDapper;
         }
 
         public static EntradaSaidaDapper Map(this EntradaSaida entradaSaida, int primaryKey)
@@ -398,38 +420,21 @@ namespace ControleVeiculos.Repository.Map
             return entradaSaidaDapper;
         }
 
-        public static FinancaDapper Map(this Financas financas, int primaryKey)
+        public static FinancaDapper Map(this Financa financa, int primaryKey)
         {
-            FinancaDapper financasDapper = new FinancaDapper();
+            FinancaDapper financaDapper = new FinancaDapper();
 
-            financasDapper.financaID = primaryKey;
-            financasDapper.valorCarro = financas.valorCarro;
-            financasDapper.valorSeguro = financas.valorSeguro;
-            financasDapper.valorAgua = financas.valorAgua;
-            financasDapper.valorLuz = financas.valorLuz;
-            financasDapper.valorInternet = financas.valorInternet;
-            financasDapper.valorManutencao = financas.valorManutencao;
-            financasDapper.salarios = financas.salarios;
-            financasDapper.gastosExtras = financas.gastosExtras;
+            financaDapper.financaID = primaryKey;
+            financaDapper.valorCarro = financa.valorCarro;
+            financaDapper.valorSeguro = financa.valorSeguro;
+            financaDapper.valorAgua = financa.valorAgua;
+            financaDapper.valorLuz = financa.valorLuz;
+            financaDapper.valorInternet = financa.valorInternet;
+            financaDapper.valorManutencao = financa.valorManutencao;
+            financaDapper.salarios = financa.salarios;
+            financaDapper.gastosExtras = financa.gastosExtras;
            
-            return financasDapper;
-        }
-
-        public static FinancaDapper Map(this Financas financas, int primaryKey)
-        {
-            FinancaDapper financasDapper = new FinancaDapper();
-
-            financasDapper.financaID = primaryKey;
-            financasDapper.valorCarro = financas.valorCarro;
-            financasDapper.valorSeguro = financas.valorSeguro;
-            financasDapper.valorAgua = financas.valorAgua;
-            financasDapper.valorLuz = financas.valorLuz;
-            financasDapper.valorInternet = financas.valorInternet;
-            financasDapper.valorManutencao = financas.valorManutencao;
-            financasDapper.salarios = financas.salarios;
-            financasDapper.gastosExtras = financas.gastosExtras;
-
-            return financasDapper;
+            return financaDapper;
         }
 
         public static KilometragemDapper Map(this Kilometragem kilometragem, int primaryKey)
@@ -443,44 +448,44 @@ namespace ControleVeiculos.Repository.Map
             return kilometragemDapper;
         }
 
-        public static MultaDapper Map(this Multas multas, int primaryKey)
+        public static MultaDapper Map(this Multa multa, int primaryKey)
         {
-            MultaDapper multasDapper = new MultaDapper();
+            MultaDapper multaDapper = new MultaDapper();
 
-            multasDapper.multaID = primaryKey;
-            multasDapper.veiculoID = multas.veiculoID;
-            multasDapper.clienteID = multas.clienteID;
-            multasDapper.cnhID = multas.cnhID;
+            multaDapper.multaID = primaryKey;
+            multaDapper.veiculoID = multa.veiculoID;
+            multaDapper.clienteID = multa.clienteID;
+            multaDapper.cnhID = multa.cnhID;
             
-            return multasDapper;
+            return multaDapper;
         }
 
-        public static AcessorioDapper Map(this Acessorios acessorios, int primaryKey)
+        public static AcessorioDapper Map(this Acessorio acessorio, int primaryKey)
         {
-            AcessorioDapper acessoriosDapper = new AcessorioDapper();
+            AcessorioDapper acessorioDapper = new AcessorioDapper();
 
-            acessoriosDapper.acessorioID = primaryKey;
-            acessoriosDapper.gps = acessorios.gps;
-            acessoriosDapper.airBag = acessorios.airBag;
-            acessoriosDapper.arCondicionado = acessorios.arCondicionado;
-            acessoriosDapper.direcao = acessorios.direcao;
-            acessoriosDapper.travasEletricas = acessorios.travasEletricas;
-            acessoriosDapper.vidroEletrico = acessorios.vidroEletrico;
-            acessoriosDapper.alarme = acessorios.alarme;
+            acessorioDapper.acessorioID = primaryKey;
+            acessorioDapper.gps = acessorio.gps;
+            acessorioDapper.airBag = acessorio.airBag;
+            acessorioDapper.arCondicionado = acessorio.arCondicionado;
+            acessorioDapper.direcao = acessorio.direcao;
+            acessorioDapper.travasEletricas = acessorio.travasEletricas;
+            acessorioDapper.vidroEletrico = acessorio.vidroEletrico;
+            acessorioDapper.alarme = acessorio.alarme;
 
-            return acessoriosDapper;
+            return acessorioDapper;
         }
 
-        public static DocumentoDapper Map(this Documentos documentos, int primaryKey)
+        public static DocumentoDapper Map(this Documento documento, int primaryKey)
         {
-            DocumentoDapper documentosDapper = new DocumentoDapper();
+            DocumentoDapper documentoDapper = new DocumentoDapper();
 
-            documentosDapper.documentoID = primaryKey;
-            documentosDapper.seguroID = documentos.seguroID;
-            documentosDapper.numeroCnh = documentos.numeroCnh;
-            documentosDapper.clienteID = documentos.clienteID;
+            documentoDapper.documentoID = primaryKey;
+            documentoDapper.seguroID = documento.seguroID;
+            documentoDapper.numeroCnh = documento.numeroCnh;
+            documentoDapper.clienteID = documento.clienteID;
             
-            return documentosDapper;
+            return documentoDapper;
         }
     } 
 }

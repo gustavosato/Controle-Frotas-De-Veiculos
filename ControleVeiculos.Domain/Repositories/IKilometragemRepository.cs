@@ -1,5 +1,5 @@
-﻿using ControleVeiculos.Domain.Command.Kilometragems;
-using ControleVeiculos.Domain.Entities.Kilometragems;
+﻿using ControleVeiculos.Domain.Command.Kilometragens;
+using ControleVeiculos.Domain.Entities.Kilometragens;
 using System.Collections.Generic;
 
 namespace ControleVeiculos.Domain.Repositories

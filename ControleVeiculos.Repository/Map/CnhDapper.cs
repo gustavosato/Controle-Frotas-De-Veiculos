@@ -5,6 +5,7 @@ namespace ControleVeiculos.Repository.Map
     public class CnhDapper
     {
         [ExplicitKey]
+        public int cnhID { get; set; }
         public int numeroCnh { get; set; }
         public string nome { get; set; }
         public string validade { get; set; }

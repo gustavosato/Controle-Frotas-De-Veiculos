@@ -60,7 +60,7 @@ namespace ControleVeiculos.MVC.Controllers
             try
             {
                 //permissions
-                if (_profilesService.GetAllow(new FilterProfileCommand
+                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
                 {
                     AllowAdd = true,
                     SystemFeatureID = SystemFeatureID,
@@ -104,7 +104,7 @@ namespace ControleVeiculos.MVC.Controllers
             var gridModel = new DataSourceResult();
 
             //permissions
-            if (_profilesService.GetAllow(new FilterProfileCommand
+            if (_profilesService.GetAllow(new FilterAbastecimentoCommand
             {
                 AllowView = true,
                 SystemFeatureID = SystemFeatureID,
@@ -203,7 +203,7 @@ namespace ControleVeiculos.MVC.Controllers
             try
             {
                 //permissions
-                if (_profilesService.GetAllow(new FilterProfileCommand
+                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
                 {
                     AllowDelete = true,
                     SystemFeatureID = SystemFeatureID,
@@ -310,7 +310,7 @@ namespace ControleVeiculos.MVC.Controllers
         public ActionResult DisassociateUser(int userID)
         {
             //permissions
-            if (_profilesService.GetAllow(new FilterProfileCommand
+            if (_profilesService.GetAllow(new FilterAbastecimentoCommand
             {
                 AllowAddRemove = true,
                 SystemFeatureID = SystemFeatureID,
@@ -329,7 +329,7 @@ namespace ControleVeiculos.MVC.Controllers
         public ActionResult AssociateUser(int userID)
         {
             //permissions
-            if (_profilesService.GetAllow(new FilterProfileCommand
+            if (_profilesService.GetAllow(new FilterAbastecimentoCommand
             {
                 AllowAddRemove = true,
                 SystemFeatureID = SystemFeatureID,
@@ -359,7 +359,7 @@ namespace ControleVeiculos.MVC.Controllers
             try
             {
                 //permissions
-                if (_profilesService.GetAllow(new FilterProfileCommand
+                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
                 {
                     AllowUpdate = true,
                     SystemFeatureID = SystemFeatureID,

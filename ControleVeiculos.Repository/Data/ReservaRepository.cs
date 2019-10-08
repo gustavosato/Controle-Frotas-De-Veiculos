@@ -1,4 +1,4 @@
-﻿using ControleVeiculos.Domain.Entities.Reservass;
+﻿using ControleVeiculos.Domain.Entities.Reservas;
 using ControleVeiculos.Domain.Repositories;
 using System.Data;
 using Dapper;
@@ -7,14 +7,14 @@ using System.Data.SqlClient;
 using System.Collections.Generic;
 using ControleVeiculos.Repository.Map;
 using Dapper.Contrib.Extensions;
-using ControleVeiculos.Domain.Command.Reservass;
+using ControleVeiculos.Domain.Command.Reservas;
 using System;
 
 namespace ControleVeiculos.Repository.Data
 {
-    public class ReservaRepository : BaseRepository, IReservasRepository
+    public class ReservaRepository : BaseRepository, IReservaRepository
     {
-        public void Add(Reservas reservas)
+        public void Add(Reserva reserva)
         {
             using (IDbConnection conn = new SqlConnection())
             {
@@ -23,7 +23,7 @@ namespace ControleVeiculos.Repository.Data
 
                 string sql = string.Format("SELECT ISNULL(MAX(CAST(reservasID AS INT))+1,1) FROM dbo.Reservass");
                 int primaryKey = conn.Query<int>(sql).FirstOrDefault();
-                ReservaDapper reservasDapper = reservas.Map(primaryKey);
+                ReservaDapper reservasDapper = reserva.Map(primaryKey);
                 try
                 {
                     conn.Insert<ReservaDapper>(reservasDapper);
@@ -35,20 +35,20 @@ namespace ControleVeiculos.Repository.Data
             }
         }
 
-        public void Update(Reservas reservas)
+        public void Update(Reserva reserva)
         {
             using (IDbConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                ReservaDapper reservasDapper = reservas.Map(reservas.reservasID);
+                ReservaDapper reservasDapper = reserva.Map(reserva.reservaID);
 
                 conn.Update<ReservaDapper>(reservasDapper);
             }
         }
 
-        public Reservas GetByID(int reservasID)
+        public Reserva GetByID(int reservasID)
         {
             using (IDbConnection conn = new SqlConnection(ConnectionString))
             {
@@ -56,11 +56,11 @@ namespace ControleVeiculos.Repository.Data
 
                 string sql = string.Format("SELECT * FROM dbo.Reservass WHERE reservasID = '{0}'", reservasID);
 
-                return conn.Query<Reservas>(sql).FirstOrDefault();
+                return conn.Query<Reserva>(sql).FirstOrDefault();
             }
         }
 
-        public List<Reservas> GetAll(FilterReservasCommand command)
+        public List<Reserva> GetAll(FilterReservaCommand command)
         {
             using (IDbConnection conn = new SqlConnection())
             {
@@ -79,21 +79,21 @@ namespace ControleVeiculos.Repository.Data
                                            "LEFT JOIN ParameterValues pv5 on t.platformNameID = pv5.parameterValueID " +
                                            "INNER JOIN Demands d on t.demandID = d.demandID WHERE 1 = 1");
 
-                if (!string.IsNullOrEmpty(command.TecnologyID))
-                    sql += string.Format("AND t.tecnologyID = '{0}' ", command.TecnologyID);
+                //if (!string.IsNullOrEmpty(command.TecnologyID))
+                //    sql += string.Format("AND t.tecnologyID = '{0}' ", command.TecnologyID);
 
-                if (!string.IsNullOrEmpty(command.BrowserID))
-                    sql += string.Format("AND t.browserID = '{0}' ", command.BrowserID);
+                //if (!string.IsNullOrEmpty(command.BrowserID))
+                //    sql += string.Format("AND t.browserID = '{0}' ", command.BrowserID);
 
-                if (!string.IsNullOrEmpty(command.StatusID))
-                    sql += string.Format("AND t.statusID = '{0}' ", command.StatusID);
+                //if (!string.IsNullOrEmpty(command.StatusID))
+                //    sql += string.Format("AND t.statusID = '{0}' ", command.StatusID);
 
-                if (!string.IsNullOrEmpty(command.DemandID))
-                    sql += string.Format("AND t.demandID = '{0}' ", command.DemandID);
+                //if (!string.IsNullOrEmpty(command.DemandID))
+                //    sql += string.Format("AND t.demandID = '{0}' ", command.DemandID);
 
-                sql += "ORDER BY packageName";
+                //sql += "ORDER BY packageName";
 
-                return conn.Query<Reservas>(sql).ToList();
+                return conn.Query<Reserva>(sql).ToList();
             }
         }
 

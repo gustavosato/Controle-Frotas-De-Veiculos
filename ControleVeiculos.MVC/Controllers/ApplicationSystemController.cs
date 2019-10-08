@@ -51,7 +51,7 @@ namespace ControleVeiculos.MVC.Controllers
             try
             {
                 //permissions
-                if (_profilesService.GetAllow(new FilterProfileCommand
+                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
                 {
                     AllowAdd = true,
                     SystemFeatureID = SystemFeatureID,
@@ -95,7 +95,7 @@ namespace ControleVeiculos.MVC.Controllers
             var gridModel = new DataSourceResult();
 
             //permissions
-            if (_profilesService.GetAllow(new FilterProfileCommand
+            if (_profilesService.GetAllow(new FilterAbastecimentoCommand
             {
                 AllowView = true,
                 SystemFeatureID = SystemFeatureID,
@@ -197,7 +197,7 @@ namespace ControleVeiculos.MVC.Controllers
             try
             {
                 //permissions
-                if (_profilesService.GetAllow(new FilterProfileCommand
+                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
                 {
                     AllowDelete = true,
                     SystemFeatureID = SystemFeatureID,
@@ -245,7 +245,7 @@ namespace ControleVeiculos.MVC.Controllers
             try
             {
                 //permissions
-                if (_profilesService.GetAllow(new FilterProfileCommand
+                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
                 {
                     AllowUpdate = true,
                     SystemFeatureID = SystemFeatureID,

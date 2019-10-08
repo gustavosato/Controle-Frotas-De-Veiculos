@@ -96,7 +96,7 @@ namespace ControleVeiculos.MVC.Controllers
         [HttpPost]
         public ActionResult GetAll(DataSourceRequest request, TestCaseModel model)
         {
-            var testCases = _testCaseService.GetAll(new FilterTestCaseCommand
+            var testCases = _testCaseService.GetAll(new FilterManutencaoCommand
             {
                 StatusID = model.SearchStatusID,
                 FeatureID = model.SearchFeatureID,
@@ -142,9 +142,9 @@ namespace ControleVeiculos.MVC.Controllers
             return PartialView("Maintenance", model);
         }
         
-        private MaintenanceTestCaseCommand MaintenanceTestCaseCommand(TestCaseModel model)
+        private MaintenanceManutencaoCommand MaintenanceTestCaseCommand(TestCaseModel model)
         {
-            MaintenanceTestCaseCommand command = new MaintenanceTestCaseCommand();
+            MaintenanceManutencaoCommand command = new MaintenanceManutencaoCommand();
 
             command.TestCaseID = model.TestCaseID;
             command.StatusID = model.StatusID;

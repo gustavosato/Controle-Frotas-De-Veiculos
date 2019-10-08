@@ -1,5 +1,5 @@
-﻿using ControleVeiculos.Domain.Command.Statuss;
-using ControleVeiculos.Domain.Entities.Statuss;
+﻿using ControleVeiculos.Domain.Command.Status;
+using ControleVeiculos.Domain.Entities.Status;
 using System.Collections.Generic;
 
 namespace ControleVeiculos.Domain.Repositories

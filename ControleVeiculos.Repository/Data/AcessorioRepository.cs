@@ -47,7 +47,7 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                AcessorioDapper acessorioDapper = acessorio.Map(acessorio.logID);
+                AcessorioDapper acessorioDapper = acessorio.Map(acessorio.acessorioID);
 
                 conn.Update<AcessorioDapper>(acessorioDapper);
             }
@@ -77,8 +77,8 @@ namespace ControleVeiculos.Repository.Data
                                            "INNER JOIN ParameterValues pv ON tl.statusID = pv.parameterValueID " +
                                            "WHERE 1 = 1 ");
 
-                if (!string.IsNullOrEmpty(command.StatusID))
-                    sql += string.Format("AND tl.statusID LIKE '%{0}%' ", command.StatusID);
+                //if (!string.IsNullOrEmpty(command.StatusID))
+                //    sql += string.Format("AND tl.statusID LIKE '%{0}%' ", command.StatusID);
 
                 sql += "ORDER BY logID";
                 return conn.Query<Acessorio>(sql).ToList();

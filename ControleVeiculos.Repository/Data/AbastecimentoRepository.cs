@@ -1,4 +1,4 @@
-﻿using ControleVeiculos.Domain.Entities.Templates;
+﻿using ControleVeiculos.Domain.Entities.Abastecimentos;
 using ControleVeiculos.Domain.Repositories;
 using System.Data;
 using Dapper;
@@ -7,77 +7,77 @@ using System.Data.SqlClient;
 using System.Collections.Generic;
 using ControleVeiculos.Repository.Map;
 using Dapper.Contrib.Extensions;
-using ControleVeiculos.Domain.Command.Templates;
+using ControleVeiculos.Domain.Command.Abastecimentos;
 
 namespace ControleVeiculos.Repository.Data
 {
-    public class AbastecimentoRepository : BaseRepository, ITemplateRepository
+    public class AbastecimentoRepository : BaseRepository, IAbastecimentoRepository
     {
-        public void Add(Template template)
+        public void Add(Abastecimento abastecimento)
         {
             using (IDbConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT ISNULL(MAX(CAST(templateID AS INT))+1,1) FROM dbo.Templates");
+                string sql = string.Format("SELECT ISNULL(MAX(CAST(abastecimentoID AS INT))+1,1) FROM dbo.Abastecimentos");
                 int primaryKey = conn.Query<int>(sql).FirstOrDefault();
-                TemplateDapper templateDapper = template.Map(primaryKey);
+                AbastecimentoDapper abastecimentoDapper = abastecimento.Map(primaryKey);
 
-                conn.Insert<TemplateDapper>(templateDapper);
+                conn.Insert<AbastecimentoDapper>(abastecimentoDapper);
             }
         }
 
-        public void Update(Template template)
+        public void Update(Abastecimento abastecimento)
         {
             using (IDbConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                TemplateDapper templateDapper = template.Map(template.templateID);
+                AbastecimentoDapper abastecimentoDapper = abastecimento.Map(abastecimento.abastecimentoID);
 
-                conn.Update<Template>(template);
+                conn.Update<Abastecimento>(abastecimento);
             }
         }
 
-        public Template GetByID(int templateID)
+        public Abastecimento GetByID(int abastecimentoID)
         {
             using (IDbConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
 
-                string sql = string.Format("SELECT * FROM dbo.Templates WHERE templateID = '{0}'", templateID);
+                string sql = string.Format("SELECT * FROM dbo.Abastecimentos WHERE abastecimentoID = '{0}'", abastecimentoID);
 
-                return conn.Query<Template>(sql).FirstOrDefault();
+                return conn.Query<Abastecimento>(sql).FirstOrDefault();
             }
         }
 
-        public List<Template> GetAll(FilterTemplateCommand command)
+        public List<Abastecimento> GetAll(FilterAbastecimentoCommand command)
         {
             using (IDbConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT * FROM Templates WHERE 1 =  1 ");
+                string sql = string.Format("SELECT * FROM Abastecimentos WHERE 1 =  1 ");
 
-                if (!string.IsNullOrEmpty(command.TemplateName))
-                    sql += string.Format("AND templateName LIKE '%{0}%' ", command.TemplateName);
+                //if (!string.IsNullOrEmpty(command.AbastecimentoName))
+                //    sql += string.Format("AND abastecimentoName LIKE '%{0}%' ", command.AbastecimentoName);
 
-                sql += "ORDER BY templateID";
-                return conn.Query<Template>(sql).ToList();
+                sql += "ORDER BY abastecimentoID";
+                return conn.Query<Abastecimento>(sql).ToList();
             }
         }
 
-        public void Delete(int templateID)
+        public void Delete(int abastecimentoID)
         {
             using (IDbConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("DELETE FROM dbo.Templates WHERE templateID = '{0}'", templateID);
+                string sql = string.Format("DELETE FROM dbo.Abastecimentos WHERE abastecimentoID = '{0}'", abastecimentoID);
                 conn.ExecuteScalar(sql);
             }
         }

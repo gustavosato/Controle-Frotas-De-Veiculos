@@ -1,15 +1,15 @@
-﻿using ControleVeiculos.Domain.Command.Statuss;
-using ControleVeiculos.Domain.Entities.Statuss;
+﻿using ControleVeiculos.Domain.Command.Acessorios;
+using ControleVeiculos.Domain.Entities.Acessorios;
 using System;
 
 namespace ControleVeiculos.Domain.Services
 {
     public interface IAcessorioService : IDisposable
     {
-        void Add(MaintenanceStatusCommand command);
-        void Update(MaintenanceStatusCommand command);
-        Result<Status> GetByID(int acessorioID);
-        IPagedList<Status> GetAll(FilterStatusCommand command, int pageIndex = 0, int pageSize = int.MaxValue);
+        void Add(MaintenanceAcessorioCommand command);
+        void Update(MaintenanceAcessorioCommand command);
+        Result<Acessorio> GetByID(int acessorioID);
+        IPagedList<Acessorio> GetAll(FilterAcessorioCommand command, int pageIndex = 0, int pageSize = int.MaxValue);
         void Delete(int acessorioID);
     }
 }

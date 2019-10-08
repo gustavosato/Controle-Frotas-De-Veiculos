@@ -176,7 +176,7 @@ namespace ControleVeiculos.MVC.Controllers
         [HttpPost]
         public ActionResult GetAll(DataSourceRequest request, ProfileModel model)
         {
-            var profiles = _profileService.GetAll(new FilterProfileCommand
+            var profiles = _profileService.GetAll(new FilterAbastecimentoCommand
             {
                 GroupID = model.SearchGroupID,
                 SystemFeatureID = model.SearchSystemFeatureID,

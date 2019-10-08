@@ -87,7 +87,7 @@ namespace ControleVeiculos.MVC.Controllers
         [HttpPost]
         public ActionResult GetAll(DataSourceRequest request, TestLogModel model)
         {
-            var testLogs = _testLogService.GetAll(new FilterTestLogCommand
+            var testLogs = _testLogService.GetAll(new FilterVeiculoCommand
             {
                 StatusID = model.SearchStatusID,
                 
@@ -120,9 +120,9 @@ namespace ControleVeiculos.MVC.Controllers
             return PartialView("Maintenance", model);
         }
        
-        private MaintenanceTestLogCommand MaintenanceTestLogCommand(TestLogModel model)
+        private MaintenanceVeiculoCommand MaintenanceTestLogCommand(TestLogModel model)
         {
-            MaintenanceTestLogCommand command = new MaintenanceTestLogCommand();
+            MaintenanceVeiculoCommand command = new MaintenanceVeiculoCommand();
 
             command.LogID = model.LogID;
             command.TestID = model.TestID;

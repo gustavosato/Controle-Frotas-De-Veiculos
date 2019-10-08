@@ -1,5 +1,5 @@
-﻿using ControleVeiculos.Domain.Command.Manutencaos;
-using ControleVeiculos.Domain.Entities.Manutencaos;
+﻿using ControleVeiculos.Domain.Command.Manutencoes;
+using ControleVeiculos.Domain.Entities.Manutencoes;
 using System.Collections.Generic;
 
 namespace ControleVeiculos.Domain.Repositories

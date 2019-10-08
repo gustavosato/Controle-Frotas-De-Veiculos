@@ -1,8 +1,8 @@
-﻿using ControleVeiculos.Command.ParameterValues;
+﻿using ControleVeiculos.Domain.Command.ParameterValues;
 using ControleVeiculos.Domain.Entities.ParameterValues;
 using System.Collections.Generic;
 
-namespace ControleVeiculoss.Domain.Repositories
+namespace ControleVeiculos.Domain.Repositories
 {
     public interface IParameterValueRepository
     {

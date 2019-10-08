@@ -1,4 +1,4 @@
-﻿using ControleVeiculos.Domain.Command.Statuss;
+﻿using ControleVeiculos.Domain.Command.Status;
 using System;
 
 namespace ControleVeiculos.Domain.Entities.Status

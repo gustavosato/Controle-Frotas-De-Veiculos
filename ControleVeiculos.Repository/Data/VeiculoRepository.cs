@@ -1,4 +1,4 @@
-﻿using ControleVeiculos.Domain.Entities.Veiculoss;
+﻿using ControleVeiculos.Domain.Entities.Veiculos;
 using ControleVeiculos.Domain.Repositories;
 using System.Data;
 using Dapper;
@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Collections.Generic;
 using ControleVeiculos.Repository.Map;
 using Dapper.Contrib.Extensions;
-using ControleVeiculos.Domain.Command.Veiculoss;
+using ControleVeiculos.Domain.Command.Veiculos;
 using System;
 
 namespace ControleVeiculos.Repository.Data

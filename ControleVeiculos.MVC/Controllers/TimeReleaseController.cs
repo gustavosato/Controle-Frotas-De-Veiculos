@@ -1,27 +1,15 @@
 ﻿using ControleVeiculos.Domain.Services;
 using ControleVeiculos.MVC.Infrastructure.KendoUI;
-using ControleVeiculos.MVC.Models.TimeReleases;
 using System;
 using System.Linq;
 using ControleVeiculos.MVC.Extensions;
 using System.Web.Mvc;
-using ControleVeiculos.Domain.Command.TimeReleases;
-using ControleVeiculos.Domain.Entities.TimeReleases;
 using ControleVeiculos.Domain;
 //using ControleVeiculos.MVC.Infrastructure.Mvc;
 using ControleVeiculos.MVC.Models.SystemParameter;
 using ControleVeiculos.MVC.Models.Users;
 using System.Globalization;
-using ControleVeiculos.MVC.Models.Demands;
-using ControleVeiculos.MVC.Models.Historicals;
-using ControleVeiculos.Domain.Command.Historicals;
 using System.Web;
-using System.IO;
-using ControleVeiculos.Domain.Command.Demands;
-using ControleVeiculos.Domain.Command.Profiles;
-using ControleVeiculos.Domain.Command.Customers;
-using ControleVeiculos.MVC.Models.DailyLogs;
-using ControleVeiculos.Domain.Command.DailyLogs;
 
 namespace ControleVeiculos.MVC.Controllers
 {
@@ -134,7 +122,7 @@ namespace ControleVeiculos.MVC.Controllers
             try
             {
                 //permissions
-                if (_profilesService.GetAllow(new FilterProfileCommand
+                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
                 {
                     AllowAdd = true,
                     SystemFeatureID = SystemFeatureID,
@@ -252,7 +240,7 @@ namespace ControleVeiculos.MVC.Controllers
         public ActionResult AbsenceRecordAdd(TimeReleaseModel model)
         {
             //permissions
-            if (_profilesService.GetAllow(new FilterProfileCommand
+            if (_profilesService.GetAllow(new FilterAbastecimentoCommand
             {
                 AllowChangeStatus = true,
                 SystemFeatureID = SystemFeatureID,
@@ -379,7 +367,7 @@ namespace ControleVeiculos.MVC.Controllers
             var gridModel = new DataSourceResult();
 
             //permissions
-            if (_profilesService.GetAllow(new FilterProfileCommand
+            if (_profilesService.GetAllow(new FilterAbastecimentoCommand
             {
                 AllowView = true,
                 SystemFeatureID = SystemFeatureID,
@@ -421,7 +409,7 @@ namespace ControleVeiculos.MVC.Controllers
             var gridModel = new DataSourceResult();
 
             //permissions
-            if (_profilesService.GetAllow(new FilterProfileCommand
+            if (_profilesService.GetAllow(new FilterAbastecimentoCommand
             {
                 AllowReportView = true,
                 SystemFeatureID = SystemFeatureID,
@@ -602,7 +590,7 @@ namespace ControleVeiculos.MVC.Controllers
             try
             {
                 //permissions
-                if (_profilesService.GetAllow(new FilterProfileCommand
+                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
                 {
                     AllowDelete = true,
                     SystemFeatureID = SystemFeatureID,
@@ -709,7 +697,7 @@ namespace ControleVeiculos.MVC.Controllers
             try
             {
                 //permissions
-                if (_profilesService.GetAllow(new FilterProfileCommand
+                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
                 {
                     AllowUpdate = true,
                     SystemFeatureID = SystemFeatureID,
@@ -804,7 +792,7 @@ namespace ControleVeiculos.MVC.Controllers
             try
             {
                 //permissions
-                if (_profilesService.GetAllow(new FilterProfileCommand
+                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
                 {
                     AllowChangeStatus = true,
                     SystemFeatureID = SystemFeatureID,

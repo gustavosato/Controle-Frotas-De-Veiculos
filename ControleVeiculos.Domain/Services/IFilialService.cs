@@ -1,5 +1,5 @@
-﻿using ControleVeiculos.Domain.Command.Filials;
-using ControleVeiculos.Domain.Entities.Filials;
+﻿using ControleVeiculos.Domain.Command.Filiais;
+using ControleVeiculos.Domain.Entities.Filiais;
 using System;
 
 namespace ControleVeiculos.Domain.Services

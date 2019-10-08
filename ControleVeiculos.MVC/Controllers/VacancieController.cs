@@ -99,7 +99,7 @@ namespace ControleVeiculos.MVC.Controllers
             try
             {
                 //permissions
-                if (_profilesService.GetAllow(new FilterProfileCommand
+                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
                 {
                     AllowAdd = true,
                     SystemFeatureID = SystemFeatureID,
@@ -143,7 +143,7 @@ namespace ControleVeiculos.MVC.Controllers
             var gridModel = new DataSourceResult();
 
             //permissions
-            if (_profilesService.GetAllow(new FilterProfileCommand
+            if (_profilesService.GetAllow(new FilterAbastecimentoCommand
             {
                 AllowView = true,
                 SystemFeatureID = SystemFeatureID,
@@ -156,7 +156,7 @@ namespace ControleVeiculos.MVC.Controllers
             }
             else
             {
-                var vacancies = _vacancieService.GetAll(new FilterVacancieCommand
+                var vacancies = _vacancieService.GetAll(new FilterFuncionarioCommand
                 {
                     Summary = model.SearchSummary,
                     VacanciesTypeID = model.SearchVacanciesTypeID,
@@ -267,7 +267,7 @@ namespace ControleVeiculos.MVC.Controllers
         public ActionResult DisassociateResume(int resumeID)
         {
             //permissions
-            if (_profilesService.GetAllow(new FilterProfileCommand
+            if (_profilesService.GetAllow(new FilterAbastecimentoCommand
             {
                 AllowAddRemove = true,
                 SystemFeatureID = SystemFeatureID,
@@ -290,7 +290,7 @@ namespace ControleVeiculos.MVC.Controllers
         {
             var command = new MaintenanceVacancieResumeCommand();
             //permissions
-            if (_profilesService.GetAllow(new FilterProfileCommand
+            if (_profilesService.GetAllow(new FilterAbastecimentoCommand
             {
                 AllowAddRemove = true,
                 SystemFeatureID = SystemFeatureID,
@@ -398,7 +398,7 @@ namespace ControleVeiculos.MVC.Controllers
             try
             {
                 //permissions
-                if (_profilesService.GetAllow(new FilterProfileCommand
+                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
                 {
                     AllowUpdate = true,
                     SystemFeatureID = SystemFeatureID,
@@ -542,7 +542,7 @@ namespace ControleVeiculos.MVC.Controllers
             try
             {
                 //permissions
-                if (_profilesService.GetAllow(new FilterProfileCommand
+                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
                 {
                     AllowDelete = true,
                     SystemFeatureID = SystemFeatureID,

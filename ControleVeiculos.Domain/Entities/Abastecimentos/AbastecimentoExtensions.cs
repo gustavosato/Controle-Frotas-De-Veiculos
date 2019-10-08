@@ -1,28 +1,26 @@
-﻿using ControleVeiculos.Domain.Command.Templates;
+﻿using ControleVeiculos.Domain.Command.Abastecimentos;
 using System;
 
-namespace ControleVeiculos.Domain.Entities.Templates
+namespace ControleVeiculos.Domain.Entities.Abastecimentos
 {
-    public static class TemplateExtensions
+    public static class AbastecimentoExtensions
     {
-        public static Result<Template> GetTemplate(this Template template)
+        public static Result<Abastecimento> GetAbastecimento(this Abastecimento abastecimento)
         {
-            return Result.Ok(0, "", template);
+            return Result.Ok(0, "", abastecimento);
         }
 
-        public static Template Map(this Template template, MaintenanceTemplateCommand command)
+        public static Abastecimento Map(this Abastecimento abastecimento, MaintenanceAbastecimentoCommand command)
         {
 
-            template.templateID = command.TemplateID;
-            template.templateName = command.TemplateName;
-            template.description = command.Description;
-            template.domainID = command.DomainID;
-            template.createdByID = command.CreatedByID;
-            template.creationDate = command.CreationDate;
-            template.modifiedByID = command.ModifiedByID;
-            template.lastModifiedDate = command.LastModifiedDate;
-
-            return template;
+            abastecimento.abastecimentoID = command.AbastecimentoID;
+            abastecimento.tipoCombustivel = command.TipoCombustivel;
+            abastecimento.responsavel = command.Responsavel;
+            abastecimento.data = command.Data;
+            abastecimento.kmAtual = command.KmAtual;
+            abastecimento.veiculoID = command.VeiculoID;
+            
+            return abastecimento;
         }
     }
 }
