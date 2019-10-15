@@ -13,7 +13,7 @@ namespace ControleVeiculos.Domain.Entities.Acessorios
         public static Acessorio Map(this Acessorio acessorio, MaintenanceAcessorioCommand command)
         {
 
-            acessorio.acessorioID = command.AcessoriosID;
+            acessorio.acessorioID = command.AcessorioID;
             acessorio.gps = command.Gps;
             acessorio.airBag = command.AirBag;
             acessorio.arCondicionado = command.ArCondicionado;

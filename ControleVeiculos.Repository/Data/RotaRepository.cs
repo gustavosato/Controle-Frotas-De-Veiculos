@@ -21,7 +21,7 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT ISNULL(MAX(CAST(logID AS INT))+1,1) FROM dbo.Rotas");
+                string sql = string.Format("SELECT ISNULL(MAX(CAST(rotaID AS INT))+1,1) FROM dbo.Rotas");
 
                 int primaryKey = conn.Query<int>(sql).FirstOrDefault();
 
@@ -47,19 +47,19 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                RotaDapper rotaDapper = rota.Map(rota.logID);
+                RotaDapper rotaDapper = rota.Map(rota.rotaID);
 
                 conn.Update<RotaDapper>(rotaDapper);
             }
         }
 
-        public Rota GetByID(int logID)
+        public Rota GetByID(int rotaID)
         {
             using (IDbConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
 
-                string sql = string.Format("SELECT * FROM dbo.Rotas WHERE logID = '{0}'", logID);
+                string sql = string.Format("SELECT * FROM dbo.Rotas WHERE rotaID = '{0}'", rotaID);
 
                 return conn.Query<Rota>(sql).FirstOrDefault();
             }
@@ -72,27 +72,27 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT logID, pv.parameterValue AS statusID, tl.stepName, tl.expectedResult, tl.actualResult, tl.pathEvidence " +
+                string sql = string.Format("SELECT rotaID, pv.parameterValue AS statusID, tl.stepName, tl.expectedResult, tl.actualResult, tl.pathEvidence " +
                                            "FROM Rotas tl " +
                                            "INNER JOIN ParameterValues pv ON tl.statusID = pv.parameterValueID " +
                                            "WHERE 1 = 1 ");
 
-                if (!string.IsNullOrEmpty(command.StatusID))
-                    sql += string.Format("AND tl.statusID LIKE '%{0}%' ", command.StatusID);
+                //if (!string.IsNullOrEmpty(command.StatusID))
+                //    sql += string.Format("AND tl.statusID LIKE '%{0}%' ", command.StatusID);
 
-                sql += "ORDER BY logID";
+                sql += "ORDER BY rotaID";
                 return conn.Query<Rota>(sql).ToList();
             }
         }
 
-        public void Delete(int logID)
+        public void Delete(int rotaID)
         {
             using (IDbConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("DELETE FROM dbo.Rotas WHERE logID = '{0}'", logID);
+                string sql = string.Format("DELETE FROM dbo.Rotas WHERE rotaID = '{0}'", rotaID);
                 conn.ExecuteScalar(sql);
             }
         }

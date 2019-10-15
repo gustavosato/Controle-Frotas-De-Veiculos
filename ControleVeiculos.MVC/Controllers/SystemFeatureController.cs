@@ -8,22 +8,18 @@ using System.Web.Mvc;
 using ControleVeiculos.Domain.Command.SystemFeatures;
 using ControleVeiculos.Domain.Entities.SystemFeatures;
 using ControleVeiculos.Domain;
-using ControleVeiculos.Domain.Command.Profiles;
 
 namespace ControleVeiculos.MVC.Controllers
 {
     public class SystemFeatureController : BaseController
     {
         private readonly ISystemFeatureService _systemFeatureService;
-        private readonly IProfilesService _profilesService;
         private readonly IParameterValueService _parameterValueService;
 
         public SystemFeatureController(ISystemFeatureService systemFeatureService,
-                                    IProfilesService profilesService,
                                     IParameterValueService parameterValueService)
         {
             _systemFeatureService = systemFeatureService;
-            _profilesService = profilesService;
             _parameterValueService = parameterValueService;
 
         }
@@ -52,19 +48,6 @@ namespace ControleVeiculos.MVC.Controllers
         {
             try
             {
-                //permissions
-                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-                {
-                    AllowAdd = true,
-                    SystemFeatureID = SystemFeatureID,
-                    UserID = Session["userID"].ToString(),
-                }) == "0")
-                {
-                    WarningNotification("Você não tem permissão para adicionar um registro em Funcionalidades do Sistema!");
-
-                    return RedirectToAction("Index");
-                }
-
                 if (ModelState.IsValid)
                 {
                     var command = MaintenanceSystemFeatureCommand(model);
@@ -94,19 +77,6 @@ namespace ControleVeiculos.MVC.Controllers
         {
             var gridModel = new DataSourceResult();
 
-            //permissions
-            if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-            {
-                AllowView = true,
-                SystemFeatureID = SystemFeatureID,
-                UserID = Session["userID"].ToString(),
-            }) == "0")
-            {
-                WarningNotification("Você não tem permissão para visualizar os registros em Funcionalidades do Sistema!");
-
-                return Json(gridModel);
-            }
-            else
             {
                 var systemFeatures = _systemFeatureService.GetAll(new FilterSystemFeatureCommand
                 {
@@ -192,19 +162,6 @@ namespace ControleVeiculos.MVC.Controllers
         {
             try
             {
-                //permissions
-                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-                {
-                    AllowDelete = true,
-                    SystemFeatureID = SystemFeatureID,
-                    UserID = Session["userID"].ToString(),
-                }) == "0")
-                {
-                    WarningNotification("Você não tem permissão para excluir um registro em Funcionalidades do Sistema!");
-
-                    return RedirectToAction("Index");
-                }
-
                 if (systemFeatureID == 0)
                 {
                     ErrorNotification(string.Format("O registro não pode ser excluído! "));
@@ -239,19 +196,6 @@ namespace ControleVeiculos.MVC.Controllers
         {
             try
             {
-                //permissions
-                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-                {
-                    AllowUpdate = true,
-                    SystemFeatureID = SystemFeatureID,
-                    UserID = Session["userID"].ToString(),
-                }) == "0")
-                {
-                    WarningNotification("Você não tem permissão para atualizar um registro em Funcionalidades do Sistema!");
-
-                    return RedirectToAction("Index");
-                }
-
                 if (ModelState.IsValid)
                 {
                     var command = MaintenanceSystemFeatureCommand(model);

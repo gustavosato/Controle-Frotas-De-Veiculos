@@ -36,12 +36,12 @@ namespace ControleVeiculos.ApplicationService
             _motoristaRepository.Update(motorista);
         }
 
-        public IList<Motorista> GetAll(int motoristaID)
-        {
-            var motorista = _motoristaRepository.GetAll(motoristaID);
+        //public IList<Motorista> GetAll(int motoristaID)
+        //{
+        //    var motorista = _motoristaRepository.GetAll(motoristaID);
 
-            return new List<Motorista>(motorista);
-        }
+        //    return new List<Motorista>(motorista);
+        //}
 
         public Result<Motorista> GetByID(int motoristaID)
         {

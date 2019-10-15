@@ -21,7 +21,7 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT ISNULL(MAX(CAST(logID AS INT))+1,1) FROM dbo.Sinistros");
+                string sql = string.Format("SELECT ISNULL(MAX(CAST(sinistroID AS INT))+1,1) FROM dbo.Sinistros");
 
                 int primaryKey = conn.Query<int>(sql).FirstOrDefault();
 
@@ -47,19 +47,19 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                SinistroDapper sinistroDapper = sinistro.Map(sinistro.logID);
+                SinistroDapper sinistroDapper = sinistro.Map(sinistro.sinistroID);
 
                 conn.Update<SinistroDapper>(sinistroDapper);
             }
         }
 
-        public Sinistro GetByID(int logID)
+        public Sinistro GetByID(int sinistroID)
         {
             using (IDbConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
 
-                string sql = string.Format("SELECT * FROM dbo.Sinistros WHERE logID = '{0}'", logID);
+                string sql = string.Format("SELECT * FROM dbo.Sinistros WHERE sinistroID = '{0}'", sinistroID);
 
                 return conn.Query<Sinistro>(sql).FirstOrDefault();
             }
@@ -72,27 +72,27 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT logID, pv.parameterValue AS statusID, tl.stepName, tl.expectedResult, tl.actualResult, tl.pathEvidence " +
+                string sql = string.Format("SELECT sinistroID, pv.parameterValue AS statusID, tl.stepName, tl.expectedResult, tl.actualResult, tl.pathEvidence " +
                                            "FROM Sinistros tl " +
                                            "INNER JOIN ParameterValues pv ON tl.statusID = pv.parameterValueID " +
                                            "WHERE 1 = 1 ");
 
-                if (!string.IsNullOrEmpty(command.StatusID))
-                    sql += string.Format("AND tl.statusID LIKE '%{0}%' ", command.StatusID);
+                //if (!string.IsNullOrEmpty(command.StatusID))
+                //    sql += string.Format("AND tl.statusID LIKE '%{0}%' ", command.StatusID);
 
-                sql += "ORDER BY logID";
+                sql += "ORDER BY sinistroID";
                 return conn.Query<Sinistro>(sql).ToList();
             }
         }
 
-        public void Delete(int logID)
+        public void Delete(int sinistroID)
         {
             using (IDbConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("DELETE FROM dbo.Sinistros WHERE logID = '{0}'", logID);
+                string sql = string.Format("DELETE FROM dbo.Sinistros WHERE sinistroID = '{0}'", sinistroID);
                 conn.ExecuteScalar(sql);
             }
         }

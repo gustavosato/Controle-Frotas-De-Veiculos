@@ -76,8 +76,8 @@ namespace ControleVeiculos.Repository.Data
                                            "WHERE 1 = 1 ");
 
 
-                if (!string.IsNullOrEmpty(command.StatusName))
-                    sql += string.Format("AND g.statusName LIKE '%{0}%'", command.StatusName);
+                //if (!string.IsNullOrEmpty(command.StatusName))
+                //    sql += string.Format("AND g.statusName LIKE '%{0}%'", command.StatusName);
 
                 sql += "ORDER BY statusName";
 

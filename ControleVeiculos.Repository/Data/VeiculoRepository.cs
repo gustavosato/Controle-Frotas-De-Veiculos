@@ -12,20 +12,20 @@ using System;
 
 namespace ControleVeiculos.Repository.Data
 {
-    public class VeiculoRepository : BaseRepository, IVeiculosRepository
+    public class VeiculoRepository : BaseRepository, IVeiculoRepository
     {
-        public void Add(Veiculos veiculos)
+        public void Add(Veiculo veiculo)
         {
             using (IDbConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT ISNULL(MAX(CAST(logID AS INT))+1,1) FROM dbo.Veiculoss");
+                string sql = string.Format("SELECT ISNULL(MAX(CAST(logID AS INT))+1,1) FROM dbo.Veiculos");
 
                 int primaryKey = conn.Query<int>(sql).FirstOrDefault();
 
-                VeiculoDapper veiculosDapper = veiculos.Map(primaryKey);
+                VeiculoDapper veiculosDapper = veiculo.Map(primaryKey);
 
                 //conn.Insert<VeiculosDapper>(veiculosDapper);
 
@@ -40,20 +40,20 @@ namespace ControleVeiculos.Repository.Data
             }
         }
 
-        public void Update(Veiculos veiculos)
+        public void Update(Veiculo veiculo)
         {
             using (IDbConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                VeiculoDapper veiculosDapper = veiculos.Map(veiculos.logID);
+                VeiculoDapper veiculosDapper = veiculo.Map(veiculo.veiculoID);
 
                 conn.Update<VeiculoDapper>(veiculosDapper);
             }
         }
 
-        public Veiculos GetByID(int logID)
+        public Veiculo GetByID(int logID)
         {
             using (IDbConnection conn = new SqlConnection(ConnectionString))
             {
@@ -61,11 +61,11 @@ namespace ControleVeiculos.Repository.Data
 
                 string sql = string.Format("SELECT * FROM dbo.Veiculoss WHERE logID = '{0}'", logID);
 
-                return conn.Query<Veiculos>(sql).FirstOrDefault();
+                return conn.Query<Veiculo>(sql).FirstOrDefault();
             }
         }
 
-        public List<Veiculos> GetAll(FilterVeiculosCommand command)
+        public List<Veiculo> GetAll(FilterVeiculoCommand command)
         {
             using (IDbConnection conn = new SqlConnection())
             {
@@ -77,11 +77,11 @@ namespace ControleVeiculos.Repository.Data
                                            "INNER JOIN ParameterValues pv ON tl.statusID = pv.parameterValueID " +
                                            "WHERE 1 = 1 ");
 
-                if (!string.IsNullOrEmpty(command.StatusID))
-                    sql += string.Format("AND tl.statusID LIKE '%{0}%' ", command.StatusID);
+                //if (!string.IsNullOrEmpty(command.StatusID))
+                //    sql += string.Format("AND tl.statusID LIKE '%{0}%' ", command.StatusID);
 
                 sql += "ORDER BY logID";
-                return conn.Query<Veiculos>(sql).ToList();
+                return conn.Query<Veiculo>(sql).ToList();
             }
         }
 

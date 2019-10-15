@@ -36,12 +36,12 @@ namespace ControleVeiculos.ApplicationService
             _financaRepository.Update(financa);
         }
 
-        public IList<Financa> GetAll(int financaID)
-        {
-            var financa = _financaRepository.GetAll(financaID);
+        //public IList<Financa> GetAll(int financaID)
+        //{
+        //    var financa = _financaRepository.GetAll(financaID);
 
-            return new List<Financa>(financa);
-        }
+        //    return new List<Financa>(financa);
+        //}
 
         public Result<Financa> GetByID(int financaID)
         {

@@ -3,7 +3,7 @@
     public class MaintenanceMotoristaCommand
     {
         public int MotoristaID { get; set; }
-        public string nomeMotorista { get; set; }
+        public string NomeMotorista { get; set; }
         public string NumeroCnh { get; set; }
     }
 }

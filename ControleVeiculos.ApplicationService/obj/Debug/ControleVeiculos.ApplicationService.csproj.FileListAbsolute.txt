@@ -1,11 +1,11 @@
-C:\ControleFrotaVeiculos\ControleVeiculos.ApplicationService\obj\Debug\ControleVeiculos.ApplicationService.csprojAssemblyReference.cache
-C:\ControleFrotaVeiculos\ControleVeiculos.ApplicationService\obj\Debug\ControleVeiculos.ApplicationService.csproj.CoreCompileInputs.cache
 C:\ControleFrotaVeiculos\ControleVeiculos.ApplicationService\bin\Debug\ControleVeiculos.ApplicationService.dll
 C:\ControleFrotaVeiculos\ControleVeiculos.ApplicationService\bin\Debug\ControleVeiculos.ApplicationService.pdb
 C:\ControleFrotaVeiculos\ControleVeiculos.ApplicationService\bin\Debug\ControleVeiculos.Domain.dll
 C:\ControleFrotaVeiculos\ControleVeiculos.ApplicationService\bin\Debug\ControleVeiculos.SharedKernel.dll
 C:\ControleFrotaVeiculos\ControleVeiculos.ApplicationService\bin\Debug\ControleVeiculos.Domain.pdb
 C:\ControleFrotaVeiculos\ControleVeiculos.ApplicationService\bin\Debug\ControleVeiculos.SharedKernel.pdb
+C:\ControleFrotaVeiculos\ControleVeiculos.ApplicationService\obj\Debug\ControleVeiculos.ApplicationService.csprojAssemblyReference.cache
+C:\ControleFrotaVeiculos\ControleVeiculos.ApplicationService\obj\Debug\ControleVeiculos.ApplicationService.csproj.CoreCompileInputs.cache
 C:\ControleFrotaVeiculos\ControleVeiculos.ApplicationService\obj\Debug\ControleVeiculos.ApplicationService.csproj.CopyComplete
 C:\ControleFrotaVeiculos\ControleVeiculos.ApplicationService\obj\Debug\ControleVeiculos.ApplicationService.dll
 C:\ControleFrotaVeiculos\ControleVeiculos.ApplicationService\obj\Debug\ControleVeiculos.ApplicationService.pdb

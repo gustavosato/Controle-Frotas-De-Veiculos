@@ -36,12 +36,12 @@ namespace ControleVeiculos.ApplicationService
             _documentoRepository.Update(documento);
         }
 
-        public IList<Documento> GetAll(int documentoID)
-        {
-            var documento = _documentoRepository.GetAll(documentoID);
+        //public IList<Documento> GetAll(int documentoID)
+        //{
+        //    var documento = _documentoRepository.GetAll(documentoID);
 
-            return new List<Documento>(documento);
-        }
+        //    return new List<Documento>(documento);
+        //}
 
         public Result<Documento> GetByID(int documentoID)
         {

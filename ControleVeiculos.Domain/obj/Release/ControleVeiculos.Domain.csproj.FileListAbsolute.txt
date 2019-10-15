@@ -1,0 +1,9 @@
+C:\ControleFrotaVeiculos\ControleVeiculos.Domain\bin\Release\ControleVeiculos.Domain.dll
+C:\ControleFrotaVeiculos\ControleVeiculos.Domain\bin\Release\ControleVeiculos.Domain.pdb
+C:\ControleFrotaVeiculos\ControleVeiculos.Domain\bin\Release\ControleVeiculos.SharedKernel.dll
+C:\ControleFrotaVeiculos\ControleVeiculos.Domain\bin\Release\ControleVeiculos.SharedKernel.pdb
+C:\ControleFrotaVeiculos\ControleVeiculos.Domain\obj\Release\ControleVeiculos.Domain.csprojAssemblyReference.cache
+C:\ControleFrotaVeiculos\ControleVeiculos.Domain\obj\Release\ControleVeiculos.Domain.csproj.CoreCompileInputs.cache
+C:\ControleFrotaVeiculos\ControleVeiculos.Domain\obj\Release\ControleVeiculos.Domain.csproj.CopyComplete
+C:\ControleFrotaVeiculos\ControleVeiculos.Domain\obj\Release\ControleVeiculos.Domain.dll
+C:\ControleFrotaVeiculos\ControleVeiculos.Domain\obj\Release\ControleVeiculos.Domain.pdb

@@ -36,12 +36,12 @@ namespace ControleVeiculos.ApplicationService
             _acessorioRepository.Update(acessorio);
         }
 
-        public IList<Acessorio> GetAll(int acessorioID)
-        {
-            var acessorio = _acessorioRepository.GetAll(acessorioID);
+        //public IList<Acessorio> GetAll(int acessorioID)
+        //{
+        //    var acessorio = _acessorioRepository.GetAll(acessorioID);
 
-            return new List<Acessorio>(acessorio);
-        }
+        //    return new List<Acessorio>(acessorio);
+        //}
 
         public Result<Acessorio> GetByID(int acessorioID)
         {

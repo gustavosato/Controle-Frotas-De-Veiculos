@@ -21,7 +21,7 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT ISNULL(MAX(CAST(logID AS INT))+1,1) FROM dbo.Kilometragems");
+                string sql = string.Format("SELECT ISNULL(MAX(CAST(kilometragemID AS INT))+1,1) FROM dbo.Kilometragems");
 
                 int primaryKey = conn.Query<int>(sql).FirstOrDefault();
 
@@ -47,19 +47,19 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                KilometragemDapper kilometragemDapper = kilometragem.Map(kilometragem.logID);
+                KilometragemDapper kilometragemDapper = kilometragem.Map(kilometragem.kilometragemID);
 
                 conn.Update<KilometragemDapper>(kilometragemDapper);
             }
         }
 
-        public Kilometragem GetByID(int logID)
+        public Kilometragem GetByID(int kilometragemID)
         {
             using (IDbConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
 
-                string sql = string.Format("SELECT * FROM dbo.Kilometragems WHERE logID = '{0}'", logID);
+                string sql = string.Format("SELECT * FROM dbo.Kilometragems WHERE kilometragemID = '{0}'", kilometragemID);
 
                 return conn.Query<Kilometragem>(sql).FirstOrDefault();
             }
@@ -72,27 +72,27 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT logID, pv.parameterValue AS statusID, tl.stepName, tl.expectedResult, tl.actualResult, tl.pathEvidence " +
+                string sql = string.Format("SELECT kilometragemID, pv.parameterValue AS statusID, tl.stepName, tl.expectedResult, tl.actualResult, tl.pathEvidence " +
                                            "FROM Kilometragems tl " +
                                            "INNER JOIN ParameterValues pv ON tl.statusID = pv.parameterValueID " +
                                            "WHERE 1 = 1 ");
 
-                if (!string.IsNullOrEmpty(command.StatusID))
-                    sql += string.Format("AND tl.statusID LIKE '%{0}%' ", command.StatusID);
+                //if (!string.IsNullOrEmpty(command.StatusID))
+                //    sql += string.Format("AND tl.statusID LIKE '%{0}%' ", command.StatusID);
 
-                sql += "ORDER BY logID";
+                sql += "ORDER BY kilometragemID";
                 return conn.Query<Kilometragem>(sql).ToList();
             }
         }
 
-        public void Delete(int logID)
+        public void Delete(int kilometragemID)
         {
             using (IDbConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("DELETE FROM dbo.Kilometragems WHERE logID = '{0}'", logID);
+                string sql = string.Format("DELETE FROM dbo.Kilometragems WHERE kilometragemID = '{0}'", kilometragemID);
                 conn.ExecuteScalar(sql);
             }
         }

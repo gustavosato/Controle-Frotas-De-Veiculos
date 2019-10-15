@@ -10,26 +10,14 @@ using ControleVeiculos.Domain.Command.Users;
 using ControleVeiculos.Domain.Entities.Users;
 using ControleVeiculos.Domain;
 //using ControleVeiculos.MVC.Infrastructure.Mvc;
-using ControleVeiculos.Domain.Command.CustomersUsers;
 using System.Globalization;
 using ControleVeiculos.MVC.Models.SystemParameter;
 using System.Web;
 using System.IO;
-using ControleVeiculos.MVC.Models.Attachments;
-using ControleVeiculos.Domain.Command.Attachments;
 using Newtonsoft.Json.Linq;
 using System.Net;
-using Mvc5_ReCaptcha.Models;
 using Newtonsoft.Json;
 using System.Web.Configuration;
-using ControleVeiculos.Domain.Command.Historicals;
-using ControleVeiculos.MVC.Models.Historicals;
-using ControleVeiculos.Domain.Command.Groups;
-using ControleVeiculos.MVC.Models.Groups;
-using ControleVeiculos.Domain.Command.Profiles;
-using ControleVeiculos.Domain.Command.GroupsUsers;
-using ControleVeiculos.MVC.Models.Customers;
-using ControleVeiculos.Domain.Entities.Customers;
 using ControleVeiculos.Infrastructure.Mvc;
 
 namespace ControleVeiculos.MVC.Controllers
@@ -38,68 +26,28 @@ namespace ControleVeiculos.MVC.Controllers
     {
         private readonly IUserService _userService;
         private readonly IUserService _userService1;
-        private readonly ICustomerUserService _customerUserService;
-        private readonly ICustomerService _customerService;
         private readonly IParameterValueService _parameterValueService;
-        private readonly IExportManagerService _exportManagerService;
-        private readonly IEncryptService _encryptService;
-        private readonly IMailService _mailService;
         private readonly ISystemParameterService _systemParameterService;
+        private readonly IEncryptyService _encryptyService;
         private readonly IStringUtilityService _stringUtilityService;
-        private readonly IHistoricalService _historicalService;
-        private readonly IAttachmentService _attachmentService;
-        private readonly IProfilesService _profilesService;
-        private readonly IGroupUserService _groupUserService;
+
 
         public UserController(IUserService userService,
-                              IExportManagerService exportManagerService,
                               IParameterValueService parameterValueService,
-                              IEncryptService encryptService,
-                              IMailService mailService,
                               IUserService userService1,
-                              IHistoricalService historicalService,
-                              ICustomerService customerService,
-                              ISystemParameterService systemParameterService,
-                              IStringUtilityService stringUtilityService,
-                              IAttachmentService attachmentService,
-                              IProfilesService profilesService,
-                              ICustomerUserService customerUser,
-                              IGroupUserService groupUserService)
-
+                              IEncryptyService encryptyService,
+                              IStringUtilityService stringUtlilityService,
+                              ISystemParameterService systemParameterService)
         {
             _userService = userService;
             _userService1 = userService1;
-            _customerService = customerService;
-            _customerUserService = customerUser;
             _parameterValueService = parameterValueService;
-            _exportManagerService = exportManagerService;
-            _encryptService = encryptService;
-            _mailService = mailService;
             _systemParameterService = systemParameterService;
-            _historicalService = historicalService;
-            _attachmentService = attachmentService;
-            _profilesService = profilesService;
-            _stringUtilityService = stringUtilityService;
-            _groupUserService = groupUserService;
+            _encryptyService = encryptyService;
+            _stringUtilityService = stringUtlilityService;
         }
 
         private string SystemFeatureID = "100";
-
-        public ActionResult CustomerAssociate(int userID)
-        {
-            var model = new UserModel();
-            model.UserID = userID;
-            Session["userAssociateID"] = userID;
-            return PartialView("CustomerAssociate");
-        }
-
-        public ActionResult GroupAssociate(int userID)
-        {
-            var model = new UserModel();
-            model.UserID = userID;
-            Session["userAssociateID"] = userID;
-            return PartialView("GroupAssociate");
-        }
 
         public ActionResult Index()
         {
@@ -126,7 +74,7 @@ namespace ControleVeiculos.MVC.Controllers
             try
             {
                 Result<User> user;
-                string password = _encryptService.GetHash(model.PasswordNew);
+               string password = _encryptyService.GetHash(model.PasswordNew);
 
                 var modelLocal = new UserModel();
 
@@ -142,20 +90,6 @@ namespace ControleVeiculos.MVC.Controllers
 
                 if (user.IsSuccess)
                 {
-                    string isReCaptchaActivi = WebConfigurationManager.AppSettings["isReCaptchaActivi"];
-
-                    if (isReCaptchaActivi == "true")
-                    {
-                        CaptchaResponse response = ValidateCaptcha(Request["g-recaptcha-response"]);
-
-                        if (!response.Success)
-                        {
-                            //ViewBag.ErroCaptcha = "Google reCaptcha validação FALHOU !!! /n"
-                            //    + response.ErrorMessage[0].ToString();
-                            WarningNotification(string.Format("Favor validar reCAPTCHA !!!"));
-                            return RedirectToAction("Index", "Site");
-                        }
-                    }
                     if (modelLocal == null)
                     {
                         model.Email = model.EmailNew;
@@ -208,40 +142,17 @@ namespace ControleVeiculos.MVC.Controllers
             }
 
         }
-        public static CaptchaResponse ValidateCaptcha(string response)
-        {
-            string secret = WebConfigurationManager.AppSettings["recaptchaPrivateKey"];
-            var user = new WebClient();
-            var jsonResult = user.DownloadString(
-                 string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}",
-                 secret, response));
-            return JsonConvert.DeserializeObject<CaptchaResponse>(jsonResult.ToString());
-
-        }
 
         [HttpPost]
         public ActionResult Add(UserModel model, HttpPostedFileBase file)
         {
             try
             {
-                //permissions
-                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-                {
-                    AllowAdd = true,
-                    SystemFeatureID = SystemFeatureID,
-                    UserID = Session["userID"].ToString(),
-                }) == "0")
-                {
-                    WarningNotification("Você não tem permissão para adicionar um usuário!");
-
-                    return RedirectToAction("Index");
-                }
-
                 Result<User> user;
 
                 string password = _stringUtilityService.RandomPassword(8);
 
-                string passwordHash = _encryptService.GetHash(password);
+                string passwordHash = _encryptyService.GetHash(password);
 
                 var modelLocal = new UserModel();
 
@@ -284,20 +195,6 @@ namespace ControleVeiculos.MVC.Controllers
 
                             file.SaveAs(path);
 
-                            var attachmentModel = new AttachmentModel();
-
-                            attachmentModel.Description = fileName;
-                            attachmentModel.FileName = fileName;
-                            attachmentModel.PathFile = path;
-                            attachmentModel.RecordID = recordID;
-                            attachmentModel.SizeFile = size;
-                            attachmentModel.SystemFeatureID = SystemFeatureID;
-                            attachmentModel.CreatedByID = Convert.ToString(Session["userID"]);
-                            attachmentModel.CreationDate = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-
-                            var localCommand = MaintenanceAttachmentCommand(attachmentModel);
-
-                            _attachmentService.Add(localCommand);
                         }
 
                         string body = "Dados para acesso do novo usuário: \n \n Usuário: " + model.Email + " \n Senha: " + password;
@@ -313,9 +210,6 @@ namespace ControleVeiculos.MVC.Controllers
                         mailEmailModel = mailEmail.Value.ToModel();
 
                         passwordEmailModel = passwordEmail.Value.ToModel();
-
-                        var mail = _mailService.Send(mailEmailModel.ParamterValue, passwordEmailModel.ParamterValue, "support.leantest@rperformancegroup.com", model.Email, "RP Group LeanTest - Novo usuário", body, "");
-
 
                         SuccessNotification(string.Format("Usuário criado com sucesso! Usuário: {0} - {1}.", model.UserName, model.Email));
 
@@ -346,20 +240,6 @@ namespace ControleVeiculos.MVC.Controllers
         {
 
             var gridModel = new DataSourceResult();
-
-            //permissions
-            if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-            {
-                AllowView = true,
-                SystemFeatureID = SystemFeatureID,
-                UserID = Session["userID"].ToString(),
-            }) == "0")
-            {
-                WarningNotification("Você não tem permissão para visualizar os registros de apropriação de horas!");
-
-                return Json(gridModel);
-            }
-            else
             {
                 var users = _userService.GetAll(new FilterUserCommand
                 {
@@ -382,110 +262,6 @@ namespace ControleVeiculos.MVC.Controllers
 
                 return Json(gridModel);
             }
-        }
-        [HttpPost]
-        public ActionResult GetAllAssociateUserByCustomerID(DataSourceRequest request, UserModel model)
-        {
-            model.CustomerID = Session["customerAssociateID"].ToString();
-
-            var users = _userService.GetAllAssociateUserByCustomerID(new FilterUserCommand
-            {
-                UserName = model.SearchUserName,
-                CustomerID = model.CustomerID
-            },
-                request.Page - 1, request.PageSize);
-
-            var gridModel = new DataSourceResult
-            {
-                Data = users.Select(x =>
-                {
-                    var usersModel = x.ToModel();
-
-                    return usersModel;
-                }),
-                Total = users.TotalCount
-            };
-
-            return Json(gridModel);
-        }
-
-        [HttpPost]
-        public ActionResult GetAllAssociateGroupByUserID(DataSourceRequest request, GroupModel model)
-
-        {
-            model.UserID = Session["userAssociateID"].ToString();
-
-            var users = _groupUserService.GetAllAssociateGroupByUserID(new FilterGroupCommand
-            {
-                GroupName = model.SearchGroupName,
-                UserID = model.UserID
-            },
-                request.Page - 1, request.PageSize);
-
-            var gridModel = new DataSourceResult
-            {
-                Data = users.Select(x =>
-                {
-                    var usersModel = x.ToModel();
-
-                    return usersModel;
-                }),
-                Total = users.TotalCount
-            };
-
-            return Json(gridModel);
-        }
-
-        [HttpPost]
-        public ActionResult GetAllNoAssociateUserByCustomerID(DataSourceRequest request, UserModel model)
-        {
-            model.CustomerID = Session["customerAssociateID"].ToString();
-
-            var users = _userService.GetAllNoAssociateUserByCustomerID(new FilterUserCommand
-            {
-                UserName = model.SearchUserName,
-                CustomerID = model.CustomerID
-            },
-                request.Page - 1, request.PageSize);
-
-            var gridModel = new DataSourceResult
-            {
-                Data = users.Select(x =>
-                {
-                    var usersModel = x.ToModel();
-
-                    return usersModel;
-                }),
-                Total = users.TotalCount
-            };
-
-            return Json(gridModel);
-        }
-
-        [HttpPost]
-        public ActionResult GetAllNoAssociateGroupByUserID(DataSourceRequest request, GroupModel model)
-        {
-            model.UserID = Session["userAssociateID"].ToString();
-
-            var users = _groupUserService.GetAllNoAssociateGroupByUserID(new FilterGroupCommand
-            {
-                GroupName = model.SearchGroupName,
-                UserID = model.UserID
-            },
-                request.Page - 1, request.PageSize);
-
-            var gridModel = new DataSourceResult
-            {
-                Data = users.Select(x =>
-                {
-                    var usersModel = x.ToModel();
-
-                    return usersModel;
-                }),
-                Total = users.TotalCount
-            };
-
-            return Json(gridModel);
         }
 
         public ActionResult New()
@@ -524,156 +300,6 @@ namespace ControleVeiculos.MVC.Controllers
             return PartialView("Maintenance", model);
         }
 
-        public ActionResult DisassociateUser(int userID)
-        {
-            //permissions
-            if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-            {
-                AllowAddRemove = true,
-                SystemFeatureID = SystemFeatureID,
-                UserID = Session["userID"].ToString(),
-            }) == "0")
-            {
-                WarningNotification("Você não tem permissão para desassociar um usuário!");
-
-                return View();
-            }
-            else
-            {
-                _customerUserService.Delete(Convert.ToInt16(Session["customerAssociateID"]), userID);
-
-                return View();
-            }
-        }
-
-        public ActionResult DisassociateGroup(int groupID)
-        {
-            //permissions
-            if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-            {
-                AllowAddRemove = true,
-                SystemFeatureID = SystemFeatureID,
-                UserID = Session["userID"].ToString(),
-            }) == "0")
-            {
-                WarningNotification("Você não tem permissão para desassociar um grupo!");
-
-                return View();
-            }
-            else
-            {
-                _groupUserService.Delete(groupID, Convert.ToInt16(Session["userAssociateID"]));
-
-                return View();
-            }
-        }
-
-        public ActionResult DisassociateCustomer(int customerID)
-        {
-            //permissions
-            if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-            {
-                AllowAddRemove = true,
-                SystemFeatureID = SystemFeatureID,
-                UserID = Session["userID"].ToString(),
-            }) == "0")
-            {
-                WarningNotification("Você não tem permissão para desassociar uma empresa!");
-
-                return View();
-            }
-            else {
-                _customerUserService.Delete(customerID, Convert.ToInt16(Session["userAssociateID"]));
-
-                return View();
-            }
-        }
-
-        public ActionResult AssociateUser(int userID)
-        {
-            var command = new MaintenanceCustomerUserCommand();
-            //permissions
-            if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-            {
-                AllowAddRemove = true,
-                SystemFeatureID = SystemFeatureID,
-                UserID = Session["userID"].ToString(),
-            }) == "0")
-            {
-                WarningNotification("Você não tem permissão para associar um usuário!");
-
-                return View();
-
-            }
-            else
-            {
-                command = new MaintenanceCustomerUserCommand();
-
-                command.CustomerID = Convert.ToInt16(Session["customerAssociateID"]);
-                command.UserID = userID;
-
-                _customerUserService.Add(command);
-
-                return View();
-            }
-        }
-
-        public ActionResult AssociateGroup(int groupID)
-        {
-            var command = new MaintenanceGroupUserCommand();
-            //permissions
-            if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-            {
-                AllowAddRemove = true,
-                SystemFeatureID = SystemFeatureID,
-                UserID = Session["userID"].ToString(),
-            }) == "0")
-            {
-                WarningNotification("Você não tem permissão para associar um grupo!");
-
-                return View();
-            }
-            else
-            {
-                command = new MaintenanceGroupUserCommand();
-
-                command.UserID = Convert.ToInt16(Session["userAssociateID"]);
-                command.GroupID = groupID;
-
-                _groupUserService.Add(command);
-
-                return View();
-            }
-        }
-
-        public ActionResult AssociateCustomer(int customerID)
-        {
-            var command = new MaintenanceCustomerUserCommand();
-            //permissions
-            if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-            {
-                AllowAddRemove = true,
-                SystemFeatureID = SystemFeatureID,
-                UserID = Session["userID"].ToString(),
-            }) == "0")
-            {
-                WarningNotification("Você não tem permissão para associar uma empresa!");
-
-                return View();
-            }
-            else
-            {
-                command = new MaintenanceCustomerUserCommand();
-
-                command.UserID = Convert.ToInt16(Session["userAssociateID"]);
-                command.CustomerID = customerID;
-
-                _customerUserService.Add(command);
-
-                return View();
-            }
-        }
-
         public JsonResult RememberPassword(string email)
         {
             string newPassword = _stringUtilityService.RandomPassword(12);
@@ -689,7 +315,7 @@ namespace ControleVeiculos.MVC.Controllers
                 string body = null;
 
                 body = "Nova senha gerada: " + newPassword;
-                model.Password = _encryptService.GetHash(newPassword);
+                model.Password = _encryptyService.GetHash(newPassword);
                 model.LastAccessDate = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
                 model.FirstAccess = "True";
                 model.LastIPAccess = Server.HtmlEncode(Request.UserHostAddress);
@@ -710,73 +336,10 @@ namespace ControleVeiculos.MVC.Controllers
 
                 passwordEmailModel = passwordEmail.Value.ToModel();
 
-                var mail = _mailService.Send(mailEmailModel.ParamterValue, passwordEmailModel.ParamterValue, "support.leantest@rperformancegroup.com", model.Email, "RP Group LeanTest - Recuperação de senha", body, "");
-
                 return Json(new { success = false, responseText = string.Format("Sua nova senha foi enviada para o e-mail {0}", email) }, JsonRequestBehavior.AllowGet);
             }
 
             return Json(new { success = false, responseText = string.Format("Usuário não encontrado, e-mail {0}", email) }, JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult GetCustomers(string mail, string password)
-        {
-            var model = new UserModel();
-
-            Result<User> localUser = _userService.GetByEmail(mail);
-
-            if (localUser.IsSuccess)
-            {
-                model = localUser.Value.ToModel();
-
-                if (model == null)
-                {
-                    if (!string.IsNullOrEmpty(mail))
-                    {
-                        return Json(new { success = false, responseText = string.Format("E-mail: {0}, não foi encontrado!", mail) }, JsonRequestBehavior.AllowGet);
-                    }
-                    else
-                    {
-                        return Json(new { success = false, responseText = string.Format("", mail) }, JsonRequestBehavior.AllowGet);
-                    }
-                }
-
-                if (string.IsNullOrEmpty(password))
-                {
-                    return Json(new { success = false, responseText = string.Format("A senha é obrigatória!") }, JsonRequestBehavior.AllowGet);
-                }
-                password = _encryptService.GetHash(password);
-            }
-            else
-            {
-                return Json(new { success = false, responseText = string.Format("E-mail não encontrado! E-mail: {0}", mail) }, JsonRequestBehavior.AllowGet);
-            }
-
-            if (model.Password == password)
-            {
-                if (model.IsActive == false)
-                {
-                    return Json(new { success = false, responseText = string.Format("Usuário inativo, procure o administrador! Usuário: {0}", model.UserName) }, JsonRequestBehavior.AllowGet);
-                }
-
-                if (model.FirstAccess == "True")
-                {
-                    return Json(new { success = false, responseText = string.Format("changePassword") }, JsonRequestBehavior.AllowGet);
-                }
-
-                DateTime accessToDate = DateTime.ParseExact(model.AccessToDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-
-                if (accessToDate < DateTime.Today)
-                {
-                    return Json(new { success = false, responseText = string.Format("Acesso expirado, procure o administrador! Usuário: {0}", model.UserName) }, JsonRequestBehavior.AllowGet);
-                }
-            }
-            else
-            {
-                return Json(new { success = false, responseText = string.Format("Senha incorreta!") }, JsonRequestBehavior.AllowGet);
-            }
-            var customers = _customerService.GetAllAssociateCustomerByUserID(model.UserID.ToString(), "0");
-
-            return Json(customers.Select(x => new SelectListItem() { Text = x.customerName.ToString(), Value = x.customerID.ToString() }).ToList());
         }
 
         public JsonResult UpdatePassword(string email, string password)
@@ -789,7 +352,7 @@ namespace ControleVeiculos.MVC.Controllers
 
             if (model != null)
             {
-                model.Password = _encryptService.GetHash(password);
+                model.Password = _encryptyService.GetHash(password);
                 model.LastAccessDate = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
                 model.FirstAccess = "False";
                 model.LastIPAccess = Server.HtmlEncode(Request.UserHostAddress);
@@ -816,28 +379,11 @@ namespace ControleVeiculos.MVC.Controllers
 
             string[] userName = model.UserName.Split(' ');
 
-            //get customerName
-            var customerModel = new CustomerModel();
-
-            Result<Customer> localCustomer= _customerService.GetByID(Convert.ToInt32(user.CustomerID));
-
-            customerModel = localCustomer.Value.ToModel();
-
-            Session["userName"] = userName[0] + " - [" + customerModel.CustomerName + "]";
-
-            Session["userFullName"] = model.UserName;
-
-            Session["isAdmin"] = model.IsAdmin;
-
-            Session["customerID"] = user.CustomerID;
-
-            Session.Timeout = 60;
-
             model.LastAccessDate = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
 
             if (!string.IsNullOrEmpty(user.PasswordNew))
             {
-                model.Password = _encryptService.GetHash(user.PasswordNew);
+                model.Password = _encryptyService.GetHash(user.PasswordNew);
             }
             model.FirstAccess = "False";
 
@@ -853,10 +399,6 @@ namespace ControleVeiculos.MVC.Controllers
         public ActionResult LoadSignin()
         {
             var model = new UserModel();
-
-            var customers = _customerService.GetAllAssociateCustomerByUserID("0", "0");
-
-            model.LoadCustomers = customers.Select(x => new SelectListItem() { Text = x.customerName.ToString(), Value = x.customerID.ToString() }).ToList();
 
             return PartialView("Signin", model);
         }
@@ -997,19 +539,6 @@ namespace ControleVeiculos.MVC.Controllers
         {
             try
             {
-                //permissions
-                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-                {
-                    AllowDelete = true,
-                    SystemFeatureID = SystemFeatureID,
-                    UserID = Session["userID"].ToString(),
-                }) == "0")
-                {
-                    WarningNotification("Você não tem permissão para excluir um usuário!");
-
-                    return RedirectToAction("Index");
-                }
-
                 if (userID == 0)
                 {
                     ErrorNotification(string.Format("O usuário não pode ser excluído! "));
@@ -1026,10 +555,6 @@ namespace ControleVeiculos.MVC.Controllers
 
                     _userService.Delete(model.UserID);
 
-                    _historicalService.Delete(SystemFeatureID, userID);
-
-                    _attachmentService.Delete(SystemFeatureID, userID);
-
                     SuccessNotification(string.Format("Usuário excluido com sucesso!"));
 
                     return RedirectToAction("Index");
@@ -1043,68 +568,14 @@ namespace ControleVeiculos.MVC.Controllers
             }
         }
 
-        public ActionResult ExportXmlAll(UserModel model)
-        {
-            try
-            {
-                var user = _userService.GetAll(new FilterUserCommand
-                {
-                    UserName = model.SearchUserName,
-                    Email = model.SearchEmail,
-                    DepartmentID = model.SearchDepartmentID,
-                    FunctionID = model.SearchFunctionID
-                });
-
-                string xmlUsers = _exportManagerService.ExportUserXml(user);
-
-                string fileName = string.Format("UsersList-{0}.xml", Guid.NewGuid().ToString());
-
-                return new XmlDownloadResult(xmlUsers, fileName);
-            }
-            catch (Exception exc)
-            {
-                ErrorNotification(exc.Message);
-
-                return RedirectToAction("Index");
-            }
-        }
-
         [HttpPost]
         public ActionResult Update(UserModel model, HttpPostedFileBase file)
         {
             try
             {
-                //permissions
-                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-                {
-                    AllowUpdate = true,
-                    SystemFeatureID = SystemFeatureID,
-                    UserID = Session["userID"].ToString(),
-                }) == "0")
-                {
-                    WarningNotification("Você não tem permissão para atualizar registros de um usuário!");
-
-                    return RedirectToAction("Index");
-                }
-
                 Result<User> user;
 
                 var modelLocal = new UserModel();
-
-                try
-                {
-                    //historical
-                    Historical(model);
-
-                    user = _userService.GetByEmail(model.Email);
-
-                    modelLocal = user.Value.ToModel();
-                }
-                catch
-                {
-                    user = null;
-                }
-
                 var command = MaintenanceUserCommand(model);
 
                 if (modelLocal == null)
@@ -1126,25 +597,7 @@ namespace ControleVeiculos.MVC.Controllers
                         var size = (file.ContentLength / 1024) + "KB";
 
                         file.SaveAs(path);
-
-                        var attachmentModel = new AttachmentModel();
-
-                        attachmentModel.Description = model.Description + "\n\n" + "Empresa: " + model.CustomerID + " - Usuário: " + model.DemandID;
-                        attachmentModel.FileName = fileName;
-                        attachmentModel.PathFile = path;
-                        attachmentModel.RecordID = model.UserID.ToString();
-                        attachmentModel.SizeFile = size;
-                        attachmentModel.SystemFeatureID = SystemFeatureID;
-                        attachmentModel.CreatedByID = Convert.ToString(Session["userID"]);
-                        attachmentModel.CreationDate = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-
-                        var localCommand = MaintenanceAttachmentCommand(attachmentModel);
-
-                        _attachmentService.Add(localCommand);
-
-
                     }
-
 
                     SuccessNotification(string.Format("Registro atualizado com sucesso! "));
 
@@ -1171,21 +624,6 @@ namespace ControleVeiculos.MVC.Controllers
                             var size = (file.ContentLength / 1024) + "KB";
 
                             file.SaveAs(path);
-
-                            var attachmentModel = new AttachmentModel();
-
-                            attachmentModel.Description = model.Description + "\n\n" + "Empresa: " + model.CustomerID + " - Usuário: " + model.DemandID;
-                            attachmentModel.FileName = fileName;
-                            attachmentModel.PathFile = path;
-                            attachmentModel.RecordID = model.UserID.ToString();
-                            attachmentModel.SizeFile = size;
-                            attachmentModel.SystemFeatureID = SystemFeatureID;
-                            attachmentModel.CreatedByID = Convert.ToString(Session["userID"]);
-                            attachmentModel.CreationDate = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-
-                            var localCommand = MaintenanceAttachmentCommand(attachmentModel);
-
-                            _attachmentService.Add(localCommand);
                         }
 
                         SuccessNotification(string.Format("Registro atualizado com sucesso! "));
@@ -1216,19 +654,6 @@ namespace ControleVeiculos.MVC.Controllers
 
             try
             {
-                //permissions
-                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-                {
-                    AllowChangeStatus = true,
-                    SystemFeatureID = SystemFeatureID,
-                    UserID = Session["userID"].ToString(),
-                }) == "0")
-                {
-                    WarningNotification("Você não tem permissão para alterar o status de um usuário!");
-
-                    return RedirectToAction("Index");
-                }
-
                 change_Historical_Status = true;
 
                 var command = MaintenanceUserCommand(model);
@@ -1238,8 +663,6 @@ namespace ControleVeiculos.MVC.Controllers
                     command.IsActive = false;
 
                     _userService.Update(command);
-
-                    Historical(model);
 
                     SuccessNotification(string.Format("Usuário desativado com sucesso! Registro: {0} - {1}", model.UserName, model.Email));
 
@@ -1253,8 +676,6 @@ namespace ControleVeiculos.MVC.Controllers
 
                     _userService.Update(command);
 
-                    Historical(model);
-
                     SuccessNotification(string.Format("Usuário ativado com sucesso! Registro: {0} - {1}. Usuário ativado até: {2}", command.UserName, command.Email, command.AccessToDate));
 
                     return RedirectToAction("Index");
@@ -1266,204 +687,5 @@ namespace ControleVeiculos.MVC.Controllers
                 throw;
             }
         }
-
-        private MaintenanceAttachmentCommand MaintenanceAttachmentCommand(AttachmentModel model)
-        {
-            MaintenanceAttachmentCommand command = new MaintenanceAttachmentCommand();
-
-            command.AttachmentID = model.AttachmentID;
-            command.FileName = model.FileName;
-            command.SizeFile = model.SizeFile;
-            command.PathFile = model.PathFile;
-            command.BinaryFile = null;
-            command.Description = model.Description;
-            command.SystemFeatureID = model.SystemFeatureID;
-            command.RecordID = model.RecordID;
-
-            command.CreatedByID = model.CreatedByID;
-            command.CreationDate = model.CreationDate;
-            command.ModifiedByID = Convert.ToString(Session["userID"]);
-            command.LastModifiedDate = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-
-            return command;
-        }
-
-        //Realizando histórico de alterações 
-
-
-        private void Historical(UserModel model)
-        {
-            var command = new UserModel();
-
-            var modelHistorical = new HistoricalModel();
-
-            var LocalCommand = _userService.GetByID(model.UserID);
-
-            command = LocalCommand.Value.ToModel();
-
-            if (command.SupervisorID != model.SupervisorID)
-            {
-                string commandSupervisorID = _userService.GetUserNameByID(Convert.ToInt32(command.SupervisorID));
-
-                string modelSupervisorID = _userService.GetUserNameByID(Convert.ToInt32(model.SupervisorID));
-
-                AddHistorical(commandSupervisorID, modelSupervisorID, "Supervisor", model.UserID.ToString());
-            }
-            if (command.UserName != model.UserName) AddHistorical(command.UserName, model.UserName, "Nome", model.UserID.ToString());
-            if (command.Email != model.Email) AddHistorical(command.Email, model.Email, "E-mail", model.UserID.ToString());
-            if (command.AccessToDate != model.AccessToDate)
-                if (change_Historical_Status == true)
-                {
-                    AddHistorical(model.AccessToDate, command.AccessToDate, "Data limite para acesso", model.UserID.ToString());
-                }
-                else
-                {
-                    AddHistorical(command.AccessToDate, model.AccessToDate, "Data limite para acesso", model.UserID.ToString());
-                }
-            if (command.UpdateRecordTo != model.UpdateRecordTo) AddHistorical(command.UpdateRecordTo, model.UpdateRecordTo, "Data retroativa limite", model.UserID.ToString());
-            if (command.ReleaseDateUpdateRecordTo != model.ReleaseDateUpdateRecordTo) AddHistorical(command.ReleaseDateUpdateRecordTo, model.ReleaseDateUpdateRecordTo, "Validade da liberação", model.UserID.ToString());
-            //if (command.Description != model.Description) AddHistorical(command.Description, model.Description, "Descrição", model.UserID.ToString());
-            if (command.DepartmentID != model.DepartmentID) AddHistorical(command.DepartmentID, model.DepartmentID, "Departamento", model.UserID.ToString(), true);
-            if (command.FunctionID != model.FunctionID) AddHistorical(command.FunctionID, model.FunctionID, "Função", model.UserID.ToString(), true);
-            if (command.FunctionLevelID != model.FunctionLevelID) AddHistorical(command.FunctionLevelID, model.FunctionLevelID, "Nível", model.UserID.ToString(), true);
-            if (command.LevelClassificationID != model.LevelClassificationID) AddHistorical(command.LevelClassificationID, model.LevelClassificationID, "Classificação", model.UserID.ToString(), true);
-            if (command.ContractTypeID != model.ContractTypeID) AddHistorical(command.ContractTypeID, model.ContractTypeID, "Tipo de Contrato", model.UserID.ToString(), true);
-            if (command.HourTypeID != model.HourTypeID) AddHistorical(command.HourTypeID, model.HourTypeID, "Tipo de Hora", model.UserID.ToString(), true);
-            if (command.StartJob != model.StartJob) AddHistorical(command.StartJob, model.StartJob, "Data da contratação", model.UserID.ToString());
-            if (command.EndJob != model.EndJob) AddHistorical(command.EndJob, model.EndJob, "Data do desligamento", model.UserID.ToString());
-            if (command.RG != model.RG) AddHistorical(command.RG, model.RG, "Número do RG", model.UserID.ToString());
-            if (command.CPF != model.CPF) AddHistorical(command.CPF, model.CPF, "CPF", model.UserID.ToString());
-            if (command.DateOfBirth != model.DateOfBirth) AddHistorical(command.DateOfBirth, model.DateOfBirth, "Data de nascimento", model.UserID.ToString());
-            if (command.HomeAddress != model.HomeAddress) AddHistorical(command.HomeAddress, model.HomeAddress, "Endereço residêncial", model.UserID.ToString());
-            if (command.CEP != model.CEP) AddHistorical(command.CEP, model.CEP, "CEP", model.UserID.ToString());
-            if (command.District != model.District) AddHistorical(command.District, model.District, "Bairro", model.UserID.ToString());
-            if (command.City != model.City) AddHistorical(command.City, model.City, "Cidade", model.UserID.ToString());
-            if (command.State != model.State) AddHistorical(command.State, model.State, "Estado", model.UserID.ToString());
-            if (command.CellNumber != model.CellNumber) AddHistorical(command.CellNumber, model.CellNumber, "Celular", model.UserID.ToString());
-            if (command.HomePhone != model.HomePhone) AddHistorical(command.HomePhone, model.HomePhone, "Telefone Residêncial", model.UserID.ToString());
-            if (command.TotalCost != model.TotalCost) AddHistorical(command.TotalCost, model.TotalCost, "Custo Total", model.UserID.ToString());
-            if (command.TypePerson != model.TypePerson) AddHistorical(command.TypePerson, model.TypePerson, "Tipo de Pessoa", model.UserID.ToString(), true);
-            if (command.BankName != model.BankName) AddHistorical(command.BankName, model.BankName, "Nome do Banco", model.UserID.ToString());
-            if (command.TypeBankAccount != model.TypeBankAccount) AddHistorical(command.TypeBankAccount, model.TypeBankAccount, "Tipo de Conta Bancária", model.UserID.ToString(), true);
-            if (command.Agency != model.Agency) AddHistorical(command.Agency, model.Agency, "Agência", model.UserID.ToString());
-            if (command.BankAccount != model.BankAccount) AddHistorical(command.BankAccount, model.BankAccount, "Número da conta bancária", model.UserID.ToString());
-            if (command.SocialReason != model.SocialReason) AddHistorical(command.SocialReason, model.SocialReason, "Razão Social", model.UserID.ToString());
-            if (command.CNPJ != model.CNPJ) AddHistorical(command.CNPJ, model.CNPJ, "CNPJ", model.UserID.ToString());
-            if (command.RegisteredCity != model.RegisteredCity) AddHistorical(command.RegisteredCity, model.RegisteredCity, "Cidade de Registro", model.UserID.ToString());
-
-            if (command.IsActive != model.IsActive)
-            {
-                string status1;
-                string status2;
-
-                if (command.IsActive)
-                {
-                    status1 = "Ativado"; status2 = "Desativado";
-                }
-                else
-                {
-                    status1 = "Desativado"; status2 = "Ativado";
-                }
-                if (change_Historical_Status == true)
-                {
-                    AddHistorical(status2, status1, "Usuário Ativo", model.UserID.ToString());
-                }
-                else
-                {
-                    AddHistorical(status1, status2, "Usuário Ativo", model.UserID.ToString());
-                }
-            }
-
-            if (command.OptingSimple != model.OptingSimple)
-            {
-                string status1;
-                string status2;
-
-                if (command.OptingSimple)
-                {
-                    status1 = "Ativado"; status2 = "Desativado";
-                }
-                else
-                {
-                    status1 = "Desativado"; status2 = "Ativado";
-                }
-
-                AddHistorical(status1, status2, "Optante pelo simples", model.UserID.ToString());
-            }
-            if (command.IsAdmin != model.IsAdmin)
-            {
-                string status1;
-                string status2;
-
-                if (command.IsAdmin)
-                {
-                    status1 = "Ativado"; status2 = "Desativado";
-                }
-                else
-                {
-                    status1 = "Desativado"; status2 = "Ativado";
-                }
-
-                AddHistorical(status1, status2, "Administrador", model.UserID.ToString());
-            }
-            if (command.IsEmployee != model.IsEmployee)
-            {
-                string status1;
-                string status2;
-
-                if (command.IsAdmin)
-                {
-                    status1 = "Ativado"; status2 = "Desativado";
-                }
-                else
-                {
-                    status1 = "Desativado"; status2 = "Ativado";
-                }
-
-                AddHistorical(status1, status2, "Funcionário", model.UserID.ToString());
-            }
-        }
-
-        private void AddHistorical(string oldValue, string newValue, string fieldName, string recordID, bool isParameter = false)
-        {
-            var model = new HistoricalModel();
-
-            if (isParameter)
-            {
-                oldValue = _parameterValueService.GetParameterValueByID(Convert.ToInt32(oldValue));
-                newValue = _parameterValueService.GetParameterValueByID(Convert.ToInt32(newValue));
-            }
-            model.OldValue = oldValue;
-            model.NewValue = newValue;
-            model.SystemFeatureID = SystemFeatureID;
-            model.RecordID = recordID;
-            model.FieldName = fieldName;
-            model.CreatedByID = Convert.ToString(Session["userID"]);
-            model.CreationDate = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-
-            var command = MaintenanceHistoricalCommand(model);
-
-            _historicalService.Add(command);
-
-        }
-
-        private MaintenanceHistoricalCommand MaintenanceHistoricalCommand(HistoricalModel model)
-        {
-            MaintenanceHistoricalCommand command = new MaintenanceHistoricalCommand();
-
-            command.HistoricalID = model.HistoricalID;
-            command.SystemFeatureID = model.SystemFeatureID;
-            command.RecordID = model.RecordID;
-            command.OldValue = model.OldValue;
-            command.NewValue = model.NewValue;
-            command.FieldName = model.FieldName;
-            command.CreatedByID = model.CreatedByID;
-            command.CreationDate = model.CreationDate;
-            command.ModifiedByID = Convert.ToString(Session["userID"]);
-            command.LastModifiedDate = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-
-            return command;
-        }
-
     }
 }

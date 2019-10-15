@@ -36,12 +36,12 @@ namespace ControleVeiculos.ApplicationService
             _sinistroRepository.Update(sinistro);
         }
 
-        public IList<Sinistro> GetAll(int sinistroID)
-        {
-            var sinistro = _sinistroRepository.GetAll(sinistroID);
+        //public IList<Sinistro> GetAll(int sinistroID)
+        //{
+        //    var sinistro = _sinistroRepository.GetAll(sinistroID);
 
-            return new List<Sinistro>(sinistro);
-        }
+        //    return new List<Sinistro>(sinistro);
+        //}
 
         public Result<Sinistro> GetByID(int sinistroID)
         {

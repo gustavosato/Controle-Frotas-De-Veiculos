@@ -14,9 +14,9 @@ namespace ControleVeiculos.Domain.Entities.EntradaSaidas
         {
 
             entradaSaida.entradaSaidaID = command.EntradaSaidaID;
-            entradaSaida.emprestimoID = command.Disponibilidade;
-            entradaSaida.servicosID = command.EmUso;
-            entradaSaida.veiculoID = command.EmManutencao;
+            entradaSaida.emprestimoID = command.EmprestimoID;
+            entradaSaida.servicosID = command.ServicoID;
+            entradaSaida.veiculoID = command.VeiculoID;
             
             return entradaSaida;
         }

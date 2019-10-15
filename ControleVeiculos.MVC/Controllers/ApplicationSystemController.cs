@@ -7,7 +7,6 @@ using ControleVeiculos.MVC.Extensions;
 using System.Web.Mvc;
 using ControleVeiculos.Domain.Command.ApplicationSystems;
 using ControleVeiculos.Domain.Entities.ApplicationSystems;
-using ControleVeiculos.Domain.Command.Profiles;
 using ControleVeiculos.Domain;
 //using ControleVeiculos.MVC.Infrastructure.Mvc;
 
@@ -17,18 +16,12 @@ namespace ControleVeiculos.MVC.Controllers
     public class ApplicationSystemController : BaseController
     {
         private readonly IApplicationSystemService _applicationSystemService;
-        private readonly IProfilesService _profilesService;
-        private readonly ICustomerService _customerService;
         private readonly IParameterValueService _parameterValueService;
 
         public ApplicationSystemController(IApplicationSystemService applicationSystemService,
-                                           ICustomerService customerService,
-                                           IProfilesService profilesService,
                                            IParameterValueService parameterValueService)
         {
             _applicationSystemService = applicationSystemService;
-            _customerService = customerService;
-            _profilesService = profilesService;
             _parameterValueService = parameterValueService;
         }
 
@@ -50,18 +43,6 @@ namespace ControleVeiculos.MVC.Controllers
         {
             try
             {
-                //permissions
-                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-                {
-                    AllowAdd = true,
-                    SystemFeatureID = SystemFeatureID,
-                    UserID = Session["userID"].ToString(),
-                }) == "0")
-                {
-                    WarningNotification("Você não tem permissão para adicionar uma aplicação!");
-
-                    return RedirectToAction("Index");
-                }
 
                 if (ModelState.IsValid)
                 {
@@ -94,20 +75,7 @@ namespace ControleVeiculos.MVC.Controllers
         {
             var gridModel = new DataSourceResult();
 
-            //permissions
-            if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-            {
-                AllowView = true,
-                SystemFeatureID = SystemFeatureID,
-                UserID = Session["userID"].ToString(),
-            }) == "0")
-            {
-                WarningNotification("Você não tem permissão para visualizar as aplicações!");
-
-                return Json(gridModel);
-            }
-            else
-            {
+           {
                 var applicationSystems = _applicationSystemService.GetAll(new FilterApplicationSystemCommand
                 {
                     ApplicationSystemName = model.SearchApplicationSystemName
@@ -196,19 +164,6 @@ namespace ControleVeiculos.MVC.Controllers
         {
             try
             {
-                //permissions
-                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-                {
-                    AllowDelete = true,
-                    SystemFeatureID = SystemFeatureID,
-                    UserID = Session["userID"].ToString(),
-                }) == "0")
-                {
-                    WarningNotification("Você não tem permissão para excluir uma aplicação!");
-
-                    return RedirectToAction("Index");
-                }
-
                 if (applicationSystemID == 0)
                 {
                     ErrorNotification(string.Format("Registro não pode ser excluído! "));
@@ -244,19 +199,6 @@ namespace ControleVeiculos.MVC.Controllers
         {
             try
             {
-                //permissions
-                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-                {
-                    AllowUpdate = true,
-                    SystemFeatureID = SystemFeatureID,
-                    UserID = Session["userID"].ToString(),
-                }) == "0")
-                {
-                    WarningNotification("Você não tem permissão para atualizar uma aplicação!");
-
-                    return RedirectToAction("Index");
-                }
-
                 if (ModelState.IsValid)
                 {
 

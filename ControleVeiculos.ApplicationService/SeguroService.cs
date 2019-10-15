@@ -36,12 +36,12 @@ namespace ControleVeiculos.ApplicationService
             _seguroRepository.Update(seguro);
         }
 
-        public IList<Seguro> GetAll(int seguroID)
-        {
-            var seguro = _seguroRepository.GetAll(seguroID);
+        //public IList<Seguro> GetAll(int seguroID)
+        //{
+        //    var seguro = _seguroRepository.GetAll(seguroID);
 
-            return new List<Seguro>(seguro);
-        }
+        //    return new List<Seguro>(seguro);
+        //}
 
         public Result<Seguro> GetByID(int seguroID)
         {

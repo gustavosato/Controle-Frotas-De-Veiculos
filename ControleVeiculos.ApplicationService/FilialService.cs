@@ -36,12 +36,12 @@ namespace ControleVeiculos.ApplicationService
             _filialRepository.Update(filial);
         }
 
-        public IList<Filial> GetAll(int filialID)
-        {
-            var filial = _filialRepository.GetAll(filialID);
+        //public IList<Filial> GetAll(int filialID)
+        //{
+        //    var filial = _filialRepository.GetAll(filialID);
 
-            return new List<Filial>(filial);
-        }
+        //    return new List<Filial>(filial);
+        //}
 
         public Result<Filial> GetByID(int filialID)
         {

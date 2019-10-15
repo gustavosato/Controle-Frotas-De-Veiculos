@@ -4,7 +4,6 @@ using ControleVeiculos.Domain.Services;
 using ControleVeiculos.Repository.Data;
 using ControleVeiculos.ApplicationService;
 
-
 namespace ControleVeiculos.CrossCutting
 {
     public class DependencyRegister
@@ -26,7 +25,7 @@ namespace ControleVeiculos.CrossCutting
             container.RegisterType<ManutencaoService>().As<IManutencaoService>();
             container.RegisterType<AbastecimentoService>().As<IAbastecimentoService>();
             container.RegisterType<StatusService>().As<IStatusService>();
-            container.RegisterType<EmprestimoService>().As<IStatusService>();
+            container.RegisterType<EmprestimoService>().As<IEmprestimoService>();
             container.RegisterType<ClienteService>().As<IClienteService>();
             container.RegisterType<MotoristaService>().As<IMotoristaService>();
             container.RegisterType<DepartamentoService>().As<IDepartamentoService>();
@@ -40,6 +39,8 @@ namespace ControleVeiculos.CrossCutting
             container.RegisterType<MultaService>().As<IMultaService>();
             container.RegisterType<AcessorioService>().As<IAcessorioService>();
             container.RegisterType<DocumentoService>().As<IDocumentoService>();
+            container.RegisterType<EncryptService>().As<IEncryptyService>();
+
 
             //Repository
             container.RegisterType<ApplicationSystemRepository>().As<IApplicationSystemRepository>();

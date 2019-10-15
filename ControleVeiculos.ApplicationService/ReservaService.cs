@@ -36,12 +36,12 @@ namespace ControleVeiculos.ApplicationService
             _reservaRepository.Update(reserva);
         }
 
-        public IList<Reserva> GetAll(int reservaID)
-        {
-            var reserva = _reservaRepository.GetAll(reservaID);
+        //public IList<Reserva> GetAll(int reservaID)
+        //{
+        //    var reserva = _reservaRepository.GetAll(reservaID);
 
-            return new List<Reserva>(reserva);
-        }
+        //    return new List<Reserva>(reserva);
+        //}
 
         public Result<Reserva> GetByID(int reservaID)
         {

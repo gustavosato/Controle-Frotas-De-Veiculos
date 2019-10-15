@@ -36,12 +36,12 @@ namespace ControleVeiculos.ApplicationService
             _multaRepository.Update(multa);
         }
 
-        public IList<Multa> GetAll(int multaID)
-        {
-            var multa = _multaRepository.GetAll(multaID);
+        //public IList<Multa> GetAll(int multaID)
+        //{
+        //    var multa = _multaRepository.GetAll(multaID);
 
-            return new List<Multa>(multa);
-        }
+        //    return new List<Multa>(multa);
+        //}
 
         public Result<Multa> GetByID(int multaID)
         {

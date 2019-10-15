@@ -72,17 +72,8 @@ namespace ControleVeiculos.Repository.Data
                                            "INNER JOIN ParameterValues pv2 ON ts.statusID = pv2.parameterValueID " +
                                            "WHERE 1 = 1 ");
 
-                if (!string.IsNullOrEmpty(command.StatusID))
-                    sql += string.Format("AND ts.statusID = '{0}' ", command.StatusID);
-
-                if (!string.IsNullOrEmpty(command.TestTypeID))
-                    sql += string.Format("AND ts.testTypeID = '{0}' ", command.TestTypeID);
-
-                if (!string.IsNullOrEmpty(command.ExecutionTypeID))
-                    sql += string.Format("AND ts.executionTypeID = '{0}' ", command.ExecutionTypeID);
-
-                if (!string.IsNullOrEmpty(command.Cnh))
-                    sql += string.Format("AND ts.cnh LIKE '%{0}%' ", command.Cnh);
+                //if (!string.IsNullOrEmpty(command.StatusID))
+                //    sql += string.Format("AND ts.statusID = '{0}' ", command.StatusID);
 
                 sql += "ORDER BY cnhID";
                 return conn.Query<Cnh>(sql).ToList();

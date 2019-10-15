@@ -13,6 +13,5 @@ namespace ControleVeiculos.Domain.Services
         IPagedList<Funcionario> GetAll(FilterFuncionarioCommand command, int pageIndex = 0, int pageSize = int.MaxValue);
         IList<Funcionario> GetAll(int funcionarioID);
         void Delete(int funcionarioID);
-        string GetFuncionarioNameByID(int contatctID);
     }
 }

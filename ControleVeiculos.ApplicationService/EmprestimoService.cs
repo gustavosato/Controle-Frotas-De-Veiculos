@@ -36,12 +36,12 @@ namespace ControleVeiculos.ApplicationService
             _emprestimoRepository.Update(emprestimo);
         }
 
-        public IList<Emprestimo> GetAll(int emprestimoID)
-        {
-            var emprestimo = _emprestimoRepository.GetAll(emprestimoID);
+        //public IList<Emprestimo> GetAll(int emprestimoID)
+        //{
+        //    var emprestimo = _emprestimoRepository.GetAll(emprestimoID);
 
-            return new List<Emprestimo>(emprestimo);
-        }
+        //    return new List<Emprestimo>(emprestimo);
+        //}
 
         public Result<Emprestimo> GetByID(int emprestimoID)
         {

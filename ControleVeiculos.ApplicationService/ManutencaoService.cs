@@ -36,12 +36,12 @@ namespace ControleVeiculos.ApplicationService
             _manutencaoRepository.Update(manutencao);
         }
 
-        public IList<Manutencao> GetAll(int manutencaoID)
-        {
-            var manutencao = _manutencaoRepository.GetAll(manutencaoID);
+        //public IList<Manutencao> GetAll(int manutencaoID)
+        //{
+        //    var manutencao = _manutencaoRepository.GetAll(manutencaoID);
 
-            return new List<Manutencao>(manutencao);
-        }
+        //    return new List<Manutencao>(manutencao);
+        //}
 
         public Result<Manutencao> GetByID(int manutencaoID)
         {

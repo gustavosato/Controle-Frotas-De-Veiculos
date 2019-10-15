@@ -36,12 +36,12 @@ namespace ControleVeiculos.ApplicationService
             _kilometragemRepository.Update(kilometragem);
         }
 
-        public IList<Kilometragem> GetAll(int kilometragemID)
-        {
-            var kilometragem = _kilometragemRepository.GetAll(kilometragemID);
+        //public IList<Kilometragem> GetAll(int kilometragemID)
+        //{
+        //    var kilometragem = _kilometragemRepository.GetAll(kilometragemID);
 
-            return new List<Kilometragem>(kilometragem);
-        }
+        //    return new List<Kilometragem>(kilometragem);
+        //}
 
         public Result<Kilometragem> GetByID(int kilometragemID)
         {

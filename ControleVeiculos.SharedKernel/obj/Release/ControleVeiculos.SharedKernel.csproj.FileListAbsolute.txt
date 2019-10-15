@@ -1,0 +1,5 @@
+C:\ControleFrotaVeiculos\ControleVeiculos.SharedKernel\bin\Release\ControleVeiculos.SharedKernel.dll
+C:\ControleFrotaVeiculos\ControleVeiculos.SharedKernel\bin\Release\ControleVeiculos.SharedKernel.pdb
+C:\ControleFrotaVeiculos\ControleVeiculos.SharedKernel\obj\Release\ControleVeiculos.SharedKernel.csproj.CoreCompileInputs.cache
+C:\ControleFrotaVeiculos\ControleVeiculos.SharedKernel\obj\Release\ControleVeiculos.SharedKernel.dll
+C:\ControleFrotaVeiculos\ControleVeiculos.SharedKernel\obj\Release\ControleVeiculos.SharedKernel.pdb

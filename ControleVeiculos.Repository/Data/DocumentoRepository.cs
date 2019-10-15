@@ -47,19 +47,19 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                DocumentoDapper documentoDapper = documento.Map(documento.logID);
+                DocumentoDapper documentoDapper = documento.Map(documento.documentoID);
 
                 conn.Update<DocumentoDapper>(documentoDapper);
             }
         }
 
-        public Documento GetByID(int logID)
+        public Documento GetByID(int documentoID)
         {
             using (IDbConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
 
-                string sql = string.Format("SELECT * FROM dbo.Documentos WHERE logID = '{0}'", logID);
+                string sql = string.Format("SELECT * FROM dbo.Documentos WHERE logID = '{0}'", documentoID);
 
                 return conn.Query<Documento>(sql).FirstOrDefault();
             }
@@ -77,22 +77,22 @@ namespace ControleVeiculos.Repository.Data
                                            "INNER JOIN ParameterValues pv ON tl.statusID = pv.parameterValueID " +
                                            "WHERE 1 = 1 ");
 
-                if (!string.IsNullOrEmpty(command.StatusID))
-                    sql += string.Format("AND tl.statusID LIKE '%{0}%' ", command.StatusID);
+                //if (!string.IsNullOrEmpty(command.StatusID))
+                //    sql += string.Format("AND tl.statusID LIKE '%{0}%' ", command.StatusID);
 
                 sql += "ORDER BY logID";
                 return conn.Query<Documento>(sql).ToList();
             }
         }
 
-        public void Delete(int logID)
+        public void Delete(int documentoID)
         {
             using (IDbConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("DELETE FROM dbo.Documentos WHERE logID = '{0}'", logID);
+                string sql = string.Format("DELETE FROM dbo.Documentos WHERE logID = '{0}'", documentoID);
                 conn.ExecuteScalar(sql);
             }
         }

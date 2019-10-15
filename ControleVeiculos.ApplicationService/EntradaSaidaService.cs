@@ -36,12 +36,12 @@ namespace ControleVeiculos.ApplicationService
             _entradaSaidaRepository.Update(entradaSaida);
         }
 
-        public IList<EntradaSaida> GetAll(int entradaSaidaID)
-        {
-            var entradaSaida = _entradaSaidaRepository.GetAll(entradaSaidaID);
+        //public IList<EntradaSaida> GetAll(int entradaSaidaID)
+        //{
+        //    var entradaSaida = _entradaSaidaRepository.GetAll(entradaSaidaID);
 
-            return new List<EntradaSaida>(entradaSaida);
-        }
+        //    return new List<EntradaSaida>(entradaSaida);
+        //}
 
         public Result<EntradaSaida> GetByID(int entradaSaidaID)
         {

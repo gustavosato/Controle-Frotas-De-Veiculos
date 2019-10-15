@@ -21,7 +21,7 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT ISNULL(MAX(CAST(logID AS INT))+1,1) FROM dbo.Financas");
+                string sql = string.Format("SELECT ISNULL(MAX(CAST(financaID AS INT))+1,1) FROM dbo.Financas");
 
                 int primaryKey = conn.Query<int>(sql).FirstOrDefault();
 
@@ -47,19 +47,19 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                FinancaDapper financaDapper = financa.Map(financa.logID);
+                FinancaDapper financaDapper = financa.Map(financa.financaID);
 
                 conn.Update<FinancaDapper>(financaDapper);
             }
         }
 
-        public Financa GetByID(int logID)
+        public Financa GetByID(int financaID)
         {
             using (IDbConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
 
-                string sql = string.Format("SELECT * FROM dbo.Financas WHERE logID = '{0}'", logID);
+                string sql = string.Format("SELECT * FROM dbo.Financas WHERE financaID = '{0}'", financaID);
 
                 return conn.Query<Financa>(sql).FirstOrDefault();
             }
@@ -72,27 +72,27 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT logID, pv.parameterValue AS statusID, tl.stepName, tl.expectedResult, tl.actualResult, tl.pathEvidence " +
+                string sql = string.Format("SELECT financaID, pv.parameterValue AS statusID, tl.stepName, tl.expectedResult, tl.actualResult, tl.pathEvidence " +
                                            "FROM Financas tl " +
                                            "INNER JOIN ParameterValues pv ON tl.statusID = pv.parameterValueID " +
                                            "WHERE 1 = 1 ");
 
-                if (!string.IsNullOrEmpty(command.StatusID))
-                    sql += string.Format("AND tl.statusID LIKE '%{0}%' ", command.StatusID);
+                //if (!string.IsNullOrEmpty(command.StatusID))
+                //    sql += string.Format("AND tl.statusID LIKE '%{0}%' ", command.StatusID);
 
-                sql += "ORDER BY logID";
+                sql += "ORDER BY financaID";
                 return conn.Query<Financa>(sql).ToList();
             }
         }
 
-        public void Delete(int logID)
+        public void Delete(int financaID)
         {
             using (IDbConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("DELETE FROM dbo.Financas WHERE logID = '{0}'", logID);
+                string sql = string.Format("DELETE FROM dbo.Financas WHERE financaID = '{0}'", financaID);
                 conn.ExecuteScalar(sql);
             }
         }

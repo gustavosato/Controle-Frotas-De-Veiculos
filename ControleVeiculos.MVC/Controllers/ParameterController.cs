@@ -8,7 +8,6 @@ using System.Web.Mvc;
 using ControleVeiculos.Domain.Command.Parameters;
 using ControleVeiculos.Domain.Entities.Parameters;
 using ControleVeiculos.Domain;
-using ControleVeiculos.Domain.Command.Profiles;
 //using ControleVeiculos.MVC.Infrastructure.Mvc;
 
 
@@ -18,20 +17,17 @@ namespace ControleVeiculos.MVC.Controllers
     {
         private readonly IParameterService _parameterService;
         private readonly IParameterValueService _parameterValueService;
-        private readonly IProfilesService _profilesService;
         private readonly IUserService _userService;
         private readonly ISystemFeatureService _systemFeatureService;
 
         public ParameterController(IParameterService parameterService,
                                     IUserService userService,
-                                    IProfilesService profilesService,
                                     ISystemFeatureService systemFeatureService,
                                     IParameterValueService parameterValueService)
         {
             _userService = userService;
             _parameterService = parameterService;
             _systemFeatureService = systemFeatureService;
-            _profilesService = profilesService;
             _parameterValueService = parameterValueService;
         }
 
@@ -59,19 +55,6 @@ namespace ControleVeiculos.MVC.Controllers
         {
             try
             {
-                //permissions
-                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-                {
-                    AllowAdd = true,
-                    SystemFeatureID = SystemFeatureID,
-                    UserID = Session["userID"].ToString(),
-                }) == "0")
-                {
-                    WarningNotification("Você não tem permissão para adicionar um registro em Parâmetros de Funcionalidades!");
-
-                    return RedirectToAction("Index");
-                }
-
                 if (ModelState.IsValid)
                 {
                     var command = MaintenanceParameterCommand(model);
@@ -101,19 +84,6 @@ namespace ControleVeiculos.MVC.Controllers
         {
             var gridModel = new DataSourceResult();
 
-            //permissions
-            if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-            {
-                AllowView = true,
-                SystemFeatureID = SystemFeatureID,
-                UserID = Session["userID"].ToString(),
-            }) == "0")
-            {
-                WarningNotification("Você não tem permissão para visualizar os registros em Parâmetros de Funcionalidades!");
-
-                return Json(gridModel);
-            }
-            else
             {
                 var parameters = _parameterService.GetAll(new FilterParameterCommand
                 {
@@ -206,19 +176,6 @@ namespace ControleVeiculos.MVC.Controllers
         {
             try
             {
-                //permissions
-                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-                {
-                    AllowDelete = true,
-                    SystemFeatureID = SystemFeatureID,
-                    UserID = Session["userID"].ToString(),
-                }) == "0")
-                {
-                    WarningNotification("Você não tem permissão para excluir um registro em Parâmetros de Funcionalidades!");
-
-                    return RedirectToAction("Index");
-                }
-
                 if (parameterID == 0)
                 {
                     ErrorNotification(string.Format("O registro não pode ser excluído! "));
@@ -253,19 +210,6 @@ namespace ControleVeiculos.MVC.Controllers
         {
             try
             {
-                //permissions
-                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-                {
-                    AllowUpdate = true,
-                    SystemFeatureID = SystemFeatureID,
-                    UserID = Session["userID"].ToString(),
-                }) == "0")
-                {
-                    WarningNotification("Você não tem permissão para atualizar um registro em Parâmetros de Funcionalidades!");
-
-                    return RedirectToAction("Index");
-                }
-
                 if (ModelState.IsValid)
                 {
 

@@ -1,5 +1,7 @@
-C:\ControleFrotaVeiculos\ControleVeiculos.Business\obj\Debug\ControleVeiculos.Business.csprojAssemblyReference.cache
-C:\ControleFrotaVeiculos\ControleVeiculos.Business\obj\Debug\ControleVeiculos.Business.csproj.CoreCompileInputs.cache
+C:\ControleFrotaVeiculos\ControleVeiculos.Business\bin\Debug\xunit.abstractions.dll
+C:\ControleFrotaVeiculos\ControleVeiculos.Business\bin\Debug\xunit.runner.visualstudio.testadapter.dll
+C:\ControleFrotaVeiculos\ControleVeiculos.Business\bin\Debug\xunit.runner.reporters.net452.dll
+C:\ControleFrotaVeiculos\ControleVeiculos.Business\bin\Debug\xunit.runner.utility.net452.dll
 C:\ControleFrotaVeiculos\ControleVeiculos.Business\bin\Debug\ControleVeiculos.Business.dll.config
 C:\ControleFrotaVeiculos\ControleVeiculos.Business\bin\Debug\ControleVeiculos.Business.dll
 C:\ControleFrotaVeiculos\ControleVeiculos.Business\bin\Debug\ControleVeiculos.Business.pdb
@@ -10,7 +12,6 @@ C:\ControleFrotaVeiculos\ControleVeiculos.Business\bin\Debug\ControleVeiculos.Ap
 C:\ControleFrotaVeiculos\ControleVeiculos.Business\bin\Debug\ControleVeiculos.CrossCutting.dll
 C:\ControleFrotaVeiculos\ControleVeiculos.Business\bin\Debug\ControleVeiculos.Domain.dll
 C:\ControleFrotaVeiculos\ControleVeiculos.Business\bin\Debug\ControleVeiculos.Repository.dll
-C:\ControleFrotaVeiculos\ControleVeiculos.Business\bin\Debug\xunit.abstractions.dll
 C:\ControleFrotaVeiculos\ControleVeiculos.Business\bin\Debug\xunit.assert.dll
 C:\ControleFrotaVeiculos\ControleVeiculos.Business\bin\Debug\xunit.core.dll
 C:\ControleFrotaVeiculos\ControleVeiculos.Business\bin\Debug\xunit.execution.desktop.dll
@@ -27,9 +28,8 @@ C:\ControleFrotaVeiculos\ControleVeiculos.Business\bin\Debug\xunit.core.xml
 C:\ControleFrotaVeiculos\ControleVeiculos.Business\bin\Debug\xunit.execution.desktop.xml
 C:\ControleFrotaVeiculos\ControleVeiculos.Business\bin\Debug\Dapper.Contrib.xml
 C:\ControleFrotaVeiculos\ControleVeiculos.Business\bin\Debug\Dapper.xml
+C:\ControleFrotaVeiculos\ControleVeiculos.Business\obj\Debug\ControleVeiculos.Business.csprojAssemblyReference.cache
+C:\ControleFrotaVeiculos\ControleVeiculos.Business\obj\Debug\ControleVeiculos.Business.csproj.CoreCompileInputs.cache
 C:\ControleFrotaVeiculos\ControleVeiculos.Business\obj\Debug\ControleVeiculos.Business.csproj.CopyComplete
 C:\ControleFrotaVeiculos\ControleVeiculos.Business\obj\Debug\ControleVeiculos.Business.dll
 C:\ControleFrotaVeiculos\ControleVeiculos.Business\obj\Debug\ControleVeiculos.Business.pdb
-C:\ControleFrotaVeiculos\ControleVeiculos.Business\bin\Debug\xunit.runner.visualstudio.testadapter.dll
-C:\ControleFrotaVeiculos\ControleVeiculos.Business\bin\Debug\xunit.runner.reporters.net452.dll
-C:\ControleFrotaVeiculos\ControleVeiculos.Business\bin\Debug\xunit.runner.utility.net452.dll

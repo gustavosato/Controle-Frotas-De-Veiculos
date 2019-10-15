@@ -1,0 +1,2 @@
+C:\ControleFrotaVeiculos\ControleVeiculos.Repository\obj\Release\ControleVeiculos.Repository.csprojAssemblyReference.cache
+C:\ControleFrotaVeiculos\ControleVeiculos.Repository\obj\Release\ControleVeiculos.Repository.csproj.CoreCompileInputs.cache

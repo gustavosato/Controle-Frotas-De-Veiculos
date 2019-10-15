@@ -2,6 +2,7 @@
 {
     public class MaintenanceCnhCommand
     {
+        public int CnhID { get; set; }
         public int NumeroCnh { get; set; }
         public string Validade{ get; set; }
         public string Categoria { get; set; }

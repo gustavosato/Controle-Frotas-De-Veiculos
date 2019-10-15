@@ -211,9 +211,11 @@
     <Compile Include="Services\IApplicationSystemService.cs" />
     <Compile Include="Services\IEmprestimoService.cs" />
     <Compile Include="Services\IClienteService.cs" />
+    <Compile Include="Services\IEncryptyService.cs" />
     <Compile Include="Services\IMotoristaService.cs" />
     <Compile Include="Services\IDepartamentoService.cs" />
     <Compile Include="Services\IRotaService.cs" />
+    <Compile Include="Services\IStringUtilityService.cs" />
     <Compile Include="Services\ISeguroService.cs" />
     <Compile Include="Services\ISinistroService.cs" />
     <Compile Include="Services\IFilialService.cs" />
@@ -239,6 +241,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Validations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ControleVeiculos.SharedKernel\ControleVeiculos.SharedKernel.csproj">
+      <Project>{100f3a9d-209a-4210-ac31-cdebb5cabfdb}</Project>
+      <Name>ControleVeiculos.SharedKernel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

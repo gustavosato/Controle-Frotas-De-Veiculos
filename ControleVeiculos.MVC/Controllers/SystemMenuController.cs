@@ -8,7 +8,6 @@ using System.Web.Mvc;
 using ControleVeiculos.Domain.Command.SystemMenus;
 using ControleVeiculos.Domain.Entities.SystemMenus;
 using ControleVeiculos.Domain;
-using ControleVeiculos.Domain.Command.Profiles;
 //using ControleVeiculos.MVC.Infrastructure.Mvc;
 
 
@@ -20,18 +19,15 @@ namespace ControleVeiculos.MVC.Controllers
         private readonly IParameterValueService _parameterValueService;
         private readonly IUserService _userService;
         private readonly ISystemFeatureService _systemFeatureService;
-        private readonly IProfilesService _profilesService;
 
 
         public SystemMenuController(ISystemMenuService systemMenuService,
                                 IParameterValueService parameterValueService,
-                                IProfilesService profilesService,
                                 IUserService userService,
                                 ISystemFeatureService systemFeatureService)
         {
             _systemMenuService = systemMenuService;
             _parameterValueService = parameterValueService;
-            _profilesService = profilesService;
             _userService = userService;
             _systemFeatureService = systemFeatureService;
         }
@@ -61,19 +57,6 @@ namespace ControleVeiculos.MVC.Controllers
         {
             try
             {
-                //permissions
-                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-                {
-                    AllowAdd = true,
-                    SystemFeatureID = SystemFeatureID,
-                    UserID = Session["userID"].ToString(),
-                }) == "0")
-                {
-                    WarningNotification("Você não tem permissão para adicionar um registro em Menus!");
-
-                    return RedirectToAction("Index");
-                }
-
                 if (ModelState.IsValid)
                 {
 
@@ -105,19 +88,6 @@ namespace ControleVeiculos.MVC.Controllers
         {
             var gridModel = new DataSourceResult();
 
-            //permissions
-            if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-            {
-                AllowView = true,
-                SystemFeatureID = SystemFeatureID,
-                UserID = Session["userID"].ToString(),
-            }) == "0")
-            {
-                WarningNotification("Você não tem permissão para visualizar os registros de Menus!");
-
-                return Json(gridModel);
-            }
-            else
             {
                 var systemMenus = _systemMenuService.GetAll(new FilterSystemMenuCommand
                 {
@@ -209,18 +179,6 @@ namespace ControleVeiculos.MVC.Controllers
         {
             try
             {
-                //permissions
-                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-                {
-                    AllowDelete = true,
-                    SystemFeatureID = SystemFeatureID,
-                    UserID = Session["userID"].ToString(),
-                }) == "0")
-                {
-                    WarningNotification("Você não tem permissão para excluir um registro em Menus!");
-
-                    return RedirectToAction("Index");
-                }
                 if (menuID == 0)
                 {
                     ErrorNotification(string.Format("O registro não pode ser excluído! "));
@@ -256,19 +214,6 @@ namespace ControleVeiculos.MVC.Controllers
         {
             try
             {
-                //permissions
-                if (_profilesService.GetAllow(new FilterAbastecimentoCommand
-                {
-                    AllowUpdate = true,
-                    SystemFeatureID = SystemFeatureID,
-                    UserID = Session["userID"].ToString(),
-                }) == "0")
-                {
-                    WarningNotification("Você não tem permissão para atualizar um registro em Menus!");
-
-                    return RedirectToAction("Index");
-                }
-
                 if (ModelState.IsValid)
                 {
 

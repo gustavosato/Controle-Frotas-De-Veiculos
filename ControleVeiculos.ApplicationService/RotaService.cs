@@ -36,12 +36,12 @@ namespace ControleVeiculos.ApplicationService
             _rotaRepository.Update(rota);
         }
 
-        public IList<Rota> GetAll(int rotaID)
-        {
-            var rota = _rotaRepository.GetAll(rotaID);
+        //public IList<Rota> GetAll(int rotaID)
+        //{
+        //    var rota = _rotaRepository.GetAll(rotaID);
 
-            return new List<Rota>(rota);
-        }
+        //    return new List<Rota>(rota);
+        //}
 
         public Result<Rota> GetByID(int rotaID)
         {

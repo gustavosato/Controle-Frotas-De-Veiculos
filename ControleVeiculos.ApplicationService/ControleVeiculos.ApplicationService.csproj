@@ -68,6 +68,7 @@
     <Compile Include="EmprestimoService.cs" />
     <Compile Include="ClienteService.cs" />
     <Compile Include="DepartamentoService.cs" />
+    <Compile Include="EncryptyService.cs" />
     <Compile Include="FilialService.cs" />
     <Compile Include="EntradaSaidaService.cs" />
     <Compile Include="FinancaService.cs" />

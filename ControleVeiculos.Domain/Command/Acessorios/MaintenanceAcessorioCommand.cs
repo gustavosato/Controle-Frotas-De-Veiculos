@@ -2,6 +2,7 @@
 {
     public class MaintenanceAcessorioCommand
     {
+        public int AcessorioID { get; set; }
         public string Gps { get; set; }
         public string AirBag { get; set; }
         public string ArCondicionado { get; set; }

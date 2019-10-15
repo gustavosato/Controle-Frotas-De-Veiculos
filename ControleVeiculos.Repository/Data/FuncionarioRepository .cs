@@ -71,8 +71,8 @@ namespace ControleVeiculos.Repository.Data
                                            "INNER JOIN Users u on v.createdByID = u.userID " +
                                            "WHERE 1 = 1 ");
 
-                if (!string.IsNullOrEmpty(command.Summary))
-                    sql += string.Format("AND v.summary LIKE '%{0}%'", command.Summary);
+                //if (!string.IsNullOrEmpty(command.Summary))
+                //    sql += string.Format("AND v.summary LIKE '%{0}%'", command.Summary);
 
                 
                 sql += "ORDER BY v.funcionarioID";

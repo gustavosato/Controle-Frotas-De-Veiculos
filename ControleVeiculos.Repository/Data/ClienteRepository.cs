@@ -47,21 +47,21 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                ClienteDapper clienteDapper = cliente.Map(cliente.logID);
+                ClienteDapper clienteDapper = cliente.Map(cliente.clienteID);
 
                 conn.Update<ClienteDapper>(clienteDapper);
             }
         }
 
-        public Cliente GetByID(int logID)
+        public Cliente GetByID(int clienteID)
         {
             using (IDbConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
 
-                string sql = string.Format("SELECT * FROM dbo.Clientes WHERE logID = '{0}'", logID);
+                string sql = string.Format("SELECT * FROM dbo.Clientes WHERE logID = '{0}'", clienteID);
 
-                return conn.Query<Cliente>(sql).FirstOrDefault();
+                    return conn.Query<Cliente>(sql).FirstOrDefault();
             }
         }
 
@@ -73,29 +73,29 @@ namespace ControleVeiculos.Repository.Data
                 conn.Open();
 
                 string sql = string.Format("SELECT logID, pv.parameterValue AS statusID, tl.stepName, tl.expectedResult, tl.actualResult, tl.pathEvidence " +
-                                           "FROM Clientes tl " +
-                                           "INNER JOIN ParameterValues pv ON tl.statusID = pv.parameterValueID " +
-                                           "WHERE 1 = 1 ");
+                                            "FROM Clientes tl " +
+                                            "INNER JOIN ParameterValues pv ON tl.statusID = pv.parameterValueID " +
+                                            "WHERE 1 = 1 ");
 
-                if (!string.IsNullOrEmpty(command.StatusID))
-                    sql += string.Format("AND tl.statusID LIKE '%{0}%' ", command.StatusID);
+                //if (!string.IsNullOrEmpty(command.StatusID))
+                //    sql += string.Format("AND tl.statusID LIKE '%{0}%' ", command.StatusID);
 
                 sql += "ORDER BY logID";
                 return conn.Query<Cliente>(sql).ToList();
             }
         }
 
-        public void Delete(int logID)
+        public void Delete(int clienteID)
         {
             using (IDbConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("DELETE FROM dbo.Clientes WHERE logID = '{0}'", logID);
+                string sql = string.Format("DELETE FROM dbo.Clientes WHERE logID = '{0}'", clienteID);
                 conn.ExecuteScalar(sql);
             }
         }
-
     }
 }
+

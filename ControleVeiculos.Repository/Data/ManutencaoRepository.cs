@@ -76,17 +76,9 @@ namespace ControleVeiculos.Repository.Data
                                            "INNER JOIN SystemFeatures sf ON tc.featureID = sf.systemFeatureID " +
                                            "WHERE 1 = 1 ");
 
-                if (!string.IsNullOrEmpty(command.Manutencao))
-                    sql += string.Format("AND tc.manutencao LIKE '%{0}%' ", command.Manutencao);
 
-                if (!string.IsNullOrEmpty(command.StatusID))
-                    sql += string.Format("AND tc.statusID = '{0}' ", command.StatusID);
-
-                if (!string.IsNullOrEmpty(command.TestTypeID))
-                    sql += string.Format("AND tc.testTypeID = '{0}' ", command.TestTypeID);
-
-                if (!string.IsNullOrEmpty(command.FeatureID))
-                    sql += string.Format("AND tc.featureID = '{0}' ", command.FeatureID);
+                //if (!string.IsNullOrEmpty(command.FeatureID))
+                //    sql += string.Format("AND tc.featureID = '{0}' ", command.FeatureID);
 
                 sql += "ORDER BY manutencaoID";
                 return conn.Query<Manutencao>(sql).ToList();

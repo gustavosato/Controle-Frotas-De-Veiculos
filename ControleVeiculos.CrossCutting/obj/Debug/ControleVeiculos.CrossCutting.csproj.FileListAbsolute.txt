@@ -1,5 +1,3 @@
-C:\ControleFrotaVeiculos\ControleVeiculos.CrossCutting\obj\Debug\ControleVeiculos.CrossCutting.csprojAssemblyReference.cache
-C:\ControleFrotaVeiculos\ControleVeiculos.CrossCutting\obj\Debug\ControleVeiculos.CrossCutting.csproj.CoreCompileInputs.cache
 C:\ControleFrotaVeiculos\ControleVeiculos.CrossCutting\bin\Debug\ControleVeiculos.CrossCutting.dll
 C:\ControleFrotaVeiculos\ControleVeiculos.CrossCutting\bin\Debug\ControleVeiculos.CrossCutting.pdb
 C:\ControleFrotaVeiculos\ControleVeiculos.CrossCutting\bin\Debug\Autofac.dll
@@ -14,6 +12,8 @@ C:\ControleFrotaVeiculos\ControleVeiculos.CrossCutting\bin\Debug\ControleVeiculo
 C:\ControleFrotaVeiculos\ControleVeiculos.CrossCutting\bin\Debug\Autofac.xml
 C:\ControleFrotaVeiculos\ControleVeiculos.CrossCutting\bin\Debug\Dapper.Contrib.xml
 C:\ControleFrotaVeiculos\ControleVeiculos.CrossCutting\bin\Debug\Dapper.xml
+C:\ControleFrotaVeiculos\ControleVeiculos.CrossCutting\obj\Debug\ControleVeiculos.CrossCutting.csprojAssemblyReference.cache
+C:\ControleFrotaVeiculos\ControleVeiculos.CrossCutting\obj\Debug\ControleVeiculos.CrossCutting.csproj.CoreCompileInputs.cache
 C:\ControleFrotaVeiculos\ControleVeiculos.CrossCutting\obj\Debug\ControleVeiculos.CrossCutting.csproj.CopyComplete
 C:\ControleFrotaVeiculos\ControleVeiculos.CrossCutting\obj\Debug\ControleVeiculos.CrossCutting.dll
 C:\ControleFrotaVeiculos\ControleVeiculos.CrossCutting\obj\Debug\ControleVeiculos.CrossCutting.pdb

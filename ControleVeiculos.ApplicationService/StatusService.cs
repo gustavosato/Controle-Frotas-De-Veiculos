@@ -36,12 +36,12 @@ namespace ControleVeiculos.ApplicationService
             _statusRepository.Update(status);
         }
 
-        public IList<Status> GetAll(int statusID)
-        {
-            var status = _statusRepository.GetAll(statusID);
+        //public IList<Status> GetAll(int statusID)
+        //{
+        //    var status = _statusRepository.GetAll(statusID);
 
-            return new List<Status>(status);
-        }
+        //    return new List<Status>(status);
+        //}
 
         public Result<Status> GetByID(int statusID)
         {

@@ -12,7 +12,7 @@ namespace ControleVeiculos.Domain.Entities.Cnhs
 
         public static Cnh Map(this Cnh cnh, MaintenanceCnhCommand command)
         {
-
+            cnh.cnhID = command.CnhID;
             cnh.numeroCnh = command.NumeroCnh;
             cnh.validade = command.Validade;
             cnh.categoria = command.Categoria;

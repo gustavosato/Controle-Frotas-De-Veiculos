@@ -21,7 +21,7 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT ISNULL(MAX(CAST(logID AS INT))+1,1) FROM dbo.Emprestimos");
+                string sql = string.Format("SELECT ISNULL(MAX(CAST(emprestimoID AS INT))+1,1) FROM dbo.Emprestimos");
 
                 int primaryKey = conn.Query<int>(sql).FirstOrDefault();
 
@@ -47,19 +47,19 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                EmprestimoDapper emprestimoDapper = emprestimo.Map(emprestimo.logID);
+                EmprestimoDapper emprestimoDapper = emprestimo.Map(emprestimo.emprestimoID);
 
                 conn.Update<EmprestimoDapper>(emprestimoDapper);
             }
         }
 
-        public Emprestimo GetByID(int logID)
+        public Emprestimo GetByID(int emprestimoID)
         {
             using (IDbConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
 
-                string sql = string.Format("SELECT * FROM dbo.Emprestimos WHERE logID = '{0}'", logID);
+                string sql = string.Format("SELECT * FROM dbo.Emprestimos WHERE emprestimoID = '{0}'", emprestimoID);
 
                 return conn.Query<Emprestimo>(sql).FirstOrDefault();
             }
@@ -72,27 +72,27 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT logID, pv.parameterValue AS statusID, tl.stepName, tl.expectedResult, tl.actualResult, tl.pathEvidence " +
+                string sql = string.Format("SELECT emprestimoID, pv.parameterValue AS statusID, tl.stepName, tl.expectedResult, tl.actualResult, tl.pathEvidence " +
                                            "FROM Emprestimos tl " +
                                            "INNER JOIN ParameterValues pv ON tl.statusID = pv.parameterValueID " +
                                            "WHERE 1 = 1 ");
 
-                if (!string.IsNullOrEmpty(command.StatusID))
-                    sql += string.Format("AND tl.statusID LIKE '%{0}%' ", command.StatusID);
+                //if (!string.IsNullOrEmpty(command.StatusID))
+                //    sql += string.Format("AND tl.statusID LIKE '%{0}%' ", command.StatusID);
 
-                sql += "ORDER BY logID";
+                sql += "ORDER BY emprestimoID";
                 return conn.Query<Emprestimo>(sql).ToList();
             }
         }
 
-        public void Delete(int logID)
+        public void Delete(int emprestimoID)
         {
             using (IDbConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("DELETE FROM dbo.Emprestimos WHERE logID = '{0}'", logID);
+                string sql = string.Format("DELETE FROM dbo.Emprestimos WHERE emprestimoID = '{0}'", emprestimoID);
                 conn.ExecuteScalar(sql);
             }
         }

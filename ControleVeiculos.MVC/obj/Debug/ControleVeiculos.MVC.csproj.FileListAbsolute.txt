@@ -1,5 +1,3 @@
-C:\ControleFrotaVeiculos\ControleVeiculos.MVC\obj\Debug\ControleVeiculos.MVC.csprojAssemblyReference.cache
-C:\ControleFrotaVeiculos\ControleVeiculos.MVC\obj\Debug\ControleVeiculos.MVC.csproj.CoreCompileInputs.cache
 C:\ControleFrotaVeiculos\ControleVeiculos.MVC\bin\roslyn\csc.exe
 C:\ControleFrotaVeiculos\ControleVeiculos.MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\ControleFrotaVeiculos\ControleVeiculos.MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -60,6 +58,8 @@ C:\ControleFrotaVeiculos\ControleVeiculos.MVC\bin\ControleVeiculos.Repository.pd
 C:\ControleFrotaVeiculos\ControleVeiculos.MVC\bin\Dapper.Contrib.xml
 C:\ControleFrotaVeiculos\ControleVeiculos.MVC\bin\Dapper.xml
 C:\ControleFrotaVeiculos\ControleVeiculos.MVC\bin\pt-BR\Microsoft.QualityTools.Testing.Fakes.resources.dll
+C:\ControleFrotaVeiculos\ControleVeiculos.MVC\obj\Debug\ControleVeiculos.MVC.csprojAssemblyReference.cache
+C:\ControleFrotaVeiculos\ControleVeiculos.MVC\obj\Debug\ControleVeiculos.MVC.csproj.CoreCompileInputs.cache
 C:\ControleFrotaVeiculos\ControleVeiculos.MVC\obj\Debug\ControleVeiculos.MVC.csproj.CopyComplete
 C:\ControleFrotaVeiculos\ControleVeiculos.MVC\obj\Debug\ControleVeiculos.MVC.dll
 C:\ControleFrotaVeiculos\ControleVeiculos.MVC\obj\Debug\ControleVeiculos.MVC.pdb
