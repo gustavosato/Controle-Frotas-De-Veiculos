@@ -1,7 +1,7 @@
 ﻿using Dapper.Contrib.Extensions;
 namespace ControleVeiculos.Repository.Map
 {
-    [Table("SystemMenus")]
+    [Table("SystemMenu")]
     public class SystemMenuDapper
     {
         [ExplicitKey]
@@ -14,10 +14,6 @@ namespace ControleVeiculos.Repository.Map
         public string icon { get; set; }
         public bool itsAdmin { get; set; }
         public string systemFeatureID { get; set; }
-        public string createdByID { get; set; }
-        public string creationDate { get; set; }
-        public string modifiedByID { get; set; }
-        public string lastModifiedDate { get; set; } 
     }
 }
 

@@ -76,6 +76,7 @@
     <Compile Include="DocumentoService.cs" />
     <Compile Include="MultaService.cs" />
     <Compile Include="KilometragemService.cs" />
+    <Compile Include="StringUtilityService.cs" />
     <Compile Include="SinistroService.cs" />
     <Compile Include="SeguroService.cs" />
     <Compile Include="RotaService.cs" />

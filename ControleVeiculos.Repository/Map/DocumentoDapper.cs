@@ -7,7 +7,7 @@ namespace ControleVeiculos.Repository.Map
         [ExplicitKey]
         public int documentoID { get; set; }
         public string seguroID { get; set; }
-        public string numeroCnh { get; set; }
+        public string cnhID { get; set; }
         public string clienteID { get; set; }
          
     }

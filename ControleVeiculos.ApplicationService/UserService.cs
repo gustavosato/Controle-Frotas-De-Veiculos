@@ -43,53 +43,6 @@ namespace ControleVeiculos.ApplicationService
             return Result.Ok<User>(0, "", user);
         }
 
-        public IPagedList<User> GetAllAssociateUserByCustomerID(FilterUserCommand command, int pageIndex = 0, int pageSize = int.MaxValue)
-        {
-            var users = _userRepository.GetAllAssociateUserByCustomerID(command);
-
-            return new PagedList<User>(users, pageIndex, pageSize);
-        }
-
-        public IPagedList<User> GetAllNoAssociateUserByCustomerID(FilterUserCommand command, int pageIndex = 0, int pageSize = int.MaxValue)
-        {
-            var users = _userRepository.GetAllNoAssociateUserByCustomerID(command);
-
-            return new PagedList<User>(users, pageIndex, pageSize);
-        }
-
-        public IPagedList<User> GetAllAssociateUserByDemandID(FilterUserCommand command, int pageIndex = 0, int pageSize = int.MaxValue)
-        {
-            var users = _userRepository.GetAllAssociateUserByDemandID(command);
-
-            return new PagedList<User>(users, pageIndex, pageSize);
-        }
-
-        public IPagedList<User> GetAllNoAssociateUserByDemandID(FilterUserCommand command, int pageIndex = 0, int pageSize = int.MaxValue)
-        {
-            var users = _userRepository.GetAllNoAssociateUserByDemandID(command);
-
-            return new PagedList<User>(users, pageIndex, pageSize);
-        }
-
-
-
-        public IPagedList<User> GetAllAssociateUserByGroupID(FilterUserCommand command, int pageIndex = 0, int pageSize = int.MaxValue)
-        {
-            var users = _userRepository.GetAllAssociateUserByGroupID(command);
-
-            return new PagedList<User>(users, pageIndex, pageSize);
-        }
-
-        public IPagedList<User> GetAllNoAssociateUserByGroupID(FilterUserCommand command, int pageIndex = 0, int pageSize = int.MaxValue)
-        {
-            var users = _userRepository.GetAllNoAssociateUserByGroupID(command);
-
-            return new PagedList<User>(users, pageIndex, pageSize);
-        }
-
-
-
-
         public IPagedList<User> GetAll(FilterUserCommand command, int pageIndex = 0, int pageSize = int.MaxValue)
         {
             var users = _userRepository.GetAll(command);

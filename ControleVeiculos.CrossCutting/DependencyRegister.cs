@@ -40,10 +40,12 @@ namespace ControleVeiculos.CrossCutting
             container.RegisterType<AcessorioService>().As<IAcessorioService>();
             container.RegisterType<DocumentoService>().As<IDocumentoService>();
             container.RegisterType<EncryptService>().As<IEncryptyService>();
-
+            container.RegisterType<StringUtilityService>().As<IStringUtilityService>();
 
             //Repository
             container.RegisterType<ApplicationSystemRepository>().As<IApplicationSystemRepository>();
+            container.RegisterType<ParameterRepository>().As<IParameterRepository>();
+            container.RegisterType<ParameterValueRepository>().As<IParameterValueRepository>();
             container.RegisterType<SystemFeatureRepository>().As<ISystemFeatureRepository>();
             container.RegisterType<SystemMenuRepository>().As<ISystemMenuRepository>();
             container.RegisterType<SystemParameterRepository>().As<ISystemParameterRepository>();

@@ -9,14 +9,8 @@ namespace ControleVeiculos.Domain.Repositories
         string Add(User user);
         void Update(User user);
         User GetByID(int userID);
-        List<User> GetAll(FilterUserCommand command);
-        List<User> GetAllAssociateUserByCustomerID(FilterUserCommand command);
-        List<User> GetAllNoAssociateUserByCustomerID(FilterUserCommand command);
-        List<User> GetAllAssociateUserByDemandID(FilterUserCommand command);
-        List<User> GetAllAssociateUserByGroupID(FilterUserCommand command);
-        List<User> GetAllNoAssociateUserByDemandID(FilterUserCommand command);
-        List<User> GetAllNoAssociateUserByGroupID(FilterUserCommand command);
-        List<User> GetAll(int userID);
+        List<User>GetAll(FilterUserCommand command);
+        List<User>GetAll(int userID);
         User GetByEmail(string email);
         void Delete(int userID);
         string GetUserNameByID(int userID);

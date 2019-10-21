@@ -43,11 +43,7 @@ namespace ControleVeiculos.Repository.Map
             parameterValueDapper.parentID = parameterValue.parentID;
             parameterValueDapper.isSystem = parameterValue.isSystem;
             parameterValueDapper.description = parameterValue.description;
-            parameterValueDapper.creationDate = parameterValue.creationDate;
-            parameterValueDapper.createdByID = parameterValue.createdByID;
-            parameterValueDapper.lastModifiedDate = parameterValue.lastModifiedDate;
-            parameterValueDapper.modifiedByID = parameterValue.modifiedByID;
-
+            
             return parameterValueDapper;
         }
 
@@ -58,11 +54,7 @@ namespace ControleVeiculos.Repository.Map
             parameterDapper.parameterID = primaryKey;
             parameterDapper.parameterName = parameter.parameterName;
             parameterDapper.systemFeatureID = parameter.systemFeatureID;
-            parameterDapper.createdByID = parameter.createdByID;
-            parameterDapper.creationDate = parameter.creationDate;
-            parameterDapper.lastModifiedDate = parameter.lastModifiedDate;
-            parameterDapper.modifiedByID = parameter.modifiedByID;
-
+            
             return parameterDapper;
         }
 
@@ -75,25 +67,11 @@ namespace ControleVeiculos.Repository.Map
             userDapper.email = user.email;
             userDapper.password = user.password;
             userDapper.cellNumber = user.cellNumber;
-            userDapper.functionID = user.functionID;
-            userDapper.functionLevelID = user.functionLevelID;
-            userDapper.levelClassificationID = user.levelClassificationID;
-            userDapper.departmentID = user.departmentID;
-            userDapper.totalCost = user.totalCost;
-            userDapper.supervisorID = user.supervisorID;
+            userDapper.departamentoID = user.departamentoID;
             userDapper.description = user.description;
             userDapper.firstAccess = user.firstAccess;
             userDapper.isAdmin = user.isAdmin;
-            userDapper.lastAccessDate = user.lastAccessDate;
-            userDapper.lastIPAccess = user.lastIPAccess;
             userDapper.isActive = user.isActive;
-            userDapper.accessToDate = user.accessToDate;
-            userDapper.updateRecordTo = user.updateRecordTo;
-            userDapper.releaseDateUpdateRecordTo = user.releaseDateUpdateRecordTo;
-            userDapper.startJob = user.startJob;
-            userDapper.endJob = user.endJob;
-            userDapper.contractTypeID = user.contractTypeID;
-            userDapper.hourTypeID = user.hourTypeID;
             userDapper.rg = user.rg;
             userDapper.cpf = user.cpf;
             userDapper.dateOfBirth = user.dateOfBirth;
@@ -103,20 +81,6 @@ namespace ControleVeiculos.Repository.Map
             userDapper.city = user.city;
             userDapper.state = user.state;
             userDapper.homePhone = user.homePhone;
-            userDapper.typeBankAccountID = user.typeBankAccountID;
-            userDapper.typePersonID = user.typePersonID;
-            userDapper.agency = user.agency;
-            userDapper.bankAccount = user.bankAccount;
-            userDapper.bankName = user.bankName;
-            userDapper.socialReason = user.socialReason;
-            userDapper.cnpj = user.cnpj;
-            userDapper.optingSimple = user.optingSimple;
-            userDapper.registeredCity = user.registeredCity;
-            userDapper.isEmployee = user.isEmployee;
-            userDapper.createdByID = user.createdByID;
-            userDapper.creationDate = user.creationDate;
-            userDapper.modifiedByID = user.modifiedByID;
-            userDapper.lastModifiedDate = user.lastModifiedDate;
 
             return userDapper;
         }
@@ -129,12 +93,7 @@ namespace ControleVeiculos.Repository.Map
             aplicationSystemDapper.applicationSystemName = applicationSystem.applicationSystemName;
             aplicationSystemDapper.description = applicationSystem.description;
             aplicationSystemDapper.applicationTypeID = applicationSystem.applicationTypeID;
-            aplicationSystemDapper.customerID = applicationSystem.customerID;
-            aplicationSystemDapper.createdByID = applicationSystem.createdByID;
-            aplicationSystemDapper.creationDate = applicationSystem.creationDate;
-            aplicationSystemDapper.lastModifiedDate = applicationSystem.lastModifiedDate;
-            aplicationSystemDapper.modifiedByID = applicationSystem.modifiedByID;
-
+            
             return aplicationSystemDapper;
 
         }
@@ -146,11 +105,7 @@ namespace ControleVeiculos.Repository.Map
             systemFeatureDapper.systemFeatureID = primaryKey;
             systemFeatureDapper.systemFeatureName = systemFeature.systemFeatureName;
             systemFeatureDapper.systemFeatureTypeID = systemFeature.systemFeatureTypeID;
-            systemFeatureDapper.createdByID = systemFeature.createdByID;
-            systemFeatureDapper.creationDate = systemFeature.creationDate;
-            systemFeatureDapper.lastModifiedDate = systemFeature.lastModifiedDate;
-            systemFeatureDapper.modifiedByID = systemFeature.modifiedByID;
-
+            
             return systemFeatureDapper;
         }
 
@@ -167,11 +122,7 @@ namespace ControleVeiculos.Repository.Map
             systemMenuDapper.icon = systemMenu.icon;
             systemMenuDapper.itsAdmin = systemMenu.itsAdmin;
             systemMenuDapper.systemFeatureID = systemMenu.systemFeatureID;
-            systemMenuDapper.createdByID = systemMenu.createdByID;
-            systemMenuDapper.creationDate = systemMenu.creationDate;
-            systemMenuDapper.lastModifiedDate = systemMenu.lastModifiedDate;
-            systemMenuDapper.modifiedByID = systemMenu.modifiedByID;
-
+            
             return systemMenuDapper;
         }
 
@@ -183,11 +134,7 @@ namespace ControleVeiculos.Repository.Map
             systemParameterDapper.paramterName = systemParameter.paramterName;
             systemParameterDapper.paramterValue = systemParameter.paramterValue;
             systemParameterDapper.paramterDefaultValue = systemParameter.paramterDefaultValue;
-            systemParameterDapper.createdByID = systemParameter.createdByID;
-            systemParameterDapper.creationDate = systemParameter.creationDate;
-            systemParameterDapper.lastModifiedDate = systemParameter.lastModifiedDate;
-            systemParameterDapper.modifiedByID = systemParameter.modifiedByID;
-
+            
             return systemParameterDapper;
         }
 
@@ -482,7 +429,7 @@ namespace ControleVeiculos.Repository.Map
 
             documentoDapper.documentoID = primaryKey;
             documentoDapper.seguroID = documento.seguroID;
-            documentoDapper.numeroCnh = documento.numeroCnh;
+            documentoDapper.cnhID = documento.numeroCnh;
             documentoDapper.clienteID = documento.clienteID;
             
             return documentoDapper;

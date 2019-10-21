@@ -14,12 +14,6 @@
         @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Digite a senha" })
         @Html.ValidationMessageFor(model => model.Password, "", new { @class = "form-text text-danger" })
     </div>
-    <div class="col-md-12 mb-auto">
-        <strong>@Html.LabelFor(model => model.CustomerID, new { @class = "col-sm-0 col-form-label text-left", id = "lblCustomerID" })</strong>
-        @Html.DropDownList("CustomerID", Model.LoadCustomers, "Selecione...", new { @class = "form-control", id = "cmbCustomerID" })
-        @Html.ValidationMessageFor(model => model.CustomerID, "", new { @class = "form-text text-danger" })
-    </div>
-
     <div class="col-md-12">
         <strong>@Html.LabelFor(model => model.PasswordNew, new { @class = "col-sm-0 col-form-label text-left", id = "lblPasswordNew" })</strong>
         @Html.PasswordFor(model => model.PasswordNew, new { @class = "form-control", placeholder = "Digite a nova senha" })
@@ -36,7 +30,7 @@
 
 <script type="text/javascript">
 
-    $("#@Html.FieldIdFor(model => model.Email)").keydown(function (event) {
+    @*$("#@Html.FieldIdFor(model => model.Email)").keydown(function (event) {
         if (event.keyCode == 13) {
             $("#Password").focus();
             return false;
@@ -62,7 +56,7 @@
             $("#btnUpdatePassword").focus();
             return false;
         }
-    });
+    });*@
 
     $(document).ready(function () {
 

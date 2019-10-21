@@ -71,13 +71,10 @@ namespace ControleVeiculos.Repository.Data
             {
                 conn.Open();
 
-                string sql = string.Format("Select userID, userName, email, v.parameterValue as departmentID, v1.parameterValue as functionID, v2.parameterValue as functionLevelID, isAdmin, isActive, " +
-                                            "ISNULL(accessToDate, '') as accessToDate, " +
+                string sql = string.Format("Select userID, userName, email, v.parameterValue as departamentoID, isAdmin, isActive, " +
                                             "ISNULL(updateRecordTo, '') as updateRecordTo, " +
-                                            "ISNULL(releaseDateUpdateRecordTo, '') as releaseDateUpdateRecordTo, isEmployee " +
                                             "From Users u left Join ParameterValues v on u.departmentID = v.parameterValueID " +
-                                            "left join ParameterValues v1 on u.functionID = v1.parameterValueID " +
-                                            "left join ParameterValues v2 on u.functionLevelID = v2.parameterValueID Where 1 = 1 ");
+                                            "Where 1 = 1 ");
 
                 if (!string.IsNullOrEmpty(command.UserName))
                     sql += string.Format("AND userName LIKE '%{0}%' ", command.UserName);
@@ -85,15 +82,9 @@ namespace ControleVeiculos.Repository.Data
                 if (!string.IsNullOrEmpty(command.Email))
                     sql += string.Format("AND email LIKE '%{0}%' ", command.Email);
 
-                if (!string.IsNullOrEmpty(command.DepartmentID))
-                    sql += string.Format("AND departmentID = '{0}' ", command.DepartmentID);
-
-                if (!string.IsNullOrEmpty(command.FunctionID))
-                    sql += string.Format("AND functionID = '{0}' ", command.FunctionID);
-
-                if (!string.IsNullOrEmpty(command.IsEmplyee))
-                    sql += string.Format("AND functionID = '{0}' ", command.IsEmplyee);
-
+                if (!string.IsNullOrEmpty(command.DepartamentoID))
+                    sql += string.Format("AND departmentID = '{0}' ", command.DepartamentoID);
+                
                 sql += "ORDER BY userName";
 
                 return conn.Query<User>(sql).ToList();
@@ -107,122 +98,13 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format(@"Select * From Users Where 1 = 1 And isActive = 'True' OR userID = {0} ", userID);
+                string sql = string.Format("Select * From Users Where 1 = 1 And isActive = 'True' OR userID = {0} ", userID);
                 
                 sql += "ORDER BY userName";
 
                 return conn.Query<User>(sql).ToList();
             }
         }
-
-        public List<User> GetAllAssociateUserByCustomerID(FilterUserCommand command)
-        {
-            using (IDbConnection conn = new SqlConnection(ConnectionString))
-            {
-                conn.Open();
-
-                string sql = string.Format("Select distinct u.userID, userName, isActive From Users u inner join CustomersUsers c on u.userID = c.userID Where c.customerID in (" + command.CustomerID + ") And isActive = 'True' ");
-
-                if (!string.IsNullOrEmpty(command.UserName))
-                    sql += string.Format("AND userName LIKE '%{0}%' ", command.UserName);
-
-                sql += "ORDER BY userName";
-                return conn.Query<User>(sql).ToList();
-
-            }
-        }
-
-        public List<User> GetAllNoAssociateUserByCustomerID(FilterUserCommand command)
-        {
-            using (IDbConnection conn = new SqlConnection(ConnectionString))
-            {
-                conn.Open();
-
-                string sql = string.Format("Select distinct u.userID, userName, isActive From Users u left join CustomersUsers c on u.userID = c.userID Where isActive = 'True' And u.userID not  in (Select distinct u.userID " +
-                                            "From Users u inner join CustomersUsers c on u.userID = c.userID Where c.customerID  in (" + command.CustomerID + "))");
-
-                if (!string.IsNullOrEmpty(command.UserName))
-                    sql += string.Format("AND userName LIKE '%{0}%' ", command.UserName);
-
-                sql += "ORDER BY userName";
-                return conn.Query<User>(sql).ToList();
-            }
-        }
-
-        public List<User> GetAllAssociateUserByDemandID(FilterUserCommand command)
-        {
-            using (IDbConnection conn = new SqlConnection(ConnectionString))
-            {
-                conn.Open();
-
-                string sql = string.Format("Select distinct u.userID, userName, isActive From Users u inner join DemandsUsers d on u.userID = d.userID Where d.demandID in (" + command.DemandID + ") And isActive = 'True' ");
-
-                if (!string.IsNullOrEmpty(command.UserName))
-                    sql += string.Format("AND userName LIKE '%{0}%' ", command.UserName);
-
-                sql += "ORDER BY userName";
-                return conn.Query<User>(sql).ToList();
-            }
-        }
-
-        public List<User> GetAllNoAssociateUserByDemandID(FilterUserCommand command)
-        {
-            using (IDbConnection conn = new SqlConnection(ConnectionString))
-            {
-                conn.Open();
-
-                string sql = string.Format("Select distinct u.userID, userName, isActive From Users u left join DemandsUsers d on u.userID = d.userID Where isActive = 'True' And u.userID not  in (Select distinct u.userID " +
-                                            "From Users u inner join DemandsUsers d on u.userID = d.userID Where d.demandID  in (" + command.DemandID + "))");
-
-                if (!string.IsNullOrEmpty(command.UserName))
-                    sql += string.Format("AND userName LIKE '%{0}%' ", command.UserName);
-
-                sql += "ORDER BY userName";
-                return conn.Query<User>(sql).ToList();
-            }
-        }
-
-
-
-        public List<User> GetAllAssociateUserByGroupID(FilterUserCommand command)
-        {
-            using (IDbConnection conn = new SqlConnection(ConnectionString))
-            {
-                conn.Open();
-
-                string sql = string.Format("SELECT DISTINCT u.userID, userName, isActive " +
-                                           "FROM Users u " +
-                                           "INNER JOIN GroupsUsers d on u.userID = d.userID " +
-                                           "WHERE d.groupID IN (" + command.GroupID + ") AND isActive = 'True' ");
-
-                if (!string.IsNullOrEmpty(command.UserName))
-                    sql += string.Format("AND userName LIKE '%{0}%' ", command.UserName);
-
-                sql += "ORDER BY userName";
-                return conn.Query<User>(sql).ToList();
-            }
-        }
-
-        public List<User> GetAllNoAssociateUserByGroupID(FilterUserCommand command)
-        {
-            using (IDbConnection conn = new SqlConnection(ConnectionString))
-            {
-                conn.Open();
-
-                string sql = string.Format("SELECT DISTINCT u.userID, userName, isActive " +
-                                           "FROM Users u LEFT JOIN GroupsUsers d on u.userID = d.userID " +
-                                           "WHERE isActive = 'True' AND u.userID NOT IN (SELECT DISTINCT u.userID " +
-                                           "FROM Users u INNER JOIN GroupsUsers d on u.userID = d.userID " +
-                                           "WHERE d.groupID IN (" + command.GroupID + "))");
-
-                if (!string.IsNullOrEmpty(command.UserName))
-                    sql += string.Format("AND userName LIKE '%{0}%' ", command.UserName);
-
-                sql += "ORDER BY userName";
-                return conn.Query<User>(sql).ToList();
-            }
-        }
-
 
         public string GetUserNameByID(int userID)
         {

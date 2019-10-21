@@ -37,9 +37,9 @@
                                 <div class="col-sm-3">
                                     @Html.TextBoxFor(model => model.SearchUserName, null, new { @class = "form-control" })
                                 </div>
-                                @Html.LabelFor(model => model.SearchDepartmentID, new { @class = "col-sm-2 col-form-label text-right" })
+                                @Html.LabelFor(model => model.SearchDepartamentoID, new { @class = "col-sm-2 col-form-label text-right" })
                                 <div class="col-sm-3">
-                                    @Html.DropDownList("SearchDepartmentID", Model.LoadDepartments, "Selecione...", new { @class = "form-control" })
+                                    @Html.DropDownList("SearchDepartamentoID", Model.LoadDepartamentos, "Selecione...", new { @class = "form-control" })
                                 </div>
 
                             </div>
@@ -47,10 +47,6 @@
                                 @Html.LabelFor(model => model.SearchEmail, new { @class = "col-sm-2 col-form-label text-right" })
                                 <div class="col-sm-3">
                                     @Html.TextBoxFor(model => model.SearchEmail, null, new { @class = "form-control" })
-                                </div>
-                                @Html.LabelFor(model => model.SearchFunctionID, new { @class = "col-sm-2 col-form-label text-right" })
-                                <div class="col-sm-3">
-                                    @Html.DropDownList("SearchFunctionID", Model.LoadFunctions, "Selecione...", new { @class = "form-control" })
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -129,18 +125,8 @@
                         attributes: { style: "text-align:center" },
                         template: '<div title="Editar Registro" class="btn btn-primary btn-sm text-center" onclick="Edit(#=UserID#)" data-toggle="modal" data-target="\\#MaintenanceModal"> <i class="fa fa-edit"></i> </div> ' +
                             '<div title="Excluir Registro" class="btn btn-danger btn-sm text-center" onclick="Delete(#=UserID#)" data-toggle="modal" data-target="\\#DeleteModal"> <i class="fa fa-trash"></i> </div> ' +
-                            '<div title="Liberar apropriação de horas retroativas" class="btn btn-dark btn-sm text-center" onclick="AllowApropriate(#=UserID#)" data-toggle="modal" data-target="\\#AllowApropriateModal"> <i class="fa fa-calendar"></i> </div> ' +
-                            '<div title="Associar Grupo" class="btn btn-info btn-sm text-center" onclick="GroupAssociate(#=UserID#)" data-toggle="modal" data-target="\\#GroupAssociateModal"> <i class="fa fa-group"></i> </div> ' +
-                            '<div title="Associar Empresas" class="btn btn-secondary btn-sm text-center" onclick="CustomerAssociate(#=UserID#)" data-toggle="modal" data-target="\\#CustomerAssociateModal"> <i class="fa fa-institution"></i> </div> ' +
                             '# if(IsActive == false)  {# <div title="Ativar" class="btn btn-warning btn-sm text-center" onclick="ChangeStatus(#=UserID#)" data-toggle="modal" data-target="\\#ChangeStatusModal"> <i class="fa fa-bell-slash" text-danger false-icon"></i></div> #} else ' +
                             '{# <div title="Desativar" class="btn btn-success btn-sm" text-center" onclick="ChangeStatus(#=UserID#)" data-toggle="modal" data-target="\\#ChangeStatusModal"> <i class="fa fa-bell" text-danger false-icon"></i></div> #}  # '
-                    }, {
-                        field: "IsEmployee",
-                        title: "Funcionário",
-                        width: 100,
-                        headerAttributes: { style: "text-align:center" },
-                        attributes: { class: "text-center" },
-                        template: '# if(IsEmployee == false)  {# <i class="fa fa-close text-danger false-icon"></i> #} else {# <i class="fa fa-check text-success true-icon"></i> #} #'
                     }, {
                         field: "IsAdmin",
                         title: "Admin",
@@ -158,35 +144,9 @@
                         title: "E-mail",
                         width: 300,
                         headerAttributes: { style: "text-align:left" }
-                    },  {
-
-                        field: "DepartmentID",
-                        title: "Departamento",
-                        width: 200,
-                        headerAttributes: { style: "text-align:left" }
-                    }, {
-                        field: "FunctionID",
-                        title: "Função",
-                        width: 200,
-                        headerAttributes: { style: "text-align:left" }
-                    }, {
-                        field: "AccessToDate",
-                        title: "Acesso permitido até",
-                        width: 200,
-                        headerAttributes: { style: "text-align:left" }
-                    }, {
-                        field: "UpdateRecordTo",
-                        title: "Limite para atualização",
-                        width: 200,
-                        headerAttributes: { style: "text-align:left" }
-                    }, {
-                        field: "ReleaseDateUpdateRecordTo",
-                        title: "Limíte retroativo",
-                        width: 200,
-                        headerAttributes: { style: "text-align:left" }
                     }],
                     excelExport: function (e) {
-                        e.workbook.fileName = "LeanTest Cloud - Usuários.xlsx";
+                        e.workbook.fileName = "Usuarios.xlsx";
                     }
                 });
             });
@@ -211,28 +171,28 @@
                         return false;
                     });
 
-                    $("#@Html.FieldIdFor(model => model.SearchUserName)").keydown(function (event) {
+                    $("#@Html.IdFor(model => model.SearchUserName)").keydown(function (event) {
                         if (event.keyCode == 13) {
                             $("#btn-aplicar-filtros").click();
                             return false;
                         }
                     });
 
-                    $("#@Html.FieldIdFor(model => model.SearchEmail)").keydown(function (event) {
+                    $("#@Html.IdFor(model => model.SearchEmail)").keydown(function (event) {
                         if (event.keyCode == 13) {
                             $("#btn-aplicar-filtros").click();
                             return false;
                         }
                     });
 
-                    $("#@Html.FieldIdFor(model => model.SearchDepartmentID)").keydown(function (event) {
+                    $("#@Html.IdFor(model => model.SearchDepartamentoID)").keydown(function (event) {
                         if (event.keyCode == 13) {
                             $("#btn-aplicar-filtros").click();
                             return false;
                         }
                     });
 
-                    $("#@Html.FieldIdFor(model => model.SearchFunctionID)").keydown(function (event) {
+                    $("#@Html.IdFor(model => model.SearchFunctionID)").keydown(function (event) {
                         if (event.keyCode == 13) {
                             $("#btn-aplicar-filtros").click();
                             return false;
@@ -244,10 +204,10 @@
 
                 function additionalData() {
                     var data = {
-                        SearchUserName: $('#@Html.FieldIdFor(model => model.SearchUserName)').val(),
-                        SearchEmail: $('#@Html.FieldIdFor(model => model.SearchEmail)').val(),
-                        SearchDepartmentID: $('#@Html.FieldIdFor(model => model.SearchDepartmentID)').val(),
-                        SearchFunctionID: $('#@Html.FieldIdFor(model => model.SearchFunctionID)').val(),
+                        SearchUserName: $('#@Html.IdFor(model => model.SearchUserName)').val(),
+                        SearchEmail: $('#@Html.IdFor(model => model.SearchEmail)').val(),
+                        SearchDepartamentoID: $('#@Html.IdFor(model => model.SearchDepartamentoID)').val(),
+                        SearchFunctionID: $('#@Html.IdFor(model => model.SearchFunctionID)').val(),
                     };
                     addAntiForgeryToken(data);
                     return data;
@@ -315,46 +275,6 @@
                         })
                     };
 
-                    var AllowApropriate = function (userID) {
-                        var url = '/User/GetByID?userID=' + userID + '&ActionName=AllowApropriate';
-
-                        $('#AllowApropriateModalDiv').load(url, function () {
-
-                        })
-
-                        $('#AllowApropriateModal').on('shown.bs.modal', function () {
-
-                            //permite selecionar mais de uma data
-                            $('#calender-container .input-group.date').datepicker({
-                                multidate: false,
-                                multidateSeparator: ";",
-                                autoclose: true,
-                                daysOfWeekHighlighted: "0,6",
-                                todayBtn: true,
-                                todayHighlight: true,
-                                format: 'dd/mm/yyyy',
-                                language: 'pt-BR'
-                            });
-
-                        });
-                    };
-
-                    var CustomerAssociate = function (userID) {
-                        var url = '/User/CustomerAssociate?userID=' + userID;
-
-                        $('#CustomerAssociateModalDiv').load(url, function () {
-
-                        })
-                    };
-
-                    var GroupAssociate = function (userID) {
-                        var url = '/User/GroupAssociate?userID=' + userID;
-
-                        $('#GroupAssociateModalDiv').load(url, function () {
-
-                        })
-                    };
-
                     var Add = function () {
                         var url = '/User/Add?model=' + @Model;
 
@@ -362,7 +282,6 @@
 
                         })
                     };
-
 
                 </script>
             </div>
@@ -475,105 +394,6 @@
                         <i class="fa fa-close"></i> Não
                     </button>
 
-                </div>
-            </div>
-        </div>
-    </div>
-}
-
-
-@using (Html.BeginForm("Update", "User", FormMethod.Post))
-
-{
-    <div class="modal fade" id="AllowApropriateModal" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title">Liberação de Apropriação de Horas Retroativas</h3>
-                    <a href="#" class="close" data-dismiss="modal">&times;</a>
-                </div>
-                <div class="modal-body" id="AllowApropriateModalDiv">
-
-                </div>
-
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-success btn-sm">
-                        <i class="fa fa-check-circle"></i> Salvar
-                    </button>
-                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
-                        <i class="fa fa-close"></i> Cancelar
-                    </button>
-
-                </div>
-            </div>
-        </div>
-    </div>
-}
-
-@using (Html.BeginForm("Update", "User", FormMethod.Post, new { novalidate = "novalidate" }))
-{
-    <div class="modal fade" id="CustomerAssociateModal" role="dialog" overflow: auto>
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title">Associar Empresas</h3>
-                    <a href="#" class="close" data-dismiss="modal">&times;</a>
-                </div>
-                <div class="modal-body" id="CustomerAssociateModalDiv" overflow: auto>
-                </div>
-                <div class="modal-footer">
-
-                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
-                        <i class="fa fa-close"></i> Fechar
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-}
-
-@using (Html.BeginForm("Update", "User", FormMethod.Post, new { novalidate = "novalidate" }))
-{
-    <div class="modal fade" id="GroupAssociateModal" role="dialog" overflow: auto>
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title">Associar Grupo(s)</h3>
-                    <a href="#" class="close" data-dismiss="modal">&times;</a>
-                </div>
-                <div class="modal-body" id="GroupAssociateModalDiv" overflow: auto>
-                </div>
-                <div class="modal-footer">
-
-                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
-                        <i class="fa fa-close"></i> Fechar
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-}
-
-@using (Html.BeginForm("Delete", "Attachment", new { sourceController = "User" }, FormMethod.Post, new { novalidate = "novalidate" }))
-{
-    <div class="modal fade" id="AttachmentDeleteModal" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title">Excluir Anexo</h3>
-                    <a href="#" class="close" data-dismiss="modal">&times;</a>
-                </div>
-                <div class="modal-body" id="AttachmentDeleteModalDiv">
-
-                </div>
-
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">
-                        <i class="fa fa-check-circle"></i> Sim
-                    </button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                        <i class="fa fa-close"></i> Não
-                    </button>
                 </div>
             </div>
         </div>

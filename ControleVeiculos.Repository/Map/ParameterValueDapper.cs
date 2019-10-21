@@ -1,7 +1,7 @@
 ﻿using Dapper.Contrib.Extensions;
 namespace ControleVeiculos.Repository.Map
 {
-    [Table("ParameterValues")]
+    [Table("ParameterValue")]
     public class ParameterValueDapper
     {
         [ExplicitKey]
@@ -11,9 +11,6 @@ namespace ControleVeiculos.Repository.Map
         public string parentID { get; set; }
         public string isSystem { get; set; }
         public string description { get; set; }
-        public string createdByID { get; set; }
-        public string creationDate { get; set; }
-        public string modifiedByID { get; set; }
-        public string lastModifiedDate { get; set; } 
+        
     }
 }

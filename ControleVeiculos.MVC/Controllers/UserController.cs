@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using ControleVeiculos.Domain.Command.Users;
 using ControleVeiculos.Domain.Entities.Users;
 using ControleVeiculos.Domain;
-//using ControleVeiculos.MVC.Infrastructure.Mvc;
+using ControleVeiculos.MVC.Infrastructure;
 using System.Globalization;
 using ControleVeiculos.MVC.Models.SystemParameter;
 using System.Web;
@@ -47,7 +47,7 @@ namespace ControleVeiculos.MVC.Controllers
             _stringUtilityService = stringUtlilityService;
         }
 
-        private string SystemFeatureID = "100";
+        private string SystemFeatureID = "0";
 
         public ActionResult Index()
         {
@@ -58,11 +58,9 @@ namespace ControleVeiculos.MVC.Controllers
 
             var model = new UserModel();
 
-            var Departmetns = _parameterValueService.GetAllByParameterID("4");
-            var functions = _parameterValueService.GetAllByParameterID("1");
+            var Departamentos = _parameterValueService.GetAllByParameterID("4");
 
-            model.LoadDepartments = Departmetns.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-            model.LoadFunctions = functions.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
+            model.LoadDepartamentos = Departamentos.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
 
             return View(model);
         }
@@ -86,6 +84,7 @@ namespace ControleVeiculos.MVC.Controllers
                 catch
                 {
                     user = null;
+                    //var mensagem = ex.Message;
                 }
 
                 if (user.IsSuccess)
@@ -94,26 +93,11 @@ namespace ControleVeiculos.MVC.Controllers
                     {
                         model.Email = model.EmailNew;
                         model.Password = password;
-                        model.FunctionID = "4";
-                        model.FunctionLevelID = "12";
-                        model.LevelClassificationID = "13";
-                        model.DepartmentID = "16";
-                        model.TotalCost = "0,00";
+                        model.DepartamentoID = null;
                         model.FirstAccess = "True";
-                        model.SupervisorID = "2";
                         model.IsAdmin = false;
                         model.IsActive = false;
-                        model.AccessToDate = Convert.ToDateTime(DateTime.Today.AddMonths(3)).ToString("dd/MM/yyyy");
-                        model.UpdateRecordTo = Convert.ToDateTime(DateTime.Today.AddDays(-3)).ToString("dd/MM/yyyy");
-                        model.ReleaseDateUpdateRecordTo = Convert.ToDateTime(DateTime.Today).ToString("dd/MM/yyyy");
-                        model.StartJob = Convert.ToDateTime(DateTime.Today).ToString("dd/MM/yyyy");
-                        model.EndJob = null;
                         model.DateOfBirth = null;
-                        model.ContractTypeID = "89";
-                        model.HourTypeID = "91";
-                        model.IsEmployee = false;
-                        model.CreatedByID = Convert.ToString(Session["userID"]);
-                        model.CreationDate = Convert.ToString(DateTime.Now);
 
                         var command = MaintenanceUserCommand(model);
 
@@ -245,8 +229,7 @@ namespace ControleVeiculos.MVC.Controllers
                 {
                     UserName = model.SearchUserName,
                     Email = model.SearchEmail,
-                    DepartmentID = model.SearchDepartmentID,
-                    FunctionID = model.SearchFunctionID
+                    DepartamentoID = model.SearchDepartamentoID,
                 }, request.Page - 1, request.PageSize);
 
                 gridModel = new DataSourceResult
@@ -268,34 +251,14 @@ namespace ControleVeiculos.MVC.Controllers
         {
             var model = new UserModel();
 
-            var Departmetns = _parameterValueService.GetAllByParameterID("4");
-            var functions = _parameterValueService.GetAllByParameterID("1");
-            var functionLevels = _parameterValueService.GetAllByParameterID("2");
-            var levelClassifications = _parameterValueService.GetAllByParameterID("3");
-            var contractTypes = _parameterValueService.GetAllByParameterID("19");
-            var hourType = _parameterValueService.GetAllByParameterID("20");
-            var typeBankAccount = _parameterValueService.GetAllByParameterID("29");
-            var TypePersons = _parameterValueService.GetAllByParameterID("28");
+            var Departamentos = _parameterValueService.GetAllByParameterID("4");
 
             var supervisor = _userService1.GetAll(0);
 
             model.FirstAccess = "True";
             model.IsActive = true;
-            model.UpdateRecordTo = Convert.ToDateTime(DateTime.Today.AddDays(-3)).ToString();
-            model.ReleaseDateUpdateRecordTo = Convert.ToDateTime(DateTime.Today).ToString();
-            model.AccessToDate = Convert.ToDateTime(DateTime.Today.AddMonths(3)).ToString();
-            model.CreatedByID = Convert.ToString(Session["userID"]);
-            model.CreationDate = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
 
-            model.LoadDepartments = Departmetns.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-            model.LoadFunctions = functions.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-            model.LoadFunctionLevels = functionLevels.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-            model.LoadLevelClassifications = levelClassifications.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-            model.LoadContractTypes = contractTypes.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-            model.LoadHourTypes = hourType.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-            model.LoadSupervisors = supervisor.Select(x => new SelectListItem() { Text = x.userName.ToString(), Value = x.userID.ToString() }).ToList();
-            model.LoadTypeBankAccounts = typeBankAccount.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-            model.LoadTypePersons = TypePersons.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
+            model.LoadDepartamentos = Departamentos.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
 
             return PartialView("Maintenance", model);
         }
@@ -316,9 +279,7 @@ namespace ControleVeiculos.MVC.Controllers
 
                 body = "Nova senha gerada: " + newPassword;
                 model.Password = _encryptyService.GetHash(newPassword);
-                model.LastAccessDate = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
                 model.FirstAccess = "True";
-                model.LastIPAccess = Server.HtmlEncode(Request.UserHostAddress);
 
                 var command = MaintenanceUserCommand(model);
 
@@ -353,9 +314,7 @@ namespace ControleVeiculos.MVC.Controllers
             if (model != null)
             {
                 model.Password = _encryptyService.GetHash(password);
-                model.LastAccessDate = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
                 model.FirstAccess = "False";
-                model.LastIPAccess = Server.HtmlEncode(Request.UserHostAddress);
 
                 var command = MaintenanceUserCommand(model);
 
@@ -379,7 +338,13 @@ namespace ControleVeiculos.MVC.Controllers
 
             string[] userName = model.UserName.Split(' ');
 
-            model.LastAccessDate = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            Session["userName"] = userName[0];
+
+            Session["userFullName"] = model.UserName;
+
+            Session["isAdmin"] = model.IsAdmin;
+
+            Session.Timeout = 60;
 
             if (!string.IsNullOrEmpty(user.PasswordNew))
             {
@@ -387,13 +352,11 @@ namespace ControleVeiculos.MVC.Controllers
             }
             model.FirstAccess = "False";
 
-            model.LastIPAccess = Server.HtmlEncode(Request.UserHostAddress);
-
             var command = MaintenanceUserCommand(model);
 
             _userService.Update(command);
 
-            return RedirectToAction("Index", "Demand");
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult LoadSignin()
@@ -432,25 +395,10 @@ namespace ControleVeiculos.MVC.Controllers
             command.Password = model.Password;
             command.Email = model.Email;
             command.CellNumber = model.CellNumber;
-            command.FunctionID = model.FunctionID;
-            command.FunctionLevelID = model.FunctionLevelID;
-            command.LevelClassificationID = model.LevelClassificationID;
-            command.DepartmentID = model.DepartmentID;
-            command.TotalCost = model.TotalCost;
-            command.SupervisorID = model.SupervisorID;
-            command.Description = model.Description;
+            command.DepartamentoID = model.DepartamentoID;
             command.FirstAccess = model.FirstAccess;
             command.IsAdmin = model.IsAdmin;
-            command.LastAccessDate = model.LastAccessDate;
-            command.LastIPAccess = model.LastIPAccess;
             command.IsActive = model.IsActive;
-            command.AccessToDate = model.AccessToDate;
-            command.UpdateRecordTo = model.UpdateRecordTo;
-            command.ReleaseDateUpdateRecordTo = model.ReleaseDateUpdateRecordTo;
-            command.StartJob = model.StartJob;
-            command.EndJob = model.EndJob;
-            command.ContractTypeID = model.ContractTypeID;
-            command.HourTypeID = model.HourTypeID;
             command.RG = model.RG;
             command.CPF = model.CPF;
             command.DateOfBirth = model.DateOfBirth;
@@ -460,20 +408,6 @@ namespace ControleVeiculos.MVC.Controllers
             command.City = model.City;
             command.State = model.State;
             command.HomePhone = model.HomePhone;
-            command.TypeBankAccountID = model.TypeBankAccount;
-            command.TypePersonID = model.TypePerson;
-            command.Agency = model.Agency;
-            command.BankAccount = model.BankAccount;
-            command.BankName = model.BankName;
-            command.SocialReason = model.SocialReason;
-            command.CNPJ = model.CNPJ;
-            command.OptingSimple = model.OptingSimple;
-            command.IsEmployee = model.IsEmployee;
-            command.RegisteredCity = model.RegisteredCity;
-            command.CreatedByID = model.CreatedByID;
-            command.CreationDate = model.CreationDate;
-            command.ModifiedByID = Convert.ToString(Session["userID"]);
-            command.LastModifiedDate = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
 
             return command;
         }
@@ -494,26 +428,9 @@ namespace ControleVeiculos.MVC.Controllers
                 }
                 else if (ActionName == "Maintenance")
                 {
-                    var Departmetns = _parameterValueService.GetAllByParameterID("4");
-                    var functions = _parameterValueService.GetAllByParameterID("1");
-                    var functionLevels = _parameterValueService.GetAllByParameterID("2");
-                    var levelClassifications = _parameterValueService.GetAllByParameterID("3");
-                    var contractTypes = _parameterValueService.GetAllByParameterID("19");
-                    var hourType = _parameterValueService.GetAllByParameterID("20");
-                    var typeBankAccount = _parameterValueService.GetAllByParameterID("29");
-                    var TypePersons = _parameterValueService.GetAllByParameterID("28");
+                    var Departamentos = _parameterValueService.GetAllByParameterID("4");
 
-                    model.LoadDepartments = Departmetns.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-                    model.LoadFunctions = functions.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-                    model.LoadFunctionLevels = functionLevels.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-                    model.LoadLevelClassifications = levelClassifications.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-                    model.LoadContractTypes = contractTypes.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-                    model.LoadHourTypes = hourType.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-                    model.LoadTypeBankAccounts = typeBankAccount.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-                    model.LoadTypePersons = TypePersons.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-
-                    var supervisor = _userService1.GetAll(Convert.ToInt32(model.SupervisorID));
-                    model.LoadSupervisors = supervisor.Select(x => new SelectListItem() { Text = x.userName.ToString(), Value = x.userID.ToString() }).ToList();
+                    model.LoadDepartamentos = Departamentos.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
 
                     model.Description = Server.HtmlDecode(model.Description);
 
@@ -526,9 +443,6 @@ namespace ControleVeiculos.MVC.Controllers
                 else
                 //AllowApropriate
                 {
-                    model.UpdateRecordTo = model.UpdateRecordTo;
-                    model.ReleaseDateUpdateRecordTo = Convert.ToDateTime(DateTime.Today).ToString("dd/MM/yyyy");
-
                     return PartialView("AllowApropriate", model);
                 }
             }
@@ -672,11 +586,9 @@ namespace ControleVeiculos.MVC.Controllers
                 {
                     command.IsActive = true;
 
-                    command.AccessToDate = Convert.ToDateTime(DateTime.Today.AddMonths(3)).ToString("dd/MM/yyyy");
-
                     _userService.Update(command);
 
-                    SuccessNotification(string.Format("Usuário ativado com sucesso! Registro: {0} - {1}. Usuário ativado até: {2}", command.UserName, command.Email, command.AccessToDate));
+                    SuccessNotification(string.Format("Usuário ativado com sucesso! Registro: {0} - {1}. ", command.UserName, command.Email));
 
                     return RedirectToAction("Index");
                 }
