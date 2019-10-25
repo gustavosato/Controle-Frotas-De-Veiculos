@@ -16,7 +16,7 @@ namespace ControleVeiculos.Domain.Entities.Funcionarios
             funcionario.funcionarioID = command.FuncionarioID;
             funcionario.nomeFuncionario = command.NomeFuncionario;
             funcionario.endereco = command.Endereco;
-            funcionario.cpf = command.Cpf;
+            funcionario.cpf = command.CPF;
             funcionario.funcao = command.Funcao;
             funcionario.setor= command.Setor;
             funcionario.telefone = command.Telefone;

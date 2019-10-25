@@ -7,6 +7,8 @@ using ControleVeiculos.MVC.Models.SystemFeatures;
 using ControleVeiculos.MVC.Models.Parameters;
 using ControleVeiculos.MVC.Models.SystemMenus;
 using ControleVeiculos.MVC.Models.TestCases;
+using ControleVeiculos.MVC.Models.Funcionarios;
+
 
 using ControleVeiculos.MVC.Validations.Users;
 using ControleVeiculos.MVC.Validations.ApplicationSystem;
@@ -17,6 +19,7 @@ using ControleVeiculos.MVC.Validations.ParameterValues;
 using ControleVeiculos.MVC.Validations.SystemMenus;
 using ControleVeiculos.MVC.Validations.TestCases;
 using ControleVeiculos.MVC.Models.ParameterValues;
+using ControleVeiculos.MVC.Validations.Funcionarios;
 
 namespace ControleVeiculos.Infrastructure
 {
@@ -56,7 +59,12 @@ namespace ControleVeiculos.Infrastructure
             builder.RegisterType<TestCaseValidator>()
                 .Keyed<IValidator>(typeof(IValidator<TestCaseModel>))
                 .As<IValidator>();
-           
+
+            builder.RegisterType<FuncionarioValidator>()
+                .Keyed<IValidator>(typeof(IValidator<FuncionarioModel>))
+                .As<IValidator>();
+
+
             return builder;
         }
     }

@@ -1,7 +1,7 @@
 ﻿using Dapper.Contrib.Extensions;
 namespace ControleVeiculos.Repository.Map
 {
-    [Table("ParameterValue")]
+    [Table("ParameterValues")]
     public class ParameterValueDapper
     {
         [ExplicitKey]
