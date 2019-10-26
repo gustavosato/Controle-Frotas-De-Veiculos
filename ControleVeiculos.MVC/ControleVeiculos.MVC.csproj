@@ -252,6 +252,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ApplicationSystemController.cs" />
     <Compile Include="Controllers\SystemFeatureController.cs" />
+    <Compile Include="Controllers\FuncionarioController.cs" />
     <Compile Include="Controllers\TestCaseController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -263,6 +264,7 @@
     <Compile Include="Extensions\SystemMenuMappingExtensions.cs" />
     <Compile Include="Extensions\SystemFeatureMappingExtensions.cs" />
     <Compile Include="Extensions\SystemParameterMappingExtensions.cs" />
+    <Compile Include="Extensions\FuncionarioMappingExtensions.cs" />
     <Compile Include="Extensions\TestCaseMappingExtensions.cs" />
     <Compile Include="Extensions\UserMappingExtensions.cs" />
     <Compile Include="Filters\FormValueRequiredAttribute.cs" />
@@ -282,6 +284,7 @@
     <Compile Include="Models\SystemMenus\SystemMenuModel.cs" />
     <Compile Include="Models\SystemFeature\SystemFeatureModel.cs" />
     <Compile Include="Models\SystemParameters\SystemParameterModel.cs" />
+    <Compile Include="Models\Funcionarios\FuncionarioModel.cs" />
     <Compile Include="Models\TestCases\TestCaseModel.cs" />
     <Compile Include="Models\Users\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -291,6 +294,7 @@
     <Compile Include="Validations\SystemMenu\SystemMenuValidator.cs" />
     <Compile Include="Validations\SystemFeatures\SytemFeatureValidator.cs" />
     <Compile Include="Validations\SystemParameter\SystemParameterValidator.cs" />
+    <Compile Include="Validations\Funcionario\FuncionarioValidator.cs" />
     <Compile Include="Validations\TestCase\TestCaseValidator.cs" />
     <Compile Include="Validations\User\UserValidator.cs" />
   </ItemGroup>
@@ -346,6 +350,9 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Funcionario\Delete.cshtml" />
+    <Content Include="Views\Funcionario\Index.cshtml" />
+    <Content Include="Views\Funcionario\Maintenance.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

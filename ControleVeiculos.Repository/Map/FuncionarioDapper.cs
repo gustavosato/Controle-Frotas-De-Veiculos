@@ -1,7 +1,7 @@
 ﻿using Dapper.Contrib.Extensions;
 namespace ControleVeiculos.Repository.Map
 {
-    [Table("Funcionario")]
+    [Table("Funcionarios")]
     public class FuncionarioDapper
     {
         [ExplicitKey]

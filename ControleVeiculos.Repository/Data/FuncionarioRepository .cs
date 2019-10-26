@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using ControleVeiculos.Repository.Map;
 using Dapper.Contrib.Extensions;
 using ControleVeiculos.Domain.Command.Funcionarios;
+using System;
 
 namespace ControleVeiculos.Repository.Data
 {
@@ -23,8 +24,12 @@ namespace ControleVeiculos.Repository.Data
                 string sql = string.Format("SELECT ISNULL(MAX(CAST(funcionarioID AS INT))+1,1) FROM dbo.Funcionarios");
                 int primaryKey = conn.Query<int>(sql).FirstOrDefault();
                 FuncionarioDapper funcionarioDapper = Funcionario.Map(primaryKey);
-
+                try { 
                 conn.Insert<FuncionarioDapper>(funcionarioDapper);
+                }catch(Exception ex)
+                {
+                    var mensagem = ex.Message;
+                }
             }
         }
 
@@ -60,22 +65,27 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT v.funcionarioID, v.summary, pv.parameterValue as funcionariosTypeID, pv1.parameterValue as contractTypeID, c.customerName as customerID, " +
-                                           "pv2.parameterValue as validityID, pv3.parameterValue as statusID, v.workPlace, u.userName as createdByID " +
-                                           "FROM Funcionarios v " +
-                                           "INNER JOIN ParameterValues pv on v.funcionariosTypeID = pv.parameterValueID " +
-                                           "INNER JOIN ParameterValues pv1 on v.contractTypeID = pv1.parameterValueID " +
-                                           "INNER JOIN ParameterValues pv2 on v.validityID = pv2.parameterValueID " +
-                                           "INNER JOIN ParameterValues pv3 on v.statusID = pv3.parameterValueID " +
-                                           "INNER JOIN Customers c on v.customerID = c.customerID " +
-                                           "INNER JOIN Users u on v.createdByID = u.userID " +
+                string sql = string.Format("SELECT f.funcionarioID, f.nomeFuncionario, f.endereco, f.cpf, pv.parameterValue as funcao, pv1.parameterValue as setor, " +
+                                           "f.telefone, f.numeroCnh " +
+                                           "FROM Funcionarios f " +
+                                           "INNER JOIN ParameterValues pv on f.funcao = pv.parameterValueID " +
+                                           "INNER JOIN ParameterValues pv1 on f.setor = pv1.parameterValueID " +
                                            "WHERE 1 = 1 ");
 
-                //if (!string.IsNullOrEmpty(command.Summary))
-                //    sql += string.Format("AND v.summary LIKE '%{0}%'", command.Summary);
+                if (!string.IsNullOrEmpty(command.NomeFuncionario))
+                    sql += string.Format("AND f.nomeFuncionario LIKE '%{0}%'", command.NomeFuncionario);
 
-                
-                sql += "ORDER BY v.funcionarioID";
+                if (!string.IsNullOrEmpty(command.CPF))
+                    sql += string.Format("AND f.cpf LIKE '%{0}%'", command.CPF);
+
+                if (!string.IsNullOrEmpty(command.Setor))
+                    sql += string.Format("AND f.setor LIKE '%{0}%'", command.Setor);
+
+                if (!string.IsNullOrEmpty(command.Funcao))
+                    sql += string.Format("AND f.funcao LIKE '%{0}%'", command.Funcao);
+
+
+                sql += "ORDER BY f.funcionarioID";
 
                 return conn.Query<Funcionario>(sql).ToList();
             }
@@ -89,12 +99,10 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT funcionarioID, summary, pv.parameterValue as funcionariosTypeID, u.userName as createdByID " +
-                                           "FROM Funcionarios v " +
-                                           "INNER JOIN ParameterValues pv on v.funcionariosTypeID = pv.parameterValueID " +
-                                           "INNER JOIN Users u on v.createdByID = u.userID ");
+                string sql = string.Format("SELECT * FROM Funcionarios Where 1 = 1");
+                                           
 
-                sql += "ORDER BY c.funcionarioName";
+                sql += "ORDER BY funcionarioName";
 
                 return conn.Query<Funcionario>(sql).ToList();
             }
