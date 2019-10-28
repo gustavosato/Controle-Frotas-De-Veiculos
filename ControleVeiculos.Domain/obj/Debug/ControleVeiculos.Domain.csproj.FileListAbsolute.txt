@@ -7,3 +7,12 @@ C:\ControleFrotaVeiculos\ControleVeiculos.Domain\obj\Debug\ControleVeiculos.Doma
 C:\ControleFrotaVeiculos\ControleVeiculos.Domain\obj\Debug\ControleVeiculos.Domain.csproj.CopyComplete
 C:\ControleFrotaVeiculos\ControleVeiculos.Domain\obj\Debug\ControleVeiculos.Domain.dll
 C:\ControleFrotaVeiculos\ControleVeiculos.Domain\obj\Debug\ControleVeiculos.Domain.pdb
+C:\ControleVeiculos\ControleVeiculos.Domain\bin\Debug\ControleVeiculos.Domain.dll
+C:\ControleVeiculos\ControleVeiculos.Domain\bin\Debug\ControleVeiculos.Domain.pdb
+C:\ControleVeiculos\ControleVeiculos.Domain\bin\Debug\ControleVeiculos.SharedKernel.dll
+C:\ControleVeiculos\ControleVeiculos.Domain\bin\Debug\ControleVeiculos.SharedKernel.pdb
+C:\ControleVeiculos\ControleVeiculos.Domain\obj\Debug\ControleVeiculos.Domain.csprojAssemblyReference.cache
+C:\ControleVeiculos\ControleVeiculos.Domain\obj\Debug\ControleVeiculos.Domain.csproj.CoreCompileInputs.cache
+C:\ControleVeiculos\ControleVeiculos.Domain\obj\Debug\ControleVeiculos.Domain.csproj.CopyComplete
+C:\ControleVeiculos\ControleVeiculos.Domain\obj\Debug\ControleVeiculos.Domain.dll
+C:\ControleVeiculos\ControleVeiculos.Domain\obj\Debug\ControleVeiculos.Domain.pdb

@@ -4,3 +4,9 @@ C:\ControleFrotaVeiculos\ControleVeiculos.SharedKernel\obj\Debug\ControleVeiculo
 C:\ControleFrotaVeiculos\ControleVeiculos.SharedKernel\obj\Debug\ControleVeiculos.SharedKernel.csproj.CoreCompileInputs.cache
 C:\ControleFrotaVeiculos\ControleVeiculos.SharedKernel\obj\Debug\ControleVeiculos.SharedKernel.dll
 C:\ControleFrotaVeiculos\ControleVeiculos.SharedKernel\obj\Debug\ControleVeiculos.SharedKernel.pdb
+C:\ControleVeiculos\ControleVeiculos.SharedKernel\bin\Debug\ControleVeiculos.SharedKernel.dll
+C:\ControleVeiculos\ControleVeiculos.SharedKernel\bin\Debug\ControleVeiculos.SharedKernel.pdb
+C:\ControleVeiculos\ControleVeiculos.SharedKernel\obj\Debug\ControleVeiculos.SharedKernel.csprojAssemblyReference.cache
+C:\ControleVeiculos\ControleVeiculos.SharedKernel\obj\Debug\ControleVeiculos.SharedKernel.csproj.CoreCompileInputs.cache
+C:\ControleVeiculos\ControleVeiculos.SharedKernel\obj\Debug\ControleVeiculos.SharedKernel.dll
+C:\ControleVeiculos\ControleVeiculos.SharedKernel\obj\Debug\ControleVeiculos.SharedKernel.pdb

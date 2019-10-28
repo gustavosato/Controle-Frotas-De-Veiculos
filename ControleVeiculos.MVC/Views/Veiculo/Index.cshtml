@@ -1,6 +1,6 @@
-﻿@model ControleVeiculos.MVC.Models.SystemMenus.SystemMenuModel
+﻿@model ControleVeiculos.MVC.Models.Veiculos.VeiculoModel
 @{
-    ViewBag.Title = " - Menus do Sistema";
+    ViewBag.Title = " - Veiculos";
     Layout = "~/Views/Shared/_ContentPage.cshtml";
 }
 
@@ -13,10 +13,10 @@
             <div class="pull-left">
 
 
-                <button type="button" onclick="Add()" id="btnNew" class="btn btn-dark btn-sm" data-toggle="modal" data-target='#AddModal' title="Novo Menu">
+                <button type="button" onclick="Add()" id="btnNew" class="btn btn-dark btn-sm" data-toggle="modal" data-target='#AddModal' title="Novo Registro">
                     <i class="fa fa-plus-circle"></i> Novo
                 </button>
-                 <button class="btn btn-primary btn-sm" type="button" id="btnFiltrar" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" title="Filtrar">
+                <button class="btn btn-primary btn-sm" type="button" id="btnFiltrar" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" title="Filtrar">
                     <i class="fa fa-filter"></i> Filtrar
                 </button>
                 <button type="button" id="btnExportExcel" class="btn btn-info btn-sm" title="Exportar para Excel">
@@ -32,13 +32,31 @@
                 <div class="card card-body">
                     <div class="row">
                         <div class="col-md-12 mx-auto">
-                            <div class="form-group row ">
-                                @Html.LabelFor(model => model.SearchSystemFeature, new { @class = "col-sm-2 col-form-label text-right" })
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.SearchModelo, new { @class = "col-sm-2 col-form-label text-right" })
                                 <div class="col-sm-3">
-                                    @Html.DropDownList("SearchSystemFeature", Model.SearchLoadSystemFeatures, "Selecione...", new { @class = "form-control" })
+                                    <div class="input-group">
+                                        @Html.DropDownList("SearchModelo", Model.LoadModelo, "Selecione...", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                @Html.LabelFor(model => model.SearchStatus, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.TextBoxFor(model => model.SearchStatus, null, new { @class = "form-control" })
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.SearchAno, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(model => model.SearchAno, null, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                @Html.LabelFor(model => model.SearchMotor, new { @class = "col-sm-2 col-form-label text-right" })
+                                <div class="col-sm-3">
+                                    @Html.TextBoxFor(model => model.SearchMotor, null, new { @class = "form-control" })
+                                </div>
+                            </div>
 
                             <br />
                             <div class="col">
@@ -57,19 +75,19 @@
             </div>
 
             <div class="card-body">
-                <div><h5>Menus</h5></div>
+                <div><h5>Veículos</h5></div>
 
-                <div id="data-grid"></div>
+                <div id="veiculo-grid"></div>
                 <script>
 
                 $(document).ready(function () {
-                    $("#data-grid").kendoGrid({
+                    $("#veiculo-grid").kendoGrid({
 
                 dataSource: {
                     type: "json",
                 transport: {
                 read: {
-                    url: "@Html.Raw(Url.Action("GetAll", "SystemMenu"))",
+                    url: "@Html.Raw(Url.Action("GetAll", "Veiculo"))",
                     type: "POST",
                     dataType: "json",
                     data: additionalData
@@ -103,41 +121,49 @@
                 }
                 },
                     columns: [{
-                            field: "TextMenu",
-                            title: "Nome do Menu",
-                            width: 50,
-                            headerAttributes: { style: "text-align:left" }
-                    }, {
-                            field: "SystemFeatureID",
-                            title: "Funcionalidade",
-                            width: 50,
-                            headerAttributes: { style: "text-align:left" }
-                    }, {
-                            field: "UrlAction",
-                            title: "UrlAction",
-                            width: 50,
-                            headerAttributes: { style: "text-align:left" }
-                    }, {
-                            field: "Ordem",
-                            title: "Ordem",
-                            width: 50,
-                            headerAttributes: { style: "text-align:left" }
-                    }, {
-                            field: "Controller",
-                            title: "Controller",
-                            width: 50,
-                            headerAttributes: { style: "text-align:left" }
+                        field: "Modelo",
+                        title: "Modelo do Veículo",
+                        width: 50,
+                        headerAttributes: { style: "text-align:left" },
+                        attributes: { class: "text-left" },
+
                     },{
-                            field: "",
-                            title: "Comandos",
-                            width: 50,
-                            headerAttributes: { style: "text-align:center" },
-                            attributes: { style: "text-align:center" },
-                            template: '<div title="Editar Registro" class="btn btn-primary btn-sm text-center" onclick="Edit(#=MenuID#)" data-toggle="modal" data-target="\\#MaintenanceModal"> <i class="fa fa-edit"></i> </div> ' +
-                                        '<div title="Excluir Registro" class="btn btn-danger btn-sm text-center" onclick="Delete(#=MenuID#)" data-toggle="modal" data-target="\\#DeleteModal"> <i class="fa fa-trash"></i> </div> '
+                        field: "Cor",
+                        title: "Cor",
+                        width: 50,
+                        headerAttributes: { style: "text-align:left" }
+                    },{
+                        field: "Placa",
+                        title: "Placa",
+                        width: 50,
+                        headerAttributes: { style: "text-align:left" }
+                    },{
+                        field: "Status",
+                        title: "Status",
+                        width: 50,
+                        headerAttributes: { style: "text-align:left" }
+                    },{
+                        field: "Ano",
+                        title: "Ano",
+                        width: 50,
+                        headerAttributes: { style: "text-align:left" }
+                    }, {
+                        field: "Motor",
+                        title: "Motor",
+                        width: 50,
+                        headerAttributes: { style: "text-align:left" }
+                    },{
+                        field: "",
+                        title: "Comandos",
+                        width: 50,
+                        headerAttributes: { style: "text-align:center" },
+                        attributes: { style: "text-align:center" },
+                        template: '<div title="Editar Veículo" class="btn btn-primary btn-sm text-center" onclick="Edit(#=VeiculoID#)" data-toggle="modal" data-target="\\#MaintenanceModal"> <i class="fa fa-edit"></i> </div> ' +
+                                    '<div title="Excluir Veículo" class="btn btn-danger btn-sm text-center" onclick="Delete(#=VeiculoID#)" data-toggle="modal" data-target="\\#DeleteModal"> <i class="fa fa-trash"></i> </div> '
+
                     }],
                     excelExport: function (e) {
-                        e.workbook.fileName = "LeanTest Cloud - Menus do Sistema.xlsx";
+                        e.workbook.fileName = "Lista de Veículos.xlsx";
                     }
                 });
             });
@@ -146,13 +172,13 @@
                 <script type="text/javascript">
                     $(document).ready(function () {
                         $('#btnExportExcel').click(function () {
-                            var grid = $('#data-grid').data('kendoGrid');
+                            var grid = $('#veiculo-grid').data('kendoGrid');
                             grid.saveAsExcel();
                             return false;
                         });
 
                         $('#btn-aplicar-filtros').click(function () {
-                            var grid = $('#data-grid').data('kendoGrid');
+                            var grid = $('#veiculo-grid').data('kendoGrid');
                             if (grid.dataSource.page() == 1) {
                                 grid.dataSource.page(1);
                             }
@@ -162,19 +188,46 @@
                             return false;
                         });
 
-                        $("#
-                    (model => model.SearchSystemFeature)").keydown(function (event) {
+
+                        $("#@Html.FieldIdFor(model => model.SearchModelo)").keydown(function (event) {
                             if (event.keyCode == 13) {
                                 $("#btn-aplicar-filtros").click();
                                 return false;
                             }
                         });
-                       
+
+                        $("#@Html.FieldIdFor(model => model.SearchStatus)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btn-aplicar-filtros").click();
+                                return false;
+                            }
+                        });
+
+                        $("#@Html.FieldIdFor(model => model.SearchAno)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btn-aplicar-filtros").click();
+                                return false;
+                            }
+                        });
+
+                        $("#@Html.FieldIdFor(model => model.SearchMotor)").keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                $("#btn-aplicar-filtros").click();
+                                return false;
+                            }
+                        });
+
+
+                        
                     });
 
                 function additionalData() {
                     var data = {
-                        SearchSystemFeature: $('#@Html.FieldIdFor(model => model.SearchSystemFeature)').val(),
+                        SearchModelo: $('#@Html.FieldIdFor(model => model.SearchModelo)').val(),
+                        SearchStatus: $('#@Html.FieldIdFor(model => model.SearchStatus)').val(),
+                        SearchAno: $('#@Html.FieldIdFor(model => model.SearchAno)').val(),
+                        SearchMotor: $('#@Html.FieldIdFor(model => model.SearchMotor)').val()
+
                     };
 
                     addAntiForgeryToken(data);
@@ -183,21 +236,21 @@
 
                     };
 
-                    var Delete = function (menuID) {
-                        var url = '/SystemMenu/GetByID?menuID=' + menuID + '&ActionName=Delete';
+                    var Delete = function (veiculoID) {
+                        var url = '/Veiculo/GetByID?veiculoID=' + veiculoID + '&ActionName=Delete';
 
                         $('#DeleteModalDiv').load(url, function () {
 
                         })
                     };
 
-                    var Edit = function (menuID) {
-                        var url = '/SystemMenu/GetByID?menuID=' + menuID + '&ActionName=Maintenance';
+                    var Edit = function (veiculoID) {
+                        var url = '/Veiculo/GetByID?veiculoID=' + veiculoID + '&ActionName=Maintenance';
 
                         $('#MaintenanceModalDiv').load(url, function () {
 
                         })
-                        
+
                         $('#MaintenanceModal').on('shown.bs.modal', function () {
 
                             $('#calender-container .input-group.date').datepicker({
@@ -215,7 +268,7 @@
                     };
 
                     var Add = function () {
-                        var url = '/SystemMenu/New';
+                        var url = '/Veiculo/New';
 
                         $('#AddModalDiv').load(url, function () {
 
@@ -241,16 +294,15 @@
             </div>
         </div>
     </div>
-
 }
 
-@using (Html.BeginForm("Add", "SystemMenu", FormMethod.Post))
+@using (Html.BeginForm("Add", "Veiculo", FormMethod.Post))
 {
     <div class="modal fade" id="AddModal" role="dialog">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title">Novo Menu</h3>
+                    <h3 class="modal-title">Novo Veículo</h3>
                     <a href="#" class="close" data-dismiss="modal">&times;</a>
                 </div>
                 <div class="modal-body" id="AddModalDiv">
@@ -268,13 +320,13 @@
     </div>
 }
 
-@using (Html.BeginForm("Update", "SystemMenu", FormMethod.Post))
+@using (Html.BeginForm("Update", "Veiculo", FormMethod.Post))
 {
     <div class="modal fade" id="MaintenanceModal" role="dialog">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title">Detalhes do Menu</h3>
+                    <h3 class="modal-title">Detalhes</h3>
                     <a href="#" class="close" data-dismiss="modal">&times;</a>
                 </div>
                 <div class="modal-body" id="MaintenanceModalDiv">
@@ -292,13 +344,13 @@
     </div>
 }
 
-@using (Html.BeginForm("Delete", "SystemMenu", FormMethod.Post, new { novalidate = "novalidate" }))
+@using (Html.BeginForm("Delete", "Veiculo", FormMethod.Post, new { novalidate = "novalidate" }))
 {
     <div class="modal fade" id="DeleteModal" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title">Excluir Menu</h3>
+                    <h3 class="modal-title">Excluir</h3>
                     <a href="#" class="close" data-dismiss="modal">&times;</a>
                 </div>
                 <div class="modal-body" id="DeleteModalDiv">

@@ -35,14 +35,7 @@ namespace ControleVeiculos.ApplicationService
 
             _funcionarioRepository.Update(funcionario);
         }
-
-        public IList<Funcionario> GetAll(int funcionarioID)
-        {
-            var funcionario = _funcionarioRepository.GetAll(funcionarioID);
-
-            return new List<Funcionario>(funcionario);
-        }
-
+        
         public Result<Funcionario> GetByID(int funcionarioID)
         {
             var funcionario = _funcionarioRepository.GetByID(funcionarioID);

@@ -1,0 +1,11 @@
+﻿@model ControleVeiculos.MVC.Models.Veiculos.VeiculoModel
+
+@Html.HiddenFor(model => model.VeiculoID)
+<div>
+    Deseja realmente excluir o seguinte veículo?
+    <br />
+    <br />
+    <ul>
+        <li>Veículo: <strong>@Model.Modelo</strong></li>
+    </ul>
+</div>

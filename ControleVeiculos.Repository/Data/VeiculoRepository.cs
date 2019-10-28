@@ -21,7 +21,7 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT ISNULL(MAX(CAST(logID AS INT))+1,1) FROM dbo.Veiculos");
+                string sql = string.Format("SELECT ISNULL(MAX(CAST(veiculoID AS INT))+1,1) FROM dbo.Veiculos");
 
                 int primaryKey = conn.Query<int>(sql).FirstOrDefault();
 
@@ -35,7 +35,8 @@ namespace ControleVeiculos.Repository.Data
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception(ex.Message.ToString());
+                    //throw new Exception(ex.Message.ToString());
+                    var mensagem = ex.Message;
                 }
             }
         }
@@ -53,13 +54,13 @@ namespace ControleVeiculos.Repository.Data
             }
         }
 
-        public Veiculo GetByID(int logID)
+        public Veiculo GetByID(int veiculoID)
         {
             using (IDbConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
 
-                string sql = string.Format("SELECT * FROM dbo.Veiculoss WHERE logID = '{0}'", logID);
+                string sql = string.Format("SELECT * FROM dbo.Veiculos WHERE veiculoID = '{0}'", veiculoID);
 
                 return conn.Query<Veiculo>(sql).FirstOrDefault();
             }
@@ -72,27 +73,36 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT logID, pv.parameterValue AS statusID, tl.stepName, tl.expectedResult, tl.actualResult, tl.pathEvidence " +
-                                           "FROM Veiculoss tl " +
-                                           "INNER JOIN ParameterValues pv ON tl.statusID = pv.parameterValueID " +
+                string sql = string.Format("SELECT v.modelo, v.cor, v.placa, v.status, v.ano, v.motor " +
+                                           "FROM Veiculos v " +
                                            "WHERE 1 = 1 ");
 
-                //if (!string.IsNullOrEmpty(command.StatusID))
-                //    sql += string.Format("AND tl.statusID LIKE '%{0}%' ", command.StatusID);
+                if (!string.IsNullOrEmpty(command.Modelo))
+                    sql += string.Format("AND v.modelo LIKE '%{0}%' ", command.Modelo);
 
-                sql += "ORDER BY logID";
+                if (!string.IsNullOrEmpty(command.Status))
+                    sql += string.Format("AND v.status LIKE '%{0}%' ", command.Status);
+
+                if (!string.IsNullOrEmpty(command.Ano))
+                    sql += string.Format("AND v.ano LIKE '%{0}%' ", command.Ano);
+
+                if (!string.IsNullOrEmpty(command.Motor))
+                    sql += string.Format("AND v.motor LIKE '%{0}%' ", command.Motor);
+
+
+                sql += "ORDER BY v.modelo";
                 return conn.Query<Veiculo>(sql).ToList();
             }
         }
 
-        public void Delete(int logID)
+        public void Delete(int veiculoID)
         {
             using (IDbConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("DELETE FROM dbo.Veiculoss WHERE logID = '{0}'", logID);
+                string sql = string.Format("DELETE FROM dbo.Veiculoss WHERE veiculoID = '{0}'", veiculoID);
                 conn.ExecuteScalar(sql);
             }
         }

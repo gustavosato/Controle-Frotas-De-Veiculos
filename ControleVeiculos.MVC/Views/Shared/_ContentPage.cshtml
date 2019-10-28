@@ -16,8 +16,8 @@
                         <i class="fa fa-circle-o-notch"></i>  Funcionarios
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="@Url.Action("Index", "Funcionario")"><i class="fa fa-clock-o"></i>  Funcionarios</a>
-                        @*<a class="dropdown-item" href="@Url.Action("Index", "DailyLog")"><i class="fa fa-calendar-minus-o"></i>  Registro de Eventos</a>
+                        <a class="dropdown-item" href="@Url.Action("Index", "Funcionario")"><i class="fa fa-clock-o"></i>  Cadastrar Funcionarios</a>
+                        @*<a class="dropdown-item" href="@Url.Action("Index", "Motorista")"><i class="fa fa-calendar-minus-o"></i>  Cadastrar de Motorista</a>
                         <a class="dropdown-item" href="@Url.Action("Index", "Task")"><i class="fa fa-list"></i>  Tarefas</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="@Url.Action("Index", "Expense")"><i class="fa fa-money"></i>  Lançamento de Despesas</a>
@@ -25,19 +25,16 @@
 
                     </div>
                 </li>
-                @if (Convert.ToString(Session["isAdmin"]) == "True")
+                @if (Convert.ToString(Session["isAdmin"]) == "False")
                 {
                     <li class="nav-item dropdown">
-
                         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-id-card"></i>  Cadastros
+                            <i class="fa fa-id-card"></i>  Veiculos
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @*<a class="dropdown-item" href="@Url.Action("Index", "Customer")"><i class="fa fa-institution"></i>  Empresas</a>
-                            <a class="dropdown-item" href="@Url.Action("Index", "Contact")"><i class="fa fa-users"></i>  Contatos</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="@Url.Action("Index", "EquipmentAccessorie")"><i class="fa fa-list"></i>  Inventário</a>*@
-
+                            <a class="dropdown-item" href="@Url.Action("Index", "Veiculo")"><i class="fa fa-institution"></i>  Cadastrar Veículo</a>
+                            @*<a class="dropdown-item" href="@Url.Action("Index", "Veiculo")"><i class="fa fa-users"></i>  Reservar Veículo</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "Veiculo")"><i class="fa fa-list"></i>  Veiculos Disponíveis</a>*@
                         </div>
                     </li>
                 }
@@ -49,9 +46,8 @@
                             <i class="fa fa-dollar"></i>  Financeiro
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @*<a class="dropdown-item" href="@Url.Action("Index", "Expense")"><i class="fa fa-money"></i>  Lançamento de Despesas</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="@Url.Action("Index", "AccountingEntrie")"><i class="fa fa-credit-card"></i>  Faturamentos de Projetos</a>*@
+                            <a class="dropdown-item" href="@Url.Action("Index", "Financa")"><i class="fa fa-money"></i>  Finanças</a>
+                            @*<a class="dropdown-item" href="@Url.Action("Index", "AccountingEntrie")"><i class="fa fa-credit-card"></i>  Faturamentos de Projetos</a>*@
                         </div>
                     </li>
                 }

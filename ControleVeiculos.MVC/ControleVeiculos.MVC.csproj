@@ -245,6 +245,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\VeiculoController.cs" />
     <Compile Include="Controllers\ParameterController.cs" />
     <Compile Include="Controllers\ParameterValueController.cs" />
     <Compile Include="Controllers\PrincipalController.cs" />
@@ -259,6 +260,8 @@
     <Compile Include="Controllers\SystemParameterController.cs" />
     <Compile Include="Controllers\SystemMenuController.cs" />
     <Compile Include="Extensions\ApplicationSystemMappingExtensions.cs" />
+    <Compile Include="Extensions\VeiculoMappingExtensions.cs" />
+    <Compile Include="Extensions\HtmlExtensions.cs" />
     <Compile Include="Extensions\ParameterMappingExtensions.cs" />
     <Compile Include="Extensions\ParameterValueMappingExtensions.cs" />
     <Compile Include="Extensions\SystemMenuMappingExtensions.cs" />
@@ -278,6 +281,7 @@
     <Compile Include="Infrastructure\Mvc\XmlDownloadResult.cs" />
     <Compile Include="Infrastructure\Notification\NotifyType.cs" />
     <Compile Include="Models\ApplicationSystems\ApplicationSystemModel.cs" />
+    <Compile Include="Models\Veiculos\VeiculoModel.cs" />
     <Compile Include="Models\Home\MenusModel.cs" />
     <Compile Include="Models\Parameters\ParameterModel.cs" />
     <Compile Include="Models\ParameterValue\ParameterValue.cs" />
@@ -289,6 +293,7 @@
     <Compile Include="Models\Users\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validations\ApplicationSystem\ApplicationSystemValidator.cs" />
+    <Compile Include="Validations\Veiculo\VeiculoValidator.cs" />
     <Compile Include="Validations\ParameterValue\ParameterValueValidator.cs" />
     <Compile Include="Validations\Parameter\ParameterValidator.cs" />
     <Compile Include="Validations\SystemMenu\SystemMenuValidator.cs" />
@@ -353,6 +358,9 @@
     <Content Include="Views\Funcionario\Delete.cshtml" />
     <Content Include="Views\Funcionario\Index.cshtml" />
     <Content Include="Views\Funcionario\Maintenance.cshtml" />
+    <Content Include="Views\Veiculo\Delete.cshtml" />
+    <Content Include="Views\Veiculo\Index.cshtml" />
+    <Content Include="Views\Veiculo\Maintenance.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

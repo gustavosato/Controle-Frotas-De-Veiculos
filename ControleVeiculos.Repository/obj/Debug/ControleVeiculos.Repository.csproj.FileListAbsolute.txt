@@ -11,3 +11,16 @@ C:\ControleFrotaVeiculos\ControleVeiculos.Repository\obj\Debug\ControleVeiculos.
 C:\ControleFrotaVeiculos\ControleVeiculos.Repository\obj\Debug\ControleVeiculos.Repository.csproj.CopyComplete
 C:\ControleFrotaVeiculos\ControleVeiculos.Repository\obj\Debug\ControleVeiculos.Repository.dll
 C:\ControleFrotaVeiculos\ControleVeiculos.Repository\obj\Debug\ControleVeiculos.Repository.pdb
+C:\ControleVeiculos\ControleVeiculos.Repository\bin\Debug\ControleVeiculos.Repository.dll
+C:\ControleVeiculos\ControleVeiculos.Repository\bin\Debug\ControleVeiculos.Repository.pdb
+C:\ControleVeiculos\ControleVeiculos.Repository\bin\Debug\ControleVeiculos.Domain.dll
+C:\ControleVeiculos\ControleVeiculos.Repository\bin\Debug\Dapper.Contrib.dll
+C:\ControleVeiculos\ControleVeiculos.Repository\bin\Debug\Dapper.dll
+C:\ControleVeiculos\ControleVeiculos.Repository\bin\Debug\ControleVeiculos.Domain.pdb
+C:\ControleVeiculos\ControleVeiculos.Repository\bin\Debug\Dapper.xml
+C:\ControleVeiculos\ControleVeiculos.Repository\bin\Debug\Dapper.Contrib.xml
+C:\ControleVeiculos\ControleVeiculos.Repository\obj\Debug\ControleVeiculos.Repository.csprojAssemblyReference.cache
+C:\ControleVeiculos\ControleVeiculos.Repository\obj\Debug\ControleVeiculos.Repository.csproj.CoreCompileInputs.cache
+C:\ControleVeiculos\ControleVeiculos.Repository\obj\Debug\ControleVeiculos.Repository.csproj.CopyComplete
+C:\ControleVeiculos\ControleVeiculos.Repository\obj\Debug\ControleVeiculos.Repository.dll
+C:\ControleVeiculos\ControleVeiculos.Repository\obj\Debug\ControleVeiculos.Repository.pdb

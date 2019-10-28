@@ -130,7 +130,7 @@
                     },{
                         field: "Endereco",
                         title: "Endereço",
-                        width: 150,
+                        width: 80,
                         headerAttributes: { style: "text-align:left" }
                     },{
                         field: "Funcao",
@@ -184,28 +184,28 @@
                         });
 
 
-                        $("#@Html.IdFor(model => model.SearchNomeFuncionario)").keydown(function (event) {
+                        $("#@Html.FieldIdFor(model => model.SearchNomeFuncionario)").keydown(function (event) {
                             if (event.keyCode == 13) {
                                 $("#btn-aplicar-filtros").click();
                                 return false;
                             }
                         });
 
-                        $("#@Html.IdFor(model => model.SearchCPF)").keydown(function (event) {
+                        $("#@Html.FieldIdFor(model => model.SearchCPF)").keydown(function (event) {
                             if (event.keyCode == 13) {
                                 $("#btn-aplicar-filtros").click();
                                 return false;
                             }
                         });
 
-                        $("#@Html.IdFor(model => model.SearchFuncao)").keydown(function (event) {
+                        $("#@Html.FieldIdFor(model => model.SearchFuncao)").keydown(function (event) {
                             if (event.keyCode == 13) {
                                 $("#btn-aplicar-filtros").click();
                                 return false;
                             }
                         });
 
-                        $("#@Html.IdFor(model => model.SearchSetor)").keydown(function (event) {
+                        $("#@Html.FieldIdFor(model => model.SearchSetor)").keydown(function (event) {
                             if (event.keyCode == 13) {
                                 $("#btn-aplicar-filtros").click();
                                 return false;
@@ -218,10 +218,10 @@
 
                 function additionalData() {
                     var data = {
-                        SearchNomeFuncionario: $('#@Html.IdFor(model => model.SearchNomeFuncionario)').val(),
-                        SearchCPF: $('#@Html.IdFor(model => model.SearchCPF)').val(),
-                        SearchFuncao: $('#@Html.IdFor(model => model.SearchFuncao)').val(),
-                        SearchSetor: $('#@Html.IdFor(model => model.SearchSetor)').val()
+                        SearchNomeFuncionario: $('#@Html.FieldIdFor(model => model.SearchNomeFuncionario)').val(),
+                        SearchCPF: $('#@Html.FieldIdFor(model => model.SearchCPF)').val(),
+                        SearchFuncao: $('#@Html.FieldIdFor(model => model.SearchFuncao)').val(),
+                        SearchSetor: $('#@Html.FieldIdFor(model => model.SearchSetor)').val()
 
                     };
 
@@ -297,7 +297,7 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title">Novo Funcionário/h3>
+                    <h3 class="modal-title">Novo Funcionário</h3>
                     <a href="#" class="close" data-dismiss="modal">&times;</a>
                 </div>
                 <div class="modal-body" id="AddModalDiv">

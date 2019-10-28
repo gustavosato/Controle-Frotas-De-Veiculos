@@ -65,11 +65,8 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT f.funcionarioID, f.nomeFuncionario, f.endereco, f.cpf, pv.parameterValue as funcao, pv1.parameterValue as setor, " +
-                                           "f.telefone, f.numeroCnh " +
+                string sql = string.Format("SELECT f.funcionarioID, f.nomeFuncionario, f.endereco, f.funcao, f.setor, f.telefone " +
                                            "FROM Funcionarios f " +
-                                           "INNER JOIN ParameterValues pv on f.funcao = pv.parameterValueID " +
-                                           "INNER JOIN ParameterValues pv1 on f.setor = pv1.parameterValueID " +
                                            "WHERE 1 = 1 ");
 
                 if (!string.IsNullOrEmpty(command.NomeFuncionario))
@@ -85,28 +82,28 @@ namespace ControleVeiculos.Repository.Data
                     sql += string.Format("AND f.funcao LIKE '%{0}%'", command.Funcao);
 
 
-                sql += "ORDER BY f.funcionarioID";
+                sql += "ORDER BY f.nomeFuncionario";
 
                 return conn.Query<Funcionario>(sql).ToList();
             }
         }
 
         
-        public List<Funcionario> GetAll(int funcionarioID)
-        {
-            using (IDbConnection conn = new SqlConnection(ConnectionString))
-            {
-                conn.ConnectionString = this.ConnectionString;
-                conn.Open();
+        //public List<Funcionario> GetAll(int funcionarioID)
+        //{
+        //    using (IDbConnection conn = new SqlConnection(ConnectionString))
+        //    {
+        //        conn.ConnectionString = this.ConnectionString;
+        //        conn.Open();
 
-                string sql = string.Format("SELECT * FROM Funcionarios Where 1 = 1");
+        //        string sql = string.Format("SELECT * FROM Funcionarios Where 1 = 1");
                                            
 
-                sql += "ORDER BY funcionarioName";
+        //        sql += "ORDER BY funcionarioName";
 
-                return conn.Query<Funcionario>(sql).ToList();
-            }
-        }
+        //        return conn.Query<Funcionario>(sql).ToList();
+        //    }
+        //}
 
         public void Delete(int funcionarioID)
         {
