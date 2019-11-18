@@ -1,0 +1,62 @@
+﻿@model ControleVeiculos.MVC.Models.Financas.FinancaModel
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@Html.HiddenFor(model => model.FinancaID)
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="maintenance-tab" data-toggle="tab" href="#maintenance" role="tab" aria-controls="maintenance" aria-selected="true">Novo Funcionário</a>
+    </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="maintenance" role="tabpanel" aria-labelledby="maintenance-tab">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-3 mb-auto">
+                        @Html.LabelFor(model => model.ValorCarro, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.ValorCarro, new { @class = "form-control", placeholder = "Digite a ordem", @autofocus = "autofocus" })
+                    </div>
+                    <div class="col-md-3 mb-auto">
+                        @Html.LabelFor(model => model.ValorSeguro, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.ValorSeguro, new { @class = "form-control", placeholder = "Digite a ordem", @autofocus = "autofocus" })
+                    </div>
+
+                    <div class="col-md-3 mb-auto">
+                        @Html.LabelFor(model => model.ValorAgua, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.ValorAgua, new { @class = "form-control", placeholder = "Digite a ordem", @autofocus = "autofocus" })
+                    </div>
+                    <div class="col-md-3 mb-auto">
+                        @Html.LabelFor(model => model.ValorLuz, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.ValorLuz, new { @class = "form-control", placeholder = "Digite a ordem", @autofocus = "autofocus" })
+                    </div>
+
+                    <div class="col-md-3 mb-auto">
+                        @Html.LabelFor(model => model.ValorInternet, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.ValorInternet, new { @class = "form-control", placeholder = "Digite a ordem", @autofocus = "autofocus" })
+                    </div>
+
+                    <div class="col-md-3 mb-auto">
+                        @Html.LabelFor(model => model.ValorManutencao, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.ValorManutencao, new { @class = "form-control", placeholder = "Digite a ordem", @autofocus = "autofocus" })
+                    </div>
+                    <div class="col-md-3 mb-auto">
+                        @Html.LabelFor(model => model.Salarios, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.Salarios, new { @class = "form-control", placeholder = "Digite a ordem", @autofocus = "autofocus" })
+                    </div>
+                    <div class="col-md-3 mb-auto">
+                        @Html.LabelFor(model => model.GastosExtras, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.GastosExtras, new { @class = "form-control", placeholder = "Digite a ordem", @autofocus = "autofocus" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

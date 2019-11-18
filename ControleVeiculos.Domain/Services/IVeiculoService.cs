@@ -8,8 +8,8 @@ namespace ControleVeiculos.Domain.Services
     {
         void Add(MaintenanceVeiculoCommand command);
         void Update(MaintenanceVeiculoCommand command);
-        Result<Veiculo> GetByID(int logID);
+        Result<Veiculo> GetByID(int veiculoID);
         IPagedList<Veiculo> GetAll(FilterVeiculoCommand command, int pageIndex = 0, int pageSize = int.MaxValue);
-        void Delete(int logID);
+        void Delete(int veiculoID);
     }
 }

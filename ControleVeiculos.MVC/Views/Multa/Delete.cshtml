@@ -1,0 +1,11 @@
+﻿@model ControleVeiculos.MVC.Models.Multas.MultaModel
+
+@Html.HiddenFor(model => model.MultaID)
+<div>
+    Deseja realmente excluir a seguinte multa?
+    <br />
+    <br />
+    <ul>
+        <li>Veículo: <strong>@Model.VeiculoID</strong></li>
+    </ul>
+</div>

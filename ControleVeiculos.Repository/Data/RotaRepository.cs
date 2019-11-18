@@ -72,13 +72,21 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT rotaID, pv.parameterValue AS statusID, tl.stepName, tl.expectedResult, tl.actualResult, tl.pathEvidence " +
-                                           "FROM Rotas tl " +
-                                           "INNER JOIN ParameterValues pv ON tl.statusID = pv.parameterValueID " +
+                string sql = string.Format("SELECT r.rotaID, r.cidade, r.estado, r.dataIda, r.DataVolta " +
+                                           "FROM Rotas r " +
                                            "WHERE 1 = 1 ");
 
-                //if (!string.IsNullOrEmpty(command.StatusID))
-                //    sql += string.Format("AND tl.statusID LIKE '%{0}%' ", command.StatusID);
+                if (!string.IsNullOrEmpty(command.Cidade))
+                    sql += string.Format("AND r.cidade LIKE '%{0}%' ", command.Cidade);
+
+                if (!string.IsNullOrEmpty(command.Estado))
+                    sql += string.Format("AND r.estado LIKE '%{0}%' ", command.Estado);
+
+                if (!string.IsNullOrEmpty(command.DataIda))
+                    sql += string.Format("AND r.dataIda LIKE '%{0}%' ", command.DataIda);
+
+                if (!string.IsNullOrEmpty(command.DataVolta))
+                    sql += string.Format("AND r.dataVolta LIKE '%{0}%' ", command.DataVolta);
 
                 sql += "ORDER BY rotaID";
                 return conn.Query<Rota>(sql).ToList();

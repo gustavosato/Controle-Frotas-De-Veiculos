@@ -10,6 +10,9 @@ using ControleVeiculos.MVC.Models.TestCases;
 using ControleVeiculos.MVC.Models.Funcionarios;
 using ControleVeiculos.MVC.Models.ParameterValues;
 using ControleVeiculos.MVC.Models.Veiculos;
+using ControleVeiculos.MVC.Models.Multas;
+using ControleVeiculos.MVC.Models.Rotas;
+using ControleVeiculos.MVC.Models.Financas;
 
 
 using ControleVeiculos.MVC.Validations.Users;
@@ -22,6 +25,11 @@ using ControleVeiculos.MVC.Validations.SystemMenus;
 using ControleVeiculos.MVC.Validations.TestCases;
 using ControleVeiculos.MVC.Validations.Funcionarios;
 using ControleVeiculos.MVC.Validations.Veiculos;
+using ControleVeiculos.MVC.Validations.Multas;
+using ControleVeiculos.MVC.Validations.Rotas;
+using ControleVeiculos.MVC.Validations.Financas;
+
+
 
 namespace ControleVeiculos.Infrastructure
 {
@@ -70,6 +78,17 @@ namespace ControleVeiculos.Infrastructure
                 .Keyed<IValidator>(typeof(IValidator<VeiculoModel>))
                 .As<IValidator>();
 
+            builder.RegisterType<MultaValidator>()
+                .Keyed<IValidator>(typeof(IValidator<MultaModel>))
+                .As<IValidator>();
+
+            builder.RegisterType<RotaValidator>()
+                .Keyed<IValidator>(typeof(IValidator<RotaModel>))
+                .As<IValidator>();
+
+            builder.RegisterType<FinancaValidator>()
+                .Keyed<IValidator>(typeof(IValidator<FinancaModel>))
+                .As<IValidator>();
 
             return builder;
         }

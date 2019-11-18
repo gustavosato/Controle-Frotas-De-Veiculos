@@ -2,8 +2,8 @@
 {
     public class FilterMultaCommand
     {
-        public string VeiucloID  { get; set; }
-        public string ClienteID { get; set; }
+        public string VeiculoID  { get; set; }
+        public string FuncionarioID { get; set; }
         
     }
 }

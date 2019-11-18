@@ -72,13 +72,22 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT financaID, pv.parameterValue AS statusID, tl.stepName, tl.expectedResult, tl.actualResult, tl.pathEvidence " +
-                                           "FROM Financas tl " +
-                                           "INNER JOIN ParameterValues pv ON tl.statusID = pv.parameterValueID " +
+                string sql = string.Format("SELECT f.financaID, f.valorCarro, f.valorSeguro, f.valorAgua, f.valorLuz, f.valorInternet, " +
+                                           "f.valorManutencao, f.salarios, f.gastosExtras " +
+                                           "FROM Financas f " +
                                            "WHERE 1 = 1 ");
 
-                //if (!string.IsNullOrEmpty(command.StatusID))
-                //    sql += string.Format("AND tl.statusID LIKE '%{0}%' ", command.StatusID);
+                if (!string.IsNullOrEmpty(command.ValorCarro))
+                    sql += string.Format("AND f.valorCarro LIKE '%{0}%' ", command.ValorCarro);
+
+                if (!string.IsNullOrEmpty(command.ValorSeguro))
+                    sql += string.Format("AND f.valorSeguro LIKE '%{0}%' ", command.ValorSeguro);
+
+                if (!string.IsNullOrEmpty(command.ValorAgua))
+                    sql += string.Format("AND f.valorAgua LIKE '%{0}%' ", command.ValorAgua);
+
+                if (!string.IsNullOrEmpty(command.ValorLuz))
+                    sql += string.Format("AND f.valorLuz LIKE '%{0}%' ", command.ValorLuz);
 
                 sql += "ORDER BY financaID";
                 return conn.Query<Financa>(sql).ToList();

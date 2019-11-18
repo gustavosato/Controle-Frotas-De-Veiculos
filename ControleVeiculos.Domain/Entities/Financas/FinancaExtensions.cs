@@ -19,6 +19,7 @@ namespace ControleVeiculos.Domain.Entities.Financas
             financa.valorAgua = command.ValorAgua;
             financa.valorLuz = command.ValorLuz;
             financa.valorInternet = command.ValorInternet;
+            financa.valorManutencao = command.ValorManutencao;
             financa.salarios = command.Salarios;
             financa.gastosExtras = command.GastosExtras;
 

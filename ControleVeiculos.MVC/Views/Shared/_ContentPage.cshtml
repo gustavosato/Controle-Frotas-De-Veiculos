@@ -18,10 +18,10 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="@Url.Action("Index", "Funcionario")"><i class="fa fa-clock-o"></i>  Cadastrar Funcionarios</a>
                         @*<a class="dropdown-item" href="@Url.Action("Index", "Motorista")"><i class="fa fa-calendar-minus-o"></i>  Cadastrar de Motorista</a>
-                        <a class="dropdown-item" href="@Url.Action("Index", "Task")"><i class="fa fa-list"></i>  Tarefas</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="@Url.Action("Index", "Expense")"><i class="fa fa-money"></i>  Lançamento de Despesas</a>
-                        <a class="dropdown-item" href="@Url.Action("Index", "Support")"><i class="fa fa-wrench"></i>  Suporte</a>*@
+                <a class="dropdown-item" href="@Url.Action("Index", "Task")"><i class="fa fa-list"></i>  Tarefas</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="@Url.Action("Index", "Expense")"><i class="fa fa-money"></i>  Lançamento de Despesas</a>
+                <a class="dropdown-item" href="@Url.Action("Index", "Support")"><i class="fa fa-wrench"></i>  Suporte</a>*@
 
                     </div>
                 </li>
@@ -29,54 +29,56 @@
                 {
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-id-card"></i>  Veiculos
+                            <i class="fa fa-car"></i>  Veiculos
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="@Url.Action("Index", "Veiculo")"><i class="fa fa-institution"></i>  Cadastrar Veículo</a>
-                            @*<a class="dropdown-item" href="@Url.Action("Index", "Veiculo")"><i class="fa fa-users"></i>  Reservar Veículo</a>
-                            <a class="dropdown-item" href="@Url.Action("Index", "Veiculo")"><i class="fa fa-list"></i>  Veiculos Disponíveis</a>*@
+                            <a class="dropdown-item" href="@Url.Action("Index", "Veiculo")"><i class="fa fa-car"></i>  Cadastrar Veículo</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "Reserva")"><i class="fa fa-users"></i>  Reservar Veículo</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "Emprestimo")"><i class="fa fa-list"></i>  Emprestimo de Veículo</a>
                         </div>
                     </li>
                 }
 
-                @if (Convert.ToString(Session["isAdmin"]) == "True")
+                @if (Convert.ToString(Session["isAdmin"]) == "False")
                 {
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-dollar"></i>  Financeiro
+                            <i class="fa fa-dollar"></i>  Multas
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="@Url.Action("Index", "Financa")"><i class="fa fa-money"></i>  Finanças</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "Multa")"><i class="fa fa-money"></i>  Cadastrar Multa</a>
                             @*<a class="dropdown-item" href="@Url.Action("Index", "AccountingEntrie")"><i class="fa fa-credit-card"></i>  Faturamentos de Projetos</a>*@
                         </div>
                     </li>
                 }
-                @if (Convert.ToString(Session["isAdmin"]) == "True")
+                @if (Convert.ToString(Session["isAdmin"]) == "False")
                 {
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-users"></i>  RH
+                            <i class="fa fa-users"></i>  Rotas
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @*<a class="dropdown-item" href="@Url.Action("Index", "User")"><i class="fa fa-user-md"></i>  Cadastro de Funcionários</a>
-                            <a class="dropdown-item" href="@Url.Action("Index", "MovimentEmployee")"><i class="fa fa-plane"></i>  Movimentação de Funcionário</a>
-                            <a class="dropdown-item" href="@Url.Action("Index", "Vacancie")"><i class="fa fa-user-plus"></i>  Vagas</a>
-                            <a class="dropdown-item" href="@Url.Action("Index", "Resume")"><i class="fa fa-id-card"></i>  Currículos</a>
-                            <a class="dropdown-item" href="@Url.Action("Index", "Skill")"><i class="fa fa-trophy"></i>  Habilidades e Competências</a>
-                            <a class="dropdown-item" href="@Url.Action("Index", "PositionsSalarie")"><i class="fa fa-money"></i>  Cargos e Salários</a>*@
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdowrn">
+                            <a class="dropdown-item" href="@Url.Action("Index", "Rota")">
+                                <i class="fa fa-user-md"></i>  Cadastrar Rota
+                            </a>
+                            @*<a class="dropdown-item" href="@Url.Action("Index", "MovimentEmployee")"><i class="fa fa-plane"></i>  Movimentação de Funcionário</a>
+                    <a class="dropdown-item" href="@Url.Action("Index", "Vacancie")"><i class="fa fa-user-plus"></i>  Vagas</a>
+                    <a class="dropdown-item" href="@Url.Action("Index", "Resume")"><i class="fa fa-id-card"></i>  Currículos</a>
+                    <a class="dropdown-item" href="@Url.Action("Index", "Skill")"><i class="fa fa-trophy"></i>  Habilidades e Competências</a>
+                    <a class="dropdown-item" href="@Url.Action("Index", "PositionsSalarie")"><i class="fa fa-money"></i>  Cargos e Salários</a>*@
                         </div>
                     </li>
                 }
-                @if (Convert.ToString(Session["isAdmin"]) == "True")
+                @if (Convert.ToString(Session["isAdmin"]) == "False")
                 {
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-handshake-o"></i>  CRM
+                            <i class="fa fa-handshake-o"></i>  Finanças
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @*<a class="dropdown-item" href="@Url.Action("Index", "Pipeline")"><i class="fa fa-connectdevelop"></i>  Pipeline de Vendas</a>
-                            <a class="dropdown-item" href="@Url.Action("Index", "PipelineEvent")"><i class="fa fa-mail-forward"></i>  Eventos de Pipeline</a>
-                            <a class="dropdown-item" href="@Url.Action("Index", "Contract")"><i class="fa fa-gavel"></i>  Contratos</a>*@
+                            <a class="dropdown-item" href="@Url.Action("Index", "Financa")"><i class="fa fa-connectdevelop"></i>  Finanças</a>
+                            @*<a class="dropdown-item" href="@Url.Action("Index", "PipelineEvent")"><i class="fa fa-mail-forward"></i>  Eventos de Pipeline</a>
+                    <a class="dropdown-item" href="@Url.Action("Index", "Contract")"><i class="fa fa-gavel"></i>  Contratos</a>*@
 
                         </div>
                     </li>
@@ -85,36 +87,37 @@
                 {
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-check-square-o"></i>  Leantesting
+                            <i class="fa fa-check-square-o"></i>  Reserva
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @*<a class="dropdown-item" href="@Url.Action("Index", "ApplicationSystem")"><i class="fa fa-th-large"></i>  Aplicações</a>
-                            <a class="dropdown-item" href="@Url.Action("Index", "Feature")"><i class="fa fa-codepen"></i>  Funcionalidades</a>
-                            <a class="dropdown-item" href="@Url.Action("Index", "Element")"><i class="fa fa-cube"></i>  Elementos</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="@Url.Action("Index", "TestPackage")"><i class="fa fa-suitcase"></i>  Pacotes de Testes</a>
-                            <a class="dropdown-item" href="@Url.Action("Index", "TestCase")"><i class="fa fa-newspaper-o"></i>  Casos de Teste</a>
-                            <a class="dropdown-item" href="@Url.Action("Index", "TestScenario")"><i class="fa fa-picture-o"></i>  Cenários de Teste</a>
-                            <a class="dropdown-item" href="@Url.Action("Index", "TestLog")"><i class="fa fa-file-o"></i>  Log dos Testes</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="@Url.Action("Index", "Defect")"><i class="fa fa-bug"></i>  Defeitos</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="@Url.Action("Index", "License")"><i class="fa fa-drivers-license"></i>  Controle de Licenças</a>*@
+                            <a class="dropdown-item" href="@Url.Action("Index", "Reserva")"><i class="fa fa-th-large"></i>  Reservar Veiculo</a>
+                            @*<a class="dropdown-item" href="@Url.Action("Index", "Feature")"><i class="fa fa-codepen"></i>  Funcionalidades</a>
+                    <a class="dropdown-item" href="@Url.Action("Index", "Element")"><i class="fa fa-cube"></i>  Elementos</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="@Url.Action("Index", "TestPackage")"><i class="fa fa-suitcase"></i>  Pacotes de Testes</a>
+                    <a class="dropdown-item" href="@Url.Action("Index", "TestCase")"><i class="fa fa-newspaper-o"></i>  Casos de Teste</a>
+                    <a class="dropdown-item" href="@Url.Action("Index", "TestScenario")"><i class="fa fa-picture-o"></i>  Cenários de Teste</a>
+                    <a class="dropdown-item" href="@Url.Action("Index", "TestLog")"><i class="fa fa-file-o"></i>  Log dos Testes</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="@Url.Action("Index", "Defect")"><i class="fa fa-bug"></i>  Defeitos</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="@Url.Action("Index", "License")"><i class="fa fa-drivers-license"></i>  Controle de Licenças</a>*@
                         </div>
                     </li>
                 }
-                        @*@if (Convert.ToString(Session["isAdmin"]) == "True")
-                {
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-file"></i>  Documentos
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="@Url.Action("Index", "Attachment")"><i class="fa fa-paperclip"></i>  Documentos Anexados</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-handshake-o"></i>  Seguro e Sinistro
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="@Url.Action("Index", "Seguro")"><i class="fa fa-connectdevelop"></i>  Seguro</a>
+                        <a class="dropdown-item" href="@Url.Action("Index", "Sinistro")"><i class="fa fa-connectdevelop"></i>  Sinistro</a>
+                        @*<a class="dropdown-item" href="@Url.Action("Index", "PipelineEvent")"><i class="fa fa-mail-forward"></i>  Eventos de Pipeline</a>
+        <a class="dropdown-item" href="@Url.Action("Index", "Contract")"><i class="fa fa-gavel"></i>  Contratos</a>*@
 
-                        </div>
-                    </li>
-                }*@
+                    </div>
+                </li>
+
             </ul>
             @if (Convert.ToString(Session["isAdmin"]) == "True")
             {

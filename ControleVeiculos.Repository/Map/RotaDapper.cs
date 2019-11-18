@@ -1,7 +1,7 @@
 ﻿using Dapper.Contrib.Extensions;
 namespace ControleVeiculos.Repository.Map
 {
-    [Table("Rota")]
+    [Table("Rotas")]
     public class RotaDapper
     {
         [ExplicitKey]

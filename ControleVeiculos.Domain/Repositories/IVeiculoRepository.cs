@@ -8,8 +8,8 @@ namespace ControleVeiculos.Domain.Repositories
     {
         void Add(Veiculo veiculo);
         void Update(Veiculo veiculo);
-        Veiculo GetByID(int logID);
+        Veiculo GetByID(int veiculoID);
         List<Veiculo> GetAll(FilterVeiculoCommand command);
-        void Delete(int logID);
+        void Delete(int veiculoID);
     }
 }

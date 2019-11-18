@@ -72,13 +72,12 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT multaID, pv.parameterValue AS statusID, tl.stepName, tl.expectedResult, tl.actualResult, tl.pathEvidence " +
-                                           "FROM Multas tl " +
-                                           "INNER JOIN ParameterValues pv ON tl.statusID = pv.parameterValueID " +
+                string sql = string.Format("SELECT m.multaID, m.veiculoID, m.funcionarioID " +
+                                           "FROM Multas m " +
                                            "WHERE 1 = 1 ");
 
-                //if (!string.IsNullOrEmpty(command.StatusID))
-                //    sql += string.Format("AND tl.statusID LIKE '%{0}%' ", command.StatusID);
+                if (!string.IsNullOrEmpty(command.VeiculoID))
+                    sql += string.Format("AND m.veiculoID LIKE '%{0}%' ", command.VeiculoID);
 
                 sql += "ORDER BY multaID";
                 return conn.Query<Multa>(sql).ToList();

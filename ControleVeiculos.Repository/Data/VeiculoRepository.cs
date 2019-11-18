@@ -102,7 +102,7 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("DELETE FROM dbo.Veiculoss WHERE veiculoID = '{0}'", veiculoID);
+                string sql = string.Format("DELETE FROM dbo.Veiculos WHERE veiculoID = '{0}'", veiculoID);
                 conn.ExecuteScalar(sql);
             }
         }

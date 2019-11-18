@@ -1,0 +1,11 @@
+﻿@model ControleVeiculos.MVC.Models.Financas.FinancaModel
+
+@Html.HiddenFor(model => model.FinancaID)
+<div>
+    Deseja realmente excluir a seguinte conta?
+    <br />
+    <br />
+    <ul>
+        <li>Conta: <strong>@Model.ValorCarro</strong></li>
+    </ul>
+</div>

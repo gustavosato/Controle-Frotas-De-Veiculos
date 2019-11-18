@@ -42,17 +42,15 @@ namespace ControleVeiculos.MVC.Controllers
             }
 
             var model = new VeiculoModel();
-            var modelo = _parameterValueService.GetAllByParameterID("223202");
-            var status = _parameterValueService.GetAllByParameterID("223202");
-            var ano = _parameterValueService.GetAllByParameterID("223202");
-            //var feature = _systemFeatureService.GetAll();
-            var motor = _parameterValueService.GetAllByParameterID("40");
+            //var status = _parameterValueService.GetAllByParameterID("223202");
+            //var ano = _parameterValueService.GetAllByParameterID("223202");
+            ////var feature = _systemFeatureService.GetAll();
+            //var motor = _parameterValueService.GetAllByParameterID("40");
 
-            model.SearchLoadModelo = modelo.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-            model.SearchLoadStatus = status.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-            model.SearchLoadAno = ano.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-            //model.SearchLoadFeature = feature.Select(x => new SelectListItem() { Text = x.systemFeatureName.ToString(), Value = x.systemFeatureID.ToString() }).ToList();
-            model.SearchLoadMotor = motor.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
+            //model.SearchLoadStatus = status.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
+            //model.SearchLoadAno = ano.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
+            ////model.SearchLoadFeature = feature.Select(x => new SelectListItem() { Text = x.systemFeatureName.ToString(), Value = x.systemFeatureID.ToString() }).ToList();
+            //model.SearchLoadMotor = motor.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
 
             return View(model);
         }
@@ -115,17 +113,15 @@ namespace ControleVeiculos.MVC.Controllers
         public ActionResult New()
         {
             var model = new VeiculoModel();
-            var modelo = _parameterValueService.GetAllByParameterID("223202");
-            var status = _parameterValueService.GetAllByParameterID("223202");
-            var ano = _parameterValueService.GetAllByParameterID("223202");
-            //var feature = _systemFeatureService.GetAll();
-            var motor = _parameterValueService.GetAllByParameterID("40");
+            //var status = _parameterValueService.GetAllByParameterID("223202");
+            //var ano = _parameterValueService.GetAllByParameterID("223202");
+            ////var feature = _systemFeatureService.GetAll();
+            //var motor = _parameterValueService.GetAllByParameterID("40");
 
-            model.LoadModelo = modelo.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-            model.LoadStatus = status.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-            model.LoadAno = ano.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-            // model.LoadFeature = feature.Select(x => new SelectListItem() { Text = x.systemFeatureName.ToString(), Value = x.systemFeatureID.ToString() }).ToList();
-            model.LoadMotor = motor.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
+            //model.LoadStatus = status.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
+            //model.LoadAno = ano.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
+            //// model.LoadFeature = feature.Select(x => new SelectListItem() { Text = x.systemFeatureName.ToString(), Value = x.systemFeatureID.ToString() }).ToList();
+            //model.LoadMotor = motor.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
 
             return PartialView("Maintenance", model);
         }
@@ -164,17 +160,15 @@ namespace ControleVeiculos.MVC.Controllers
                 }
                 else if (ActionName == "Maintenance")
                 {
-                    var modelo = _parameterValueService.GetAllByParameterID("223202");
-                    var status = _parameterValueService.GetAllByParameterID("223202");
-                    var ano = _parameterValueService.GetAllByParameterID("223202");
-                    //var feature = _systemFeatureService.GetAll();
-                    var motor = _parameterValueService.GetAllByParameterID("40");
+                    //var status = _parameterValueService.GetAllByParameterID("223202");
+                    //var ano = _parameterValueService.GetAllByParameterID("223202");
+                    ////var feature = _systemFeatureService.GetAll();
+                    //var motor = _parameterValueService.GetAllByParameterID("40");
 
-                    model.LoadModelo = modelo.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-                    model.LoadStatus = status.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-                    model.LoadAno = ano.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-                    //model.LoadFeature = feature.Select(x => new SelectListItem() { Text = x.systemFeatureName.ToString(), Value = x.systemFeatureID.ToString() }).ToList();
-                    model.LoadMotor = motor.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
+                    //model.LoadStatus = status.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
+                    //model.LoadAno = ano.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
+                    ////model.LoadFeature = feature.Select(x => new SelectListItem() { Text = x.systemFeatureName.ToString(), Value = x.systemFeatureID.ToString() }).ToList();
+                    //model.LoadMotor = motor.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
 
                     return PartialView("Maintenance", model);
                 }

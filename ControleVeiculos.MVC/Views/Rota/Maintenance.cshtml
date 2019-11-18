@@ -1,0 +1,60 @@
+﻿@model ControleVeiculos.MVC.Models.Rotas.RotaModel
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@Html.HiddenFor(model => model.RotaID)
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="maintenance-tab" data-toggle="tab" href="#maintenance" role="tab" aria-controls="maintenance" aria-selected="true">Novo Funcionário</a>
+    </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="maintenance" role="tabpanel" aria-labelledby="maintenance-tab">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.Cidade, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.Cidade, new { @class = "form-control", placeholder = "Digite a ordem", @autofocus = "autofocus" })
+                        @Html.ValidationMessageFor(model => model.Cidade, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.Estado, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.Estado, new { @class = "form-control", placeholder = "Digite a ordem", @autofocus = "autofocus" })
+                        @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.Distancia, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.Distancia, new { @class = "form-control", placeholder = "Digite a ordem", @autofocus = "autofocus" })
+                        @Html.ValidationMessageFor(model => model.Distancia, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.Pedagio, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.Pedagio, new { @class = "form-control", placeholder = "Digite a ordem", @autofocus = "autofocus" })
+                        @Html.ValidationMessageFor(model => model.Pedagio, "", new { @class = "form-text text-danger" })
+                    </div>
+
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.DataIda, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.DataIda, new { @class = "form-control", placeholder = "Digite a ordem", @autofocus = "autofocus" })
+                        @Html.ValidationMessageFor(model => model.DataIda, "", new { @class = "form-text text-danger" })
+                    </div>
+                    <div class="col-md-2 mb-auto">
+                        @Html.LabelFor(model => model.DataVolta, new { @class = "col-sm-0 col-form-label text-left" })
+                        @Html.TextBoxFor(model => model.DataVolta, new { @class = "form-control", placeholder = "Digite a ordem", @autofocus = "autofocus" })
+                        @Html.ValidationMessageFor(model => model.DataVolta, "", new { @class = "form-text text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

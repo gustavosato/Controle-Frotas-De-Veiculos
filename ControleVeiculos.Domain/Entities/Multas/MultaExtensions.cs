@@ -15,8 +15,7 @@ namespace ControleVeiculos.Domain.Entities.Multas
 
             multa.multaID = command.MultaID;
             multa.veiculoID = command.VeiculoID;
-            multa.clienteID = command.ClienteID;
-            multa.cnhID = command.CnhID;
+            multa.funcionarioID = command.FuncionarioID;
             
             return multa;
         }

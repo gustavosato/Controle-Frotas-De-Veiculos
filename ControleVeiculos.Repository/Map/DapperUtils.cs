@@ -170,18 +170,18 @@ namespace ControleVeiculos.Repository.Map
         
         public static FuncionarioDapper Map(this Funcionario funcionario, int primaryKey)
         {
-            FuncionarioDapper funcionariosDapper = new FuncionarioDapper();
+            FuncionarioDapper funcionarioDapper = new FuncionarioDapper();
 
-            funcionariosDapper.funcionarioID = primaryKey;
-            funcionariosDapper.nomeFuncionario = funcionario.nomeFuncionario;
-            funcionariosDapper.endereco = funcionario.endereco;
-            funcionariosDapper.cpf = funcionario.cpf;
-            funcionariosDapper.funcao = funcionario.funcao;
-            funcionariosDapper.setor = funcionario.setor;
-            funcionariosDapper.telefone = funcionario.telefone;
-            funcionariosDapper.numeroCnh = funcionario.numeroCnh;
+            funcionarioDapper.funcionarioID = primaryKey;
+            funcionarioDapper.nomeFuncionario = funcionario.nomeFuncionario;
+            funcionarioDapper.endereco = funcionario.endereco;
+            funcionarioDapper.cpf = funcionario.cpf;
+            funcionarioDapper.funcao = funcionario.funcao;
+            funcionarioDapper.setor = funcionario.setor;
+            funcionarioDapper.telefone = funcionario.telefone;
+            funcionarioDapper.numeroCnh = funcionario.numeroCnh;
 
-            return funcionariosDapper;
+            return funcionarioDapper;
         }
         public static CnhDapper Map(this Cnh cnh, int primaryKey)
         {
@@ -401,8 +401,7 @@ namespace ControleVeiculos.Repository.Map
 
             multaDapper.multaID = primaryKey;
             multaDapper.veiculoID = multa.veiculoID;
-            multaDapper.clienteID = multa.clienteID;
-            multaDapper.cnhID = multa.cnhID;
+            multaDapper.funcionarioID = multa.funcionarioID;
             
             return multaDapper;
         }
