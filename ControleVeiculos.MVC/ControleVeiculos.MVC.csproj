@@ -79,6 +79,7 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.AddIn" />
     <Reference Include="System.ComponentModel.Primitives, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ComponentModel.Primitives.4.3.0\lib\net45\System.ComponentModel.Primitives.dll</HintPath>
       <Private>True</Private>
@@ -265,6 +266,7 @@
     <Compile Include="Controllers\SystemMenuController.cs" />
     <Compile Include="Extensions\ApplicationSystemMappingExtensions.cs" />
     <Compile Include="Extensions\FinancaMappingExtensions.cs" />
+    <Compile Include="Extensions\ReservaMappingExtensions.cs" />
     <Compile Include="Extensions\RotaMappingExtensions.cs" />
     <Compile Include="Extensions\MultaMappingExtensions.cs" />
     <Compile Include="Extensions\VeiculoMappingExtensions.cs" />
@@ -289,6 +291,7 @@
     <Compile Include="Infrastructure\Notification\NotifyType.cs" />
     <Compile Include="Models\ApplicationSystems\ApplicationSystemModel.cs" />
     <Compile Include="Models\Financas\FinancaModel.cs" />
+    <Compile Include="Models\Reservas\ReservaModel.cs" />
     <Compile Include="Models\Rotas\RotaModel.cs" />
     <Compile Include="Models\Multas\MultaModel.cs" />
     <Compile Include="Models\Veiculos\VeiculoModel.cs" />
@@ -304,6 +307,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validations\ApplicationSystem\ApplicationSystemValidator.cs" />
     <Compile Include="Validations\Financa\FinancaValidator.cs" />
+    <Compile Include="Validations\Reserva\ReservaValidator.cs" />
     <Compile Include="Validations\Rota\RotaValidator.cs" />
     <Compile Include="Validations\Multa\MultaValidator.cs" />
     <Compile Include="Validations\Veiculo\VeiculoValidator.cs" />
@@ -382,6 +386,9 @@
     <Content Include="Views\Financa\Delete.cshtml" />
     <Content Include="Views\Financa\Index.cshtml" />
     <Content Include="Views\Financa\Maintenance.cshtml" />
+    <Content Include="Views\Reserva\Delete.cshtml" />
+    <Content Include="Views\Reserva\Index.cshtml" />
+    <Content Include="Views\Reserva\Maintenance.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

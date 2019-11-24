@@ -13,6 +13,7 @@ using ControleVeiculos.MVC.Models.Veiculos;
 using ControleVeiculos.MVC.Models.Multas;
 using ControleVeiculos.MVC.Models.Rotas;
 using ControleVeiculos.MVC.Models.Financas;
+using ControleVeiculos.MVC.Models.Reservas;
 
 
 using ControleVeiculos.MVC.Validations.Users;
@@ -28,6 +29,7 @@ using ControleVeiculos.MVC.Validations.Veiculos;
 using ControleVeiculos.MVC.Validations.Multas;
 using ControleVeiculos.MVC.Validations.Rotas;
 using ControleVeiculos.MVC.Validations.Financas;
+using ControleVeiculos.MVC.Validations.Reservas;
 
 
 
@@ -88,6 +90,10 @@ namespace ControleVeiculos.Infrastructure
 
             builder.RegisterType<FinancaValidator>()
                 .Keyed<IValidator>(typeof(IValidator<FinancaModel>))
+                .As<IValidator>();
+
+            builder.RegisterType<ReservaValidator>()
+                .Keyed<IValidator>(typeof(IValidator<ReservaModel>))
                 .As<IValidator>();
 
             return builder;

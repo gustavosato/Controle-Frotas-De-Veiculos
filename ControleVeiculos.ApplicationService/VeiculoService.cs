@@ -35,14 +35,7 @@ namespace ControleVeiculos.ApplicationService
 
             _veiculoRepository.Update(veiculo);
         }
-
-        //public IList<Veiculo> GetAll(int veiculoID)
-        //{
-        //    var veiculo = _veiculoRepository.GetAll(veiculoID);
-
-        //    return new List<Veiculo>(veiculo);
-        //}
-
+        
         public Result<Veiculo> GetByID(int veiculoID)
         {
             var veiculo = _veiculoRepository.GetByID(veiculoID);
@@ -55,6 +48,13 @@ namespace ControleVeiculos.ApplicationService
             var veiculo = _veiculoRepository.GetAll(command);
 
             return new PagedList<Veiculo>(veiculo, pageIndex, pageSize);
+        }
+
+        public IList<Veiculo> GetAll(int veiculoID)
+        {
+            var veiculo = _veiculoRepository.GetAll(veiculoID);
+
+            return new List<Veiculo>(veiculo);
         }
 
         public void Delete(int veiculoID)

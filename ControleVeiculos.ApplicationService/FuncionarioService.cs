@@ -50,6 +50,13 @@ namespace ControleVeiculos.ApplicationService
             return new PagedList<Funcionario>(funcionario, pageIndex, pageSize);
         }
 
+        public IList<Funcionario> GetAll(int funcionarioID)
+        {
+            var funcionario = _funcionarioRepository.GetAll(funcionarioID);
+
+            return new List<Funcionario>(funcionario);
+        }
+
         public void Delete(int funcionarioID)
         {
             _funcionarioRepository.Delete(funcionarioID);

@@ -21,7 +21,7 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT ISNULL(MAX(CAST(reservasID AS INT))+1,1) FROM dbo.Reservass");
+                string sql = string.Format("SELECT ISNULL(MAX(CAST(reservaID AS INT))+1,1) FROM dbo.Reserva");
                 int primaryKey = conn.Query<int>(sql).FirstOrDefault();
                 ReservaDapper reservasDapper = reserva.Map(primaryKey);
                 try
@@ -42,19 +42,19 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                ReservaDapper reservasDapper = reserva.Map(reserva.reservaID);
+                ReservaDapper reservaDapper = reserva.Map(reserva.reservaID);
 
-                conn.Update<ReservaDapper>(reservasDapper);
+                conn.Update<ReservaDapper>(reservaDapper);
             }
         }
 
-        public Reserva GetByID(int reservasID)
+        public Reserva GetByID(int reservaID)
         {
             using (IDbConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
 
-                string sql = string.Format("SELECT * FROM dbo.Reservass WHERE reservasID = '{0}'", reservasID);
+                string sql = string.Format("SELECT * FROM dbo.Reserva WHERE reservaID = '{0}'", reservaID);
 
                 return conn.Query<Reserva>(sql).FirstOrDefault();
             }
@@ -67,44 +67,39 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT t.reservasID, t.packageName, pv.parameterValue as tecnologyID, " +
-                                           "pv1.parameterValue as statusID, pv2.parameterValue as browserID, pv3.parameterValue as methodologyID, " +
-                                           "pv4.parameterValue as deviceID,pv5.parameterValue as platformNameID, d.demandCode + ' - ' + d.demandName as demandID " +
-                                           "FROM Reservass t " +
-                                           "INNER JOIN ParameterValues pv on t.tecnologyID = pv.parameterValueID " +
-                                           "INNER JOIN ParameterValues pv1 on t.statusID = pv1.parameterValueID " +
-                                           "INNER JOIN ParameterValues pv2 on t.browserID = pv2.parameterValueID " +
-                                           "INNER JOIN ParameterValues pv3 on t.methodologyID = pv3.parameterValueID " +
-                                           "LEFT JOIN ParameterValues pv4 on t.deviceID = pv4.parameterValueID " +
-                                           "LEFT JOIN ParameterValues pv5 on t.platformNameID = pv5.parameterValueID " +
-                                           "INNER JOIN Demands d on t.demandID = d.demandID WHERE 1 = 1");
+                string sql = string.Format("SELECT r.reservaID, r.destino, FORMAT(Convert(datetime, dataReserva, 103), 'ddd dd/MM/yyyy') as dataReserva, " +
+                                           "v.modelo as veiculoID, f.nomeFuncionario as funcionarioID, r.finalidade " +
+                                           "FROM Reserva r " +
+                                           "INNER JOIN Veiculos v on r.veiculoID = v.veiculoID " +
+                                           "INNER JOIN Funcionarios f on r.funcionarioID = f.FuncionarioID " +
+                                           "WHERE 1 = 1");
 
-                //if (!string.IsNullOrEmpty(command.TecnologyID))
-                //    sql += string.Format("AND t.tecnologyID = '{0}' ", command.TecnologyID);
+                if (!string.IsNullOrEmpty(command.Destino))
+                    sql += string.Format("AND r.destino LIKE '%{0}%' ", command.Destino);
 
-                //if (!string.IsNullOrEmpty(command.BrowserID))
-                //    sql += string.Format("AND t.browserID = '{0}' ", command.BrowserID);
+                if (!string.IsNullOrEmpty(command.DataReserva))
+                    sql += string.Format("AND Convert(date, r.dataReserva, 103) = Convert(date, '{0}', 103) ", command.DataReserva);
 
-                //if (!string.IsNullOrEmpty(command.StatusID))
-                //    sql += string.Format("AND t.statusID = '{0}' ", command.StatusID);
+                if (!string.IsNullOrEmpty(command.FuncionarioID))
+                    sql += string.Format("AND t.funcionarioID = '{0}' ", command.FuncionarioID);
 
-                //if (!string.IsNullOrEmpty(command.DemandID))
-                //    sql += string.Format("AND t.demandID = '{0}' ", command.DemandID);
+                if (!string.IsNullOrEmpty(command.VeiculoID))
+                    sql += string.Format("AND t.veiculoID = '{0}' ", command.VeiculoID);
 
-                //sql += "ORDER BY packageName";
+                sql += "ORDER BY reservaID";
 
                 return conn.Query<Reserva>(sql).ToList();
             }
         }
 
-        public void Delete(int reservasID)
+        public void Delete(int reservaID)
         {
             using (IDbConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("DELETE FROM dbo.Reservass WHERE reservasID = '{0}'", reservasID);
+                string sql = string.Format("DELETE FROM dbo.Reserva WHERE reservaID = '{0}'", reservaID);
                 conn.ExecuteScalar(sql);
             }
         }

@@ -88,22 +88,21 @@ namespace ControleVeiculos.Repository.Data
             }
         }
 
-        
-        //public List<Funcionario> GetAll(int funcionarioID)
-        //{
-        //    using (IDbConnection conn = new SqlConnection(ConnectionString))
-        //    {
-        //        conn.ConnectionString = this.ConnectionString;
-        //        conn.Open();
 
-        //        string sql = string.Format("SELECT * FROM Funcionarios Where 1 = 1");
-                                           
+        public List<Funcionario> GetAll(int funcionarioID)
+        {
+            using (IDbConnection conn = new SqlConnection(ConnectionString))
+            {
+                conn.ConnectionString = this.ConnectionString;
+                conn.Open();
 
-        //        sql += "ORDER BY funcionarioName";
+                string sql = string.Format("SELECT * FROM Funcionarios Where 1 = 1");
 
-        //        return conn.Query<Funcionario>(sql).ToList();
-        //    }
-        //}
+                sql += "ORDER BY nomeFuncionario";
+
+                return conn.Query<Funcionario>(sql).ToList();
+            }
+        }
 
         public void Delete(int funcionarioID)
         {

@@ -9,6 +9,8 @@ using ControleVeiculos.Domain;
 //using ControleVeiculos.MVC.Infrastructure.Mvc;
 using ControleVeiculos.Domain.Command.Reservas;
 using ControleVeiculos.Domain.Entities.Reservas;
+using ControleVeiculos.Domain.Command.Veiculos;
+using ControleVeiculos.Domain.Command.Funcionarios;
 
 namespace ControleVeiculos.MVC.Controllers
 {
@@ -47,12 +49,13 @@ namespace ControleVeiculos.MVC.Controllers
             }
 
             var model = new ReservaModel();
-            var veiculo = _veiculoService.GetByID(0);
+            var veiculo = _veiculoService.GetAll(0);
+            var funcionario = _funcionarioService.GetAll(0);
             //var feature = _systemFeatureService.GetAll();
             
             
             model.SearchLoadVeiculo = veiculo.Select(x => new SelectListItem() { Text = x.modelo.ToString(), Value = x.veiculoID.ToString() }).ToList();
-            //model.SearchLoadSetor = setor.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
+            model.SearchLoadFuncionario = funcionario.Select(x => new SelectListItem() { Text = x.nomeFuncionario.ToString(), Value = x.funcionarioID.ToString() }).ToList();
 
             return View(model);
         }
@@ -80,7 +83,7 @@ namespace ControleVeiculos.MVC.Controllers
 
             catch (Exception ex)
             {
-                ErrorNotification(string.Format("Não foi possível realizar a reserva: {0}, " + ex.Message.ToString(), model.NomeReserva));
+                ErrorNotification(string.Format("Não foi possível realizar a reserva: {0}, " + ex.Message.ToString(), model.DataReserva));
 
                 return RedirectToAction("Index", "Reserva");
             }
@@ -93,8 +96,8 @@ namespace ControleVeiculos.MVC.Controllers
             {
                 DataReserva = model.SearchDataReserva,
                 Destino = model.SearchDestino,
-                Funcionario = model.SearchFuncionario,
-                Veiculo = model.SearchVeiculo,
+                FuncionarioID = model.SearchFuncionarioID,
+                VeiculoID = model.SearchVeiculoID,
 
             }, request.Page - 1, request.PageSize);
 
@@ -115,11 +118,11 @@ namespace ControleVeiculos.MVC.Controllers
         public ActionResult New()
         {
             var model = new ReservaModel();
-            var veiculo = _veiculoService.GetByID(0);
-            //var feature = _systemFeatureService.GetAll();
+            var veiculo = _veiculoService.GetAll(0);
+            var funcionario = _funcionarioService.GetAll(0);
 
             model.LoadVeiculo = veiculo.Select(x => new SelectListItem() { Text = x.modelo.ToString(), Value = x.veiculoID.ToString() }).ToList();
-            //model.LoadSetor = setor.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
+            model.LoadFuncionario = funcionario.Select(x => new SelectListItem() { Text = x.nomeFuncionario.ToString(), Value = x.funcionarioID.ToString() }).ToList();
 
             return PartialView("Maintenance", model);
         }
@@ -129,7 +132,7 @@ namespace ControleVeiculos.MVC.Controllers
             MaintenanceReservaCommand command = new MaintenanceReservaCommand();
 
             command.ReservaID = model.ReservaID;
-            command.DataReserva = model.DataReserva;
+            command.DataReserva = DateTime.Now.ToString("dd/MM/yyy");
             command.Finalidade = model.Finalidade;
             command.FuncionarioID = model.FuncionarioID;
             command.Destino = model.Destino;
@@ -155,11 +158,13 @@ namespace ControleVeiculos.MVC.Controllers
                 }
                 else if (ActionName == "Maintenance")
                 {
-                    var veiculo = _veiculoService.GetByID(0);
+                    var veiculo = _veiculoService.GetAll(0);
+                    var funcionario = _funcionarioService.GetAll(0);
 
                     model.LoadVeiculo = veiculo.Select(x => new SelectListItem() { Text = x.modelo.ToString(), Value = x.veiculoID.ToString() }).ToList();
-                    //model.LoadSetor = setor.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
+                    model.LoadFuncionario = funcionario.Select(x => new SelectListItem() { Text = x.nomeFuncionario.ToString(), Value = x.funcionarioID.ToString() }).ToList();
 
+                    model.DataReserva = Convert.ToDateTime(DateTime.Now).ToString("dd/MM/yyy");
                     return PartialView("Maintenance", model);
                 }
                 else

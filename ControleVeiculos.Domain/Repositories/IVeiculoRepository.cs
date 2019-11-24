@@ -10,6 +10,7 @@ namespace ControleVeiculos.Domain.Repositories
         void Update(Veiculo veiculo);
         Veiculo GetByID(int veiculoID);
         List<Veiculo> GetAll(FilterVeiculoCommand command);
+        List<Veiculo> GetAll(int veiculoID);
         void Delete(int veiculoID);
     }
 }

@@ -1,0 +1,11 @@
+﻿@model ControleVeiculos.MVC.Models.Reservas.ReservaModel
+
+@Html.HiddenFor(model => model.ReservaID)
+<div>
+    Deseja realmente excluir a seguinte reserva?
+    <br />
+    <br />
+    <ul>
+        <li>Data da Reserva: <strong>@Model.DataReserva</strong></li>
+    </ul>
+</div>

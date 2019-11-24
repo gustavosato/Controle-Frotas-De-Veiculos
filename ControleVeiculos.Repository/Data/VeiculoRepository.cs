@@ -95,6 +95,21 @@ namespace ControleVeiculos.Repository.Data
             }
         }
 
+        public List<Veiculo> GetAll(int veiculoID)
+        {
+            using (IDbConnection conn = new SqlConnection(ConnectionString))
+            {
+                conn.ConnectionString = this.ConnectionString;
+                conn.Open();
+
+                string sql = string.Format("SELECT * FROM Veiculos WHERE 1 = 1 ");
+
+                sql += "ORDER BY veiculoID";
+
+                return conn.Query<Veiculo>(sql).ToList();
+            }
+        }
+
         public void Delete(int veiculoID)
         {
             using (IDbConnection conn = new SqlConnection())
