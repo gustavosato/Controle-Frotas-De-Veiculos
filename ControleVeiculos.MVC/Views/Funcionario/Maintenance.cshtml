@@ -16,31 +16,31 @@
         <div class="card">
             <div class="card-body">
                 <div class="form-group row">
-                    <div class="col-md-2 mb-auto">
+                    <div class="col-md-6 mb-auto">
                         @Html.LabelFor(model => model.NomeFuncionario, new { @class = "col-sm-0 col-form-label text-left" })
-                        @Html.TextBoxFor(model => model.NomeFuncionario, new { @class = "form-control", placeholder = "Digite a ordem", @autofocus = "autofocus" })
+                        @Html.TextBoxFor(model => model.NomeFuncionario, new { @class = "form-control", placeholder = "Digite o nome", @autofocus = "autofocus" })
                         @Html.ValidationMessageFor(model => model.NomeFuncionario, "", new { @class = "form-text text-danger" })
                     </div>
-                    <div class="col-md-2 mb-auto">
+                    <div class="col-md-6 mb-auto">
                         @Html.LabelFor(model => model.Endereco, new { @class = "col-sm-0 col-form-label text-left" })
-                        @Html.TextBoxFor(model => model.Endereco, new { @class = "form-control", placeholder = "Digite a ordem", @autofocus = "autofocus" })
+                        @Html.TextBoxFor(model => model.Endereco, new { @class = "form-control", placeholder = "Digite o endereço", @autofocus = "autofocus" })
                         @Html.ValidationMessageFor(model => model.Endereco, "", new { @class = "form-text text-danger" })
                     </div>
 
                     <div class="col-md-2 mb-auto">
                         @Html.LabelFor(model => model.CPF, new { @class = "col-sm-0 col-form-label text-left" })
-                        @Html.TextBoxFor(model => model.CPF, new { @class = "form-control", placeholder = "Digite a ordem", @autofocus = "autofocus" })
+                        @Html.TextBoxFor(model => model.CPF, new { @class = "form-control", placeholder = "Digite o cpf", @autofocus = "autofocus" })
                         @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "form-text text-danger" })
                     </div>
                     <div class="col-md-2 mb-auto">
                         @Html.LabelFor(model => model.Funcao, new { @class = "col-sm-0 col-form-label text-left" })
-                        @Html.DropDownList("Funcao", Model.LoadFuncao, new { @class = "form-control" })
+                        @Html.TextBoxFor(model => model.Funcao, new { @class = "form-control", placeholder = "Digite a função", @autofocus = "autofocus" })
                         @Html.ValidationMessageFor(model => model.Funcao, "", new { @class = "form-text text-danger" })
                     </div>
 
                     <div class="col-md-2 mb-auto">
                         @Html.LabelFor(model => model.Setor, new { @class = "col-sm-0 col-form-label text-left" })
-                        @Html.DropDownList("Setor", Model.LoadSetor, new { @class = "form-control" })
+                        @Html.TextBoxFor(model => model.Setor, new { @class = "form-control", placeholder = "Digite o setor", @autofocus = "autofocus" })
                         @Html.ValidationMessageFor(model => model.Setor, "", new { @class = "form-text text-danger" })
                     </div>
 

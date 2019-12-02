@@ -25,7 +25,7 @@ namespace ControleVeiculos.MVC.Models.Funcionarios
         }
 
         //filter
-        [DisplayName("Nome do Funcionário")]
+        [DisplayName("Nome do Func.")]
         public string SearchNomeFuncionario { get; set; }
         public IList<SelectListItem> SearchLoadNomeFuncionario { get; set; }
         
@@ -45,7 +45,7 @@ namespace ControleVeiculos.MVC.Models.Funcionarios
         [Key]
         public int FuncionarioID { get; set; }
 
-        [DisplayName("Nome do Funcionario")]
+        [DisplayName("Nome do Func.")]
         public string NomeFuncionario { get; set; }
         public IList<SelectListItem> LoadNomeFuncionario { get; set; }
 

@@ -28,14 +28,14 @@ namespace ControleVeiculos.MVC.Controllers
         private readonly IUserService _userService1;
         private readonly IParameterValueService _parameterValueService;
         private readonly ISystemParameterService _systemParameterService;
-        private readonly IEncryptyService _encryptyService;
+        //private readonly IEncryptyService _encryptyService;
         private readonly IStringUtilityService _stringUtilityService;
 
 
         public UserController(IUserService userService,
                               IParameterValueService parameterValueService,
                               IUserService userService1,
-                              IEncryptyService encryptyService,
+          //                    IEncryptyService encryptyService,
                               IStringUtilityService stringUtlilityService,
                               ISystemParameterService systemParameterService)
         {
@@ -43,7 +43,7 @@ namespace ControleVeiculos.MVC.Controllers
             _userService1 = userService1;
             _parameterValueService = parameterValueService;
             _systemParameterService = systemParameterService;
-            _encryptyService = encryptyService;
+            //_encryptyService = encryptyService;
             _stringUtilityService = stringUtlilityService;
         }
 
@@ -72,7 +72,7 @@ namespace ControleVeiculos.MVC.Controllers
             try
             {
                 Result<User> user;
-               string password = _encryptyService.GetHash(model.PasswordNew);
+               //string password = _encryptyService.GetHash(model.PasswordNew);
 
                 var modelLocal = new UserModel();
 
@@ -92,7 +92,7 @@ namespace ControleVeiculos.MVC.Controllers
                     if (modelLocal == null)
                     {
                         model.Email = model.EmailNew;
-                        model.Password = password;
+                        model.Password = model.PasswordNew;
                         model.DepartamentoID = null;
                         model.FirstAccess = "True";
                         model.IsAdmin = false;
@@ -103,7 +103,7 @@ namespace ControleVeiculos.MVC.Controllers
 
                         _userService.Add(command);
 
-                        SuccessNotification(string.Format("Usuário criado com sucesso! Usuário: {0} - {1}. Aguarde a liberação do seu acesso pelo administrador.", model.UserName, model.Email));
+                        SuccessNotification(string.Format("Usuário criado com sucesso! Usuário: {0} - {1}.", model.UserName, model.Email));
 
                         return RedirectToAction("Index", "Site");
                     }
@@ -136,7 +136,7 @@ namespace ControleVeiculos.MVC.Controllers
 
                 string password = _stringUtilityService.RandomPassword(8);
 
-                string passwordHash = _encryptyService.GetHash(password);
+                //string passwordHash = _encryptyService.GetHash(password);
 
                 var modelLocal = new UserModel();
 
@@ -155,7 +155,7 @@ namespace ControleVeiculos.MVC.Controllers
                 {
                     if (modelLocal == null)
                     {
-                        model.Password = passwordHash;
+                        model.Password = model.Password;
 
                         model.FirstAccess = "true";
 
@@ -278,7 +278,7 @@ namespace ControleVeiculos.MVC.Controllers
                 string body = null;
 
                 body = "Nova senha gerada: " + newPassword;
-                model.Password = _encryptyService.GetHash(newPassword);
+                model.Password = model.Password;
                 model.FirstAccess = "True";
 
                 var command = MaintenanceUserCommand(model);
@@ -313,7 +313,7 @@ namespace ControleVeiculos.MVC.Controllers
 
             if (model != null)
             {
-                model.Password = _encryptyService.GetHash(password);
+                model.Password = model.Password;
                 model.FirstAccess = "False";
 
                 var command = MaintenanceUserCommand(model);
@@ -348,7 +348,7 @@ namespace ControleVeiculos.MVC.Controllers
 
             if (!string.IsNullOrEmpty(user.PasswordNew))
             {
-                model.Password = _encryptyService.GetHash(user.PasswordNew);
+                //model.Password = _encryptyService.GetHash(user.PasswordNew);
             }
             model.FirstAccess = "False";
 
@@ -356,7 +356,7 @@ namespace ControleVeiculos.MVC.Controllers
 
             _userService.Update(command);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Funcionario");
         }
 
         public ActionResult LoadSignin()
@@ -496,23 +496,6 @@ namespace ControleVeiculos.MVC.Controllers
                 {
                     _userService.Update(command);
 
-                    if (file != null && file.ContentLength > 0)
-                    {
-                        var fileName = Path.GetFileName(file.FileName);
-
-                        string newPath = Server.MapPath("~/App_Data/Uploads/" + SystemFeatureID + "/" + model.UserID + "/" + DateTime.Now.ToString("yyyyMMddHHmmss"));
-
-                        var dir = new DirectoryInfo(newPath);
-
-                        if (!dir.Exists) dir.Create();
-
-                        var path = Path.Combine(newPath, fileName);
-
-                        var size = (file.ContentLength / 1024) + "KB";
-
-                        file.SaveAs(path);
-                    }
-
                     SuccessNotification(string.Format("Registro atualizado com sucesso! "));
 
                     return RedirectToAction("Index");
@@ -522,23 +505,6 @@ namespace ControleVeiculos.MVC.Controllers
                     if (modelLocal.UserID == model.UserID && modelLocal.Email == model.Email) //valida caso email e alterado e existe na base
                     {
                         _userService.Update(command);
-
-                        if (file != null && file.ContentLength > 0)
-                        {
-                            var fileName = Path.GetFileName(file.FileName);
-
-                            string newPath = Server.MapPath("~/App_Data/Uploads/" + SystemFeatureID + "/" + model.UserID + "/" + DateTime.Now.ToString("yyyyMMddHHmmss"));
-
-                            var dir = new DirectoryInfo(newPath);
-
-                            if (!dir.Exists) dir.Create();
-
-                            var path = Path.Combine(newPath, fileName);
-
-                            var size = (file.ContentLength / 1024) + "KB";
-
-                            file.SaveAs(path);
-                        }
 
                         SuccessNotification(string.Format("Registro atualizado com sucesso! "));
 
@@ -556,46 +522,6 @@ namespace ControleVeiculos.MVC.Controllers
             {
                 ErrorNotification(ex.Message);
 
-                throw;
-            }
-        }
-
-        private bool change_Historical_Status;
-
-        [HttpPost]
-        public ActionResult ChangeStatus(UserModel model)
-        {
-
-            try
-            {
-                change_Historical_Status = true;
-
-                var command = MaintenanceUserCommand(model);
-
-                if (command.IsActive == true)
-                {
-                    command.IsActive = false;
-
-                    _userService.Update(command);
-
-                    SuccessNotification(string.Format("Usuário desativado com sucesso! Registro: {0} - {1}", model.UserName, model.Email));
-
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    command.IsActive = true;
-
-                    _userService.Update(command);
-
-                    SuccessNotification(string.Format("Usuário ativado com sucesso! Registro: {0} - {1}. ", command.UserName, command.Email));
-
-                    return RedirectToAction("Index");
-                }
-            }
-            catch (Exception ex)
-            {
-                ErrorNotification(ex.Message);
                 throw;
             }
         }

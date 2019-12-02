@@ -67,7 +67,7 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT r.reservaID, r.destino, FORMAT(Convert(datetime, dataReserva, 103), 'ddd dd/MM/yyyy') as dataReserva, " +
+                string sql = string.Format("SELECT r.reservaID, r.destino, r.dataReserva, " +
                                            "v.modelo as veiculoID, f.nomeFuncionario as funcionarioID, r.finalidade " +
                                            "FROM Reserva r " +
                                            "INNER JOIN Veiculos v on r.veiculoID = v.veiculoID " +
@@ -78,7 +78,7 @@ namespace ControleVeiculos.Repository.Data
                     sql += string.Format("AND r.destino LIKE '%{0}%' ", command.Destino);
 
                 if (!string.IsNullOrEmpty(command.DataReserva))
-                    sql += string.Format("AND Convert(date, r.dataReserva, 103) = Convert(date, '{0}', 103) ", command.DataReserva);
+                    sql += string.Format("AND r.dataReserva LIKE '%{0}%' ", command.DataReserva);
 
                 if (!string.IsNullOrEmpty(command.FuncionarioID))
                     sql += string.Format("AND t.funcionarioID = '{0}' ", command.FuncionarioID);

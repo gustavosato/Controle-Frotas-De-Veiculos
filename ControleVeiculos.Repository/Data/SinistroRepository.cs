@@ -21,7 +21,7 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT ISNULL(MAX(CAST(sinistroID AS INT))+1,1) FROM dbo.Sinistros");
+                string sql = string.Format("SELECT ISNULL(MAX(CAST(sinistroID AS INT))+1,1) FROM dbo.Sinistro");
 
                 int primaryKey = conn.Query<int>(sql).FirstOrDefault();
 
@@ -59,7 +59,7 @@ namespace ControleVeiculos.Repository.Data
             {
                 conn.Open();
 
-                string sql = string.Format("SELECT * FROM dbo.Sinistros WHERE sinistroID = '{0}'", sinistroID);
+                string sql = string.Format("SELECT * FROM dbo.Sinistro WHERE sinistroID = '{0}'", sinistroID);
 
                 return conn.Query<Sinistro>(sql).FirstOrDefault();
             }
@@ -72,13 +72,18 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT sinistroID, pv.parameterValue AS statusID, tl.stepName, tl.expectedResult, tl.actualResult, tl.pathEvidence " +
-                                           "FROM Sinistros tl " +
-                                           "INNER JOIN ParameterValues pv ON tl.statusID = pv.parameterValueID " +
+                string sql = string.Format("SELECT s.sinistroID, s.apolice, s.franquia, s.tipoSinistro " +
+                                           "FROM Sinistro s " +
                                            "WHERE 1 = 1 ");
 
-                //if (!string.IsNullOrEmpty(command.StatusID))
-                //    sql += string.Format("AND tl.statusID LIKE '%{0}%' ", command.StatusID);
+                if (!string.IsNullOrEmpty(command.Apolice))
+                    sql += string.Format("AND s.apolice LIKE '%{0}%' ", command.Apolice);
+
+                if (!string.IsNullOrEmpty(command.Franquia))
+                    sql += string.Format("AND s.franquia LIKE '%{0}%' ", command.Franquia);
+
+                if (!string.IsNullOrEmpty(command.TipoSinistro))
+                    sql += string.Format("AND s.tipoSinistro LIKE '%{0}%' ", command.TipoSinistro);
 
                 sql += "ORDER BY sinistroID";
                 return conn.Query<Sinistro>(sql).ToList();
@@ -92,7 +97,7 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("DELETE FROM dbo.Sinistros WHERE sinistroID = '{0}'", sinistroID);
+                string sql = string.Format("DELETE FROM dbo.Sinistro WHERE sinistroID = '{0}'", sinistroID);
                 conn.ExecuteScalar(sql);
             }
         }

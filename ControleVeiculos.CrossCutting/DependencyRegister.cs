@@ -39,7 +39,7 @@ namespace ControleVeiculos.CrossCutting
             container.RegisterType<MultaService>().As<IMultaService>();
             container.RegisterType<AcessorioService>().As<IAcessorioService>();
             container.RegisterType<DocumentoService>().As<IDocumentoService>();
-            container.RegisterType<EncryptService>().As<IEncryptyService>();
+            //container.RegisterType<EncryptService>().As<IEncryptyService>();
             container.RegisterType<StringUtilityService>().As<IStringUtilityService>();
 
             //Repository

@@ -1,0 +1,11 @@
+﻿@model ControleVeiculos.MVC.Models.Seguros.SeguroModel
+
+@Html.HiddenFor(model => model.SeguroID)
+<div>
+    Deseja realmente excluir o seguinte seguro?
+    <br />
+    <br />
+    <ul>
+        <li>Seguro: <strong>@Model.Apolice</strong></li>
+    </ul>
+</div>

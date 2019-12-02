@@ -221,10 +221,10 @@ namespace ControleVeiculos.Repository.Map
             veiculoDapper.placa = veiculo.placa;
             veiculoDapper.status = veiculo.status;
             veiculoDapper.ano = veiculo.ano;
-            veiculoDapper.numeroChassi = veiculo.numeroChassi;
-            veiculoDapper.motor = veiculo.motor;
             veiculoDapper.manutencaoID = veiculo.manutencaoID;
             veiculoDapper.abastecimentoID = veiculo.abastecimentoID;
+            veiculoDapper.numeroChassi = veiculo.numeroChassi;
+            veiculoDapper.motor = veiculo.motor;
             
             return veiculoDapper;
         }

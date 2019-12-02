@@ -1,0 +1,11 @@
+﻿@model ControleVeiculos.MVC.Models.Sinistros.SinistroModel
+
+@Html.HiddenFor(model => model.SinistroID)
+<div>
+    Deseja realmente excluir o seguinte sinistro?
+    <br />
+    <br />
+    <ul>
+        <li>Sinistro: <strong>@Model.Apolice</strong></li>
+    </ul>
+</div>

@@ -132,7 +132,7 @@ namespace ControleVeiculos.MVC.Controllers
             MaintenanceReservaCommand command = new MaintenanceReservaCommand();
 
             command.ReservaID = model.ReservaID;
-            command.DataReserva = DateTime.Now.ToString("dd/MM/yyy");
+            command.DataReserva = model.DataReserva;
             command.Finalidade = model.Finalidade;
             command.FuncionarioID = model.FuncionarioID;
             command.Destino = model.Destino;
@@ -164,7 +164,7 @@ namespace ControleVeiculos.MVC.Controllers
                     model.LoadVeiculo = veiculo.Select(x => new SelectListItem() { Text = x.modelo.ToString(), Value = x.veiculoID.ToString() }).ToList();
                     model.LoadFuncionario = funcionario.Select(x => new SelectListItem() { Text = x.nomeFuncionario.ToString(), Value = x.funcionarioID.ToString() }).ToList();
 
-                    model.DataReserva = Convert.ToDateTime(DateTime.Now).ToString("dd/MM/yyy");
+                    model.DataReserva = Convert.ToString("dd/MM/yyy");
                     return PartialView("Maintenance", model);
                 }
                 else

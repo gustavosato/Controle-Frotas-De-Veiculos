@@ -21,7 +21,7 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT ISNULL(MAX(CAST(seguroID AS INT))+1,1) FROM dbo.Seguros");
+                string sql = string.Format("SELECT ISNULL(MAX(CAST(seguroID AS INT))+1,1) FROM dbo.Seguro");
 
                 int primaryKey = conn.Query<int>(sql).FirstOrDefault();
 
@@ -59,7 +59,7 @@ namespace ControleVeiculos.Repository.Data
             {
                 conn.Open();
 
-                string sql = string.Format("SELECT * FROM dbo.Seguros WHERE seguroID = '{0}'", seguroID);
+                string sql = string.Format("SELECT * FROM dbo.Seguro WHERE seguroID = '{0}'", seguroID);
 
                 return conn.Query<Seguro>(sql).FirstOrDefault();
             }
@@ -72,13 +72,35 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT seguroID, pv.parameterValue AS statusID, tl.stepName, tl.expectedResult, tl.actualResult, tl.pathEvidence " +
-                                           "FROM Seguros tl " +
-                                           "INNER JOIN ParameterValues pv ON tl.statusID = pv.parameterValueID " +
+                string sql = string.Format("SELECT se.seguroID, v.modelo AS veiculoID, se.apolice, se.tipoSeguro, se.dataContratacao, " +
+                                           "se.vigencia, se.fimContratacao " +
+                                           "FROM Seguro se " +
+                                           "INNER JOIN Veiculos v ON se.veiculoID = v.veiculoID " +
                                            "WHERE 1 = 1 ");
 
-                //if (!string.IsNullOrEmpty(command.StatusID))
-                //    sql += string.Format("AND tl.statusID LIKE '%{0}%' ", command.StatusID);
+                if (!string.IsNullOrEmpty(command.Apolice))
+                    sql += string.Format("AND se.apolice LIKE '%{0}%' ", command.Apolice);
+
+                if (!string.IsNullOrEmpty(command.VeiculoID))
+                    sql += string.Format("AND se.veiculoID = '{0}' ", command.VeiculoID);
+
+                if (!string.IsNullOrEmpty(command.Seguradora))
+                    sql += string.Format("AND se.seguradora LIKE '%{0}%' ", command.Seguradora);
+
+                if (!string.IsNullOrEmpty(command.Franquia))
+                    sql += string.Format("AND se.franquia LIKE '%{0}%' ", command.Franquia);
+
+                if (!string.IsNullOrEmpty(command.TipoSeguro))
+                    sql += string.Format("AND se.tipoSeguro LIKE '%{0}%' ", command.TipoSeguro);
+
+                if (!string.IsNullOrEmpty(command.DataContratacao))
+                    sql += string.Format("AND se.dataContratacao LIKE '%{0}%' ", command.DataContratacao);
+
+                if (!string.IsNullOrEmpty(command.Vigencia))
+                    sql += string.Format("AND se.vigencia LIKE '%{0}%' ", command.Vigencia);
+
+                if (!string.IsNullOrEmpty(command.FimContratacao))
+                    sql += string.Format("AND se.fimContratacao LIKE '%{0}%' ", command.FimContratacao);
 
                 sql += "ORDER BY seguroID";
                 return conn.Query<Seguro>(sql).ToList();
@@ -92,7 +114,7 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("DELETE FROM dbo.Seguros WHERE seguroID = '{0}'", seguroID);
+                string sql = string.Format("DELETE FROM dbo.Seguro WHERE seguroID = '{0}'", seguroID);
                 conn.ExecuteScalar(sql);
             }
         }

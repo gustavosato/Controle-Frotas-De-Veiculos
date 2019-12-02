@@ -3,6 +3,7 @@
     public class FilterSeguroCommand
     {
         public string Apolice  { get; set; }
+        public string VeiculoID { get; set; }
         public string Seguradora { get; set; }
         public string Franquia { get; set; }
         public string TipoSeguro { get; set; }

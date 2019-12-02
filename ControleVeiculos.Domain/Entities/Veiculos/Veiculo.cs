@@ -8,9 +8,10 @@
         public string placa { get; set; }
         public string status { get; set; }
         public string ano { get; set; }
-        public string numeroChassi { get; set; }
-        public string motor { get; set; }
         public string manutencaoID { get; set; }
         public string abastecimentoID { get; set; }
+        public string numeroChassi { get; set; }
+        public string motor { get; set; }
+        
     }
 }

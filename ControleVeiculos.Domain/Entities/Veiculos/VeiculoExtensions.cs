@@ -19,10 +19,10 @@ namespace ControleVeiculos.Domain.Entities.Veiculos
             veiculo.placa = command.Placa;
             veiculo.status = command.Status;
             veiculo.ano = command.Ano;
-            veiculo.numeroChassi = command.NumeroChassi;
-            veiculo.motor = command.Motor;
             veiculo.manutencaoID = command.ManutencaoID;
             veiculo.abastecimentoID = command.AbastecimentoID;
+            veiculo.numeroChassi = command.NumeroChassi;
+            veiculo.motor = command.Motor;
             
             return veiculo;
         }

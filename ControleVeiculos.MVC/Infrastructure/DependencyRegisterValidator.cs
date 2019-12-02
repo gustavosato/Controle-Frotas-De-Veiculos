@@ -14,6 +14,8 @@ using ControleVeiculos.MVC.Models.Multas;
 using ControleVeiculos.MVC.Models.Rotas;
 using ControleVeiculos.MVC.Models.Financas;
 using ControleVeiculos.MVC.Models.Reservas;
+using ControleVeiculos.MVC.Models.Seguros;
+using ControleVeiculos.MVC.Models.Sinistros;
 
 
 using ControleVeiculos.MVC.Validations.Users;
@@ -30,6 +32,8 @@ using ControleVeiculos.MVC.Validations.Multas;
 using ControleVeiculos.MVC.Validations.Rotas;
 using ControleVeiculos.MVC.Validations.Financas;
 using ControleVeiculos.MVC.Validations.Reservas;
+using ControleVeiculos.MVC.Validations.Seguros;
+using ControleVeiculos.MVC.Validations.Sinistros;
 
 
 
@@ -94,6 +98,14 @@ namespace ControleVeiculos.Infrastructure
 
             builder.RegisterType<ReservaValidator>()
                 .Keyed<IValidator>(typeof(IValidator<ReservaModel>))
+                .As<IValidator>();
+
+            builder.RegisterType<SeguroValidator>()
+                .Keyed<IValidator>(typeof(IValidator<SeguroModel>))
+                .As<IValidator>();
+
+            builder.RegisterType<SinistroValidator>()
+                .Keyed<IValidator>(typeof(IValidator<SinistroModel>))
                 .As<IValidator>();
 
             return builder;

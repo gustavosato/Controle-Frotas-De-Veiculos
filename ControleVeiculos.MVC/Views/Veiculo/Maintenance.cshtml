@@ -34,7 +34,7 @@
                     </div>
                     <div class="col-md-2 mb-auto">
                         @Html.LabelFor(model => model.Status, new { @class = "col-sm-0 col-form-label text-left" })
-                        @Html.DropDownList("Status", Model.LoadStatus, new { @class = "form-control" })
+                        @Html.TextBoxFor(model => model.Status, new { @class = "form-control", placeholder = "Digite o status", @autofocus = "autofocus" })
                         @Html.ValidationMessageFor(model => model.Status, "", new { @class = "form-text text-danger" })
                     </div>
 

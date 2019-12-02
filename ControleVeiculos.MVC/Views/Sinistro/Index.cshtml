@@ -1,6 +1,6 @@
-﻿@model ControleVeiculos.MVC.Models.TestCases.TestCaseModel
+﻿@model ControleVeiculos.MVC.Models.Sinistros.SinistroModel
 @{
-    ViewBag.Title = " - Testes";
+    ViewBag.Title = " - Sinistros";
     Layout = "~/Views/Shared/_ContentPage.cshtml";
 }
 
@@ -33,27 +33,23 @@
                     <div class="row">
                         <div class="col-md-12 mx-auto">
                             <div class="form-group row">
-                                @Html.LabelFor(model => model.SearchTestCase, new { @class = "col-sm-2 col-form-label text-right" })
+                                @Html.LabelFor(model => model.SearchApolice, new { @class = "col-sm-2 col-form-label text-right" })
                                 <div class="col-sm-3">
                                     <div class="input-group">
-                                        @Html.TextBoxFor(model => model.SearchTestCase, null, new { @class = "form-control" })
+                                        @Html.TextBoxFor(model => model.SearchApolice, null, new { @class = "form-control" })
                                     </div>
                                 </div>
-                                @Html.LabelFor(model => model.SearchFeatureID, new { @class = "col-sm-2 col-form-label text-right" })
+                                @Html.LabelFor(model => model.SearchFranquia, new { @class = "col-sm-2 col-form-label text-right" })
                                 <div class="col-sm-3">
-                                    @Html.DropDownList("SearchFeatureID", Model.SearchLoadFeature, "Selecione...", new { @class = "form-control" })
+                                    @Html.TextBoxFor(model => model.SearchFranquia, null, new { @class = "form-control" })
                                 </div>
                             </div>
-                           
+
                             <div class="form-group row">
-                                @Html.LabelFor(model => model.SearchTestTypeID, new { @class = "col-sm-2 col-form-label text-right" })
-                                <div class="col-sm-3">
-                                    @Html.DropDownList("SearchTestTypeID", Model.SearchLoadTestType, "Selecione...", new { @class = "form-control" })
-                                </div>
-                                @Html.LabelFor(model => model.SearchStatusID, new { @class = "col-sm-2 col-form-label text-right" })
+                                @Html.LabelFor(model => model.SearchTipoSinistro, new { @class = "col-sm-2 col-form-label text-right" })
                                 <div class="col-sm-3">
                                     <div class="input-group">
-                                        @Html.DropDownList("SearchStatusID", Model.SearchLoadStatus, "Selecione...", new { @class = "form-control" })
+                                        @Html.TextBoxFor(model => model.SearchTipoSinistro, null, new { @class = "form-control" })
                                     </div>
                                 </div>
                             </div>
@@ -75,19 +71,19 @@
             </div>
 
             <div class="card-body">
-                <div><h5>Casos de Teste</h5></div>
+                <div><h5>Funcionários</h5></div>
 
-                <div id="testCase-grid"></div>
+                <div id="sinistro-grid"></div>
                 <script>
 
                 $(document).ready(function () {
-                    $("#testCase-grid").kendoGrid({
+                    $("#sinistro-grid").kendoGrid({
 
                 dataSource: {
                     type: "json",
                 transport: {
                 read: {
-                    url: "@Html.Raw(Url.Action("GetAll", "TestCase"))",
+                    url: "@Html.Raw(Url.Action("GetAll", "Sinistro"))",
                     type: "POST",
                     dataType: "json",
                     data: additionalData
@@ -121,40 +117,20 @@
                 }
                 },
                     columns: [{
-                        field: "StatusID",
-                        title: "Status",
+                        field: "Apolice",
+                        title: "Apólice",
                         width: 50,
                         headerAttributes: { style: "text-align:left" },
                         attributes: { class: "text-left" },
 
                     },{
-                        field: "TestCase",
-                        title: "Caso de Teste",
-                        width: 150,
+                        field: "Franquia",
+                        title: "Franquia",
+                        width: 80,
                         headerAttributes: { style: "text-align:left" }
                     },{
-                        field: "FeatureID",
-                        title: "Funcionalidade",
-                        width: 50,
-                        headerAttributes: { style: "text-align:left" }
-                    },{
-                        field: "StartExecution",
-                        title: "Inicio da Execução",
-                        width: 50,
-                        headerAttributes: { style: "text-align:left" }
-                    },{
-                        field: "EndExecution",
-                        title: "Fim da Execução",
-                        width: 50,
-                        headerAttributes: { style: "text-align:left" }
-                    }, {
-                        field: "TimeExecution",
-                        title: "Tempo de Execução",
-                        width: 50,
-                        headerAttributes: { style: "text-align:left" }
-                    }, {
-                        field: "TestTypeID",
-                        title: "Tipo de Teste",
+                        field: "TipoSinistro",
+                        title: "Tipo de Sinistro",
                         width: 50,
                         headerAttributes: { style: "text-align:left" }
                     }, {
@@ -163,12 +139,12 @@
                         width: 50,
                         headerAttributes: { style: "text-align:center" },
                         attributes: { style: "text-align:center" },
-                        template: '<div title="Editar Pacote" class="btn btn-primary btn-sm text-center" onclick="Edit(#=TestCaseID#)" data-toggle="modal" data-target="\\#MaintenanceModal"> <i class="fa fa-edit"></i> </div> ' +
-                                    '<div title="Excluir Pacote" class="btn btn-danger btn-sm text-center" onclick="Delete(#=TestCaseID#)" data-toggle="modal" data-target="\\#DeleteModal"> <i class="fa fa-trash"></i> </div> '
+                        template: '<div title="Editar Funcionário" class="btn btn-primary btn-sm text-center" onclick="Edit(#=SinistroID#)" data-toggle="modal" data-target="\\#MaintenanceModal"> <i class="fa fa-edit"></i> </div> ' +
+                                    '<div title="Excluir Funcionário" class="btn btn-danger btn-sm text-center" onclick="Delete(#=SinistroID#)" data-toggle="modal" data-target="\\#DeleteModal"> <i class="fa fa-trash"></i> </div> '
 
                       }],
                     excelExport: function (e) {
-                        e.workbook.fileName = "LeanTest Cloud - Casos de Teste.xlsx";
+                        e.workbook.fileName = "Lista de Sinistros.xlsx";
                     }
                 });
             });
@@ -177,13 +153,13 @@
                 <script type="text/javascript">
                     $(document).ready(function () {
                         $('#btnExportExcel').click(function () {
-                            var grid = $('#testCase-grid').data('kendoGrid');
+                            var grid = $('#sinistro-grid').data('kendoGrid');
                             grid.saveAsExcel();
                             return false;
                         });
 
                         $('#btn-aplicar-filtros').click(function () {
-                            var grid = $('#testCase-grid').data('kendoGrid');
+                            var grid = $('#sinistro-grid').data('kendoGrid');
                             if (grid.dataSource.page() == 1) {
                                 grid.dataSource.page(1);
                             }
@@ -194,42 +170,34 @@
                         });
 
 
-                        $("#@Html.FieldIdFor(model => model.SearchTestCase)").keydown(function (event) {
+                        $("#@Html.FieldIdFor(model => model.SearchApolice)").keydown(function (event) {
                             if (event.keyCode == 13) {
                                 $("#btn-aplicar-filtros").click();
                                 return false;
                             }
                         });
 
-                        $("#@Html.FieldIdFor(model => model.SearchFeatureID)").keydown(function (event) {
+                        $("#@Html.FieldIdFor(model => model.SearchFranquia)").keydown(function (event) {
                             if (event.keyCode == 13) {
                                 $("#btn-aplicar-filtros").click();
                                 return false;
                             }
                         });
 
-                        $("#@Html.FieldIdFor(model => model.SearchTestTypeID)").keydown(function (event) {
+                        $("#@Html.FieldIdFor(model => model.SearchTipoSinistro)").keydown(function (event) {
                             if (event.keyCode == 13) {
                                 $("#btn-aplicar-filtros").click();
                                 return false;
                             }
                         });
-
-
-                        $("#@Html.FieldIdFor(model => model.SearchStatusID)").keydown(function (event) {
-                            if (event.keyCode == 13) {
-                                $("#btn-aplicar-filtros").click();
-                                return false;
-                            }
-                        });
+                        
                     });
 
                 function additionalData() {
                     var data = {
-                        SearchTestCase: $('#@Html.FieldIdFor(model => model.SearchTestCase)').val(),
-                        SearchFeatureID: $('#@Html.FieldIdFor(model => model.SearchFeatureID)').val(),
-                        SearchTestTypeID: $('#@Html.FieldIdFor(model => model.SearchTestTypeID)').val(),
-                        SearchStatusID: $('#@Html.FieldIdFor(model => model.SearchStatusID)').val()
+                        SearchApolice: $('#@Html.FieldIdFor(model => model.SearchApolice)').val(),
+                        SearchFranquia: $('#@Html.FieldIdFor(model => model.SearchFranquia)').val(),
+                        SearchTipoSinistro: $('#@Html.FieldIdFor(model => model.SearchTipoSinistro)').val(),
 
                     };
 
@@ -239,16 +207,16 @@
 
                     };
 
-                    var Delete = function (testCaseID) {
-                        var url = '/TestCase/GetByID?testCaseID=' + testCaseID + '&ActionName=Delete';
+                    var Delete = function (sinistroID) {
+                        var url = '/Sinistro/GetByID?sinistroID=' + sinistroID + '&ActionName=Delete';
 
                         $('#DeleteModalDiv').load(url, function () {
 
                         })
                     };
 
-                    var Edit = function (testCaseID) {
-                        var url = '/TestCase/GetByID?testCaseID=' + testCaseID + '&ActionName=Maintenance';
+                    var Edit = function (sinistroID) {
+                        var url = '/Sinistro/GetByID?sinistroID=' + sinistroID + '&ActionName=Maintenance';
 
                         $('#MaintenanceModalDiv').load(url, function () {
 
@@ -271,7 +239,7 @@
                     };
 
                     var Add = function () {
-                        var url = '/TestCase/New';
+                        var url = '/Sinistro/New';
 
                         $('#AddModalDiv').load(url, function () {
 
@@ -299,13 +267,13 @@
     </div>
 }
 
-@using (Html.BeginForm("Add", "TestCase", FormMethod.Post))
+@using (Html.BeginForm("Add", "Sinistro", FormMethod.Post))
 {
     <div class="modal fade" id="AddModal" role="dialog">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title">Novo Caso de Teste</h3>
+                    <h3 class="modal-title">Novo Sinistro</h3>
                     <a href="#" class="close" data-dismiss="modal">&times;</a>
                 </div>
                 <div class="modal-body" id="AddModalDiv">
@@ -323,7 +291,7 @@
     </div>
 }
 
-@using (Html.BeginForm("Update", "TestCase", FormMethod.Post))
+@using (Html.BeginForm("Update", "Sinistro", FormMethod.Post))
 {
     <div class="modal fade" id="MaintenanceModal" role="dialog">
         <div class="modal-dialog modal-xl">
@@ -347,7 +315,7 @@
     </div>
 }
 
-@using (Html.BeginForm("Delete", "TestCase", FormMethod.Post, new { novalidate = "novalidate" }))
+@using (Html.BeginForm("Delete", "Sinistro", FormMethod.Post, new { novalidate = "novalidate" }))
 {
     <div class="modal fade" id="DeleteModal" role="dialog">
         <div class="modal-dialog">

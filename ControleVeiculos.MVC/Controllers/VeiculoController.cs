@@ -6,7 +6,6 @@ using System.Linq;
 using ControleVeiculos.MVC.Extensions;
 using System.Web.Mvc;
 using ControleVeiculos.Domain;
-//using ControleVeiculos.MVC.Infrastructure.Mvc;
 using ControleVeiculos.Domain.Command.Veiculos;
 using ControleVeiculos.Domain.Entities.Veiculos;
 
@@ -42,16 +41,7 @@ namespace ControleVeiculos.MVC.Controllers
             }
 
             var model = new VeiculoModel();
-            //var status = _parameterValueService.GetAllByParameterID("223202");
-            //var ano = _parameterValueService.GetAllByParameterID("223202");
-            ////var feature = _systemFeatureService.GetAll();
-            //var motor = _parameterValueService.GetAllByParameterID("40");
-
-            //model.SearchLoadStatus = status.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-            //model.SearchLoadAno = ano.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-            ////model.SearchLoadFeature = feature.Select(x => new SelectListItem() { Text = x.systemFeatureName.ToString(), Value = x.systemFeatureID.ToString() }).ToList();
-            //model.SearchLoadMotor = motor.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-
+            
             return View(model);
         }
 
@@ -78,7 +68,7 @@ namespace ControleVeiculos.MVC.Controllers
 
             catch (Exception ex)
             {
-                ErrorNotification(string.Format("Não foi possível incluir um novo veiculo: {0}, " + ex.Message.ToString(), model.Modelo));
+                ErrorNotification(string.Format("Não foi possível incluir um novo veiculo: {0}, ", model.Modelo));
 
                 return RedirectToAction("Index", "Veiculo");
             }
@@ -113,16 +103,7 @@ namespace ControleVeiculos.MVC.Controllers
         public ActionResult New()
         {
             var model = new VeiculoModel();
-            //var status = _parameterValueService.GetAllByParameterID("223202");
-            //var ano = _parameterValueService.GetAllByParameterID("223202");
-            ////var feature = _systemFeatureService.GetAll();
-            //var motor = _parameterValueService.GetAllByParameterID("40");
-
-            //model.LoadStatus = status.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-            //model.LoadAno = ano.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-            //// model.LoadFeature = feature.Select(x => new SelectListItem() { Text = x.systemFeatureName.ToString(), Value = x.systemFeatureID.ToString() }).ToList();
-            //model.LoadMotor = motor.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-
+            
             return PartialView("Maintenance", model);
         }
 
@@ -160,16 +141,6 @@ namespace ControleVeiculos.MVC.Controllers
                 }
                 else if (ActionName == "Maintenance")
                 {
-                    //var status = _parameterValueService.GetAllByParameterID("223202");
-                    //var ano = _parameterValueService.GetAllByParameterID("223202");
-                    ////var feature = _systemFeatureService.GetAll();
-                    //var motor = _parameterValueService.GetAllByParameterID("40");
-
-                    //model.LoadStatus = status.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-                    //model.LoadAno = ano.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-                    ////model.LoadFeature = feature.Select(x => new SelectListItem() { Text = x.systemFeatureName.ToString(), Value = x.systemFeatureID.ToString() }).ToList();
-                    //model.LoadMotor = motor.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-
                     return PartialView("Maintenance", model);
                 }
                 else
