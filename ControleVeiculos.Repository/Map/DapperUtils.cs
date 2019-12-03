@@ -402,7 +402,7 @@ namespace ControleVeiculos.Repository.Map
             multaDapper.multaID = primaryKey;
             multaDapper.veiculoID = multa.veiculoID;
             multaDapper.funcionarioID = multa.funcionarioID;
-            
+
             return multaDapper;
         }
 

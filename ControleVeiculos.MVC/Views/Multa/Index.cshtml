@@ -33,15 +33,15 @@
                     <div class="row">
                         <div class="col-md-12 mx-auto">
                             <div class="form-group row">
-                                @Html.LabelFor(model => model.SearchVeiculo, new { @class = "col-sm-2 col-form-label text-right" })
+                                @Html.LabelFor(model => model.SearchVeiculoID, new { @class = "col-sm-2 col-form-label text-right" })
                                 <div class="col-sm-3">
                                     <div class="input-group">
-                                        @Html.TextBoxFor(model => model.SearchVeiculo, null, new { @class = "form-control" })
+                                        @Html.DropDownList("SearchVeiculoID", Model.SearchLoadVeiculo, "Selecione...", new { @class = "form-control" })
                                     </div>
                                 </div>
-                                @Html.LabelFor(model => model.SearchFuncionario, new { @class = "col-sm-2 col-form-label text-right" })
+                                @Html.LabelFor(model => model.SearchFuncionarioID, new { @class = "col-sm-2 col-form-label text-right" })
                                 <div class="col-sm-3">
-                                    @Html.TextBoxFor(model => model.SearchFuncionario, null, new { @class = "form-control" })
+                                    @Html.DropDownList("SearchFuncionarioID", Model.SearchLoadFuncionario, "Selecione...", new { @class = "form-control" })
                                 </div>
                             </div>
                             <br />
@@ -107,14 +107,14 @@
                 }
                 },
                     columns: [{
-                        field: "Funcionario",
+                        field: "FuncionarioID",
                         title: "Nome do Funcionário",
                         width: 50,
                         headerAttributes: { style: "text-align:left" },
                         attributes: { class: "text-left" },
 
                     },{
-                        field: "Veiculo",
+                        field: "VeiculoID",
                         title: "Veículo",
                         width: 80,
                         headerAttributes: { style: "text-align:left" }
@@ -155,14 +155,14 @@
                         });
 
 
-                        $("#@Html.FieldIdFor(model => model.SearchVeiculo)").keydown(function (event) {
+                        $("#@Html.FieldIdFor(model => model.SearchVeiculoID)").keydown(function (event) {
                             if (event.keyCode == 13) {
                                 $("#btn-aplicar-filtros").click();
                                 return false;
                             }
                         });
 
-                        $("#@Html.FieldIdFor(model => model.SearchFuncionario)").keydown(function (event) {
+                        $("#@Html.FieldIdFor(model => model.SearchFuncionarioID)").keydown(function (event) {
                             if (event.keyCode == 13) {
                                 $("#btn-aplicar-filtros").click();
                                 return false;
@@ -173,8 +173,8 @@
 
                 function additionalData() {
                     var data = {
-                        SearchVeiculo: $('#@Html.FieldIdFor(model => model.SearchVeiculo)').val(),
-                        SearchFuncionario: $('#@Html.FieldIdFor(model => model.SearchFuncionario)').val(),
+                        SearchVeiculoID: $('#@Html.FieldIdFor(model => model.SearchVeiculoID)').val(),
+                        SearchFuncionarioID: $('#@Html.FieldIdFor(model => model.SearchFuncionarioID)').val(),
 
                     };
 

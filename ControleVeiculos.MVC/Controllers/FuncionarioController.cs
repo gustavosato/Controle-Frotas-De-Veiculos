@@ -163,11 +163,6 @@ namespace ControleVeiculos.MVC.Controllers
 
                     return PartialView("Maintenance", model);
                 }
-                else
-                {
-                    return PartialView("StatusChange", model);
-                }
-
             }
 
             return RedirectToAction("Index", "Funcionario");

@@ -22,11 +22,11 @@ namespace ControleVeiculos.MVC.Models.Multas
 
         //filter
         [DisplayName("Veículo")]
-        public string SearchVeiculo { get; set; }
+        public string SearchVeiculoID { get; set; }
         public IList<SelectListItem> SearchLoadVeiculo { get; set; }
         
         [DisplayName("Funcionário")]
-        public string SearchFuncionario { get; set; }
+        public string SearchFuncionarioID { get; set; }
         public IList<SelectListItem> SearchLoadFuncionario { get; set; }
 
         //crud

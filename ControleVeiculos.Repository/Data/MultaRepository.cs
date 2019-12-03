@@ -72,8 +72,10 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT m.multaID, m.veiculoID, m.funcionarioID " +
+                string sql = string.Format("SELECT m.multaID, v.modelo as veiculoID, f.nomeFuncionario as funcionarioID " +
                                            "FROM Multas m " +
+                                           "INNER JOIN Veiculos v on m.veiculoID = v.veiculoID " +
+                                           "INNER JOIN Funcionarios f on m.funcionarioID = f.FuncionarioID " +
                                            "WHERE 1 = 1 ");
 
                 if (!string.IsNullOrEmpty(command.VeiculoID))

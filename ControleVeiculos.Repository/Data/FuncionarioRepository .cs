@@ -25,7 +25,7 @@ namespace ControleVeiculos.Repository.Data
                 int primaryKey = conn.Query<int>(sql).FirstOrDefault();
                 FuncionarioDapper funcionarioDapper = Funcionario.Map(primaryKey);
                 try { 
-                conn.Insert<FuncionarioDapper>(funcionarioDapper);
+                    conn.Insert<FuncionarioDapper>(funcionarioDapper);
                 }catch(Exception ex)
                 {
                     var mensagem = ex.Message;

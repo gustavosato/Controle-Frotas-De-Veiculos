@@ -72,7 +72,7 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT r.rotaID, r.cidade, r.estado, r.dataIda, r.DataVolta " +
+                string sql = string.Format("SELECT r.rotaID, r.cidade, r.estado, r.distancia, r.dataIda, r.DataVolta " +
                                            "FROM Rotas r " +
                                            "WHERE 1 = 1 ");
 

@@ -6,6 +6,7 @@ using System.Linq;
 using ControleVeiculos.MVC.Extensions;
 using System.Web.Mvc;
 using ControleVeiculos.Domain;
+//using ControleVeiculos.MVC.Infrastructure.Mvc;
 using ControleVeiculos.Domain.Command.Veiculos;
 using ControleVeiculos.Domain.Entities.Veiculos;
 
@@ -28,7 +29,6 @@ namespace ControleVeiculos.MVC.Controllers
             _parameterValueService = parameterValueService;
             _systemFeatureService = systemFeatureService;
             _veiculoService = veiculoService;
-
         }
 
         public ActionResult Index()
@@ -41,7 +41,7 @@ namespace ControleVeiculos.MVC.Controllers
             }
 
             var model = new VeiculoModel();
-            
+
             return View(model);
         }
 
@@ -56,7 +56,7 @@ namespace ControleVeiculos.MVC.Controllers
 
                     _veiculoService.Add(command);
 
-                    SuccessNotification(string.Format("Veículo adicionado com sucesso! Modelo: {0}.", model.Modelo));
+                    SuccessNotification(string.Format("Veículo adicionado com sucesso! Veículo: {0}.", model.Modelo));
 
                     return RedirectToAction("Index", "Veiculo");
                 }
@@ -129,11 +129,13 @@ namespace ControleVeiculos.MVC.Controllers
         {
             var model = new VeiculoModel();
 
-            Result<Veiculo> veiculo = _veiculoService.GetByID(veiculoID);
+            Session["veiculoID"] = model.VeiculoID;
 
-            if (veiculo.IsSuccess)
+            Result<Veiculo> Veiculo = _veiculoService.GetByID(veiculoID);
+
+            if (Veiculo.IsSuccess)
             {
-                model = veiculo.Value.ToModel();
+                model = Veiculo.Value.ToModel();
 
                 if (ActionName == "Delete")
                 {
@@ -143,11 +145,6 @@ namespace ControleVeiculos.MVC.Controllers
                 {
                     return PartialView("Maintenance", model);
                 }
-                else
-                {
-                    return PartialView("StatusChange", model);
-                }
-
             }
 
             return RedirectToAction("Index", "Veiculo");
@@ -159,7 +156,7 @@ namespace ControleVeiculos.MVC.Controllers
             {
                 if (veiculoID == 0)
                 {
-                    ErrorNotification(string.Format("O veiculo selecionado não pode ser excluido! Modelo: {0} ", veiculoID));
+                    ErrorNotification(string.Format("O veiculo selecionado não pode ser excluido!"));
                     return Redirect("Index");
                 }
                 var model = new VeiculoModel();
@@ -172,7 +169,7 @@ namespace ControleVeiculos.MVC.Controllers
 
                     _veiculoService.Delete(model.VeiculoID);
 
-                    SuccessNotification(string.Format("Veiculo excluido com sucesso! Modelo: {0}", model.Modelo));
+                    SuccessNotification(string.Format("Veiculo excluido com sucesso! Veículo: {0}", model.Modelo));
 
                     return RedirectToAction("Index");
                 }
@@ -199,7 +196,7 @@ namespace ControleVeiculos.MVC.Controllers
 
                     _veiculoService.Update(command);
 
-                    SuccessNotification(string.Format("Veículo atualizado com sucesso! Modelo: {0}", model.Modelo));
+                    SuccessNotification(string.Format("Veículo atualizado com sucesso! Veículo: {0}", model.Modelo));
 
                     return RedirectToAction("Index");
                 }

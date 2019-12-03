@@ -18,17 +18,25 @@ namespace ControleVeiculos.MVC.Controllers
         private readonly IUserService _userService;
         private readonly ISystemFeatureService _systemFeatureService;
         private readonly IMultaService _multaService;
+        private readonly IFuncionarioService _funcionarioService;
+        private readonly IVeiculoService _veiculoService;
+
 
 
         public MultaController(IUserService userService,
                                     IParameterValueService parameterValueService,
                                     IMultaService multaService,
+                                    IFuncionarioService funcionarioService,
+                                    IVeiculoService veiculoService,
                                     ISystemFeatureService systemFeatureService)
         {
             _userService = userService;
             _parameterValueService = parameterValueService;
             _systemFeatureService = systemFeatureService;
             _multaService = multaService;
+            _funcionarioService = funcionarioService;
+            _veiculoService = veiculoService;
+
         }
 
         public ActionResult Index()
@@ -41,13 +49,12 @@ namespace ControleVeiculos.MVC.Controllers
             }
 
             var model = new MultaModel();
-            //var funcao = _parameterValueService.GetAllByParameterID("223202");
-            ////var feature = _systemFeatureService.GetAll();
-            //var setor = _parameterValueService.GetAllByParameterID("40");
-            
-            //model.SearchLoadFuncao = funcao.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-            ////model.SearchLoadFeature = feature.Select(x => new SelectListItem() { Text = x.systemFeatureName.ToString(), Value = x.systemFeatureID.ToString() }).ToList();
-            //model.SearchLoadSetor = setor.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
+            var funcionario = _funcionarioService.GetAll(0);
+            var veiculo = _veiculoService.GetAll(0);
+
+
+            model.SearchLoadFuncionario = funcionario.Select(x => new SelectListItem() { Text = x.nomeFuncionario.ToString(), Value = x.funcionarioID.ToString() }).ToList();
+            model.SearchLoadVeiculo = veiculo.Select(x => new SelectListItem() { Text = x.modelo.ToString(), Value = x.veiculoID.ToString() }).ToList();
 
             return View(model);
         }
@@ -86,8 +93,8 @@ namespace ControleVeiculos.MVC.Controllers
         {
             var multas = _multaService.GetAll(new FilterMultaCommand
             {
-                VeiculoID = model.SearchVeiculo,
-                FuncionarioID = model.SearchFuncionario,
+                VeiculoID = model.SearchVeiculoID,
+                FuncionarioID = model.SearchFuncionarioID,
                 
             }, request.Page - 1, request.PageSize);
 
@@ -108,13 +115,11 @@ namespace ControleVeiculos.MVC.Controllers
         public ActionResult New()
         {
             var model = new MultaModel();
-           // var funcao = _parameterValueService.GetAllByParameterID("223202");
-           // //var feature = _systemFeatureService.GetAll();
-           // var setor = _parameterValueService.GetAllByParameterID("40");
+            var funcionario = _funcionarioService.GetAll(0);
+            var veiculo = _veiculoService.GetAll(0);
 
-           // model.LoadFuncao = funcao.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-           //// model.LoadFeature = feature.Select(x => new SelectListItem() { Text = x.systemFeatureName.ToString(), Value = x.systemFeatureID.ToString() }).ToList();
-           // model.LoadSetor = setor.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
+            model.LoadFuncionario = funcionario.Select(x => new SelectListItem() { Text = x.nomeFuncionario.ToString(), Value = x.funcionarioID.ToString() }).ToList();
+            model.LoadVeiculo = veiculo.Select(x => new SelectListItem() { Text = x.modelo.ToString(), Value = x.veiculoID.ToString() }).ToList();
 
             return PartialView("Maintenance", model);
         }
@@ -146,13 +151,11 @@ namespace ControleVeiculos.MVC.Controllers
                 }
                 else if (ActionName == "Maintenance")
                 {
-                    //var funcao = _parameterValueService.GetAllByParameterID("223202");
-                    ////var feature = _systemFeatureService.GetAll();
-                    //var setor = _parameterValueService.GetAllByParameterID("40");
+                    var funcionario = _funcionarioService.GetAll(0);
+                    var veiculo = _veiculoService.GetAll(0);
 
-                    //model.LoadFuncao = funcao.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
-                    ////model.LoadFeature = feature.Select(x => new SelectListItem() { Text = x.systemFeatureName.ToString(), Value = x.systemFeatureID.ToString() }).ToList();
-                    //model.LoadSetor = setor.Select(x => new SelectListItem() { Text = x.parameterValue.ToString(), Value = x.parameterValueID.ToString() }).ToList();
+                    model.LoadFuncionario = funcionario.Select(x => new SelectListItem() { Text = x.nomeFuncionario.ToString(), Value = x.funcionarioID.ToString() }).ToList();
+                    model.LoadVeiculo = veiculo.Select(x => new SelectListItem() { Text = x.modelo.ToString(), Value = x.veiculoID.ToString() }).ToList();
 
                     return PartialView("Maintenance", model);
                 }

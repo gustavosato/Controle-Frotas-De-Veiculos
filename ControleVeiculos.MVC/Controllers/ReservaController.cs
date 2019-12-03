@@ -164,7 +164,7 @@ namespace ControleVeiculos.MVC.Controllers
                     model.LoadVeiculo = veiculo.Select(x => new SelectListItem() { Text = x.modelo.ToString(), Value = x.veiculoID.ToString() }).ToList();
                     model.LoadFuncionario = funcionario.Select(x => new SelectListItem() { Text = x.nomeFuncionario.ToString(), Value = x.funcionarioID.ToString() }).ToList();
 
-                    model.DataReserva = Convert.ToString("dd/MM/yyy");
+                    model.DataReserva = Convert.ToDateTime(DateTime.Today).ToString("dd/MM/yyyy");
                     return PartialView("Maintenance", model);
                 }
                 else

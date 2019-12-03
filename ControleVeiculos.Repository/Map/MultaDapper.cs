@@ -8,6 +8,6 @@ namespace ControleVeiculos.Repository.Map
         public int multaID { get; set; }
         public string veiculoID { get; set; }
         public string funcionarioID { get; set; }
-        
+
     }
 }

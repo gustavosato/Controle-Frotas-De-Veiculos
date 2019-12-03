@@ -14,7 +14,7 @@ namespace ControleVeiculos.Repository.Data
 {
     public class VeiculoRepository : BaseRepository, IVeiculoRepository
     {
-        public void Add(Veiculo veiculo)
+        public void Add(Veiculo Veiculo)
         {
             using (IDbConnection conn = new SqlConnection())
             {
@@ -22,20 +22,12 @@ namespace ControleVeiculos.Repository.Data
                 conn.Open();
 
                 string sql = string.Format("SELECT ISNULL(MAX(CAST(veiculoID AS INT))+1,1) FROM dbo.Veiculos");
-
                 int primaryKey = conn.Query<int>(sql).FirstOrDefault();
-
-                VeiculoDapper veiculosDapper = veiculo.Map(primaryKey);
-
-                //conn.Insert<VeiculosDapper>(veiculosDapper);
-
-                try
+                VeiculoDapper veiculoDapper = Veiculo.Map(primaryKey);
+                try { 
+                    conn.Insert<VeiculoDapper>(veiculoDapper);
+                }catch(Exception ex)
                 {
-                    conn.Insert<VeiculoDapper>(veiculosDapper);
-                }
-                catch (Exception ex)
-                {
-                    //throw new Exception(ex.Message.ToString());
                     var mensagem = ex.Message;
                 }
             }
@@ -48,9 +40,9 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                VeiculoDapper veiculosDapper = veiculo.Map(veiculo.veiculoID);
+                VeiculoDapper veiculoDapper = veiculo.Map(veiculo.veiculoID);
 
-                conn.Update<VeiculoDapper>(veiculosDapper);
+                conn.Update<VeiculoDapper>(veiculoDapper);
             }
         }
 
@@ -75,7 +67,7 @@ namespace ControleVeiculos.Repository.Data
 
                 string sql = string.Format("SELECT v.modelo, v.cor, v.placa, v.status, v.ano, v.motor " +
                                            "FROM Veiculos v " +
-                                           "WHERE 1 = 1 ");
+                                           "WHERE 1 = 1");
 
                 if (!string.IsNullOrEmpty(command.Modelo))
                     sql += string.Format("AND v.modelo LIKE '%{0}%' ", command.Modelo);
@@ -89,11 +81,12 @@ namespace ControleVeiculos.Repository.Data
                 if (!string.IsNullOrEmpty(command.Motor))
                     sql += string.Format("AND v.motor LIKE '%{0}%' ", command.Motor);
 
-
                 sql += "ORDER BY v.modelo";
+
                 return conn.Query<Veiculo>(sql).ToList();
             }
         }
+
 
         public List<Veiculo> GetAll(int veiculoID)
         {
@@ -102,9 +95,9 @@ namespace ControleVeiculos.Repository.Data
                 conn.ConnectionString = this.ConnectionString;
                 conn.Open();
 
-                string sql = string.Format("SELECT * FROM Veiculos WHERE 1 = 1 ");
+                string sql = string.Format("SELECT * FROM Veiculos Where 1 = 1");
 
-                sql += "ORDER BY veiculoID";
+                sql += "ORDER BY modelo";
 
                 return conn.Query<Veiculo>(sql).ToList();
             }
@@ -121,6 +114,5 @@ namespace ControleVeiculos.Repository.Data
                 conn.ExecuteScalar(sql);
             }
         }
-
     }
 }

@@ -18,12 +18,12 @@
                 <div class="form-group row">
                     <div class="col-md-2 mb-auto">
                         @Html.LabelFor(model => model.VeiculoID, new { @class = "col-sm-0 col-form-label text-left" })
-                        @Html.TextBoxFor(model => model.VeiculoID, new { @class = "form-control", placeholder = "Digite a ordem", @autofocus = "autofocus" })
+                        @Html.DropDownList("VeiculoID", Model.LoadVeiculo, "Selecione...", new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.VeiculoID, "", new { @class = "form-text text-danger" })
                     </div>
                     <div class="col-md-2 mb-auto">
                         @Html.LabelFor(model => model.FuncionarioID, new { @class = "col-sm-0 col-form-label text-left" })
-                        @Html.TextBoxFor(model => model.FuncionarioID, new { @class = "form-control", placeholder = "Digite a ordem", @autofocus = "autofocus" })
+                        @Html.DropDownList("FuncionarioID", Model.LoadFuncionario, "Selecione...", new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.FuncionarioID, "", new { @class = "form-text text-danger" })
                     </div>
                 </div>
